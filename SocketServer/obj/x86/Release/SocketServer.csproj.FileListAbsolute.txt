@@ -1,0 +1,12 @@
+D:\neiwang3\zc\SocketServer\SocketServer\bin\Release\SocketServer.exe
+D:\neiwang3\zc\SocketServer\SocketServer\bin\Release\SocketServer.pdb
+D:\neiwang3\zc\SocketServer\SocketServer\bin\Release\configDll.dll
+D:\neiwang3\zc\SocketServer\SocketServer\bin\Release\Google.ProtocolBuffersLite.dll
+D:\neiwang3\zc\SocketServer\SocketServer\bin\Release\log4net.dll
+D:\neiwang3\zc\SocketServer\SocketServer\bin\Release\MySql.Data.dll
+D:\neiwang3\zc\SocketServer\SocketServer\bin\Release\protoDll.dll
+D:\neiwang3\zc\SocketServer\SocketServer\bin\Release\System.Threading.Tasks.Dataflow.dll
+D:\neiwang3\zc\SocketServer\SocketServer\bin\Release\System.Threading.Tasks.Dataflow.xml
+D:\neiwang3\zc\SocketServer\SocketServer\obj\x86\Release\SocketServer.csprojResolveAssemblyReference.cache
+D:\neiwang3\zc\SocketServer\SocketServer\obj\x86\Release\SocketServer.exe
+D:\neiwang3\zc\SocketServer\SocketServer\obj\x86\Release\SocketServer.pdb

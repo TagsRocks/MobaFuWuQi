@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{5A45EE2A-B488-4B1C-8861-170CBABD05E4}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>SocketServer</RootNamespace>
+    <AssemblyName>SocketServer</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Externalconsole>true</Externalconsole>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Externalconsole>true</Externalconsole>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="atk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\atk-sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="configDll">
+      <HintPath>..\packages\configDll.dll</HintPath>
+    </Reference>
+    <Reference Include="gdk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\gdk-sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="glib-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\glib-sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\gtk-sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cairo, Version=4.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Mono.Cairo.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Threading.Tasks.Dataflow">
+      <HintPath>..\packages\Microsoft.Tpl.Dataflow.4.5.24\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Dataflow.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.ProtocolBuffersLite">
+      <HintPath>..\packages\Google.ProtocolBuffersLite.dll</HintPath>
+    </Reference>
+    <Reference Include="protoDll">
+      <HintPath>..\packages\protoDll.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\SimpleMemoryStream.cs" />
+    <Compile Include="Game\Bullet.cs" />
+    <Compile Include="Game\Chat\ChatActor.cs" />
+    <Compile Include="Game\Components\DamageZone.cs" />
+    <Compile Include="Game\Components\FoodZone.cs" />
+    <Compile Include="Game\Components\JobZone.cs" />
+    <Compile Include="Game\Components\MissileData.cs" />
+    <Compile Include="Game\Components\PhysicComponet.cs" />
+    <Compile Include="Game\Components\PhysicWorldComponent.cs" />
+    <Compile Include="Game\Components\SpawnFood.cs" />
+    <Compile Include="Game\Components\SuperShootZone.cs" />
+    <Compile Include="Game\Data\GameConst.cs" />
+    <Compile Include="Game\Data\GMDataBase.cs" />
+    <Compile Include="Game\Data\ItemData.cs" />
+    <Compile Include="Game\Data\SkillData.cs" />
+    <Compile Include="Game\Data\UnitData.cs" />
+    <Compile Include="Game\EntityImport.cs" />
+    <Compile Include="Game\GameObjectActor.cs" />
+    <Compile Include="Game\HttpServerActor.cs" />
+    <Compile Include="Game\LogicModules\Login.cs" />
+    <Compile Include="Game\Physic\Body.cs" />
+    <Compile Include="Game\Physic\Box2DXDebug.cs" />
+    <Compile Include="Game\Components\BoxCollider.cs" />
+    <Compile Include="Game\Physic\BroadPhase.cs" />
+    <Compile Include="Game\Physic\Cirlce.cs" />
+    <Compile Include="Game\Physic\Collision.cs" />
+    <Compile Include="Game\Physic\Common\Mat22.cs" />
+    <Compile Include="Game\Physic\Common\Mat33.cs" />
+    <Compile Include="Game\Physic\Common\Math.cs" />
+    <Compile Include="Game\Physic\Common\Settings.cs" />
+    <Compile Include="Game\Physic\Common\Sweep.cs" />
+    <Compile Include="Game\Physic\Common\Vec2.cs" />
+    <Compile Include="Game\Physic\Common\Vec3.cs" />
+    <Compile Include="Game\Physic\Common\XForm.cs" />
+    <Compile Include="Game\Physic\Contact.cs" />
+    <Compile Include="Game\Physic\Shape.cs" />
+    <Compile Include="Game\Physic\TestPhysic.cs" />
+    <Compile Include="Game\Physic\World.cs" />
+    <Compile Include="Game\Physic\WorldRender.cs" />
+    <Compile Include="Game\ScoreComponent.cs" />
+    <Compile Include="Game\Skill\SkillLogic.cs" />
+    <Compile Include="Game\SpawnChest.cs" />
+    <Compile Include="Game\Utility\MailSender.cs" />
+    <Compile Include="Game\Vector3.cs" />
+    <Compile Include="Game\MonitorActor.cs" />
+    <Compile Include="Game\Utility\LogHelper.cs" />
+    <Compile Include="MasterServerActor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Actor.cs" />
+    <Compile Include="Common\ServerMsgReader.cs" />
+    <Compile Include="Common\Packet.cs" />
+    <Compile Include="Common\MemoryStream.cs" />
+    <Compile Include="Common\Message.cs" />
+    <Compile Include="Common\ServerBundle.cs" />
+    <Compile Include="ServerConfig.cs" />
+    <Compile Include="SlaveServerActor.cs" />
+    <Compile Include="UDPAgent.cs" />
+    <Compile Include="Util.cs" />
+    <Compile Include="Common\Util2.cs" />
+    <Compile Include="SaveGame.cs" />
+    <Compile Include="Common\SimpleJSON.cs" />
+    <Compile Include="Game\PlayerActor.cs" />
+    <Compile Include="Game\WatchDog.cs" />
+    <Compile Include="SocketServer.cs" />
+    <Compile Include="Game\WorldActor.cs" />
+    <Compile Include="ActorSynchronizationContext.cs" />
+    <Compile Include="SynchronizationContextAwaiter.cs" />
+    <Compile Include="SynchroniztionContextExtensions.cs" />
+    <Compile Include="Game\RoomActor.cs" />
+    <Compile Include="Game\EntityActor.cs" />
+    <Compile Include="Game\Component.cs" />
+    <Compile Include="Game\PlayerManagerCom.cs" />
+    <Compile Include="Game\EntityManagerCom.cs" />
+    <Compile Include="Game\TeamManageCom.cs" />
+    <Compile Include="Game\Lobby.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Game\Http\" />
+  </ItemGroup>
+</Project>
