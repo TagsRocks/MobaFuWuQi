@@ -21,13 +21,7 @@ namespace MyLib
         /// <returns></returns>
         public static bool CheckNewUser(string deviceId)
         {
-            var dict = new Dictionary<string, object>
-            {
-                {"did", deviceId},
-            };
-            var sql = "select did from tbllog_player where did = ?did";
-            var result = RunReader(sql, dict, DumpParse);
-            return (result.Count == 0);
+			return false;
         }
 
         private static List<object[]> RunReaderTank(string sql, Dictionary<string, object> kv, GetResult getFunc)
@@ -61,36 +55,6 @@ namespace MyLib
             return null;
         }
 
-        private static List<object[]> RunReader(string sql, Dictionary<string, object> kv, GetResult getFunc)
-        {
-            try
-            {
-                LogHelper.Log("MySql", "sql: " + sql);
-                using (var connection = new MySqlConnection())
-                {
-                    connection.ConnectionString = ServerConfig.instance.configMap["DatabaseLogConnection"];
-                    connection.Open();
-
-                    using (var cmd = new MySqlCommand(sql, connection))
-                    {
-                        foreach (var o in kv)
-                        {
-                            //LogHelper.Log("MySql", "kv: "+o.Key+" v "+o.Value);
-                            cmd.Parameters.AddWithValue("?" + o.Key, o.Value);
-                        }
-                        using (var reader = cmd.ExecuteReader())
-                        {
-                            return getFunc(reader);
-                        }
-                    }
-                }
-            }
-            catch (Exception exp)
-            {
-                LogHelper.Log("Error", exp.ToString());
-            }
-            return null;
-        }
 
         private static void RunQueryTank(string sql, Dictionary<string, object> kv)
         {
@@ -119,65 +83,9 @@ namespace MyLib
             }
         }
 
-        private static void RunQuery(string sql, Dictionary<string, object> kv)
-        {
-            try
-            {
-                LogHelper.Log("MySql", "sql: " + sql);
-                using (var connection = new MySqlConnection())
-                {
-                    connection.ConnectionString = ServerConfig.instance.configMap["DatabaseLogConnection"];
-                    connection.Open();
-
-                    using (var cmd = new MySqlCommand(sql, connection))
-                    {
-                        foreach (var o in kv)
-                        {
-                            //LogHelper.Log("MySql", "kv: "+o.Key+" v "+o.Value);
-                            cmd.Parameters.AddWithValue("?" + o.Key, o.Value);
-                        }
-                        cmd.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (Exception exp)
-            {
-                LogHelper.Log("Error", exp.ToString());
-            }
-        }
 
         public static void AddNewUser(NameValueCollection nvc, IPAddress addr)
         {
-            var now = Util.GetServerTime();
-            var dict = new Dictionary<string, object>()
-            {
-                {"platform", nvc["platform"]},
-                {"account_name", nvc["account_name"]},
-                {"user_name", nvc["user_name"]},
-                {"device", nvc["device"]},
-                {"did", nvc["did"]},
-                {"reg_time", now},
-                {"reg_ip", addr.ToString()},
-                {"last_login_time", now},
-                {"happend_time", now},
-                {"role_id", nvc["did"]},
-                {"role_name", nvc["did"]},
-                {"dim_level", 1},
-                {"gold_number", 0},
-                {"pay_money", 0},
-            };
-
-            var sql = "insert into tbllog_player set ";
-            var kvStr = new List<string>();
-            foreach (var o in dict)
-            {
-                kvStr.Add(string.Format("{0}=?{1}", o.Key, o.Key));
-            }
-            var kv = string.Join(",", kvStr.ToArray());
-            sql += kv;
-            RunQuery(sql, dict);
-
-            InsertRole(nvc, addr);
         }
 
         public static void UnBan(string[] ipList)
@@ -230,30 +138,6 @@ namespace MyLib
 
         private static void InsertRole(NameValueCollection nvc, IPAddress addr)
         {
-            var now = Util.GetServerTime();
-            var dict = new Dictionary<string, object>()
-            {
-                {"platform", nvc["platform"]},
-                {"device", nvc["device"]},
-                {"role_id", nvc["did"]},
-                {"role_name", nvc["did"]},
-                {"account_name", nvc["account_name"]},
-                {"user_ip", addr.ToString()},
-                {"did", nvc["did"]},
-                {"game_version", ServerConfig.instance.VERSION},
-                {"happend_time", now},
-                {"log_time", now},
-            };
-
-            var sql = "insert into tbllog_role set ";
-            var kvStr = new List<string>();
-            foreach (var o in dict)
-            {
-                kvStr.Add(string.Format("{0}=?{1}", o.Key, o.Key));
-            }
-            var kv = string.Join(",", kvStr.ToArray());
-            sql += kv;
-            RunQuery(sql, dict);
         }
 
         private static string GetKV(Dictionary<string, object> dict)
@@ -272,162 +156,22 @@ namespace MyLib
 
         public static void UpdateLogin(NameValueCollection nvc, HttpListenerRequest req)
         {
-            var now = Util.GetServerTime();
-            var dict = new Dictionary<string, object>()
-            {
-                {"did", nvc["did"]},
-                {"last_login_time", now},
-                {"happend_time", now},
-            };
-            /*
-            RunQuery("update tbllog_player set last_login_time = ?last_login_time,  happend_time = ?happend_time  where did = ?did",
-                dict
-                );
-            */
-            var sql = "update tbllog_player set ";
-            var kvStr = new List<string>();
-            foreach (var o in dict)
-            {
-                kvStr.Add(string.Format("{0}=?{1}", o.Key, o.Key));
-            }
-            var kv = string.Join(",", kvStr.ToArray());
-            sql += kv;
-            RunQuery(sql, dict);
-
-            InsertLogin(nvc, req);
-            lock (lastLogin)
-            {
-                lastLogin[nvc["did"]] = now;
-            }
         }
 
         private static void InsertLogin(NameValueCollection nvc, HttpListenerRequest req)
         {
-            var now = Util.GetServerTime();
-
-            var dict = new Dictionary<string, object>()
-            {
-                {"did", nvc["did"]},
-                {"user_ip", req.RemoteEndPoint.Address.ToString()},
-                {"game_version", ServerConfig.instance.VERSION},
-                {"happend_time", now},
-                {"log_time", now},
-                {"platform", nvc["platform"]},
-                {"role_id", nvc["role_id"]},
-                {"account_name", nvc["account_name"]},
-                {"device_name", nvc["device_name"]},
-                {"dim_level", 1},
-            };
-            var sql = "insert into tbllog_login set ";
-            var kvStr = new List<string>();
-            foreach (var o in dict)
-            {
-                kvStr.Add(string.Format("{0}=?{1}", o.Key, o.Key));
-            }
-            var kv = string.Join(",", kvStr.ToArray());
-            sql += kv;
-            RunQuery(sql, dict);
         }
 
         public static void StartMatch(DeviceInfo info, string user_ip)
         {
-            var now = Util.GetServerTime();
-            var dict = new Dictionary<string, object>()
-            {
-                {"did", info.Did},
-                {"user_ip", user_ip},
-                {"event_id", 100},
-                {"game_version", ServerConfig.instance.VERSION},
-                {"happend_time", now},
-                {"log_time", now},
-                {"platform", 1},
-                {"role_id", info.Did},
-                {"account_name", info.AccountName},
-                {"device_name", info.DeviceName},
-
-            };
-            var sql = "insert into tbllog_event set ";
-            var kvStr = new List<string>();
-            foreach (var o in dict)
-            {
-                kvStr.Add(string.Format("{0}=?{1}", o.Key, o.Key));
-            }
-            var kv = string.Join(",", kvStr.ToArray());
-            sql += kv;
-            RunQuery(sql, dict);
         }
 
         public static void QuitRoom(DeviceInfo info, string user_ip)
         {
-            if (info == null)
-            {
-                return;
-            }
-            var now = Util.GetServerTime();
-            var dict = new Dictionary<string, object>()
-            {
-                {"did", info.Did},
-                {"user_ip", user_ip},
-                {"event_id", 101},
-                {"game_version", ServerConfig.instance.VERSION},
-                {"happend_time", now},
-                {"log_time", now},
-
-                {"platform", 1},
-                {"role_id", info.Did},
-                {"account_name", info.AccountName},
-                {"device_name", info.DeviceName},
-            };
-            var sql = "insert into tbllog_event set ";
-            var kvStr = new List<string>();
-            foreach (var o in dict)
-            {
-                kvStr.Add(string.Format("{0}=?{1}", o.Key, o.Key));
-            }
-            var kv = string.Join(",", kvStr.ToArray());
-            sql += kv;
-            RunQuery(sql, dict);
         }
 
         public static void QuitGame(HttpListenerRequest req)
         {
-            var did = req.QueryString["did"];
-            var now = Util.GetServerTime();
-            var loginTime = now;
-            lock (lastLogin)
-            {
-                if (lastLogin.ContainsKey(did))
-                {
-                    loginTime = lastLogin[did];
-                }
-            }
-
-            var dict = new Dictionary<string, object>()
-            {
-                {"did", did},
-                {"platform", 1},
-                {"role_id", did},
-                {"account_name", req.QueryString["account_name"]},
-                {"login_level", 1},
-                {"logout_level", 1},
-                {"logout_scene_id", 1},
-                {"reason_id", 1},
-                {"logout_ip", req.RemoteEndPoint.Address.ToString()},
-                {"logout_time", now},
-                {"login_time", loginTime},
-                {"time_duration", now - loginTime},
-                {"log_time", now},
-                {"game_version", ServerConfig.instance.VERSION},
-            };
-            var sql = "insert into tbllog_quit set ";
-            var kvStr = new List<string>();
-            foreach (var o in dict)
-            {
-                kvStr.Add(string.Format("{0}=?{1}", o.Key, o.Key));
-            }
-            var kv = string.Join(",", kvStr.ToArray());
-            sql += kv;
-            RunQuery(sql, dict);
         }
 
         private static List<object[]> ParseRoleInfo(MySqlDataReader reader)
@@ -451,17 +195,7 @@ namespace MyLib
 
         public static List<object[]> GetRoleInfo(int startTime, int endTime)
         {
-
-            var dict = new Dictionary<string, object>()
-            {
-                {"startTime", startTime},
-                {"endTime", endTime},
-            };
-
-            var sql =
-                "select account_name, role_name, log_time from tbllog_role where log_time > ?startTime and log_time < ?endTime ";
-            var result = RunReader(sql, dict, ParseRoleInfo);
-            return result;
+			return null;
         }
 
         private static List<object[]> DumpParse(MySqlDataReader reader)
@@ -511,66 +245,7 @@ namespace MyLib
 
         public static string UserInfo(string roleName, string roleId, string accountName)
         {
-            var allResult = false;
-            if (string.IsNullOrEmpty(roleName) && string.IsNullOrEmpty(roleId) && string.IsNullOrEmpty(accountName))
-            {
-                allResult = true;
-            }
-            string sql;
-            Dictionary<string, object> dict;
-            if (allResult)
-            {
-                dict = new Dictionary<string, object>()
-                {
-                };
-                sql =
-                    "select role_id, role_name, account_name, reg_time, dim_level, last_login_time, did from tbllog_player";
-            }
-            else
-            {
-                dict = new Dictionary<string, object>()
-                {
-                    {"did", roleId},
-                };
-                sql =
-                    "select role_id, role_name, account_name, reg_time, dim_level, last_login_time, did from tbllog_player where did = ?did";
-            }
-            var result = RunReader(sql, dict, ParseUserInfo);
-
-            var jc = new JSONClass();
-            jc.Add("ret", new JSONData(0));
-            jc.Add("msg", new JSONData("成功"));
-
-            var jc2 = new JSONClass();
-            jc2.Add("roleId", "角色ID");
-            jc2.Add("roleName", "角色名");
-            jc2.Add("accountName", "账号名");
-            jc2.Add("regTime", "注册时间");
-            jc2.Add("dim_level", "等级");
-            jc2.Add("last_login_time", "上次登录时间");
-            jc2.Add("did", "设备ID");
-            jc.Add("desc", jc2);
-
-            var js = new JSONArray();
-            foreach (var objectse in result)
-            {
-                var jobj = new JSONClass();
-                foreach (var o in objectse)
-                {
-                    LogHelper.Log("mysql", "data: " + o);
-                }
-                jobj.Add("roleId", objectse[0] as string);
-                jobj.Add("roleName", objectse[1] as string);
-                jobj.Add("accountName", objectse[2] as string);
-                jobj.Add("regTime", new JSONData((int) objectse[3]));
-                jobj.Add("dim_level", new JSONData((int) objectse[4]));
-                jobj.Add("last_login_time", new JSONData((int) objectse[5]));
-                jobj.Add("did", objectse[6] as string);
-                js.Add(jobj);
-            }
-            jc.Add("data", js);
-            jc.Add("totalNum", new JSONData(js.Count));
-            return jc.ToString();
+			return "";
         }
 
         private static void VerifyLoginInfo(string uid)
@@ -631,42 +306,10 @@ namespace MyLib
 
         public static void OnlineUser(int num)
         {
-            var now = Util.GetServerTime();
-            var dict = new Dictionary<string, object>()
-            {
-                {"platform", 1},
-                {"people", num},
-                {"happend_time", now},
-                {"log_time", now},
-            };
-            var sql = "insert into tbllog_online set ";
-            var kvStr = new List<string>();
-            foreach (var o in dict)
-            {
-                kvStr.Add(string.Format("{0}=?{1}", o.Key, o.Key));
-            }
-            var kv = string.Join(",", kvStr.ToArray());
-            sql += kv;
-            RunQuery(sql, dict);
         }
 
         public static void Error(string content)
         {
-            var now = Util.GetServerTime();
-            var dict = new Dictionary<string, object>()
-            {
-                {"error_msg", content},
-                {"log_time", now},
-            };
-            var sql = "insert into tbllog_error set ";
-            var kvStr = new List<string>();
-            foreach (var o in dict)
-            {
-                kvStr.Add(string.Format("{0}=?{1}", o.Key, o.Key));
-            }
-            var kv = string.Join(",", kvStr.ToArray());
-            sql += kv;
-            RunQuery(sql, dict);
         }
 
         private static List<object[]> ParseLoginInfo(MySqlDataReader reader)
