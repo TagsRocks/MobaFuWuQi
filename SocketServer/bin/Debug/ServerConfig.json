@@ -1,6 +1,6 @@
 {
-    "DatabaseConnection": "server=127.0.0.1;uid=zczbdev;pwd=zc6Tzb43#%;database=tank;charset=utf8",
-    "DatabaseLogConnection": "server=127.0.0.1;uid=zczbdev;pwd=zc6Tzb43#%;database=zczb_log_android_cn_s999;charset=utf8",
+    "DatabaseConnection": "server=127.0.0.1;uid=root;database=tank;charset=utf8",
+    "DatabaseLogConnection": "server=127.0.0.1;uid=root;database=tank;charset=utf8",
     "HttpServerListenPort": "12030",
     "Port": "12031",
 	"UDPPort" : "12032",

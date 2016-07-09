@@ -217,7 +217,6 @@ namespace SocketServer.Game
                     var status = qs["status"];
                     var banDate = qs["banDate"];
 
-                    //安卓的Imei Ban4399 账号n
                     //if (bt == "BanImei")
                     //{
                     var d = qs["data"].Split(',');
@@ -288,17 +287,7 @@ namespace SocketServer.Game
                     return string.Empty;
                 }else if (rawUrl.StartsWith("/LoginVerify"))
                 {
-                    var fnUrl = "http://fnsdk.4399sy.com/sdk/api/login.php?";
-                    var qs = rawUrl.Replace("/LoginVerify?", "");
-                    fnUrl += qs;
-                    LogHelper.Log("Http", "Verify: " + fnUrl);
-
-                    var hc = new HttpClient();
-                    var resp = await hc.GetAsync(fnUrl);
-                    var con = resp.Content;
-                    var result = await con.ReadAsStringAsync();
-                    LogHelper.Log("Http", "Login: " + result);
-                    return result;
+                    return "";
                 }
                 else if (rawUrl.StartsWith("/ViewRoom"))
                 {

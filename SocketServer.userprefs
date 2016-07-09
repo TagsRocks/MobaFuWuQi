@@ -1,13 +1,9 @@
-﻿<Properties StartupItem="SocketServer\SocketServer.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="SocketServer\Game\RoomActor.cs">
+﻿<Properties StartupItem="SocketServer/SocketServer.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="SocketServer/SaveGame.cs">
     <Files>
-      <File FileName="SocketServer\Game\PlayerActor.cs" Line="1" Column="1" />
-      <File FileName="SocketServer\Game\WorldActor.cs" Line="1" Column="1" />
-      <File FileName="SocketServer\Game\RoomActor.cs" Line="28" Column="4" />
-      <File FileName="SocketServer\SocketServer.cs" Line="1" Column="1" />
-      <File FileName="SocketServer\Game\WatchDog.cs" Line="1" Column="1" />
-      <File FileName="SocketServer\Game\Lobby.cs" Line="1" Column="1" />
+      <File FileName="SocketServer/Game/LogicModules/Login.cs" Line="1" Column="1" />
+      <File FileName="SocketServer/SaveGame.cs" Line="21" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

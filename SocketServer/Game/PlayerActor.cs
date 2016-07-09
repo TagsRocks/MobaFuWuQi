@@ -825,16 +825,6 @@ namespace MyLib
 					}
                     else if (cmds[0] == "LoginServer") //登陆合法性验证
                     {
-                        var url = "http://fnsdk.4399sy.com/sdk/api/login.php?";
-                        var getStr = cmds[1];
-                        url += getStr;
-
-                        //http://fnsdk.4399sy.com/sdk/api/login.php?name=url_encode(user.name)&uid=url_encode(user.uid)&ext=url_encode(user.ext)
-                        var hc = new HttpClient();
-                        var resp = await hc.GetAsync(url);
-                        var con = resp.Content;
-                        var result = await con.ReadAsStringAsync();
-                        LogHelper.Log("Http", "Login: "+result);
                     }else if (cmds[0] == "TestUDP")
                     {
                         LogHelper.Log("UDP", "TestUDP");
