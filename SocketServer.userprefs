@@ -1,9 +1,11 @@
 ﻿<Properties StartupItem="SocketServer/SocketServer.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="SocketServer/SaveGame.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SocketServer/Game/LogicModules/Login.cs">
     <Files>
-      <File FileName="SocketServer/Game/LogicModules/Login.cs" Line="1" Column="1" />
-      <File FileName="SocketServer/SaveGame.cs" Line="21" Column="1" />
+      <File FileName="SocketServer/Game/LogicModules/Login.cs" Line="68" Column="1" />
+      <File FileName="SocketServer/SaveGame.cs" Line="1" Column="1" />
+      <File FileName="SocketServer/Game/HttpServerActor.cs" Line="1" Column="1" />
+      <File FileName="SocketServer/Game/PlayerActor.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

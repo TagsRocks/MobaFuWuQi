@@ -1,0 +1,568 @@
+﻿2016-07-29 00:00:00,240 ClientLogin ip=127.0.0.1
+2016-07-29 00:00:00,243 Agent CreateActor 3
+2016-07-29 00:00:00,243 Actor AddActor MyLib.PlayerActor addType False
+2016-07-29 00:00:00,337 MySql sql: select *  from login where uid = ?uid and pid = ?pid
+2016-07-29 00:00:00,424 PlayerActor MatchingGame
+2016-07-29 00:00:00,424 Actor AddActor MyLib.RoomActor addType False
+2016-07-29 00:00:00,499 Http HttpRequest: http://127.0.0.1:12030/UpdateRecord?uid=123&total=1 qu System.Collections.Specialized.NameValueCollection raw /UpdateRecord?uid=123&total=1 me GET
+2016-07-29 00:00:00,499 MySql sql: select uid from record where uid = ?uid
+2016-07-29 00:00:00,500 MySql sql: update record set total = total+1 where uid = ?uid
+2016-07-29 00:00:00,501 Http SendResponse
+2016-07-29 00:00:00,590 UDP AddUDPAgent: 127.0.0.1:53351
+2016-07-29 00:00:00,591 UDP TestUDP
+2016-07-29 00:00:00,627 UDP UseUDP
+2016-07-29 00:00:13,302 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-29 00:00:13,302 Http SendResponse
+2016-07-29 00:00:13,304 Master Status: {
+"IsFull":false
+, "RoomNum":1
+}
+
+2016-07-29 00:00:16,445 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:00:16,445 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:00:16,445 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:00:16,445 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:00:16,445 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:00:16,445 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:00:16,445 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:00:16,446 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:00:16,446 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:00:16,446 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:00:16,446 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:00:16,446 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:00:21,446 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:00:21,447 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:00:21,447 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:00:21,447 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:00:46,638 Agent CloseAgent
+2016-07-29 00:00:46,638 Agent CloseAgent 3
+2016-07-29 00:00:46,639 PlayerActor CloseActor 40
+2016-07-29 00:00:46,639 UDP Close: 127.0.0.1:53351
+2016-07-29 00:00:55,344 Server StartServer
+2016-07-29 00:00:55,407 Actor AddActor MyLib.WatchDog addType True
+2016-07-29 00:00:55,421 Actor AddActor {
+"LobbyStatus":{
+"RoomCount":0
+, "Rooms":[  ]
+}
+
+}
+ addType True
+2016-07-29 00:00:55,427 Actor AddActor {
+"AgentStatus":{
+"AgentCount":0
+, "Agents":[  ]
+}
+
+}
+ addType True
+2016-07-29 00:00:55,429 Actor AddActor MyLib.MonitorActor addType True
+2016-07-29 00:00:55,430 Actor AddActor SocketServer.Game.HttpServerActor addType True
+2016-07-29 00:00:55,436 Actor AddActor MyLib.ChatActor addType True
+2016-07-29 00:00:55,438 Actor AddActor MyLib.MasterServerActor addType True
+2016-07-29 00:00:55,439 Actor AddActor MyLib.SlaveServerActor addType True
+2016-07-29 00:00:55,444 Http StartServer: 12030
+2016-07-29 00:00:55,453 Server ServerPort: 12031
+2016-07-29 00:00:55,487 UDP UDPStart: 12032
+2016-07-29 00:00:55,494 Actor ServerStartSuc
+2016-07-29 00:00:55,525 Master Server Http: 127.0.0.1:12031 htt 127.0.0.1:12030
+2016-07-29 00:00:55,764 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-29 00:00:55,781 Http SendResponse
+2016-07-29 00:00:55,825 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-29 00:00:58,204 Http HttpRequest: http://127.0.0.1:12030/LoginVerify?name=0&uid=0&ext= qu System.Collections.Specialized.NameValueCollection raw /LoginVerify?name=0&uid=0&ext= me GET
+2016-07-29 00:00:58,204 Http SendResponse
+2016-07-29 00:01:00,102 Http HttpRequest: http://127.0.0.1:12030/IsClose?did=853AE9FE-95DA-50EA-97AF-94230358E259 qu System.Collections.Specialized.NameValueCollection raw /IsClose?did=853AE9FE-95DA-50EA-97AF-94230358E259 me GET
+2016-07-29 00:01:00,117 MySql sql: select did from banip where did = ?did and end_time > ?end_time 
+2016-07-29 00:01:00,297 MySql sql: select ip from ipwhite where ip = ?ip
+2016-07-29 00:01:00,301 Http SendResponse
+2016-07-29 00:01:00,308 Http HttpRequest: http://127.0.0.1:12030/LoginServer?pid=0&uid=123&did=853AE9FE-95DA-50EA-97AF-94230358E259 qu System.Collections.Specialized.NameValueCollection raw /LoginServer?pid=0&uid=123&did=853AE9FE-95DA-50EA-97AF-94230358E259 me GET
+2016-07-29 00:01:00,310 MySql sql: select * from login where uid = ?uid and pid = ?pid
+2016-07-29 00:01:00,316 Http SendResponse
+2016-07-29 00:01:01,020 Http HttpRequest: http://127.0.0.1:12030/QueryUserInfo?pid=0&uid=123 qu System.Collections.Specialized.NameValueCollection raw /QueryUserInfo?pid=0&uid=123 me GET
+2016-07-29 00:01:01,021 MySql sql: select * from login where uid = ?uid and pid = ?pid
+2016-07-29 00:01:01,022 Http SendResponse
+2016-07-29 00:01:01,026 Http HttpRequest: http://127.0.0.1:12030/CheckMailTip?pid=0&uid=123 qu System.Collections.Specialized.NameValueCollection raw /CheckMailTip?pid=0&uid=123 me GET
+2016-07-29 00:01:01,027 MySql sql: select * from mail where uid = ?uid and pid = ?pid and state = 0
+2016-07-29 00:01:01,028 Http SendResponse
+2016-07-29 00:01:01,030 Http HttpRequest: http://127.0.0.1:12030/GetMsg?ord=0 qu System.Collections.Specialized.NameValueCollection raw /GetMsg?ord=0 me GET
+2016-07-29 00:01:01,093 Http HttpRequest: http://127.0.0.1:12030/Record?uid=123 qu System.Collections.Specialized.NameValueCollection raw /Record?uid=123 me GET
+2016-07-29 00:01:01,094 MySql sql: select * from record where uid = ?uid
+2016-07-29 00:01:01,096 Http SendResponse
+2016-07-29 00:01:02,278 Http HttpRequest: http://127.0.0.1:12030/idleServer qu System.Collections.Specialized.NameValueCollection raw /idleServer me GET
+2016-07-29 00:01:02,280 Http SendResponse
+2016-07-29 00:01:02,824 ClientLogin ip=127.0.0.1
+2016-07-29 00:01:02,829 Agent CreateActor 1
+2016-07-29 00:01:02,829 Actor AddActor MyLib.PlayerActor addType False
+2016-07-29 00:01:02,973 MySql sql: select *  from login where uid = ?uid and pid = ?pid
+2016-07-29 00:01:03,037 PlayerActor MatchingGame
+2016-07-29 00:01:03,039 Actor AddActor MyLib.RoomActor addType False
+2016-07-29 00:01:03,098 Http HttpRequest: http://127.0.0.1:12030/UpdateRecord?uid=123&total=1 qu System.Collections.Specialized.NameValueCollection raw /UpdateRecord?uid=123&total=1 me GET
+2016-07-29 00:01:03,099 MySql sql: select uid from record where uid = ?uid
+2016-07-29 00:01:03,100 MySql sql: update record set total = total+1 where uid = ?uid
+2016-07-29 00:01:03,101 Http SendResponse
+2016-07-29 00:01:03,195 UDP AddUDPAgent: 127.0.0.1:59936
+2016-07-29 00:01:03,197 UDP TestUDP
+2016-07-29 00:01:03,225 UDP UseUDP
+2016-07-29 00:01:14,078 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:01:14,090 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:01:14,090 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:01:14,140 MySql sql: update login set level = ?level, exp = ?exp, medal = ?medal, dayBattleCount = ?dayBattleCount where uid = ?uid and pid = ?pid
+2016-07-29 00:01:14,285 Http HttpRequest: http://127.0.0.1:12030/UpdateRecord?uid=123&mvp=1 qu System.Collections.Specialized.NameValueCollection raw /UpdateRecord?uid=123&mvp=1 me GET
+2016-07-29 00:01:14,285 MySql sql: select uid from record where uid = ?uid
+2016-07-29 00:01:14,288 MySql sql: update record set mvp = mvp+1 where uid = ?uid
+2016-07-29 00:01:14,289 Http SendResponse
+2016-07-29 00:01:19,074 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:01:19,074 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:01:19,075 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:01:19,075 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:01:19,075 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:01:19,077 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:01:19,077 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:01:19,078 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:01:19,150 UDP UDPLost From Server
+2016-07-29 00:01:24,077 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:01:24,077 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:01:24,078 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:01:24,078 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:01:34,446 Http HttpRequest: http://127.0.0.1:12030/QuitGame?did=853AE9FE-95DA-50EA-97AF-94230358E259&account_name=123 qu System.Collections.Specialized.NameValueCollection raw /QuitGame?did=853AE9FE-95DA-50EA-97AF-94230358E259&account_name=123 me GET
+2016-07-29 00:01:34,447 Http SendResponse
+2016-07-29 00:01:35,279 Agent CloseAgent
+2016-07-29 00:01:35,280 Agent CloseAgent 1
+2016-07-29 00:01:35,282 UDP Close: 127.0.0.1:59936
+2016-07-29 00:01:35,283 PlayerActor CloseActor 9
+2016-07-29 00:01:50,368 Http HttpRequest: http://127.0.0.1:12030/LoginVerify?name=0&uid=0&ext= qu System.Collections.Specialized.NameValueCollection raw /LoginVerify?name=0&uid=0&ext= me GET
+2016-07-29 00:01:50,368 Http SendResponse
+2016-07-29 00:01:51,913 Http HttpRequest: http://127.0.0.1:12030/IsClose?did=853AE9FE-95DA-50EA-97AF-94230358E259 qu System.Collections.Specialized.NameValueCollection raw /IsClose?did=853AE9FE-95DA-50EA-97AF-94230358E259 me GET
+2016-07-29 00:01:51,913 MySql sql: select did from banip where did = ?did and end_time > ?end_time 
+2016-07-29 00:01:51,914 MySql sql: select ip from ipwhite where ip = ?ip
+2016-07-29 00:01:51,915 Http SendResponse
+2016-07-29 00:01:51,947 Http HttpRequest: http://127.0.0.1:12030/LoginServer?pid=0&uid=123&did=853AE9FE-95DA-50EA-97AF-94230358E259 qu System.Collections.Specialized.NameValueCollection raw /LoginServer?pid=0&uid=123&did=853AE9FE-95DA-50EA-97AF-94230358E259 me GET
+2016-07-29 00:01:51,947 MySql sql: select * from login where uid = ?uid and pid = ?pid
+2016-07-29 00:01:51,949 Http SendResponse
+2016-07-29 00:01:52,661 Http HttpRequest: http://127.0.0.1:12030/QueryUserInfo?pid=0&uid=123 qu System.Collections.Specialized.NameValueCollection raw /QueryUserInfo?pid=0&uid=123 me GET
+2016-07-29 00:01:52,661 MySql sql: select * from login where uid = ?uid and pid = ?pid
+2016-07-29 00:01:52,662 Http SendResponse
+2016-07-29 00:01:52,666 Http HttpRequest: http://127.0.0.1:12030/CheckMailTip?pid=0&uid=123 qu System.Collections.Specialized.NameValueCollection raw /CheckMailTip?pid=0&uid=123 me GET
+2016-07-29 00:01:52,666 MySql sql: select * from mail where uid = ?uid and pid = ?pid and state = 0
+2016-07-29 00:01:52,667 Http SendResponse
+2016-07-29 00:01:52,669 Http HttpRequest: http://127.0.0.1:12030/GetMsg?ord=0 qu System.Collections.Specialized.NameValueCollection raw /GetMsg?ord=0 me GET
+2016-07-29 00:01:52,731 Http HttpRequest: http://127.0.0.1:12030/Record?uid=123 qu System.Collections.Specialized.NameValueCollection raw /Record?uid=123 me GET
+2016-07-29 00:01:52,732 MySql sql: select * from record where uid = ?uid
+2016-07-29 00:01:52,733 Http SendResponse
+2016-07-29 00:01:53,690 Http HttpRequest: http://127.0.0.1:12030/idleServer qu System.Collections.Specialized.NameValueCollection raw /idleServer me GET
+2016-07-29 00:01:53,690 Http SendResponse
+2016-07-29 00:01:54,233 ClientLogin ip=127.0.0.1
+2016-07-29 00:01:54,233 Agent CreateActor 2
+2016-07-29 00:01:54,233 Actor AddActor MyLib.PlayerActor addType False
+2016-07-29 00:01:54,338 MySql sql: select *  from login where uid = ?uid and pid = ?pid
+2016-07-29 00:01:54,424 PlayerActor MatchingGame
+2016-07-29 00:01:54,424 Actor AddActor MyLib.RoomActor addType False
+2016-07-29 00:01:54,508 Http HttpRequest: http://127.0.0.1:12030/UpdateRecord?uid=123&total=1 qu System.Collections.Specialized.NameValueCollection raw /UpdateRecord?uid=123&total=1 me GET
+2016-07-29 00:01:54,509 MySql sql: select uid from record where uid = ?uid
+2016-07-29 00:01:54,509 MySql sql: update record set total = total+1 where uid = ?uid
+2016-07-29 00:01:54,510 Http SendResponse
+2016-07-29 00:01:54,612 UDP AddUDPAgent: 127.0.0.1:49253
+2016-07-29 00:01:54,613 UDP TestUDP
+2016-07-29 00:01:54,645 UDP UseUDP
+2016-07-29 00:01:55,832 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-29 00:01:55,833 Http SendResponse
+2016-07-29 00:01:55,834 Master Status: {
+"IsFull":false
+, "RoomNum":1
+}
+
+2016-07-29 00:02:05,440 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:02:05,441 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:02:05,441 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:02:05,446 MySql sql: update login set level = ?level, exp = ?exp, medal = ?medal, dayBattleCount = ?dayBattleCount where uid = ?uid and pid = ?pid
+2016-07-29 00:02:05,601 Http HttpRequest: http://127.0.0.1:12030/UpdateRecord?uid=123&mvp=1 qu System.Collections.Specialized.NameValueCollection raw /UpdateRecord?uid=123&mvp=1 me GET
+2016-07-29 00:02:05,601 MySql sql: select uid from record where uid = ?uid
+2016-07-29 00:02:05,603 MySql sql: update record set mvp = mvp+1 where uid = ?uid
+2016-07-29 00:02:05,604 Http SendResponse
+2016-07-29 00:02:09,787 Agent CloseAgent
+2016-07-29 00:02:09,787 Agent CloseAgent 2
+2016-07-29 00:02:09,787 PlayerActor CloseActor 26
+2016-07-29 00:02:09,788 UDP Close: 127.0.0.1:49253
+2016-07-29 00:02:10,187 Http HttpRequest: http://127.0.0.1:12030/QueryUserInfo?pid=0&uid=123 qu System.Collections.Specialized.NameValueCollection raw /QueryUserInfo?pid=0&uid=123 me GET
+2016-07-29 00:02:10,188 MySql sql: select * from login where uid = ?uid and pid = ?pid
+2016-07-29 00:02:10,189 Http SendResponse
+2016-07-29 00:02:10,191 Http HttpRequest: http://127.0.0.1:12030/CheckMailTip?pid=0&uid=123 qu System.Collections.Specialized.NameValueCollection raw /CheckMailTip?pid=0&uid=123 me GET
+2016-07-29 00:02:10,191 MySql sql: select * from mail where uid = ?uid and pid = ?pid and state = 0
+2016-07-29 00:02:10,192 Http SendResponse
+2016-07-29 00:02:10,208 Http HttpRequest: http://127.0.0.1:12030/Record?uid=123 qu System.Collections.Specialized.NameValueCollection raw /Record?uid=123 me GET
+2016-07-29 00:02:10,208 MySql sql: select * from record where uid = ?uid
+2016-07-29 00:02:10,210 Http SendResponse
+2016-07-29 00:02:13,128 Http HttpRequest: http://127.0.0.1:12030/idleServer qu System.Collections.Specialized.NameValueCollection raw /idleServer me GET
+2016-07-29 00:02:13,128 Http SendResponse
+2016-07-29 00:02:13,600 ClientLogin ip=127.0.0.1
+2016-07-29 00:02:13,600 Agent CreateActor 3
+2016-07-29 00:02:13,600 Actor AddActor MyLib.PlayerActor addType False
+2016-07-29 00:02:13,698 MySql sql: select *  from login where uid = ?uid and pid = ?pid
+2016-07-29 00:02:13,778 PlayerActor MatchingGame
+2016-07-29 00:02:13,778 Actor AddActor MyLib.RoomActor addType False
+2016-07-29 00:02:13,819 Http HttpRequest: http://127.0.0.1:12030/UpdateRecord?uid=123&total=1 qu System.Collections.Specialized.NameValueCollection raw /UpdateRecord?uid=123&total=1 me GET
+2016-07-29 00:02:13,820 MySql sql: select uid from record where uid = ?uid
+2016-07-29 00:02:13,820 MySql sql: update record set total = total+1 where uid = ?uid
+2016-07-29 00:02:13,829 Http SendResponse
+2016-07-29 00:02:13,930 UDP AddUDPAgent: 127.0.0.1:58409
+2016-07-29 00:02:13,930 UDP TestUDP
+2016-07-29 00:02:13,969 UDP UseUDP
+2016-07-29 00:02:18,973 UDP UDPLost From Server
+2016-07-29 00:02:19,790 Actor Client Pause For Too Long Time
+2016-07-29 00:02:19,791 Agent CloseAgent
+2016-07-29 00:02:19,791 Agent CloseAgent 3
+2016-07-29 00:02:19,791 Error SocketClosed
+2016-07-29 00:02:19,791 UDP Close: 127.0.0.1:58409
+2016-07-29 00:02:19,791 PlayerActor CloseActor 31
+2016-07-29 00:02:35,944 Http HttpRequest: http://127.0.0.1:12030/LoginVerify?name=0&uid=0&ext= qu System.Collections.Specialized.NameValueCollection raw /LoginVerify?name=0&uid=0&ext= me GET
+2016-07-29 00:02:35,944 Http SendResponse
+2016-07-29 00:02:39,704 Http HttpRequest: http://127.0.0.1:12030/IsClose?did=853AE9FE-95DA-50EA-97AF-94230358E259 qu System.Collections.Specialized.NameValueCollection raw /IsClose?did=853AE9FE-95DA-50EA-97AF-94230358E259 me GET
+2016-07-29 00:02:39,704 MySql sql: select did from banip where did = ?did and end_time > ?end_time 
+2016-07-29 00:02:39,705 MySql sql: select ip from ipwhite where ip = ?ip
+2016-07-29 00:02:39,706 Http SendResponse
+2016-07-29 00:02:39,736 Http HttpRequest: http://127.0.0.1:12030/LoginServer?pid=0&uid=123&did=853AE9FE-95DA-50EA-97AF-94230358E259 qu System.Collections.Specialized.NameValueCollection raw /LoginServer?pid=0&uid=123&did=853AE9FE-95DA-50EA-97AF-94230358E259 me GET
+2016-07-29 00:02:39,736 MySql sql: select * from login where uid = ?uid and pid = ?pid
+2016-07-29 00:02:39,738 Http SendResponse
+2016-07-29 00:02:40,397 Http HttpRequest: http://127.0.0.1:12030/QueryUserInfo?pid=0&uid=123 qu System.Collections.Specialized.NameValueCollection raw /QueryUserInfo?pid=0&uid=123 me GET
+2016-07-29 00:02:40,397 MySql sql: select * from login where uid = ?uid and pid = ?pid
+2016-07-29 00:02:40,398 Http SendResponse
+2016-07-29 00:02:40,402 Http HttpRequest: http://127.0.0.1:12030/CheckMailTip?pid=0&uid=123 qu System.Collections.Specialized.NameValueCollection raw /CheckMailTip?pid=0&uid=123 me GET
+2016-07-29 00:02:40,402 MySql sql: select * from mail where uid = ?uid and pid = ?pid and state = 0
+2016-07-29 00:02:40,403 Http SendResponse
+2016-07-29 00:02:40,405 Http HttpRequest: http://127.0.0.1:12030/GetMsg?ord=0 qu System.Collections.Specialized.NameValueCollection raw /GetMsg?ord=0 me GET
+2016-07-29 00:02:40,461 Http HttpRequest: http://127.0.0.1:12030/Record?uid=123 qu System.Collections.Specialized.NameValueCollection raw /Record?uid=123 me GET
+2016-07-29 00:02:40,461 MySql sql: select * from record where uid = ?uid
+2016-07-29 00:02:40,462 Http SendResponse
+2016-07-29 00:02:42,137 Http HttpRequest: http://127.0.0.1:12030/idleServer qu System.Collections.Specialized.NameValueCollection raw /idleServer me GET
+2016-07-29 00:02:42,138 Http SendResponse
+2016-07-29 00:02:42,687 ClientLogin ip=127.0.0.1
+2016-07-29 00:02:42,687 Agent CreateActor 4
+2016-07-29 00:02:42,687 Actor AddActor MyLib.PlayerActor addType False
+2016-07-29 00:02:42,801 MySql sql: select *  from login where uid = ?uid and pid = ?pid
+2016-07-29 00:02:42,885 PlayerActor MatchingGame
+2016-07-29 00:02:42,885 Actor AddActor MyLib.RoomActor addType False
+2016-07-29 00:02:44,245 Http HttpRequest: http://127.0.0.1:12030/UpdateRecord?uid=123&total=1 qu System.Collections.Specialized.NameValueCollection raw /UpdateRecord?uid=123&total=1 me GET
+2016-07-29 00:02:44,245 MySql sql: select uid from record where uid = ?uid
+2016-07-29 00:02:44,245 MySql sql: update record set total = total+1 where uid = ?uid
+2016-07-29 00:02:44,254 Http SendResponse
+2016-07-29 00:02:44,339 UDP AddUDPAgent: 127.0.0.1:58637
+2016-07-29 00:02:44,339 UDP TestUDP
+2016-07-29 00:02:44,430 UDP UseUDP
+2016-07-29 00:02:48,910 Agent CloseAgent
+2016-07-29 00:02:48,911 Agent CloseAgent 4
+2016-07-29 00:02:48,911 PlayerActor CloseActor 33
+2016-07-29 00:02:48,911 UDP Close: 127.0.0.1:58637
+2016-07-29 00:02:49,372 Http HttpRequest: http://127.0.0.1:12030/QueryUserInfo?pid=0&uid=123 qu System.Collections.Specialized.NameValueCollection raw /QueryUserInfo?pid=0&uid=123 me GET
+2016-07-29 00:02:49,372 MySql sql: select * from login where uid = ?uid and pid = ?pid
+2016-07-29 00:02:49,374 Http SendResponse
+2016-07-29 00:02:49,375 Http HttpRequest: http://127.0.0.1:12030/CheckMailTip?pid=0&uid=123 qu System.Collections.Specialized.NameValueCollection raw /CheckMailTip?pid=0&uid=123 me GET
+2016-07-29 00:02:49,376 MySql sql: select * from mail where uid = ?uid and pid = ?pid and state = 0
+2016-07-29 00:02:49,377 Http SendResponse
+2016-07-29 00:02:49,391 Http HttpRequest: http://127.0.0.1:12030/Record?uid=123 qu System.Collections.Specialized.NameValueCollection raw /Record?uid=123 me GET
+2016-07-29 00:02:49,391 MySql sql: select * from record where uid = ?uid
+2016-07-29 00:02:49,393 Http SendResponse
+2016-07-29 00:02:50,704 Http HttpRequest: http://127.0.0.1:12030/idleServer qu System.Collections.Specialized.NameValueCollection raw /idleServer me GET
+2016-07-29 00:02:50,705 Http SendResponse
+2016-07-29 00:02:51,217 ClientLogin ip=127.0.0.1
+2016-07-29 00:02:51,217 Agent CreateActor 5
+2016-07-29 00:02:51,217 Actor AddActor MyLib.PlayerActor addType False
+2016-07-29 00:02:51,310 MySql sql: select *  from login where uid = ?uid and pid = ?pid
+2016-07-29 00:02:51,378 PlayerActor MatchingGame
+2016-07-29 00:02:51,378 Actor AddActor MyLib.RoomActor addType False
+2016-07-29 00:02:55,839 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-29 00:02:55,839 Http SendResponse
+2016-07-29 00:02:55,840 Master Status: {
+"IsFull":false
+, "RoomNum":1
+}
+
+2016-07-29 00:02:57,385 Actor Client Pause For Too Long Time
+2016-07-29 00:02:57,385 Agent CloseAgent
+2016-07-29 00:02:57,385 Agent CloseAgent 5
+2016-07-29 00:02:57,385 Error SocketClosed
+2016-07-29 00:02:57,385 PlayerActor CloseActor 35
+2016-07-29 00:03:55,850 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-29 00:03:55,850 Http SendResponse
+2016-07-29 00:03:55,851 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-29 00:04:29,287 Http HttpRequest: http://127.0.0.1:12030/LoginVerify?name=0&uid=0&ext= qu System.Collections.Specialized.NameValueCollection raw /LoginVerify?name=0&uid=0&ext= me GET
+2016-07-29 00:04:29,287 Http SendResponse
+2016-07-29 00:04:30,796 Http HttpRequest: http://127.0.0.1:12030/IsClose?did=853AE9FE-95DA-50EA-97AF-94230358E259 qu System.Collections.Specialized.NameValueCollection raw /IsClose?did=853AE9FE-95DA-50EA-97AF-94230358E259 me GET
+2016-07-29 00:04:30,797 MySql sql: select did from banip where did = ?did and end_time > ?end_time 
+2016-07-29 00:04:30,798 MySql sql: select ip from ipwhite where ip = ?ip
+2016-07-29 00:04:30,799 Http SendResponse
+2016-07-29 00:04:30,827 Http HttpRequest: http://127.0.0.1:12030/LoginServer?pid=0&uid=123&did=853AE9FE-95DA-50EA-97AF-94230358E259 qu System.Collections.Specialized.NameValueCollection raw /LoginServer?pid=0&uid=123&did=853AE9FE-95DA-50EA-97AF-94230358E259 me GET
+2016-07-29 00:04:30,828 MySql sql: select * from login where uid = ?uid and pid = ?pid
+2016-07-29 00:04:30,829 Http SendResponse
+2016-07-29 00:04:31,494 Http HttpRequest: http://127.0.0.1:12030/QueryUserInfo?pid=0&uid=123 qu System.Collections.Specialized.NameValueCollection raw /QueryUserInfo?pid=0&uid=123 me GET
+2016-07-29 00:04:31,494 MySql sql: select * from login where uid = ?uid and pid = ?pid
+2016-07-29 00:04:31,496 Http SendResponse
+2016-07-29 00:04:31,500 Http HttpRequest: http://127.0.0.1:12030/CheckMailTip?pid=0&uid=123 qu System.Collections.Specialized.NameValueCollection raw /CheckMailTip?pid=0&uid=123 me GET
+2016-07-29 00:04:31,500 MySql sql: select * from mail where uid = ?uid and pid = ?pid and state = 0
+2016-07-29 00:04:31,502 Http SendResponse
+2016-07-29 00:04:31,504 Http HttpRequest: http://127.0.0.1:12030/GetMsg?ord=0 qu System.Collections.Specialized.NameValueCollection raw /GetMsg?ord=0 me GET
+2016-07-29 00:04:31,560 Http HttpRequest: http://127.0.0.1:12030/Record?uid=123 qu System.Collections.Specialized.NameValueCollection raw /Record?uid=123 me GET
+2016-07-29 00:04:31,560 MySql sql: select * from record where uid = ?uid
+2016-07-29 00:04:31,561 Http SendResponse
+2016-07-29 00:04:36,298 Http HttpRequest: http://127.0.0.1:12030/idleServer qu System.Collections.Specialized.NameValueCollection raw /idleServer me GET
+2016-07-29 00:04:36,298 Http SendResponse
+2016-07-29 00:04:36,850 ClientLogin ip=127.0.0.1
+2016-07-29 00:04:36,850 Agent CreateActor 6
+2016-07-29 00:04:36,850 Actor AddActor MyLib.PlayerActor addType False
+2016-07-29 00:04:36,958 MySql sql: select *  from login where uid = ?uid and pid = ?pid
+2016-07-29 00:04:37,044 PlayerActor MatchingGame
+2016-07-29 00:04:37,044 Actor AddActor MyLib.RoomActor addType False
+2016-07-29 00:04:37,113 Http HttpRequest: http://127.0.0.1:12030/UpdateRecord?uid=123&total=1 qu System.Collections.Specialized.NameValueCollection raw /UpdateRecord?uid=123&total=1 me GET
+2016-07-29 00:04:37,114 MySql sql: select uid from record where uid = ?uid
+2016-07-29 00:04:37,114 MySql sql: update record set total = total+1 where uid = ?uid
+2016-07-29 00:04:37,124 Http SendResponse
+2016-07-29 00:04:37,213 UDP AddUDPAgent: 127.0.0.1:57269
+2016-07-29 00:04:37,214 UDP TestUDP
+2016-07-29 00:04:37,246 UDP UseUDP
+2016-07-29 00:04:38,069 Room SpawnFood
+2016-07-29 00:04:38,071 Room TimeToSpawn: 15000
+2016-07-29 00:04:48,077 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:04:48,078 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:04:48,082 MySql sql: update login set level = ?level, exp = ?exp, medal = ?medal, dayBattleCount = ?dayBattleCount where uid = ?uid and pid = ?pid
+2016-07-29 00:04:48,183 Http HttpRequest: http://127.0.0.1:12030/UpdateRecord?uid=123&mvp=1 qu System.Collections.Specialized.NameValueCollection raw /UpdateRecord?uid=123&mvp=1 me GET
+2016-07-29 00:04:48,183 MySql sql: select uid from record where uid = ?uid
+2016-07-29 00:04:48,184 MySql sql: update record set mvp = mvp+1 where uid = ?uid
+2016-07-29 00:04:48,185 Http SendResponse
+2016-07-29 00:04:53,074 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:04:53,075 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:04:53,075 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:04:53,075 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:04:53,075 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:04:53,076 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:04:53,076 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:04:53,156 UDP UDPLost From Server
+2016-07-29 00:04:55,858 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-29 00:04:55,858 Http SendResponse
+2016-07-29 00:04:55,859 Master Status: {
+"IsFull":false
+, "RoomNum":1
+}
+
+2016-07-29 00:04:58,074 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:04:58,074 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:04:59,657 Agent CloseAgent
+2016-07-29 00:04:59,657 Agent CloseAgent 6
+2016-07-29 00:04:59,657 UDP Close: 127.0.0.1:57269
+2016-07-29 00:04:59,657 PlayerActor CloseActor 37
+2016-07-29 00:05:00,117 Http HttpRequest: http://127.0.0.1:12030/QueryUserInfo?pid=0&uid=123 qu System.Collections.Specialized.NameValueCollection raw /QueryUserInfo?pid=0&uid=123 me GET
+2016-07-29 00:05:00,117 MySql sql: select * from login where uid = ?uid and pid = ?pid
+2016-07-29 00:05:00,118 Http SendResponse
+2016-07-29 00:05:00,120 Http HttpRequest: http://127.0.0.1:12030/CheckMailTip?pid=0&uid=123 qu System.Collections.Specialized.NameValueCollection raw /CheckMailTip?pid=0&uid=123 me GET
+2016-07-29 00:05:00,121 MySql sql: select * from mail where uid = ?uid and pid = ?pid and state = 0
+2016-07-29 00:05:00,122 Http SendResponse
+2016-07-29 00:05:00,138 Http HttpRequest: http://127.0.0.1:12030/Record?uid=123 qu System.Collections.Specialized.NameValueCollection raw /Record?uid=123 me GET
+2016-07-29 00:05:00,138 MySql sql: select * from record where uid = ?uid
+2016-07-29 00:05:00,139 Http SendResponse
+2016-07-29 00:05:06,792 Http HttpRequest: http://127.0.0.1:12030/idleServer qu System.Collections.Specialized.NameValueCollection raw /idleServer me GET
+2016-07-29 00:05:06,792 Http SendResponse
+2016-07-29 00:05:07,300 ClientLogin ip=127.0.0.1
+2016-07-29 00:05:07,300 Agent CreateActor 7
+2016-07-29 00:05:07,300 Actor AddActor MyLib.PlayerActor addType False
+2016-07-29 00:05:07,393 MySql sql: select *  from login where uid = ?uid and pid = ?pid
+2016-07-29 00:05:07,469 PlayerActor MatchingGame
+2016-07-29 00:05:07,469 Actor AddActor MyLib.RoomActor addType False
+2016-07-29 00:05:07,540 Http HttpRequest: http://127.0.0.1:12030/UpdateRecord?uid=123&total=1 qu System.Collections.Specialized.NameValueCollection raw /UpdateRecord?uid=123&total=1 me GET
+2016-07-29 00:05:07,540 MySql sql: select uid from record where uid = ?uid
+2016-07-29 00:05:07,541 MySql sql: update record set total = total+1 where uid = ?uid
+2016-07-29 00:05:07,542 Http SendResponse
+2016-07-29 00:05:07,636 UDP AddUDPAgent: 127.0.0.1:65057
+2016-07-29 00:05:07,636 UDP TestUDP
+2016-07-29 00:05:07,682 UDP UseUDP
+2016-07-29 00:05:08,497 Room SpawnFood
+2016-07-29 00:05:08,498 Room TimeToSpawn: 15000
+2016-07-29 00:05:18,498 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:05:18,498 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:05:18,516 MySql sql: update login set level = ?level, exp = ?exp, medal = ?medal, dayBattleCount = ?dayBattleCount where uid = ?uid and pid = ?pid
+2016-07-29 00:05:18,605 Http HttpRequest: http://127.0.0.1:12030/UpdateRecord?uid=123&mvp=1 qu System.Collections.Specialized.NameValueCollection raw /UpdateRecord?uid=123&mvp=1 me GET
+2016-07-29 00:05:18,605 MySql sql: select uid from record where uid = ?uid
+2016-07-29 00:05:18,606 MySql sql: update record set mvp = mvp+1 where uid = ?uid
+2016-07-29 00:05:18,608 Http SendResponse
+2016-07-29 00:05:21,318 Agent CloseAgent
+2016-07-29 00:05:21,318 Agent CloseAgent 7
+2016-07-29 00:05:21,318 PlayerActor CloseActor 50
+2016-07-29 00:05:21,318 UDP Close: 127.0.0.1:65057
+2016-07-29 00:05:55,533 AgentsCount 0
+2016-07-29 00:05:55,866 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-29 00:05:55,867 Http SendResponse
+2016-07-29 00:05:55,868 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-29 00:06:38,916 Http HttpRequest: http://127.0.0.1:12030/LoginVerify?name=0&uid=0&ext= qu System.Collections.Specialized.NameValueCollection raw /LoginVerify?name=0&uid=0&ext= me GET
+2016-07-29 00:06:38,916 Http SendResponse
+2016-07-29 00:06:40,260 Http HttpRequest: http://127.0.0.1:12030/IsClose?did=853AE9FE-95DA-50EA-97AF-94230358E259 qu System.Collections.Specialized.NameValueCollection raw /IsClose?did=853AE9FE-95DA-50EA-97AF-94230358E259 me GET
+2016-07-29 00:06:40,260 MySql sql: select did from banip where did = ?did and end_time > ?end_time 
+2016-07-29 00:06:40,261 MySql sql: select ip from ipwhite where ip = ?ip
+2016-07-29 00:06:40,262 Http SendResponse
+2016-07-29 00:06:40,291 Http HttpRequest: http://127.0.0.1:12030/LoginServer?pid=0&uid=123&did=853AE9FE-95DA-50EA-97AF-94230358E259 qu System.Collections.Specialized.NameValueCollection raw /LoginServer?pid=0&uid=123&did=853AE9FE-95DA-50EA-97AF-94230358E259 me GET
+2016-07-29 00:06:40,291 MySql sql: select * from login where uid = ?uid and pid = ?pid
+2016-07-29 00:06:40,293 Http SendResponse
+2016-07-29 00:06:40,995 Http HttpRequest: http://127.0.0.1:12030/QueryUserInfo?pid=0&uid=123 qu System.Collections.Specialized.NameValueCollection raw /QueryUserInfo?pid=0&uid=123 me GET
+2016-07-29 00:06:40,995 MySql sql: select * from login where uid = ?uid and pid = ?pid
+2016-07-29 00:06:40,996 Http SendResponse
+2016-07-29 00:06:41,000 Http HttpRequest: http://127.0.0.1:12030/CheckMailTip?pid=0&uid=123 qu System.Collections.Specialized.NameValueCollection raw /CheckMailTip?pid=0&uid=123 me GET
+2016-07-29 00:06:41,000 MySql sql: select * from mail where uid = ?uid and pid = ?pid and state = 0
+2016-07-29 00:06:41,001 Http SendResponse
+2016-07-29 00:06:41,003 Http HttpRequest: http://127.0.0.1:12030/GetMsg?ord=0 qu System.Collections.Specialized.NameValueCollection raw /GetMsg?ord=0 me GET
+2016-07-29 00:06:41,066 Http HttpRequest: http://127.0.0.1:12030/Record?uid=123 qu System.Collections.Specialized.NameValueCollection raw /Record?uid=123 me GET
+2016-07-29 00:06:41,066 MySql sql: select * from record where uid = ?uid
+2016-07-29 00:06:41,068 Http SendResponse
+2016-07-29 00:06:42,149 Http HttpRequest: http://127.0.0.1:12030/idleServer qu System.Collections.Specialized.NameValueCollection raw /idleServer me GET
+2016-07-29 00:06:42,149 Http SendResponse
+2016-07-29 00:06:42,679 ClientLogin ip=127.0.0.1
+2016-07-29 00:06:42,679 Agent CreateActor 8
+2016-07-29 00:06:42,680 Actor AddActor MyLib.PlayerActor addType False
+2016-07-29 00:06:42,784 MySql sql: select *  from login where uid = ?uid and pid = ?pid
+2016-07-29 00:06:42,851 PlayerActor MatchingGame
+2016-07-29 00:06:42,851 Actor AddActor MyLib.RoomActor addType False
+2016-07-29 00:06:42,923 Http HttpRequest: http://127.0.0.1:12030/UpdateRecord?uid=123&total=1 qu System.Collections.Specialized.NameValueCollection raw /UpdateRecord?uid=123&total=1 me GET
+2016-07-29 00:06:42,924 MySql sql: select uid from record where uid = ?uid
+2016-07-29 00:06:42,924 MySql sql: update record set total = total+1 where uid = ?uid
+2016-07-29 00:06:42,926 Http SendResponse
+2016-07-29 00:06:43,012 UDP AddUDPAgent: 127.0.0.1:54647
+2016-07-29 00:06:43,012 UDP TestUDP
+2016-07-29 00:06:43,054 UDP UseUDP
+2016-07-29 00:06:53,874 MySql sql: update login set level = ?level, exp = ?exp, medal = ?medal, dayBattleCount = ?dayBattleCount where uid = ?uid and pid = ?pid
+2016-07-29 00:06:54,012 Http HttpRequest: http://127.0.0.1:12030/UpdateRecord?uid=123&mvp=1 qu System.Collections.Specialized.NameValueCollection raw /UpdateRecord?uid=123&mvp=1 me GET
+2016-07-29 00:06:54,012 MySql sql: select uid from record where uid = ?uid
+2016-07-29 00:06:54,014 MySql sql: update record set mvp = mvp+1 where uid = ?uid
+2016-07-29 00:06:54,015 Http SendResponse
+2016-07-29 00:06:55,569 Agent CloseAgent
+2016-07-29 00:06:55,569 Agent CloseAgent 8
+2016-07-29 00:06:55,569 PlayerActor CloseActor 54
+2016-07-29 00:06:55,569 UDP Close: 127.0.0.1:54647
+2016-07-29 00:06:55,875 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-29 00:06:55,876 Http SendResponse
+2016-07-29 00:06:55,876 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-29 00:06:55,994 Http HttpRequest: http://127.0.0.1:12030/QueryUserInfo?pid=0&uid=123 qu System.Collections.Specialized.NameValueCollection raw /QueryUserInfo?pid=0&uid=123 me GET
+2016-07-29 00:06:55,994 MySql sql: select * from login where uid = ?uid and pid = ?pid
+2016-07-29 00:06:55,996 Http SendResponse
+2016-07-29 00:06:55,998 Http HttpRequest: http://127.0.0.1:12030/CheckMailTip?pid=0&uid=123 qu System.Collections.Specialized.NameValueCollection raw /CheckMailTip?pid=0&uid=123 me GET
+2016-07-29 00:06:55,998 MySql sql: select * from mail where uid = ?uid and pid = ?pid and state = 0
+2016-07-29 00:06:55,999 Http SendResponse
+2016-07-29 00:06:56,015 Http HttpRequest: http://127.0.0.1:12030/Record?uid=123 qu System.Collections.Specialized.NameValueCollection raw /Record?uid=123 me GET
+2016-07-29 00:06:56,015 MySql sql: select * from record where uid = ?uid
+2016-07-29 00:06:56,016 Http SendResponse
+2016-07-29 00:06:57,927 Http HttpRequest: http://127.0.0.1:12030/idleServer qu System.Collections.Specialized.NameValueCollection raw /idleServer me GET
+2016-07-29 00:06:57,927 Http SendResponse
+2016-07-29 00:06:58,389 ClientLogin ip=127.0.0.1
+2016-07-29 00:06:58,389 Agent CreateActor 9
+2016-07-29 00:06:58,389 Actor AddActor MyLib.PlayerActor addType False
+2016-07-29 00:06:58,486 MySql sql: select *  from login where uid = ?uid and pid = ?pid
+2016-07-29 00:06:58,566 PlayerActor MatchingGame
+2016-07-29 00:06:58,566 Actor AddActor MyLib.RoomActor addType False
+2016-07-29 00:06:58,614 Http HttpRequest: http://127.0.0.1:12030/UpdateRecord?uid=123&total=1 qu System.Collections.Specialized.NameValueCollection raw /UpdateRecord?uid=123&total=1 me GET
+2016-07-29 00:06:58,614 MySql sql: select uid from record where uid = ?uid
+2016-07-29 00:06:58,615 MySql sql: update record set total = total+1 where uid = ?uid
+2016-07-29 00:06:58,625 Http SendResponse
+2016-07-29 00:06:58,705 UDP AddUDPAgent: 127.0.0.1:63492
+2016-07-29 00:06:58,705 UDP TestUDP
+2016-07-29 00:06:58,737 UDP UseUDP
+2016-07-29 00:07:09,103 Agent CloseAgent
+2016-07-29 00:07:09,103 Agent CloseAgent 9
+2016-07-29 00:07:09,103 PlayerActor CloseActor 56
+2016-07-29 00:07:09,103 UDP Close: 127.0.0.1:63492
+2016-07-29 00:07:55,886 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-29 00:07:55,894 Http SendResponse
+2016-07-29 00:07:55,895 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-29 00:08:13,893 Http HttpRequest: http://127.0.0.1:12030/LoginVerify?name=0&uid=0&ext= qu System.Collections.Specialized.NameValueCollection raw /LoginVerify?name=0&uid=0&ext= me GET
+2016-07-29 00:08:13,893 Http SendResponse
+2016-07-29 00:08:55,903 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-29 00:08:55,911 Http SendResponse
+2016-07-29 00:08:55,913 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-29 00:09:55,923 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-29 00:09:55,932 Http SendResponse
+2016-07-29 00:09:55,933 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-29 00:10:33,190 Http HttpRequest: http://127.0.0.1:12030/LoginVerify?name=0&uid=0&ext= qu System.Collections.Specialized.NameValueCollection raw /LoginVerify?name=0&uid=0&ext= me GET
+2016-07-29 00:10:33,191 Http SendResponse
+2016-07-29 00:10:36,216 Http HttpRequest: http://127.0.0.1:12030/IsClose?did=853AE9FE-95DA-50EA-97AF-94230358E259 qu System.Collections.Specialized.NameValueCollection raw /IsClose?did=853AE9FE-95DA-50EA-97AF-94230358E259 me GET
+2016-07-29 00:10:36,216 MySql sql: select did from banip where did = ?did and end_time > ?end_time 
+2016-07-29 00:10:36,226 MySql sql: select ip from ipwhite where ip = ?ip
+2016-07-29 00:10:36,227 Http SendResponse
+2016-07-29 00:10:36,248 Http HttpRequest: http://127.0.0.1:12030/LoginServer?pid=0&uid=123&did=853AE9FE-95DA-50EA-97AF-94230358E259 qu System.Collections.Specialized.NameValueCollection raw /LoginServer?pid=0&uid=123&did=853AE9FE-95DA-50EA-97AF-94230358E259 me GET
+2016-07-29 00:10:36,249 MySql sql: select * from login where uid = ?uid and pid = ?pid
+2016-07-29 00:10:36,250 Http SendResponse
+2016-07-29 00:10:36,960 Http HttpRequest: http://127.0.0.1:12030/QueryUserInfo?pid=0&uid=123 qu System.Collections.Specialized.NameValueCollection raw /QueryUserInfo?pid=0&uid=123 me GET
+2016-07-29 00:10:36,960 MySql sql: select * from login where uid = ?uid and pid = ?pid
+2016-07-29 00:10:36,961 Http SendResponse
+2016-07-29 00:10:36,965 Http HttpRequest: http://127.0.0.1:12030/CheckMailTip?pid=0&uid=123 qu System.Collections.Specialized.NameValueCollection raw /CheckMailTip?pid=0&uid=123 me GET
+2016-07-29 00:10:36,966 MySql sql: select * from mail where uid = ?uid and pid = ?pid and state = 0
+2016-07-29 00:10:36,967 Http SendResponse
+2016-07-29 00:10:36,969 Http HttpRequest: http://127.0.0.1:12030/GetMsg?ord=0 qu System.Collections.Specialized.NameValueCollection raw /GetMsg?ord=0 me GET
+2016-07-29 00:10:37,033 Http HttpRequest: http://127.0.0.1:12030/Record?uid=123 qu System.Collections.Specialized.NameValueCollection raw /Record?uid=123 me GET
+2016-07-29 00:10:37,033 MySql sql: select * from record where uid = ?uid
+2016-07-29 00:10:37,035 Http SendResponse
+2016-07-29 00:10:38,685 Http HttpRequest: http://127.0.0.1:12030/idleServer qu System.Collections.Specialized.NameValueCollection raw /idleServer me GET
+2016-07-29 00:10:38,686 Http SendResponse
+2016-07-29 00:10:39,228 ClientLogin ip=127.0.0.1
+2016-07-29 00:10:39,228 Agent CreateActor 10
+2016-07-29 00:10:39,228 Actor AddActor MyLib.PlayerActor addType False
+2016-07-29 00:10:39,340 MySql sql: select *  from login where uid = ?uid and pid = ?pid
+2016-07-29 00:10:39,425 PlayerActor MatchingGame
+2016-07-29 00:10:39,425 Actor AddActor MyLib.RoomActor addType False
+2016-07-29 00:10:39,510 Http HttpRequest: http://127.0.0.1:12030/UpdateRecord?uid=123&total=1 qu System.Collections.Specialized.NameValueCollection raw /UpdateRecord?uid=123&total=1 me GET
+2016-07-29 00:10:39,511 MySql sql: select uid from record where uid = ?uid
+2016-07-29 00:10:39,512 MySql sql: update record set total = total+1 where uid = ?uid
+2016-07-29 00:10:39,513 Http SendResponse
+2016-07-29 00:10:39,625 UDP AddUDPAgent: 127.0.0.1:55861
+2016-07-29 00:10:39,626 UDP TestUDP
+2016-07-29 00:10:39,667 UDP UseUDP
+2016-07-29 00:10:40,453 Room SpawnFood
+2016-07-29 00:10:40,454 Room TimeToSpawn: 15000
+2016-07-29 00:10:50,457 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:10:50,457 Actor AddActor MyLib.EntityActor addType False
+2016-07-29 00:10:50,471 MySql sql: update login set level = ?level, exp = ?exp, medal = ?medal, dayBattleCount = ?dayBattleCount where uid = ?uid and pid = ?pid
+2016-07-29 00:10:50,602 Http HttpRequest: http://127.0.0.1:12030/UpdateRecord?uid=123&mvp=1 qu System.Collections.Specialized.NameValueCollection raw /UpdateRecord?uid=123&mvp=1 me GET
+2016-07-29 00:10:50,602 MySql sql: select uid from record where uid = ?uid
+2016-07-29 00:10:50,603 MySql sql: update record set mvp = mvp+1 where uid = ?uid
+2016-07-29 00:10:50,604 Http SendResponse
+2016-07-29 00:10:52,826 Agent CloseAgent
+2016-07-29 00:10:52,826 Agent CloseAgent 10
+2016-07-29 00:10:52,826 PlayerActor CloseActor 58
+2016-07-29 00:10:52,826 UDP Close: 127.0.0.1:55861
+2016-07-29 00:10:53,274 Http HttpRequest: http://127.0.0.1:12030/QueryUserInfo?pid=0&uid=123 qu System.Collections.Specialized.NameValueCollection raw /QueryUserInfo?pid=0&uid=123 me GET
+2016-07-29 00:10:53,274 MySql sql: select * from login where uid = ?uid and pid = ?pid
+2016-07-29 00:10:53,275 Http SendResponse
+2016-07-29 00:10:53,278 Http HttpRequest: http://127.0.0.1:12030/CheckMailTip?pid=0&uid=123 qu System.Collections.Specialized.NameValueCollection raw /CheckMailTip?pid=0&uid=123 me GET
+2016-07-29 00:10:53,278 MySql sql: select * from mail where uid = ?uid and pid = ?pid and state = 0
+2016-07-29 00:10:53,279 Http SendResponse
+2016-07-29 00:10:53,293 Http HttpRequest: http://127.0.0.1:12030/Record?uid=123 qu System.Collections.Specialized.NameValueCollection raw /Record?uid=123 me GET
+2016-07-29 00:10:53,294 MySql sql: select * from record where uid = ?uid
+2016-07-29 00:10:53,295 Http SendResponse
+2016-07-29 00:10:55,544 AgentsCount 0
+2016-07-29 00:10:55,941 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-29 00:10:55,941 Http SendResponse
+2016-07-29 00:10:55,943 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+

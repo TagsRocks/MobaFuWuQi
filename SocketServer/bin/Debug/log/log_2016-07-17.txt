@@ -1,0 +1,925 @@
+﻿2016-07-17 12:45:18,495 Server StartServer
+2016-07-17 12:45:18,555 Actor AddActor MyLib.WatchDog addType True
+2016-07-17 12:45:18,576 Actor AddActor {
+"LobbyStatus":{
+"RoomCount":0
+, "Rooms":[  ]
+}
+
+}
+ addType True
+2016-07-17 12:45:18,583 Actor AddActor {
+"AgentStatus":{
+"AgentCount":0
+, "Agents":[  ]
+}
+
+}
+ addType True
+2016-07-17 12:45:18,584 Actor AddActor MyLib.MonitorActor addType True
+2016-07-17 12:45:18,585 Actor AddActor SocketServer.Game.HttpServerActor addType True
+2016-07-17 12:45:18,590 Actor AddActor MyLib.ChatActor addType True
+2016-07-17 12:45:18,593 Actor AddActor MyLib.MasterServerActor addType True
+2016-07-17 12:45:18,593 Actor AddActor MyLib.SlaveServerActor addType True
+2016-07-17 12:45:18,600 Http StartServer: 12030
+2016-07-17 12:45:18,609 Server ServerPort: 12031
+2016-07-17 12:45:18,638 UDP UDPStart: 12032
+2016-07-17 12:45:18,647 Actor ServerStartSuc
+2016-07-17 12:45:18,667 Master Server Http: 127.0.0.1:12031 htt 127.0.0.1:12030
+2016-07-17 12:45:18,946 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 12:45:18,962 Http SendResponse
+2016-07-17 12:45:18,999 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 12:45:20,519 Http HttpRequest: http://127.0.0.1:12030/IsClose?did=853AE9FE-95DA-50EA-97AF-94230358E259 qu System.Collections.Specialized.NameValueCollection raw /IsClose?did=853AE9FE-95DA-50EA-97AF-94230358E259 me GET
+2016-07-17 12:45:20,554 MySql sql: select did from banip where did = ?did and end_time > ?end_time 
+2016-07-17 12:45:20,865 MySql sql: select ip from ipwhite where ip = ?ip
+2016-07-17 12:45:20,869 Http SendResponse
+2016-07-17 12:45:20,887 Http HttpRequest: http://127.0.0.1:12030/LoginServer?pid=0&uid=123&did=853AE9FE-95DA-50EA-97AF-94230358E259 qu System.Collections.Specialized.NameValueCollection raw /LoginServer?pid=0&uid=123&did=853AE9FE-95DA-50EA-97AF-94230358E259 me GET
+2016-07-17 12:45:20,888 MySql sql: select * from login where uid = ?uid and pid = ?pid
+2016-07-17 12:45:20,893 Http SendResponse
+2016-07-17 12:45:21,628 Http HttpRequest: http://127.0.0.1:12030/QueryUserInfo?pid=0&uid=123 qu System.Collections.Specialized.NameValueCollection raw /QueryUserInfo?pid=0&uid=123 me GET
+2016-07-17 12:45:21,629 MySql sql: select * from login where uid = ?uid and pid = ?pid
+2016-07-17 12:45:21,630 Http SendResponse
+2016-07-17 12:45:21,633 Http HttpRequest: http://127.0.0.1:12030/CheckMailTip?pid=0&uid=123 qu System.Collections.Specialized.NameValueCollection raw /CheckMailTip?pid=0&uid=123 me GET
+2016-07-17 12:45:21,634 MySql sql: select * from mail where uid = ?uid and pid = ?pid and state = 0
+2016-07-17 12:45:21,635 Http SendResponse
+2016-07-17 12:45:21,636 Http HttpRequest: http://127.0.0.1:12030/GetMsg?ord=0 qu System.Collections.Specialized.NameValueCollection raw /GetMsg?ord=0 me GET
+2016-07-17 12:45:21,700 Http HttpRequest: http://127.0.0.1:12030/Record?uid=123 qu System.Collections.Specialized.NameValueCollection raw /Record?uid=123 me GET
+2016-07-17 12:45:21,701 MySql sql: select * from record where uid = ?uid
+2016-07-17 12:45:21,703 Http SendResponse
+2016-07-17 12:45:32,307 Http HttpRequest: http://127.0.0.1:12030/Chat?who=读书情人毛毛&content=123 qu System.Collections.Specialized.NameValueCollection raw /Chat?who=%e8%af%bb%e4%b9%a6%e6%83%85%e4%ba%ba%e6%af%9b%e6%af%9b&content=123 me GET
+2016-07-17 12:45:32,437 Chat Add: 读书情人毛毛 con 123
+2016-07-17 12:45:32,437 Http SendResponse
+2016-07-17 12:45:32,449 Http SendResponse
+2016-07-17 12:45:32,506 Http HttpRequest: http://127.0.0.1:12030/GetMsg?ord=1 qu System.Collections.Specialized.NameValueCollection raw /GetMsg?ord=1 me GET
+2016-07-17 12:45:33,208 Http HttpRequest: http://127.0.0.1:12030/CheckMailTip?pid=0&uid=123 qu System.Collections.Specialized.NameValueCollection raw /CheckMailTip?pid=0&uid=123 me GET
+2016-07-17 12:45:33,208 MySql sql: select * from mail where uid = ?uid and pid = ?pid and state = 0
+2016-07-17 12:45:33,210 Http SendResponse
+2016-07-17 12:45:43,244 Http HttpRequest: http://127.0.0.1:12030/CheckMailTip?pid=0&uid=123 qu System.Collections.Specialized.NameValueCollection raw /CheckMailTip?pid=0&uid=123 me GET
+2016-07-17 12:45:43,244 MySql sql: select * from mail where uid = ?uid and pid = ?pid and state = 0
+2016-07-17 12:45:43,246 Http SendResponse
+2016-07-17 12:45:53,252 Http HttpRequest: http://127.0.0.1:12030/CheckMailTip?pid=0&uid=123 qu System.Collections.Specialized.NameValueCollection raw /CheckMailTip?pid=0&uid=123 me GET
+2016-07-17 12:45:53,253 MySql sql: select * from mail where uid = ?uid and pid = ?pid and state = 0
+2016-07-17 12:45:53,255 Http SendResponse
+2016-07-17 12:46:19,004 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 12:46:19,005 Http SendResponse
+2016-07-17 12:46:19,006 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 12:47:19,012 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 12:47:19,014 Http SendResponse
+2016-07-17 12:47:19,015 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 12:48:19,023 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 12:48:19,023 Http SendResponse
+2016-07-17 12:48:19,024 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 12:49:19,031 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 12:49:19,031 Http SendResponse
+2016-07-17 12:49:19,032 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 12:50:18,684 AgentsCount 0
+2016-07-17 12:50:19,036 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 12:50:19,036 Http SendResponse
+2016-07-17 12:50:19,041 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 12:51:19,050 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 12:51:19,050 Http SendResponse
+2016-07-17 12:51:19,051 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 12:52:19,059 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 12:52:19,060 Http SendResponse
+2016-07-17 12:52:19,061 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 12:52:37,511 Http HttpRequest: http://127.0.0.1:12030/LoginVerify?name=0&uid=0&ext= qu System.Collections.Specialized.NameValueCollection raw /LoginVerify?name=0&uid=0&ext= me GET
+2016-07-17 12:52:37,511 Http SendResponse
+2016-07-17 12:52:38,204 Http HttpRequest: http://127.0.0.1:12030/IsClose?did=853AE9FE-95DA-50EA-97AF-94230358E259 qu System.Collections.Specialized.NameValueCollection raw /IsClose?did=853AE9FE-95DA-50EA-97AF-94230358E259 me GET
+2016-07-17 12:52:38,204 MySql sql: select did from banip where did = ?did and end_time > ?end_time 
+2016-07-17 12:52:38,224 MySql sql: select ip from ipwhite where ip = ?ip
+2016-07-17 12:52:38,225 Http SendResponse
+2016-07-17 12:52:39,670 Http HttpRequest: http://127.0.0.1:12030/IsClose?did=853AE9FE-95DA-50EA-97AF-94230358E259 qu System.Collections.Specialized.NameValueCollection raw /IsClose?did=853AE9FE-95DA-50EA-97AF-94230358E259 me GET
+2016-07-17 12:52:39,671 MySql sql: select did from banip where did = ?did and end_time > ?end_time 
+2016-07-17 12:52:39,672 MySql sql: select ip from ipwhite where ip = ?ip
+2016-07-17 12:52:39,673 Http SendResponse
+2016-07-17 12:52:39,702 Http HttpRequest: http://127.0.0.1:12030/LoginServer?pid=0&uid=13&did=853AE9FE-95DA-50EA-97AF-94230358E259 qu System.Collections.Specialized.NameValueCollection raw /LoginServer?pid=0&uid=13&did=853AE9FE-95DA-50EA-97AF-94230358E259 me GET
+2016-07-17 12:52:39,703 MySql sql: select * from login where uid = ?uid and pid = ?pid
+2016-07-17 12:52:39,704 Http SendResponse
+2016-07-17 12:52:40,353 Http HttpRequest: http://127.0.0.1:12030/QueryUserInfo?pid=0&uid=13 qu System.Collections.Specialized.NameValueCollection raw /QueryUserInfo?pid=0&uid=13 me GET
+2016-07-17 12:52:40,353 MySql sql: select * from login where uid = ?uid and pid = ?pid
+2016-07-17 12:52:40,354 Http SendResponse
+2016-07-17 12:52:40,358 Http HttpRequest: http://127.0.0.1:12030/CheckMailTip?pid=0&uid=13 qu System.Collections.Specialized.NameValueCollection raw /CheckMailTip?pid=0&uid=13 me GET
+2016-07-17 12:52:40,358 MySql sql: select * from mail where uid = ?uid and pid = ?pid and state = 0
+2016-07-17 12:52:40,359 Http SendResponse
+2016-07-17 12:52:40,361 Http HttpRequest: http://127.0.0.1:12030/GetMsg?ord=0 qu System.Collections.Specialized.NameValueCollection raw /GetMsg?ord=0 me GET
+2016-07-17 12:52:40,361 Http SendResponse
+2016-07-17 12:52:40,434 Http HttpRequest: http://127.0.0.1:12030/Record?uid=13 qu System.Collections.Specialized.NameValueCollection raw /Record?uid=13 me GET
+2016-07-17 12:52:40,435 MySql sql: select * from record where uid = ?uid
+2016-07-17 12:52:40,436 Http SendResponse
+2016-07-17 12:52:40,808 Http HttpRequest: http://127.0.0.1:12030/GetMsg?ord=1 qu System.Collections.Specialized.NameValueCollection raw /GetMsg?ord=1 me GET
+2016-07-17 12:52:43,826 Http HttpRequest: http://127.0.0.1:12030/idleServer qu System.Collections.Specialized.NameValueCollection raw /idleServer me GET
+2016-07-17 12:52:43,827 Http SendResponse
+2016-07-17 12:52:44,367 ClientLogin ip=127.0.0.1
+2016-07-17 12:52:44,372 Agent CreateActor 1
+2016-07-17 12:52:44,372 Actor AddActor MyLib.PlayerActor addType False
+2016-07-17 12:52:44,515 MySql sql: select *  from login where uid = ?uid and pid = ?pid
+2016-07-17 12:52:44,564 PlayerActor MatchNew
+2016-07-17 12:52:44,566 Actor AddActor MyLib.RoomActor addType False
+2016-07-17 12:52:44,627 Http HttpRequest: http://127.0.0.1:12030/UpdateRecord?uid=13&total=1 qu System.Collections.Specialized.NameValueCollection raw /UpdateRecord?uid=13&total=1 me GET
+2016-07-17 12:52:44,628 MySql sql: select uid from record where uid = ?uid
+2016-07-17 12:52:44,629 MySql sql: update record set total = total+1 where uid = ?uid
+2016-07-17 12:52:44,640 Http SendResponse
+2016-07-17 12:52:44,741 UDP AddUDPAgent: 127.0.0.1:59433
+2016-07-17 12:52:44,744 UDP TestUDP
+2016-07-17 12:52:44,783 UDP UseUDP
+2016-07-17 12:52:46,954 Agent CloseAgent
+2016-07-17 12:52:46,955 Agent CloseAgent 1
+2016-07-17 12:52:46,956 UDP Close: 127.0.0.1:59433
+2016-07-17 12:52:46,957 PlayerActor CloseActor 9
+2016-07-17 12:53:19,068 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 12:53:19,068 Http SendResponse
+2016-07-17 12:53:19,069 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 12:53:38,854 Http HttpRequest: http://127.0.0.1:12030/LoginVerify?name=0&uid=0&ext= qu System.Collections.Specialized.NameValueCollection raw /LoginVerify?name=0&uid=0&ext= me GET
+2016-07-17 12:53:38,854 Http SendResponse
+2016-07-17 12:53:40,751 Http HttpRequest: http://127.0.0.1:12030/IsClose?did=853AE9FE-95DA-50EA-97AF-94230358E259 qu System.Collections.Specialized.NameValueCollection raw /IsClose?did=853AE9FE-95DA-50EA-97AF-94230358E259 me GET
+2016-07-17 12:53:40,752 MySql sql: select did from banip where did = ?did and end_time > ?end_time 
+2016-07-17 12:53:40,753 MySql sql: select ip from ipwhite where ip = ?ip
+2016-07-17 12:53:40,754 Http SendResponse
+2016-07-17 12:53:40,785 Http HttpRequest: http://127.0.0.1:12030/LoginServer?pid=0&uid=123&did=853AE9FE-95DA-50EA-97AF-94230358E259 qu System.Collections.Specialized.NameValueCollection raw /LoginServer?pid=0&uid=123&did=853AE9FE-95DA-50EA-97AF-94230358E259 me GET
+2016-07-17 12:53:40,786 MySql sql: select * from login where uid = ?uid and pid = ?pid
+2016-07-17 12:53:40,788 Http SendResponse
+2016-07-17 12:53:41,460 Http HttpRequest: http://127.0.0.1:12030/QueryUserInfo?pid=0&uid=123 qu System.Collections.Specialized.NameValueCollection raw /QueryUserInfo?pid=0&uid=123 me GET
+2016-07-17 12:53:41,460 MySql sql: select * from login where uid = ?uid and pid = ?pid
+2016-07-17 12:53:41,461 Http SendResponse
+2016-07-17 12:53:41,465 Http HttpRequest: http://127.0.0.1:12030/CheckMailTip?pid=0&uid=123 qu System.Collections.Specialized.NameValueCollection raw /CheckMailTip?pid=0&uid=123 me GET
+2016-07-17 12:53:41,466 MySql sql: select * from mail where uid = ?uid and pid = ?pid and state = 0
+2016-07-17 12:53:41,467 Http SendResponse
+2016-07-17 12:53:41,469 Http HttpRequest: http://127.0.0.1:12030/GetMsg?ord=0 qu System.Collections.Specialized.NameValueCollection raw /GetMsg?ord=0 me GET
+2016-07-17 12:53:41,469 Http SendResponse
+2016-07-17 12:53:41,536 Http HttpRequest: http://127.0.0.1:12030/Record?uid=123 qu System.Collections.Specialized.NameValueCollection raw /Record?uid=123 me GET
+2016-07-17 12:53:41,536 MySql sql: select * from record where uid = ?uid
+2016-07-17 12:53:41,537 Http SendResponse
+2016-07-17 12:53:41,912 Http HttpRequest: http://127.0.0.1:12030/GetMsg?ord=1 qu System.Collections.Specialized.NameValueCollection raw /GetMsg?ord=1 me GET
+2016-07-17 12:53:51,389 Http HttpRequest: http://127.0.0.1:12030/CheckMailTip?pid=0&uid=123 qu System.Collections.Specialized.NameValueCollection raw /CheckMailTip?pid=0&uid=123 me GET
+2016-07-17 12:53:51,389 MySql sql: select * from mail where uid = ?uid and pid = ?pid and state = 0
+2016-07-17 12:53:51,391 Http SendResponse
+2016-07-17 12:54:19,075 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 12:54:19,076 Http SendResponse
+2016-07-17 12:54:19,077 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 12:54:24,351 Http HttpRequest: http://127.0.0.1:12030/LoginVerify?name=0&uid=0&ext= qu System.Collections.Specialized.NameValueCollection raw /LoginVerify?name=0&uid=0&ext= me GET
+2016-07-17 12:54:24,351 Http SendResponse
+2016-07-17 12:54:25,606 Http HttpRequest: http://127.0.0.1:12030/IsClose?did=853AE9FE-95DA-50EA-97AF-94230358E259 qu System.Collections.Specialized.NameValueCollection raw /IsClose?did=853AE9FE-95DA-50EA-97AF-94230358E259 me GET
+2016-07-17 12:54:25,607 MySql sql: select did from banip where did = ?did and end_time > ?end_time 
+2016-07-17 12:54:25,608 MySql sql: select ip from ipwhite where ip = ?ip
+2016-07-17 12:54:25,609 Http SendResponse
+2016-07-17 12:54:25,638 Http HttpRequest: http://127.0.0.1:12030/LoginServer?pid=0&uid=123&did=853AE9FE-95DA-50EA-97AF-94230358E259 qu System.Collections.Specialized.NameValueCollection raw /LoginServer?pid=0&uid=123&did=853AE9FE-95DA-50EA-97AF-94230358E259 me GET
+2016-07-17 12:54:25,638 MySql sql: select * from login where uid = ?uid and pid = ?pid
+2016-07-17 12:54:25,640 Http SendResponse
+2016-07-17 12:54:26,312 Http HttpRequest: http://127.0.0.1:12030/QueryUserInfo?pid=0&uid=123 qu System.Collections.Specialized.NameValueCollection raw /QueryUserInfo?pid=0&uid=123 me GET
+2016-07-17 12:54:26,312 MySql sql: select * from login where uid = ?uid and pid = ?pid
+2016-07-17 12:54:26,313 Http SendResponse
+2016-07-17 12:54:26,318 Http HttpRequest: http://127.0.0.1:12030/CheckMailTip?pid=0&uid=123 qu System.Collections.Specialized.NameValueCollection raw /CheckMailTip?pid=0&uid=123 me GET
+2016-07-17 12:54:26,318 MySql sql: select * from mail where uid = ?uid and pid = ?pid and state = 0
+2016-07-17 12:54:26,319 Http SendResponse
+2016-07-17 12:54:26,321 Http HttpRequest: http://127.0.0.1:12030/GetMsg?ord=0 qu System.Collections.Specialized.NameValueCollection raw /GetMsg?ord=0 me GET
+2016-07-17 12:54:26,322 Http SendResponse
+2016-07-17 12:54:26,394 Http HttpRequest: http://127.0.0.1:12030/Record?uid=123 qu System.Collections.Specialized.NameValueCollection raw /Record?uid=123 me GET
+2016-07-17 12:54:26,394 MySql sql: select * from record where uid = ?uid
+2016-07-17 12:54:26,395 Http SendResponse
+2016-07-17 12:54:26,822 Http HttpRequest: http://127.0.0.1:12030/GetMsg?ord=1 qu System.Collections.Specialized.NameValueCollection raw /GetMsg?ord=1 me GET
+2016-07-17 12:54:29,912 Http HttpRequest: http://127.0.0.1:12030/idleServer qu System.Collections.Specialized.NameValueCollection raw /idleServer me GET
+2016-07-17 12:54:29,913 Http SendResponse
+2016-07-17 12:54:30,459 ClientLogin ip=127.0.0.1
+2016-07-17 12:54:30,459 Agent CreateActor 2
+2016-07-17 12:54:30,459 Actor AddActor MyLib.PlayerActor addType False
+2016-07-17 12:54:30,558 MySql sql: select *  from login where uid = ?uid and pid = ?pid
+2016-07-17 12:54:30,642 PlayerActor MatchingGame
+2016-07-17 12:54:30,642 Actor AddActor MyLib.RoomActor addType False
+2016-07-17 12:54:30,701 Http HttpRequest: http://127.0.0.1:12030/UpdateRecord?uid=123&total=1 qu System.Collections.Specialized.NameValueCollection raw /UpdateRecord?uid=123&total=1 me GET
+2016-07-17 12:54:30,701 MySql sql: select uid from record where uid = ?uid
+2016-07-17 12:54:30,701 MySql sql: update record set total = total+1 where uid = ?uid
+2016-07-17 12:54:30,710 Http SendResponse
+2016-07-17 12:54:30,803 UDP AddUDPAgent: 127.0.0.1:55158
+2016-07-17 12:54:30,804 UDP TestUDP
+2016-07-17 12:54:30,837 UDP UseUDP
+2016-07-17 12:54:41,658 Actor AddActor MyLib.EntityActor addType False
+2016-07-17 12:54:41,663 Actor AddActor MyLib.EntityActor addType False
+2016-07-17 12:54:41,663 Actor AddActor MyLib.EntityActor addType False
+2016-07-17 12:54:46,654 Actor AddActor MyLib.EntityActor addType False
+2016-07-17 12:54:46,655 Actor AddActor MyLib.EntityActor addType False
+2016-07-17 12:54:46,655 Actor AddActor MyLib.EntityActor addType False
+2016-07-17 12:54:46,655 Actor AddActor MyLib.EntityActor addType False
+2016-07-17 12:54:46,655 Actor AddActor MyLib.EntityActor addType False
+2016-07-17 12:54:46,655 Actor AddActor MyLib.EntityActor addType False
+2016-07-17 12:54:46,656 Actor AddActor MyLib.EntityActor addType False
+2016-07-17 12:54:46,656 Actor AddActor MyLib.EntityActor addType False
+2016-07-17 12:54:51,656 Actor AddActor MyLib.EntityActor addType False
+2016-07-17 12:54:51,657 Actor AddActor MyLib.EntityActor addType False
+2016-07-17 12:54:51,657 Actor AddActor MyLib.EntityActor addType False
+2016-07-17 12:54:51,657 Actor AddActor MyLib.EntityActor addType False
+2016-07-17 12:55:11,670 Actor AddActor MyLib.EntityActor addType False
+2016-07-17 12:55:11,670 Actor AddActor MyLib.EntityActor addType False
+2016-07-17 12:55:18,694 AgentsCount 1
+2016-07-17 12:55:19,085 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 12:55:19,085 Http SendResponse
+2016-07-17 12:55:19,086 Master Status: {
+"IsFull":false
+, "RoomNum":1
+}
+
+2016-07-17 12:55:33,994 Agent CloseAgent
+2016-07-17 12:55:33,994 Agent CloseAgent 2
+2016-07-17 12:55:33,994 UDP Close: 127.0.0.1:55158
+2016-07-17 12:55:33,994 PlayerActor CloseActor 11
+2016-07-17 12:56:19,091 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 12:56:19,093 Http SendResponse
+2016-07-17 12:56:19,094 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 12:57:19,103 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 12:57:19,111 Http SendResponse
+2016-07-17 12:57:19,112 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 12:58:19,122 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 12:58:19,122 Http SendResponse
+2016-07-17 12:58:19,123 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 12:59:19,132 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 12:59:19,140 Http SendResponse
+2016-07-17 12:59:19,142 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:00:18,711 AgentsCount 0
+2016-07-17 13:00:19,146 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:00:19,146 Http SendResponse
+2016-07-17 13:00:19,148 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:01:19,158 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:01:19,158 Http SendResponse
+2016-07-17 13:01:19,159 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:02:19,168 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:02:19,168 Http SendResponse
+2016-07-17 13:02:19,169 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:03:19,176 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:03:19,177 Http SendResponse
+2016-07-17 13:03:19,178 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:04:19,186 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:04:19,187 Http SendResponse
+2016-07-17 13:04:19,188 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:05:18,724 AgentsCount 0
+2016-07-17 13:05:19,197 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:05:19,197 Http SendResponse
+2016-07-17 13:05:19,198 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:06:19,205 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:06:19,206 Http SendResponse
+2016-07-17 13:06:19,207 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:07:19,214 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:07:19,214 Http SendResponse
+2016-07-17 13:07:19,215 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:08:19,225 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:08:19,226 Http SendResponse
+2016-07-17 13:08:19,227 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:09:19,234 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:09:19,234 Http SendResponse
+2016-07-17 13:09:19,235 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:10:18,739 AgentsCount 0
+2016-07-17 13:10:19,241 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:10:19,241 Http SendResponse
+2016-07-17 13:10:19,242 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:11:19,253 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:11:19,253 Http SendResponse
+2016-07-17 13:11:19,254 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:12:19,264 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:12:19,264 Http SendResponse
+2016-07-17 13:12:19,265 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:13:19,272 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:13:19,272 Http SendResponse
+2016-07-17 13:13:19,273 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:14:19,282 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:14:19,282 Http SendResponse
+2016-07-17 13:14:19,283 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:15:18,755 AgentsCount 0
+2016-07-17 13:15:19,289 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:15:19,289 Http SendResponse
+2016-07-17 13:15:19,290 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:16:19,306 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:16:19,306 Http SendResponse
+2016-07-17 13:16:19,307 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:17:19,321 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:17:19,322 Http SendResponse
+2016-07-17 13:17:19,323 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:18:19,402 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:18:19,402 Http SendResponse
+2016-07-17 13:18:19,403 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:19:19,415 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:19:19,416 Http SendResponse
+2016-07-17 13:19:19,417 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:20:18,769 AgentsCount 0
+2016-07-17 13:20:19,427 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:20:19,427 Http SendResponse
+2016-07-17 13:20:19,428 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:21:19,439 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:21:19,439 Http SendResponse
+2016-07-17 13:21:19,440 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:22:19,449 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:22:19,458 Http SendResponse
+2016-07-17 13:22:19,459 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:23:19,467 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:23:19,468 Http SendResponse
+2016-07-17 13:23:19,469 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:24:19,479 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:24:19,480 Http SendResponse
+2016-07-17 13:24:19,481 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:25:18,792 AgentsCount 0
+2016-07-17 13:25:19,488 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:25:19,488 Http SendResponse
+2016-07-17 13:25:19,489 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:26:19,499 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:26:19,500 Http SendResponse
+2016-07-17 13:26:19,501 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:27:19,507 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:27:19,515 Http SendResponse
+2016-07-17 13:27:19,516 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:28:19,526 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:28:19,534 Http SendResponse
+2016-07-17 13:28:19,535 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:29:19,557 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:29:19,557 Http SendResponse
+2016-07-17 13:29:19,558 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:30:18,812 AgentsCount 0
+2016-07-17 13:30:19,565 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:30:19,567 Http SendResponse
+2016-07-17 13:30:19,568 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:31:19,576 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:31:19,576 Http SendResponse
+2016-07-17 13:31:19,577 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:32:19,586 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:32:19,594 Http SendResponse
+2016-07-17 13:32:19,596 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:33:19,606 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:33:19,606 Http SendResponse
+2016-07-17 13:33:19,607 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:34:19,616 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:34:19,617 Http SendResponse
+2016-07-17 13:34:19,618 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:35:18,828 AgentsCount 0
+2016-07-17 13:35:19,622 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:35:19,622 Http SendResponse
+2016-07-17 13:35:19,623 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:36:19,635 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:36:19,635 Http SendResponse
+2016-07-17 13:36:19,636 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:37:19,646 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:37:19,647 Http SendResponse
+2016-07-17 13:37:19,648 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:38:19,658 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:38:19,658 Http SendResponse
+2016-07-17 13:38:19,659 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:39:19,668 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:39:19,668 Http SendResponse
+2016-07-17 13:39:19,669 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:40:18,843 AgentsCount 0
+2016-07-17 13:40:19,673 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:40:19,674 Http SendResponse
+2016-07-17 13:40:19,675 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:41:19,682 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:41:19,683 Http SendResponse
+2016-07-17 13:41:19,684 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:42:19,690 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:42:19,691 Http SendResponse
+2016-07-17 13:42:19,692 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:43:19,704 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:43:19,704 Http SendResponse
+2016-07-17 13:43:19,705 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:44:19,717 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:44:19,718 Http SendResponse
+2016-07-17 13:44:19,718 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:45:18,859 AgentsCount 0
+2016-07-17 13:45:19,729 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:45:19,729 Http SendResponse
+2016-07-17 13:45:19,730 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:46:19,746 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:46:19,747 Http SendResponse
+2016-07-17 13:46:19,748 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:47:19,759 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:47:19,760 Http SendResponse
+2016-07-17 13:47:19,761 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:48:19,772 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:48:19,772 Http SendResponse
+2016-07-17 13:48:19,773 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:49:19,783 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:49:19,784 Http SendResponse
+2016-07-17 13:49:19,785 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:50:18,879 AgentsCount 0
+2016-07-17 13:50:19,796 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:50:19,797 Http SendResponse
+2016-07-17 13:50:19,798 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:51:19,814 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:51:19,814 Http SendResponse
+2016-07-17 13:51:19,815 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:52:19,825 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:52:19,826 Http SendResponse
+2016-07-17 13:52:19,827 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:53:19,840 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:53:19,840 Http SendResponse
+2016-07-17 13:53:19,841 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:54:19,853 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:54:19,853 Http SendResponse
+2016-07-17 13:54:19,854 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:55:18,898 AgentsCount 0
+2016-07-17 13:55:19,865 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:55:19,865 Http SendResponse
+2016-07-17 13:55:19,866 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:56:19,881 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:56:19,881 Http SendResponse
+2016-07-17 13:56:19,882 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:57:19,893 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:57:19,894 Http SendResponse
+2016-07-17 13:57:19,895 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:58:19,908 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:58:19,908 Http SendResponse
+2016-07-17 13:58:19,909 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 13:59:19,916 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 13:59:19,916 Http SendResponse
+2016-07-17 13:59:19,917 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 14:00:18,917 AgentsCount 0
+2016-07-17 14:00:19,928 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 14:00:19,929 Http SendResponse
+2016-07-17 14:00:19,930 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 14:01:19,945 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 14:01:19,946 Http SendResponse
+2016-07-17 14:01:19,947 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 14:02:19,961 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 14:02:19,961 Http SendResponse
+2016-07-17 14:02:19,962 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 14:03:19,969 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 14:03:19,970 Http SendResponse
+2016-07-17 14:03:19,971 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 14:04:19,985 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 14:04:19,985 Http SendResponse
+2016-07-17 14:04:19,986 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 14:05:18,932 AgentsCount 0
+2016-07-17 14:05:19,994 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 14:05:19,994 Http SendResponse
+2016-07-17 14:05:19,996 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 14:06:20,014 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 14:06:20,014 Http SendResponse
+2016-07-17 14:06:20,015 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 14:07:20,028 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 14:07:20,028 Http SendResponse
+2016-07-17 14:07:20,029 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 14:08:20,039 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 14:08:20,040 Http SendResponse
+2016-07-17 14:08:20,040 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 14:09:20,052 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 14:09:20,052 Http SendResponse
+2016-07-17 14:09:20,053 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 14:10:18,951 AgentsCount 0
+2016-07-17 14:10:20,065 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 14:10:20,065 Http SendResponse
+2016-07-17 14:10:20,067 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 14:11:20,081 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 14:11:20,081 Http SendResponse
+2016-07-17 14:11:20,082 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 14:12:20,095 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 14:12:20,096 Http SendResponse
+2016-07-17 14:12:20,097 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 14:13:20,112 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 14:13:20,112 Http SendResponse
+2016-07-17 14:13:20,113 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 14:14:20,129 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 14:14:20,130 Http SendResponse
+2016-07-17 14:14:20,130 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 14:15:18,968 AgentsCount 0
+2016-07-17 14:15:20,143 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 14:15:20,143 Http SendResponse
+2016-07-17 14:15:20,144 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 14:16:20,157 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 14:16:20,157 Http SendResponse
+2016-07-17 14:16:20,158 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 14:17:20,173 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 14:17:20,173 Http SendResponse
+2016-07-17 14:17:20,174 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 14:18:20,189 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 14:18:20,190 Http SendResponse
+2016-07-17 14:18:20,191 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 14:19:20,202 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 14:19:20,202 Http SendResponse
+2016-07-17 14:19:20,203 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 14:20:18,978 AgentsCount 0
+2016-07-17 14:20:20,212 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 14:20:20,212 Http SendResponse
+2016-07-17 14:20:20,213 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 14:21:20,228 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 14:21:20,228 Http SendResponse
+2016-07-17 14:21:20,229 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 14:22:20,244 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 14:22:20,244 Http SendResponse
+2016-07-17 14:22:20,245 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 14:23:20,254 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 14:23:20,254 Http SendResponse
+2016-07-17 14:23:20,255 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 14:24:20,265 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 14:24:20,265 Http SendResponse
+2016-07-17 14:24:20,266 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 14:25:18,998 AgentsCount 0
+2016-07-17 14:25:20,275 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 14:25:20,275 Http SendResponse
+2016-07-17 14:25:20,276 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 14:26:20,291 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 14:26:20,292 Http SendResponse
+2016-07-17 14:26:20,293 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
+2016-07-17 15:17:35,825 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-17 15:17:35,825 Http SendResponse
+2016-07-17 15:17:35,827 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+

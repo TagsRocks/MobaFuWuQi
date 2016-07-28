@@ -1,0 +1,7 @@
+﻿2016-07-18 13:05:42,227 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-07-18 13:05:42,230 Http SendResponse
+2016-07-18 13:05:42,231 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
