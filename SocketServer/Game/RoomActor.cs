@@ -225,10 +225,13 @@ namespace MyLib
 		public async Task<bool> AddPlayerNew (PlayerActor pl, int mp, bool newUser)
 		{
 			await this._messageQueue;
-		    if (IsNewUserRoom != newUser)
+		    /*
+			if (IsNewUserRoom != newUser)
 		    {
 		        return false;
 		    }
+			*/
+
 			var num = playerCom.GetPlayerNum ();
 			if ((state == RoomState.InGame || state == RoomState.Ready) && num < maxPlayerNum) {
 				var ainfo = await pl.GetAvatarInfo ();

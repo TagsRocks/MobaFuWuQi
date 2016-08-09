@@ -73,7 +73,9 @@ namespace MyLib
 			    var leftTime = await r.GetLeftTime();
 			    if (leftTime > GameConst.LeftNotEnterTime)
 			    {
+					
                     var suc = await r.AddPlayerNew(player, maxPlayerNum, isNew);
+					LogHelper.Log("Lobby", "AddPlayer " + leftTime+" isNew "+isNew+" suc "+suc);
                     if (suc)
                     {
                         rm = r;

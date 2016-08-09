@@ -23,7 +23,7 @@ public class GameConst
     public static GameConst Instance;
 
     public static int LeftNotEnterTime = 30;
-    public static int TotalLeftTime = 10;
+    public static int TotalLeftTime = 300;
 
     private void Awake()
     {
