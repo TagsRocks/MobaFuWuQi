@@ -12,8 +12,6 @@ namespace MyLib
 
         public static void SendMail(string exception)
         {
-            SendMail("1147250901@qq.com", "zengdelang", new string[] { "1170757699@qq.com", "liyonghelpme@foxmail.com" }, "游戏服务器异常", exception, "1147250901@qq.com", "jrgxvfwdhumdbaai", "smtp.qq.com", "")
-                ;
         }
 
 

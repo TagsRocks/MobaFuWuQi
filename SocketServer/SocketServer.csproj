@@ -152,9 +152,15 @@
     <Compile Include="Game\EntityManagerCom.cs" />
     <Compile Include="Game\TeamManageCom.cs" />
     <Compile Include="Game\Lobby.cs" />
+    <Compile Include="KCP\KCP.cs" />
+    <Compile Include="KCP\KCPAgent.cs" />
+    <Compile Include="KCP\KCPServer.cs" />
+    <Compile Include="KCP\LoopList.cs" />
+    <Compile Include="KCP\KCPPacket.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Game\Http\" />
+    <Folder Include="KCP\" />
   </ItemGroup>
 </Project>
