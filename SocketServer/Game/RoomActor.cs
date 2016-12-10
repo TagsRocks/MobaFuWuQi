@@ -16,6 +16,7 @@ namespace MyLib
 		private bool hasMaster = false;
 	    private bool IsNewUserRoom = false;
 
+
 	    public bool IsNewUser()
 	    {
 	        return IsNewUserRoom;
@@ -50,6 +51,8 @@ namespace MyLib
 			teamCom = this.AddComponent<TeamManageCom> ();
 		    score = AddComponent<ScoreComponent>();
 		    this.roomInfo = RoomInfo.CreateBuilder(roomInfo).Build();
+
+
 		    //physicWorld = AddComponent<PhysicWorldComponent>();
 		}
 

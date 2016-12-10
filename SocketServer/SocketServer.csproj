@@ -133,7 +133,6 @@
     <Compile Include="Common\ServerBundle.cs" />
     <Compile Include="ServerConfig.cs" />
     <Compile Include="SlaveServerActor.cs" />
-    <Compile Include="UDPAgent.cs" />
     <Compile Include="Util.cs" />
     <Compile Include="Common\Util2.cs" />
     <Compile Include="SaveGame.cs" />
@@ -157,10 +156,14 @@
     <Compile Include="KCP\KCPServer.cs" />
     <Compile Include="KCP\LoopList.cs" />
     <Compile Include="KCP\KCPPacket.cs" />
+    <Compile Include="Net\Agent.cs" />
+    <Compile Include="Net\UDPAgent.cs" />
+    <Compile Include="Net\SocketServer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Game\Http\" />
     <Folder Include="KCP\" />
+    <Folder Include="Net\" />
   </ItemGroup>
 </Project>

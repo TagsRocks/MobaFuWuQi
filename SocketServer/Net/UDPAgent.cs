@@ -138,8 +138,7 @@ namespace MyLib
                 return;
             }
             IsClose = true;
-            socketServer.RemoveUdpAgent(this);
-            //udpClient.Close();
+			socketServer.RemoveUdpAgent(this);
             udpClient = null;
         }
     }

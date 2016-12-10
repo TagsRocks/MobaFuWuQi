@@ -616,231 +616,287 @@ namespace MyLib
 				if (msg.packet.protoBody.GetType () == typeof(CGPlayerCmd)) {
 					var cmd = msg.packet.protoBody as CGPlayerCmd;
 					var cmds = cmd.Cmd.Split (' ');
-					if (cmds [0] == "Login") {
-						var ret = GCPlayerCmd.CreateBuilder ();
-						ret.Result = string.Format ("Login {0}", Id);
-					    deviceInfo = cmd.DeviceInfo;
-					    pid = deviceInfo.Pid;
-					    uid = deviceInfo.Uid;
-						agent.SendPacket (ret, (byte)msg.packet.flowId, 0);
-					    var data = Login.LoginQueryInfo(pid, uid);
-                        
-					    try
-					    {
-					        level = (int) data[0][0];
-                            Exp   = (int)data[0][1];
-                            medal = (int)data[0][2];
-                            dayBattleCount = (int)data[0][3];
-                        }
-					    catch (Exception e)
-					    {
-					        Console.WriteLine(e);
-					    }                  
-                    }
-                    else if (cmds[0] == "Login2")
-                    {
-                        var proto = msg.packet.protoBody as CGPlayerCmd;
-                        var result = Login.LoginGame(proto);
-                        var ret = GCPlayerCmd.CreateBuilder();
-                        ret.Result = string.Format("Login {0}", result);
-                        agent.SendPacket(ret, (byte)msg.packet.flowId, 0);
-                    }
-                    else if (cmds [0] == "InitData") {
-                        UpdateData(cmd);
-						avatarInfo.Id = Id;
-                        avatarInfo.ResetPos = true;
-                        InitDataYet = true;
+					if (cmds[0] == "Login")
+					{
+						var ret = GCPlayerCmd.CreateBuilder();
+						ret.Result = string.Format("Login {0}", Id);
+						deviceInfo = cmd.DeviceInfo;
+						pid = deviceInfo.Pid;
+						uid = deviceInfo.Uid;
+						agent.SendPacket(ret, (byte)msg.packet.flowId, 0);
+						var data = Login.LoginQueryInfo(pid, uid);
 
-                        if (lastAvatarInfo == null)
-                        {
-                            lastAvatarInfo = AvatarInfo.CreateBuilder (avatarInfo).Build ();
-                        }
+						try
+						{
+							level = (int)data[0][0];
+							Exp = (int)data[0][1];
+							medal = (int)data[0][2];
+							dayBattleCount = (int)data[0][3];
+						}
+						catch (Exception e)
+						{
+							Console.WriteLine(e);
+						}
+					}
+					else if (cmds[0] == "Login2")
+					{
+						var proto = msg.packet.protoBody as CGPlayerCmd;
+						var result = Login.LoginGame(proto);
+						var ret = GCPlayerCmd.CreateBuilder();
+						ret.Result = string.Format("Login {0}", result);
+						agent.SendPacket(ret, (byte)msg.packet.flowId, 0);
+					}
+					else if (cmds[0] == "InitData")
+					{
+						UpdateData(cmd);
+						avatarInfo.Id = Id;
+						avatarInfo.ResetPos = true;
+						InitDataYet = true;
+
+						if (lastAvatarInfo == null)
+						{
+							lastAvatarInfo = AvatarInfo.CreateBuilder(avatarInfo).Build();
+						}
 						//avatarInfo = cmd.AvatarInfo;
-                        var gc = GCPlayerCmd.CreateBuilder();
-                        gc.Result = "InitData";
-						agent.SendPacket (gc, msg.packet.flowId, 0);
-					} else if (cmds [0] == "UpdateData") {
-                        UpdateData(cmd);
-					} else if (cmds [0] == "Damage") {
-						var gc = GCPlayerCmd.CreateBuilder ();
+						var gc = GCPlayerCmd.CreateBuilder();
+						gc.Result = "InitData";
+						agent.SendPacket(gc, msg.packet.flowId, 0);
+					}
+					else if (cmds[0] == "UpdateData")
+					{
+						UpdateData(cmd);
+					}
+					else if (cmds[0] == "Damage")
+					{
+						var gc = GCPlayerCmd.CreateBuilder();
 						gc.DamageInfo = cmd.DamageInfo;
 						gc.Result = cmd.Cmd;
 						//world.AddCmd (gc);
-						room.AddCmd (gc);
-					} else if (cmds [0] == "Skill") {
+						room.AddCmd(gc);
+					}
+					else if (cmds[0] == "Skill")
+					{
 
-						var gc = GCPlayerCmd.CreateBuilder ();
+						var gc = GCPlayerCmd.CreateBuilder();
 						gc.SkillAction = cmd.SkillAction;
 						gc.Result = cmd.Cmd;
-						room.AddCmd (gc);
+						room.AddCmd(gc);
 
-					} else if (cmds [0] == "Move") {//快速移动
+					}
+					else if (cmds[0] == "Move")
+					{//快速移动
 						avatarInfo.X = cmd.AvatarInfo.X;
 						avatarInfo.Y = cmd.AvatarInfo.Y;
 						avatarInfo.Z = cmd.AvatarInfo.Z;
 						avatarInfo.Dir = cmd.AvatarInfo.Dir;
 
-						var gc = GCPlayerCmd.CreateBuilder ();
+						var gc = GCPlayerCmd.CreateBuilder();
 						gc.AvatarInfo = cmd.AvatarInfo;
-						gc.AvatarInfo.Id = Id; 
+						gc.AvatarInfo.Id = Id;
 						gc.Result = "Update";
-						room.AddCmd (gc);
-					} else if (cmds [0] == "Buff") {
-                        //直接事件RPC通知 而不是状态通知
-					    if (room != null)
-					    {
-					        var gc = GCPlayerCmd.CreateBuilder();
-					        cmd.BuffInfo.BuffId = ++buffId;
-					        gc.BuffInfo = cmd.BuffInfo;
-					        gc.Result = cmd.Cmd;
-					        room.AddCmd(gc);
-                            this.lastAvatarInfo.BuffInfoList.Add(cmd.BuffInfo);
-					    }
+						room.AddCmd(gc);
 					}
-                    else if (cmds[0] == "RemoveBuff")
-                    {
-                        if (room != null)
-                        {
-                            var gc = GCPlayerCmd.CreateBuilder();
-                            gc.BuffInfo = cmd.BuffInfo;
-                            gc.Result = cmd.Cmd;
-                            room.AddCmd(gc);
-                            var i = 0;
-                            foreach (var buff in this.lastAvatarInfo.BuffInfoList)
-                            {
-                                if (buff.BuffType == cmd.BuffInfo.BuffType)
-                                {
-                                    this.lastAvatarInfo.BuffInfoList.RemoveAt(i);
-                                    break;
-                                }
-                                i++;
-                            }
-                        }
-                    } else if (cmds [0] == "AddEntity") {
-						var entity = new EntityActor (); 
-						ActorManager.Instance.AddActor (entity);
-						await entity.InitInfo (cmd.EntityInfo);
-						room.AddEntity (entity, cmd.EntityInfo);
-					} else if (cmds [0] == "RemoveEntity") {
-                        /*
+					else if (cmds[0] == "Buff")
+					{
+						//直接事件RPC通知 而不是状态通知
+						if (room != null)
+						{
+							var gc = GCPlayerCmd.CreateBuilder();
+							cmd.BuffInfo.BuffId = ++buffId;
+							gc.BuffInfo = cmd.BuffInfo;
+							gc.Result = cmd.Cmd;
+							room.AddCmd(gc);
+							this.lastAvatarInfo.BuffInfoList.Add(cmd.BuffInfo);
+						}
+					}
+					else if (cmds[0] == "RemoveBuff")
+					{
+						if (room != null)
+						{
+							var gc = GCPlayerCmd.CreateBuilder();
+							gc.BuffInfo = cmd.BuffInfo;
+							gc.Result = cmd.Cmd;
+							room.AddCmd(gc);
+							var i = 0;
+							foreach (var buff in this.lastAvatarInfo.BuffInfoList)
+							{
+								if (buff.BuffType == cmd.BuffInfo.BuffType)
+								{
+									this.lastAvatarInfo.BuffInfoList.RemoveAt(i);
+									break;
+								}
+								i++;
+							}
+						}
+					}
+					else if (cmds[0] == "AddEntity")
+					{
+						var entity = new EntityActor();
+						ActorManager.Instance.AddActor(entity);
+						await entity.InitInfo(cmd.EntityInfo);
+						room.AddEntity(entity, cmd.EntityInfo);
+					}
+					else if (cmds[0] == "RemoveEntity")
+					{
+						/*
 						var ety = cmd.EntityInfo;
 						var act = ActorManager.Instance.GetActor (ety.Id);
 						var eact = (EntityActor)act;
 						eact.RemoveSelf ();
                         */
-					} else if (cmds [0] == "UpdateEntityData") {
+					}
+					else if (cmds[0] == "UpdateEntityData")
+					{
 						var ety = cmd.EntityInfo;
-						var act = ActorManager.Instance.GetActor (ety.Id);
+						var act = ActorManager.Instance.GetActor(ety.Id);
 						var eact = (EntityActor)act;
-						eact.UpdateData (ety);
-					} else if (cmds [0] == "Pick") {
-                        /*
+						eact.UpdateData(ety);
+					}
+					else if (cmds[0] == "Pick")
+					{
+						/*
 						var gc = GCPlayerCmd.CreateBuilder ();
 						gc.PickAction = cmd.PickAction;
 						gc.Result = cmd.Cmd;
 						room.AddCmd (gc);
                         */
-					    room.PickItem(cmd);
-					} else if (cmds [0] == "SyncTime") {
-						var gc = GCPlayerCmd.CreateBuilder ();
+						room.PickItem(cmd);
+					}
+					else if (cmds[0] == "SyncTime")
+					{
+						var gc = GCPlayerCmd.CreateBuilder();
 						gc.LeftTime = cmd.LeftTime;
 						gc.Result = cmd.Cmd;
-						room.AddCmd (gc);
-					} else if (cmds [0] == "Dead") {
-                        /*
+						room.AddCmd(gc);
+					}
+					else if (cmds[0] == "Dead")
+					{
+						/*
 						var gc = GCPlayerCmd.CreateBuilder ();
 						gc.DamageInfo = cmd.DamageInfo;
 						gc.Result = cmd.Cmd;
 						room.AddCmd (gc);
                         */
-					    room.Dead(cmd);
-					} else if (cmds [0] == "GameOver") {
-						var gc = GCPlayerCmd.CreateBuilder ();
+						room.Dead(cmd);
+					}
+					else if (cmds[0] == "GameOver")
+					{
+						var gc = GCPlayerCmd.CreateBuilder();
 						gc.Result = cmd.Cmd;
-						await room.GameOver ();
-						room.AddCmd (gc);
+						await room.GameOver();
+						room.AddCmd(gc);
 
-					} else if (cmds [0] == "Revive") {
-                        UpdateData(cmd);
-					    avatarInfo.ResetPos = true;
-					    avatarInfo.HP = 100;
-						var gc = GCPlayerCmd.CreateBuilder ();
+					}
+					else if (cmds[0] == "Revive")
+					{
+						UpdateData(cmd);
+						avatarInfo.ResetPos = true;
+						avatarInfo.HP = 100;
+						var gc = GCPlayerCmd.CreateBuilder();
 						gc.Result = cmd.Cmd;
 						gc.AvatarInfo = cmd.AvatarInfo;
-						room.AddCmd (gc);
-					} else if (cmds [0] == "Match") {
-					    MatchRoom(msg, cmd, false);
-                        LogHelper.Log("PlayerActor", "MatchingGame");
-					}else if (cmds[0] == "MatchNew")
+						room.AddCmd(gc);
+					}
+					else if (cmds[0] == "Match")
 					{
-					    MatchRoom(msg, cmd, true);
-                        LogHelper.Log("PlayerActor", "MatchNew");
-					} 
-                    else if (cmds [0] == "StartGame") {
-						await room.StartGame ();
-						var gc = GCPlayerCmd.CreateBuilder ();
+						MatchRoom(msg, cmd, false);
+						LogHelper.Log("PlayerActor", "MatchingGame");
+					}
+					else if (cmds[0] == "MatchNew")
+					{
+						MatchRoom(msg, cmd, true);
+						LogHelper.Log("PlayerActor", "MatchNew");
+					}
+					else if (cmds[0] == "StartGame")
+					{
+						await room.StartGame();
+						var gc = GCPlayerCmd.CreateBuilder();
 						gc.Result = cmd.Cmd;
-						room.AddCmd (gc);
-					} else if (cmds [0] == "Ready") {
-						room.SetReady (this);
-					}else if (cmds[0] == "HeartBeat")
+						room.AddCmd(gc);
+					}
+					else if (cmds[0] == "Ready")
 					{
-					    var gc = GCPlayerCmd.CreateBuilder();
-					    gc.Result = "HeartBeat";
-                        agent.SendPacket(gc, msg.packet.flowId, 0);
-					}else if (cmds[0] == "Reconnect")
+						room.SetReady(this);
+					}
+					else if (cmds[0] == "HeartBeat")
 					{
-                        //重新连接类似于 Match
-						if (room != null) {
-							room.RemovePlayer (this, AvatarInfo.CreateBuilder (avatarInfo).Build ());
+						var gc = GCPlayerCmd.CreateBuilder();
+						gc.Result = "HeartBeat";
+						agent.SendPacket(gc, msg.packet.flowId, 0);
+					}
+					else if (cmds[0] == "Reconnect")
+					{
+						//重新连接类似于 Match
+						if (room != null)
+						{
+							room.RemovePlayer(this, AvatarInfo.CreateBuilder(avatarInfo).Build());
 							room = null;
 						}
-					    var oldRoom = cmd.RoomInfo.Id;
-					    var maxP = cmd.RoomInfo.MaxPlayerNum;
-						var lobby = ActorManager.Instance.GetActor<Lobby> ();
-					    var r = await lobby.GetRoom(oldRoom, maxP, this);
-					    
-                        var gc = GCPlayerCmd.CreateBuilder();
-					    gc.Result = "Reconnect";
-					    var rinfo = RoomInfo.CreateBuilder();
+						var oldRoom = cmd.RoomInfo.Id;
+						var maxP = cmd.RoomInfo.MaxPlayerNum;
+						var lobby = ActorManager.Instance.GetActor<Lobby>();
+						var r = await lobby.GetRoom(oldRoom, maxP, this);
 
-					    if (r == null)
-					    {
-					        rinfo.Id = -1;
-					    }
-					    else
-					    {
-					        rinfo.Id = r.Id;
-					    }
-					    room = r;
+						var gc = GCPlayerCmd.CreateBuilder();
+						gc.Result = "Reconnect";
+						var rinfo = RoomInfo.CreateBuilder();
 
-					    gc.RoomInfo = rinfo.Build();
-						agent.SendPacket (gc, msg.packet.flowId, 0);
-					    if (room != null)
-					    {
-					        var tc = room.GetTeamColor();
-					        await tc;
-					        avatarInfo.TeamColor = tc.Result;
-					    }
+						if (r == null)
+						{
+							rinfo.Id = -1;
+						}
+						else
+						{
+							rinfo.Id = r.Id;
+						}
+						room = r;
+
+						gc.RoomInfo = rinfo.Build();
+						agent.SendPacket(gc, msg.packet.flowId, 0);
+						if (room != null)
+						{
+							var tc = room.GetTeamColor();
+							await tc;
+							avatarInfo.TeamColor = tc.Result;
+						}
 					}
-                    else if (cmds[0] == "LoginServer") //登陆合法性验证
-                    {
-                    }else if (cmds[0] == "TestUDP")
-                    {
-                        LogHelper.Log("UDP", "TestUDP");
-                        var gc = GCPlayerCmd.CreateBuilder();
-                        gc.Result = "TestUDP";
-                        agent.ForceUDP(gc, 0, 0);
-                    }else if (cmds[0] == "UDPConnect")
-                    {
-                        LogHelper.Log("UDP", "UseUDP");
-                        agent.UseUDP();
-                    }else if (cmds[0] == "UDPLost")
-                    {
-                        agent.UDPLost();
-                        LogHelper.Log("UDP", "UDPLost");
-                    }
-
+					else if (cmds[0] == "LoginServer") //登陆合法性验证
+					{
+					}
+					else if (cmds[0] == "TestUDP")
+					{
+						LogHelper.Log("UDP", "TestUDP");
+						var gc = GCPlayerCmd.CreateBuilder();
+						gc.Result = "TestUDP";
+						agent.ForceUDP(gc, 0, 0);
+					}
+					else if (cmds[0] == "UDPConnect")
+					{
+						LogHelper.Log("UDP", "UseUDP");
+						agent.UseUDP();
+					}
+					else if (cmds[0] == "UDPLost")
+					{
+						agent.UDPLost();
+						LogHelper.Log("UDP", "UDPLost");
+					}
+					else if (cmds[0] == "TestKCP")
+					{
+						LogHelper.Log("KCP", "TestKCP");
+						var gc = GCPlayerCmd.CreateBuilder();
+						gc.Result = "TestKCP";
+						agent.ForceKCP(gc, 0, 0);
+					}
+					else if (cmds[0] == "KCPConnect")
+					{
+						LogHelper.Log("KCP", "UseKCP");
+						agent.UseKCP();
+					}
+					else if (cmds[0] == "KCPLost")
+					{
+						LogHelper.Log("KCP", "KCPLost");
+						agent.KCPLost();
+					}
 				}
 			}
 		}

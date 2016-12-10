@@ -4,6 +4,7 @@ using System.Net.Sockets;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using KBEngine;
+using System.Threading;
 
 namespace MyLib
 {
@@ -35,6 +36,7 @@ namespace MyLib
 		}
 
 		//内部server主线程掉哟啊那个
+		//UDP 接收到
 		public void ReceiveData(byte[] data)
 		{
 			kcp.Input(data, data.Length);
@@ -42,13 +44,59 @@ namespace MyLib
 
 		private void SendPacket(KCPPacket pa)
 		{
-			pa.remoteEnd = remoteEnd;
-			kcpServer.SendUDPPacket(pa);
+			if (!IsClose)
+			{
+				pa.remoteEnd = remoteEnd;
+				kcpServer.SendUDPPacket(pa);
+			}
 		}
+
+		private Agent agent;
+		private PlayerActor playerActor;
 
 		private void HandleMsg(KBEngine.Packet packet)
 		{
-			
+			if (agent == null)
+			{
+				var cg = packet.protoBody as CGPlayerCmd;
+				var playerId = cg.AvatarInfo.Id;
+				var actor = ActorManager.Instance.GetActor(playerId);
+				if (actor != null)
+				{
+					var ap = actor as PlayerActor;
+					if (ap != null)
+					{
+						var ag = ap.GetAgent();
+						ag.SetKCPAgent(this);
+						agent = ag;
+						playerActor = ap;
+					}
+				}
+			}
+			if (agent != null)
+			{
+				agent.handleMsg(packet);
+			}
+			else {
+				Close();
+			}
+		}
+		private bool IsClose = false;
+		private int closeRef = 0;
+		//业务逻辑层控制连接关闭
+		public void Close()
+		{
+			if (Interlocked.Increment(ref closeRef) > 1)
+			{
+				return;
+			}
+			LogHelper.Log("KCP", "Close: " + remoteEnd);
+			if (IsClose)
+			{
+				return;
+			}
+			IsClose = true;
+			kcpServer.RemoveAgent(this);
 		}
 
 		public void Update(double delta)
@@ -74,8 +122,11 @@ namespace MyLib
 		/// <param name="data">Data.</param>
 		public async Task SendData(byte[] data)
 		{
-			await kcpServer._messageQueue;
-			kcp.Send(data);
+			if (!IsClose)
+			{
+				await kcpServer._messageQueue;
+				kcp.Send(data);
+			}
 		}
 	}
 }
