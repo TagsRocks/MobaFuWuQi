@@ -198,6 +198,16 @@ namespace MyLib
 				kcpAgent.Close();
 			}
 		}
+		public void SendKCPBytes(byte[] bytes)
+		{
+			if (kcpAgent != null && useKCP)
+			{
+				kcpAgent.SendData(bytes);
+			}
+			else {
+				SendBytes(bytes);
+			}
+		}
 
 		public void SendUDPBytes(byte[] bytes)
 		{

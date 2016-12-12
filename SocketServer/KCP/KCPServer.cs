@@ -27,6 +27,7 @@ namespace MyLib
 		}
 		public void Start(int port)
 		{
+			LogHelper.Log("KCP", "StartKCP:"+port);
 			udpClient = new UdpClient(port);
 			udpClient.BeginReceive(OnReceiveUDP, null);
 			RunTask(Update);
@@ -169,6 +170,7 @@ namespace MyLib
 		{
 			try
 			{
+				LogHelper.Log("KCP", "KCPReceive:");
 				var udpPort = new IPEndPoint(IPAddress.Any, 0);
 				var bytes = udpClient.EndReceive(result, ref udpPort);
 				if (bytes.Length > 0)

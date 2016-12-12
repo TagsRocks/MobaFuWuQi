@@ -201,6 +201,12 @@ namespace MyLib
 			        playerCom.BroadcastToAll(cmd);
 			    }
                 cmdList.Clear();
+
+				foreach (var cmd in kcpList)
+				{
+					playerCom.BroadcastKCPToAll(cmd);
+				}
+				kcpList.Clear();
 			}
 		}
 
@@ -355,6 +361,7 @@ namespace MyLib
 
         private List<GCPlayerCmd.Builder> cmdList = new List<GCPlayerCmd.Builder>(); 
         private List<GCPlayerCmd.Builder> beforeCmdList = new List<GCPlayerCmd.Builder>();
+		private List<GCPlayerCmd.Builder> kcpList = new List<GCPlayerCmd.Builder>();
 
         /// <summary>
         /// 在UpdatePlayer和 UpdateEntity之前发送命令
@@ -366,6 +373,11 @@ namespace MyLib
 	        await this._messageQueue;
             beforeCmdList.Add(cmd);
 	    }
+		public async Task AddKCPCmd(GCPlayerCmd.Builder cmd)
+		{
+			await _messageQueue;
+			kcpList.Add(cmd);
+		}
 		public async Task AddCmd (GCPlayerCmd.Builder cmd)
 		{
 			await _messageQueue;

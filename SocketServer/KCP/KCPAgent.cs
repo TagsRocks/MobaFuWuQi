@@ -122,9 +122,9 @@ namespace MyLib
 		/// <param name="data">Data.</param>
 		public async Task SendData(byte[] data)
 		{
+			await kcpServer._messageQueue;
 			if (!IsClose)
 			{
-				await kcpServer._messageQueue;
 				kcp.Send(data);
 			}
 		}

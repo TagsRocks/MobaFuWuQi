@@ -128,13 +128,24 @@ namespace MyLib
 			            }
 			        }
 
-			        //var pi = await p.GetPosInfo();
-                    //(this.actor as RoomActor).GetComponent<PhysicWorldComponent>().UpdatePlayer(p.Id, pi);
 			    }
 			}
 		}
 
-	    public void BroadcastUDPToAll(GCPlayerCmd.Builder cmd)
+		public void BroadcastKCPToAll(GCPlayerCmd.Builder cmd)
+		{
+			ServerBundle bundle;
+			var bytes = ServerBundle.sendImmediateError(cmd, 0, 0, out bundle);
+			ServerBundle.ReturnBundle(bundle);
+
+			var parr = players.ToArray();
+			foreach (var pa in parr)
+			{
+				pa.GetAgent().SendKCPBytes(bytes);
+			}
+		}
+
+		private void BroadcastUDPToAll(GCPlayerCmd.Builder cmd)
 	    {
 		    ServerBundle bundle;
             var bytes = ServerBundle.sendImmediateError(cmd, 0, 0, out bundle);
@@ -143,7 +154,6 @@ namespace MyLib
 	        var parr = players.ToArray();
 	        foreach (var playerActor in parr)
 	        {
-	            //playerActor.SendUDP(cmd);
                 playerActor.GetAgent().SendUDPBytes(bytes);
 	        }
 	    }
