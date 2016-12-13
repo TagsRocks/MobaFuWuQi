@@ -125,6 +125,10 @@ namespace MyLib
 
         private int closeRef = 0;
         private bool IsClose = false;
+		public bool CheckClose()
+		{
+			return IsClose;
+		}
         public void Close()
         {
             if (Interlocked.Increment(ref closeRef) > 1)

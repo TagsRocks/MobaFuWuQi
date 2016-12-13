@@ -20,6 +20,7 @@ namespace MyLib
 		public bool acked = false;
 		public bool isAck = false;
 		public int ackTimeout = 1;
+        public double sendTime = 0;
 		public IPEndPoint remoteEnd;
 		public void EncodeFull()
 		{

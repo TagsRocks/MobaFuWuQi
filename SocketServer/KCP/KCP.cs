@@ -34,6 +34,9 @@ namespace MyLib
 		private HashSet<UInt32> ackYet = new HashSet<uint>();
 
 		private LoopList recvList;
+        public bool IsClose = false;
+
+        public System.Action closeEventHandler;
 		//类似于UDPClient   TCPClient  connect  send recv
 		//发送报文增加额外的头部 确定 序号和 ACK
 		//创建
@@ -89,7 +92,7 @@ namespace MyLib
 		public void Update(double delta)
 		{
 			accTime += delta;
-			if (accTime >= interval)
+            if (accTime >= interval && !IsClose)
 			{
 				accTime -= interval;
 				HandleRecv();
@@ -121,6 +124,20 @@ namespace MyLib
 			}
 		}
 
+        /// <summary>
+        /// 上层控制关闭 
+        /// </summary>
+        public void CloseKCP() {
+            IsClose = true;
+        }
+
+        private void Close() {
+            IsClose = true;    
+            if(closeEventHandler != null) {
+                closeEventHandler();
+            }
+        }
+
 		private void SendWin()
 		{
 
@@ -136,6 +153,7 @@ namespace MyLib
 					{
 						seg.cmd = KCPPacketCMD.CMD_WAITACK;
 						seg.EncodeFull();
+                        seg.sendTime = Util.GetTimeNow();
 						outputFunc(seg);
 					}
 					else if (seg.cmd == KCPPacketCMD.CMD_WAITACK)
@@ -143,7 +161,12 @@ namespace MyLib
 						if (seg.ackTimeout <= 0)
 						{
 							seg.ackTimeout = 1;
-							outputFunc(seg);
+                            var now = Util.GetTimeNow();
+                            if(now-seg.sendTime > 1) {
+                                Close(); 
+                            }else {
+							    outputFunc(seg);
+                            }
 						}
 						else {
 							seg.ackTimeout--;

@@ -198,9 +198,10 @@ namespace MyLib
 				kcpAgent.Close();
 			}
 		}
+
 		public void SendKCPBytes(byte[] bytes)
 		{
-			if (kcpAgent != null && useKCP)
+			if (kcpAgent != null && useKCP && !kcpAgent.CheckClose())
 			{
 				kcpAgent.SendData(bytes);
 			}
@@ -211,7 +212,7 @@ namespace MyLib
 
 		public void SendUDPBytes(byte[] bytes)
 		{
-			if (udpAgent != null && useUDP)
+			if (udpAgent != null && useUDP && !udpAgent.CheckClose())
 			{
 				mSendPacketCount++;
 				mSendPacketSizeCount += (ulong)bytes.Length;

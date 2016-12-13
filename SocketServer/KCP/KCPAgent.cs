@@ -33,10 +33,45 @@ namespace MyLib
 			kcpServer = server;
 			kcp = new KCP();
 			kcp.outputFunc = this.SendPacket;
+			kcp.closeEventHandler = this.KCPClosed;
+		}
+
+
+		private void KCPClosed()
+		{
+			if (Interlocked.Increment(ref closeRef) > 1)
+			{
+				return;
+			}
+			LogHelper.Log("KCP", "Close: " + remoteEnd);
+			if (IsClose)
+			{
+				return;
+			}
+			IsClose = true;
+			kcpServer.RemoveAgent(this);
+			NotifyCloseToAgent();
+		}
+
+		//一方断开了停止停止ACK 另外一方过一会也会断开的 1s的反应时间
+		//客户端重新建立KCP连接和服务器
+		//客户端发送重新KCP初始化的请求
+		private async Task NotifyCloseToAgent()
+		{
+			await this.kcpServer._messageQueue;
+			if (agent != null)
+			{
+				agent.KCPLost();
+				var gc = GCPlayerCmd.CreateBuilder();
+				gc.Result = "KCPLost";
+				agent.SendPacket(gc, 0, 0);
+
+				LogHelper.Log("KCP", "KCPLost From Server");
+			}
 		}
 
 		//内部server主线程掉哟啊那个
-		//UDP 接收到
+		//UDP--->KCP
 		public void ReceiveData(byte[] data)
 		{
 			kcp.Input(data, data.Length);
@@ -81,7 +116,12 @@ namespace MyLib
 				Close();
 			}
 		}
+
 		private bool IsClose = false;
+		public bool CheckClose()
+		{
+			return IsClose;
+		}
 		private int closeRef = 0;
 		//业务逻辑层控制连接关闭
 		public void Close()
