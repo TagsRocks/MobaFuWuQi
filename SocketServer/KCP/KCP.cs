@@ -284,7 +284,7 @@ namespace MyLib
 							outputFunc(sendACK);//立即发送ACK
 
 							var tailHalfST = ackWinStart + windSz;
-							var tailHalfEND = ackWinEnd + windSz;
+							var tailHalfEND = ackWinEnd;
 							//数据出现在后半端，则可以移动接受窗口了
 							if (CheckInWin(srvSn, tailHalfST, tailHalfEND))
 							{
