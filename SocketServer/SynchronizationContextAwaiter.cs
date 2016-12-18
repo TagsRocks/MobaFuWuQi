@@ -15,26 +15,11 @@ namespace MyLib
         public bool IsCompleted {
             get
             {
-                //已经在当前上下文里面了，就不需要再次切换上下文了
-                return SynchronizationContext.Current == _context;
-                //return false;
+				//已经在当前上下文里面了，就不需要再次切换上下文了
+				return SynchronizationContext.Current == _context;
             }
         }
 
-        /*
-         *         
-        if (!temp.IsCompleted)
-        {
-            SAVE_STATE()
-            temp.OnCompleted(&cont);
-            return;
-
-            cont:
-            RESTORE_STATE()
-        }
-        var i = temp.GetResult(); 
-
-         */ 
         /// <summary>
         /// 将Action 任务调度到 _context 控制的线程里面去执行
         /// 
