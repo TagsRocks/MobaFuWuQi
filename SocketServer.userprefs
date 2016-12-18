@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{5A45EE2A-B488-4B1C-8861-170CBABD05E4}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="SocketServer/SlaveServerActor.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SocketServer/Game/TeamManageCom.cs">
     <Files>
       <File FileName="SocketServer/KCP/LoopList.cs" Line="9" Column="19" />
       <File FileName="SocketServer/KCP/KCP.cs" Line="93" Column="4" />
@@ -14,6 +14,11 @@
       <File FileName="SocketServer/ServerConfig.cs" Line="1" Column="1" />
       <File FileName="SocketServer/MasterServerActor.cs" Line="1" Column="1" />
       <File FileName="SocketServer/SlaveServerActor.cs" Line="1" Column="1" />
+      <File FileName="SocketServer/Game/HttpServerActor.cs" Line="1" Column="1" />
+      <File FileName="SocketServer/Game/MonitorActor.cs" Line="1" Column="1" />
+      <File FileName="SocketServer/Game/SpawnChest.cs" Line="1" Column="1" />
+      <File FileName="SocketServer/Game/ScoreComponent.cs" Line="1" Column="1" />
+      <File FileName="SocketServer/Game/TeamManageCom.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />

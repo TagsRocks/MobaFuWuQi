@@ -1,0 +1,37 @@
+﻿2016-12-18 10:20:46,426 Server StartServer
+2016-12-18 10:20:46,491 Actor AddActor MyLib.WatchDog addType True
+2016-12-18 10:20:46,509 Actor AddActor {
+"LobbyStatus":{
+"RoomCount":0
+, "Rooms":[  ]
+}
+
+}
+ addType True
+2016-12-18 10:20:46,514 Actor AddActor {
+"AgentStatus":{
+"AgentCount":0
+, "Agents":[  ]
+}
+
+}
+ addType True
+2016-12-18 10:20:46,515 Actor AddActor MyLib.MonitorActor addType True
+2016-12-18 10:20:46,516 Actor AddActor SocketServer.Game.HttpServerActor addType True
+2016-12-18 10:20:46,523 Http StartServer: 12030
+2016-12-18 10:20:46,523 Actor AddActor MyLib.ChatActor addType True
+2016-12-18 10:20:46,524 Actor AddActor MyLib.MasterServerActor addType True
+2016-12-18 10:20:46,525 Actor AddActor MyLib.SlaveServerActor addType True
+2016-12-18 10:20:46,532 Server ServerPort: 12031
+2016-12-18 10:20:46,561 UDP UDPStart: 12032
+2016-12-18 10:20:46,569 Actor AddActor MyLib.KCPServer addType True
+2016-12-18 10:20:46,570 KCP StartKCP:6060
+2016-12-18 10:20:46,571 Actor ServerStartSuc
+2016-12-18 10:20:46,591 Master Server Http: 127.0.0.1:12031 htt 127.0.0.1:12030
+2016-12-18 10:20:46,708 Http HttpRequest: http://127.0.0.1:12030/isFull qu System.Collections.Specialized.NameValueCollection raw /isFull me GET
+2016-12-18 10:20:46,733 Http SendResponse
+2016-12-18 10:20:46,768 Master Status: {
+"IsFull":false
+, "RoomNum":0
+}
+
