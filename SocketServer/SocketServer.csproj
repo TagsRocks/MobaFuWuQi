@@ -125,7 +125,6 @@
     <Compile Include="Game\Utility\LogHelper.cs" />
     <Compile Include="MasterServerActor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Actor.cs" />
     <Compile Include="Common\ServerMsgReader.cs" />
     <Compile Include="Common\Packet.cs" />
     <Compile Include="Common\MemoryStream.cs" />
@@ -139,11 +138,8 @@
     <Compile Include="Common\SimpleJSON.cs" />
     <Compile Include="Game\PlayerActor.cs" />
     <Compile Include="Game\WatchDog.cs" />
-    <Compile Include="SocketServer.cs" />
+    <Compile Include="Main.cs" />
     <Compile Include="Game\WorldActor.cs" />
-    <Compile Include="ActorSynchronizationContext.cs" />
-    <Compile Include="SynchronizationContextAwaiter.cs" />
-    <Compile Include="SynchroniztionContextExtensions.cs" />
     <Compile Include="Game\RoomActor.cs" />
     <Compile Include="Game\EntityActor.cs" />
     <Compile Include="Game\Component.cs" />
@@ -159,11 +155,16 @@
     <Compile Include="Net\Agent.cs" />
     <Compile Include="Net\UDPAgent.cs" />
     <Compile Include="Net\SocketServer.cs" />
+    <Compile Include="Actor\Actor.cs" />
+    <Compile Include="Actor\ActorSynchronizationContext.cs" />
+    <Compile Include="Actor\SynchronizationContextAwaiter.cs" />
+    <Compile Include="Actor\SynchroniztionContextExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Game\Http\" />
     <Folder Include="KCP\" />
     <Folder Include="Net\" />
+    <Folder Include="Actor\" />
   </ItemGroup>
 </Project>

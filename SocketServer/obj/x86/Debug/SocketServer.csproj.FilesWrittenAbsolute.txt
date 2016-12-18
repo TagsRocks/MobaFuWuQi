@@ -1,0 +1,15 @@
+/Users/liyong/UnityProj/tankServer/SocketServer/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Users/liyong/UnityProj/tankServer/SocketServer/bin/Debug/SocketServer.exe.mdb
+/Users/liyong/UnityProj/tankServer/SocketServer/bin/Debug/SocketServer.exe
+/Users/liyong/UnityProj/tankServer/SocketServer/obj/x86/Debug/SocketServer.exe
+/Users/liyong/UnityProj/tankServer/SocketServer/obj/x86/Debug/SocketServer.exe.mdb
+/Users/liyong/UnityProj/tankServer/SocketServer/bin/Debug/atk-sharp.dll
+/Users/liyong/UnityProj/tankServer/SocketServer/bin/Debug/configDll.dll
+/Users/liyong/UnityProj/tankServer/SocketServer/bin/Debug/gdk-sharp.dll
+/Users/liyong/UnityProj/tankServer/SocketServer/bin/Debug/glib-sharp.dll
+/Users/liyong/UnityProj/tankServer/SocketServer/bin/Debug/gtk-sharp.dll
+/Users/liyong/UnityProj/tankServer/SocketServer/bin/Debug/log4net.dll
+/Users/liyong/UnityProj/tankServer/SocketServer/bin/Debug/Mono.Cairo.dll
+/Users/liyong/UnityProj/tankServer/SocketServer/bin/Debug/MySql.Data.dll
+/Users/liyong/UnityProj/tankServer/SocketServer/bin/Debug/Google.ProtocolBuffersLite.dll
+/Users/liyong/UnityProj/tankServer/SocketServer/bin/Debug/protoDll.dll
