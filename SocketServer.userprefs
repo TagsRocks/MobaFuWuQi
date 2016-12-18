@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{5A45EE2A-B488-4B1C-8861-170CBABD05E4}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="SocketServer/Game/TeamManageCom.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SocketServer/Game/Utility/LogHelper.cs">
     <Files>
       <File FileName="SocketServer/KCP/LoopList.cs" Line="9" Column="19" />
       <File FileName="SocketServer/KCP/KCP.cs" Line="93" Column="4" />
@@ -19,6 +19,20 @@
       <File FileName="SocketServer/Game/SpawnChest.cs" Line="1" Column="1" />
       <File FileName="SocketServer/Game/ScoreComponent.cs" Line="1" Column="1" />
       <File FileName="SocketServer/Game/TeamManageCom.cs" Line="1" Column="1" />
+      <File FileName="SocketServer/Game/WatchDog.cs" Line="11" Column="29" />
+      <File FileName="SocketServer/Game/GameObjectActor.cs" Line="16" Column="19" />
+      <File FileName="SocketServer/Game/Chat/ChatActor.cs" Line="1" Column="1" />
+      <File FileName="SocketServer/Game/Components/DamageZone.cs" Line="1" Column="1" />
+      <File FileName="SocketServer/Game/Components/FoodZone.cs" Line="1" Column="1" />
+      <File FileName="SocketServer/Game/Components/MissileData.cs" Line="1" Column="1" />
+      <File FileName="SocketServer/Game/Components/SpawnFood.cs" Line="1" Column="1" />
+      <File FileName="SocketServer/Game/Components/SuperShootZone.cs" Line="1" Column="1" />
+      <File FileName="SocketServer/Game/Data/ItemData.cs" Line="1" Column="1" />
+      <File FileName="SocketServer/Game/Data/SkillData.cs" Line="1" Column="1" />
+      <File FileName="SocketServer/Game/Data/UnitData.cs" Line="1" Column="1" />
+      <File FileName="SocketServer/Game/LogicModules/Login.cs" Line="18" Column="24" />
+      <File FileName="SocketServer/Game/Skill/SkillLogic.cs" Line="1" Column="1" />
+      <File FileName="SocketServer/Game/Utility/LogHelper.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />

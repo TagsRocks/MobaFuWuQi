@@ -117,7 +117,6 @@
     <Compile Include="Game\Physic\World.cs" />
     <Compile Include="Game\Physic\WorldRender.cs" />
     <Compile Include="Game\ScoreComponent.cs" />
-    <Compile Include="Game\Skill\SkillLogic.cs" />
     <Compile Include="Game\SpawnChest.cs" />
     <Compile Include="Game\Utility\MailSender.cs" />
     <Compile Include="Game\Vector3.cs" />
