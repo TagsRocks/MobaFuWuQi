@@ -105,21 +105,21 @@ namespace MyLib
 		{
 			//可以发送新的报文的条件窗口可以滑动了
 			//窗口大小2 当sendId >= 0 < 2 的时候可以发送
-			if (sendBuf.Count < windSz)
+			while(sendBuf.Count < windSz && sendQueue.Count > 0)
 			{
 				var newSn = sendId;
 				var inWin = CheckInWin(newSn, winStart, winEnd);
 
 				if (inWin)
 				{
-					if (sendQueue.Count > 0)
-					{
-						var seg = sendQueue.Dequeue();
-						sendBuf.AddLast(seg);
-						seg.cmd = KCPPacketCMD.CMD_PUSH;
-						seg.ackTimeout = 1;
-						seg.sn = sendId++;
-					}
+					var seg = sendQueue.Dequeue();
+					sendBuf.AddLast(seg);
+					seg.cmd = KCPPacketCMD.CMD_PUSH;
+					seg.ackTimeout = 1;
+					seg.sn = sendId++;
+				}
+				else {
+					break;
 				}
 			}
 		}
