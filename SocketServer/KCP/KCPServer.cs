@@ -18,7 +18,6 @@ namespace MyLib
 
 		private Queue<KCPPacket> packets = new Queue<KCPPacket>();
 
-		private Dictionary<IPEndPoint, KCPAgent> agents = new Dictionary<IPEndPoint, KCPAgent>();
 
 		private Dictionary<IPEndPoint, KCPAgent> copyAgents = new Dictionary<IPEndPoint, KCPAgent>();
 
@@ -31,11 +30,6 @@ namespace MyLib
 			udpClient = new UdpClient(port);
 			udpClient.BeginReceive(OnReceiveUDP, null);
 			RunTask(Update);
-		}
-		private async Task AddAgent(IPEndPoint port, KCPAgent agent)
-		{
-			await this._messageQueue;
-			copyAgents.Add(port, agent);
 		}
 
 		//超时 或者主动断开 
@@ -159,15 +153,10 @@ namespace MyLib
 			}
 		}
 
-		private async Task ReceiveData(KCPAgent agent, byte[] data)
+
+		private async Task ReceiveUDP(IAsyncResult result)
 		{
 			await this._messageQueue;
-			agent.ReceiveData(data);
-		}
-
-		//所有调用移动到主线程进行
-		private void OnReceiveUDP(IAsyncResult result)
-		{
 			try
 			{
 				LogHelper.Log("KCP", "KCPReceive:");
@@ -176,21 +165,18 @@ namespace MyLib
 				if (bytes.Length > 0)
 				{
 					KCPAgent kcp = null;
-					lock (agents)
+
+					//远程客户端不支持UDP连接 网络无法连接上 UDP穿透失败
+					if (!copyAgents.ContainsKey(udpPort))
 					{
-						//远程客户端不支持UDP连接 网络无法连接上 UDP穿透失败
-						if (!agents.ContainsKey(udpPort))
-						{
-							var ag = new KCPAgent(udpPort, this);
-							agents.Add(udpPort, ag);
-							AddAgent(udpPort, ag);
-						}
-						kcp = agents[udpPort];
+						var ag = new KCPAgent(udpPort, this);
+						copyAgents.Add(udpPort, ag);
 					}
+					kcp = copyAgents[udpPort];
+
 					if (kcp != null)
 					{
-						ReceiveData(kcp, bytes);
-						//kcp.ReceiveData(bytes);
+						kcp.ReceiveData(bytes);
 					}
 				}
 				else
@@ -204,6 +190,12 @@ namespace MyLib
 			{
 				LogHelper.Log("Error", exp.ToString());
 			}
+		}
+		//所有调用移动到主线程进行
+		//移动到主线程去处理
+		private void OnReceiveUDP(IAsyncResult result)
+		{
+			ReceiveUDP(result);
 		}
 	}
 }
