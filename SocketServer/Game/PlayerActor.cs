@@ -680,8 +680,8 @@ namespace MyLib
 						var gc = GCPlayerCmd.CreateBuilder();
 						gc.SkillAction = cmd.SkillAction;
 						gc.Result = cmd.Cmd;
-						room.AddCmd(gc);
-
+						//room.AddCmd(gc);
+						room.AddKCPCmd(gc);
 					}
 					else if (cmds[0] == "Move")
 					{//快速移动
@@ -754,12 +754,6 @@ namespace MyLib
 					}
 					else if (cmds[0] == "Pick")
 					{
-						/*
-						var gc = GCPlayerCmd.CreateBuilder ();
-						gc.PickAction = cmd.PickAction;
-						gc.Result = cmd.Cmd;
-						room.AddCmd (gc);
-                        */
 						room.PickItem(cmd);
 					}
 					else if (cmds[0] == "SyncTime")

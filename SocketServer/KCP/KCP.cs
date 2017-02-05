@@ -94,7 +94,7 @@ namespace MyLib
 			accTime += delta;
             if (accTime >= interval && !IsClose)
 			{
-				accTime -= interval;
+				accTime = 0;
 				HandleRecv();
 				HandleAcked();
 				HandleSend();
