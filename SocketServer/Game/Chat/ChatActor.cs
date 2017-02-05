@@ -19,7 +19,10 @@ namespace MyLib
     {
         private Queue<ChatInfo> messages = new Queue<ChatInfo>();
         private long curOrd = 0;
-        private BroadcastBlock<long> broadcaster = new BroadcastBlock<long>(null);
+        //private BroadcastBlock<long> broadcaster = new BroadcastBlock<long>(null);
+
+		private List<BroadcastBlock<long>> broadcasters = new List<BroadcastBlock<long>>();
+
 
         public override void Init()
         {
@@ -41,7 +44,12 @@ namespace MyLib
             {
                 messages.Dequeue();
             }
-            broadcaster.SendAsync(curOrd - 1);
+			//broadcaster.SendAsync(curOrd - 1);
+			foreach (var b in broadcasters)
+			{
+				b.SendAsync(curOrd-1);
+			}
+			broadcasters.Clear();
         }
 
 
@@ -53,8 +61,12 @@ namespace MyLib
                 while (!isStop)
                 {
                     long ret = 0;
-                    ret = await broadcaster.ReceiveAsync();
-                    if (ret < ord)
+					var bro = new BroadcastBlock<long>(null);
+					broadcasters.Add(bro);
+					ret = await bro.ReceiveAsync();
+
+                    /*
+					if (ret < ord)
                     {
                         broadcaster = new BroadcastBlock<long>(null); //重新建立一个流
                         ret = await broadcaster.ReceiveAsync();
@@ -63,6 +75,8 @@ namespace MyLib
                     {
                         break;
                     }
+                    */
+
                 }
             }
 
