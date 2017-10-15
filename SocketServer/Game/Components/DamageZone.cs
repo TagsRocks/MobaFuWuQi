@@ -37,7 +37,7 @@ namespace MyLib
             entityInfo.SpawnId = SpawnId;
             entityInfo.EType = EntityType.CHEST;
             var info = entityInfo.Build();
-            var ety = await this.GetRoom().AddEntityInfo(info);
+            var ety = GetRoom().AddEntityInfo(info);
             if (ety != null)
             {
                 entity = ety;

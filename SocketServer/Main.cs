@@ -20,6 +20,7 @@ namespace MyLib
 	public class MainClass
 	{
 		public static float syncFreq = 0.1f;
+        public static int syncTime = 100;
 
 		public static void Main (string[] args)
 		{
@@ -41,7 +42,8 @@ namespace MyLib
 				syncFreq = sync;
                 Debug.Log("SyncTime: "+syncFreq);
 			}
-
+            
+			syncTime = (int)(MainClass.syncFreq * 1000);
 			var ss = new SocketServer ();
 			am.AddActor (ss, true);
 

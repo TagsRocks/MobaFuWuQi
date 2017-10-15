@@ -40,7 +40,6 @@ namespace MyLib
 		public object obj;
 		public object obj1;
 	}
-
 	/// <summary>
 	/// Actor 的对外不应该提供同步调用的方法 Actor对外的都是
 	/// Async的方法 通过同步的SynchronizationContext来同步外部调用 
@@ -51,7 +50,7 @@ namespace MyLib
 
         private ActorSynchronizationContext _mq = new ActorSynchronizationContext();
 
-	    public ActorSynchronizationContext _messageQueue
+	    public virtual ActorSynchronizationContext _messageQueue
 	    {
 	        get { return _mq; }
         }
@@ -123,7 +122,7 @@ namespace MyLib
 
 		//初始化的时候添加Component 避免多线程添加
 		//内部调用 外部需要调用 Task版本
-		public T AddComponent<T> () where T : Component
+		public virtual T AddComponent<T> () where T : Component
 		{
 			var c = (T)Activator.CreateInstance (typeof(T));
 			components.Add (c);
@@ -156,7 +155,7 @@ namespace MyLib
 		/// 这样所有的Task启动，都需要去调用这个Context的Post方法 这样就保证了 Actor内部的Task都是在同一个线程执行的 
 		/// </summary>
 		/// <param name="cb">Cb.</param>
-		public void RunTask (System.Func<Task> cb)
+		public virtual void RunTask (System.Func<Task> cb)
 		{
 			var surroundContext = SynchronizationContext.Current;
 			SynchronizationContext.SetSynchronizationContext (_messageQueue);

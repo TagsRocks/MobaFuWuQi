@@ -19,7 +19,7 @@ namespace MyLib
 		{
 			var earr = entities.ToArray ();
 			foreach (var p in earr ) {
-				var info = await p.GetEntityInfo ();
+				var info = p.GetEntityInfo ();
 				var gc = GCPlayerCmd.CreateBuilder ();
 				gc.Result = "AddEntity";
 				gc.EntityInfo = info;
@@ -116,7 +116,7 @@ namespace MyLib
 			//for (var i = 0; i < entities.Count;) {
 			foreach(var e in earr){
 				//var e = entities [i];
-				var info = await e.GetEntityInfo ();
+				var info = e.entityInfo;
 				e.OnlyRemoveSelf ();
 				Remove (e, info);
 			}

@@ -9,8 +9,8 @@ namespace MyLib
     public class BoxCollider : GameObjectComponent
     {
         public string Layer;
-        public Vector3 Center;
-        public Vector3 Size;
+        public MyVec3 Center;
+        public MyVec3 Size;
 
         private PhysicWorldComponent physicWorld;
         public override void Init()

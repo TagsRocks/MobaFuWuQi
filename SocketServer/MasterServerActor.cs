@@ -40,7 +40,7 @@ namespace MyLib
             }
             */
 
-            LogHelper.Log("Master", "Server Http: "+serverAdd+" htt "+httpAddress);
+            LogHelper.Log("Master", "Server Http: "+serverAdd+" http "+httpAddress);
         }
 
         public bool IsFull = false;
@@ -50,6 +50,7 @@ namespace MyLib
         public async Task QueryState()
         {
             var hc = new HttpClient();
+            //LogHelper.Log("Master", "QueryState:"+httpAddress);
             var url = string.Format("http://{0}/isFull", httpAddress);
             JSONNode status = null;
             try

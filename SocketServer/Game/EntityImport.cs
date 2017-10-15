@@ -13,9 +13,10 @@ namespace MyLib
         {
             var g = new GameObjectActor();
             g.name = jobj["Name"];
-            g.pos = Vector3.Parse(jobj["Pos"].Value);
-            g.scale = Vector3.Parse(jobj["Scale"].Value);
-            Debug.Log("InitGameObject: "+g.name);
+            g.pos = MyVec3.Parse(jobj["Pos"].Value);
+            g.scale = MyVec3.Parse(jobj["Scale"].Value);
+            //Debug.Log("InitGameObject: "+g.name);
+            LogHelper.Log("EntityImport", "InitGameObject:"+g.name);
             //避免启动Task 应该使用 Room的Task来执行
             //ActorManager.Instance.AddActor(g);
             foreach (JSONNode com in jobj["Component"].AsArray)
@@ -36,11 +37,50 @@ namespace MyLib
             var tp = Type.GetType("MyLib." + t);
             if (tp != null)
             {
-                Debug.Log("InitComponent: "+g.name+" tp "+tp);
-                var ac =g.GetType().GetMethod("AddComponent");
+                LogHelper.Log("EntityImport", "InitComponent: "+g.name+" tp "+tp);
+                var ac = g.GetType().GetMethod("AddComponent");
                 var ge = ac.MakeGenericMethod(tp);
                 var com = ge.Invoke(g, null);
                 ReadAttr(com, jobj); 
+            }else
+            {
+                LogHelper.Log("EntityImport", "Not Find Component:"+g.name+":"+t);
+            }
+        }
+
+        private static void SetArray(object com, string k, JSONArray array)
+        {
+            Log.Sys("SetArray:"+com+":"+k+":"+array.Count);
+            var comTp = com.GetType();
+            var fi = comTp.GetField(k);
+            Type valueType = typeof(string);
+             
+            if(array.Count > 0)
+            {
+                var value = array[0] as JSONData;
+                object retv;
+                var tp = value.GetValueType(out retv);
+                if (tp == typeof(string))
+                {
+                    var rv = retv as string;
+                    if(rv.StartsWith("<vec>"))
+                    {
+                        valueType = typeof(MyVec3);
+                    }
+                }
+            }
+            if(valueType == typeof(MyVec3))
+            {
+                var setV = new List<MyVec3>();
+                foreach(JSONNode n in array)
+                {
+                    var nv = MyVec3.Parse(n);
+                    setV.Add(nv);
+                }
+                if(fi != null)
+                {
+                    fi.SetValue(com, setV);
+                }
             }
         }
 
@@ -50,21 +90,29 @@ namespace MyLib
             foreach (KeyValuePair<string, JSONNode> j in jobj)
             {
                 var k = j.Key;
-                var jd = j.Value as JSONData;
-                object retv;
-                var tp  =jd.GetValueType(out retv);
-                if (tp == typeof(string))
+                //读取数组属性
+                if (j.Value.AsArray != null)
                 {
-                    var rv = retv as string;
-                    if (rv.StartsWith("<vec>"))
-                    {
-                        retv = Vector3.Parse(rv);
-                    }
+                    SetArray(com, k, j.Value.AsArray);
                 }
-                var fi = comTp.GetField(k);
-                if (fi != null)
+                else
                 {
-                    fi.SetValue(com, retv);
+                    var jd = j.Value as JSONData;
+                    object retv;
+                    var tp = jd.GetValueType(out retv);
+                    if (tp == typeof(string))
+                    {
+                        var rv = retv as string;
+                        if (rv.StartsWith("<vec>"))
+                        {
+                            retv = MyVec3.Parse(rv);
+                        }
+                    }
+                    var fi = comTp.GetField(k);
+                    if (fi != null)
+                    {
+                        fi.SetValue(com, retv);
+                    }
                 }
             }
         }

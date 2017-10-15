@@ -1,6 +1,6 @@
 {
-    "DatabaseConnection": "server=127.0.0.1;uid=root;database=tank;charset=utf8",
-    "DatabaseLogConnection": "server=127.0.0.1;uid=root;database=tank;charset=utf8",
+    "DatabaseConnection": "server=127.0.0.1;uid=root;database=tank;charset=utf8;Password=123456",
+    "DatabaseLogConnection": "server=127.0.0.1;uid=root;database=tank;charset=utf8;Password=123456",
     "HttpServerListenPort": "12030",
     "Port": "12031",
 	"UDPPort" : "12032",

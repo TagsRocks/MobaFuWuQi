@@ -21,10 +21,12 @@ namespace MyLib
 	{
 		private uint agentId;
 		Agent agent;
+
+		//上一帧已经广播的Avatar数据
+		private AvatarInfo lastAvatarInfo = null;
+
 		//当前时刻的状态
 		private AvatarInfo avatarInfo;
-		//上一帧更新的Avatar数据
-		private AvatarInfo lastAvatarInfo = null;
 
 	    private DeviceInfo deviceInfo;
 		//WorldActor world;
@@ -731,10 +733,13 @@ namespace MyLib
 					}
 					else if (cmds[0] == "AddEntity")
 					{
+                        //客户端不能调用增加Entity命令
+                        /*
 						var entity = new EntityActor();
 						ActorManager.Instance.AddActor(entity);
-						await entity.InitInfo(cmd.EntityInfo);
+						entity.InitInfo(cmd.EntityInfo);
 						room.AddEntity(entity, cmd.EntityInfo);
+                        */
 					}
 					else if (cmds[0] == "RemoveEntity")
 					{
@@ -765,13 +770,16 @@ namespace MyLib
 					}
 					else if (cmds[0] == "Dead")
 					{
-						/*
+                        /*
 						var gc = GCPlayerCmd.CreateBuilder ();
 						gc.DamageInfo = cmd.DamageInfo;
 						gc.Result = cmd.Cmd;
 						room.AddCmd (gc);
                         */
-						room.Dead(cmd);
+                        if (room != null)
+                        {
+                            room.Dead(cmd);
+                        }
 					}
 					else if (cmds[0] == "GameOver")
 					{

@@ -15,6 +15,7 @@ namespace MyLib
 
         public static void Init()
         {
+            log4net.Config.XmlConfigurator.Configure();
         }
 
 

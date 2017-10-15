@@ -48,7 +48,7 @@ namespace MyLib
                 entityInfo.EType = EntityType.DROP;
 
                 var info = entityInfo.Build();
-                var ety = await this.GetRoom().AddEntityInfo(info);
+                var ety = GetRoom().AddEntityInfo(info);
                 if (ety != null)
                 {
                     foods.Add(ety);

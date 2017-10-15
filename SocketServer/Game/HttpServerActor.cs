@@ -25,17 +25,31 @@ namespace SocketServer.Game
         {
             var httpPort = ServerConfig.instance.configMap["HttpServerListenPort"].AsInt;
             httpListener = new HttpListener();
-            httpListener.Prefixes.Add("http://*:" + httpPort + "/");
-            LogHelper.Log("Http", "StartServer: " + httpPort);
-            httpListener.Start();
+            try
+            {
+                httpListener.Prefixes.Add("http://+:" + httpPort + "/");
+            }catch(Exception exp)
+            {
+                LogHelper.Log("Http", "AddPrefixExp:" + exp.ToString());
+            }
+            LogHelper.Log("Http", "HTTP:StartServer: " + httpPort);
+            try
+            {
+                httpListener.Start();
+            }catch(Exception exp)
+            {
+                LogHelper.Log("Http", "Exception:"+exp.ToString());
+            }
             while (!IsStop() && httpListener.IsListening)
             {
                 var context = await httpListener.GetContextAsync();
                 //var context = httpListener.GetContext();
                 var req = context.Request;
+                /*
                 LogHelper.Log("Http",
                     "HttpRequest: " + req.Url + " qu " + req.QueryString + " raw " + req.RawUrl + " me " +
                     req.HttpMethod);
+                    */
                 Handle(context, req);
             }
             httpListener.Stop();
@@ -49,7 +63,7 @@ namespace SocketServer.Game
             context.Response.AddHeader("Content-Encoding", "utf-8");
             context.Response.ContentEncoding = Encoding.UTF8;
             context.Response.ContentLength64 = buf.Length;
-            LogHelper.Log("Http", "SendResponse");
+            //LogHelper.Log("Http", "SendResponse");
             try
             {
                 context.Response.OutputStream.Write(buf, 0, buf.Length);

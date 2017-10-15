@@ -177,7 +177,8 @@ namespace MyLib
             //RunTask(UpdatePhysic);
 
             InitEntity();
-			var syncTime = (int)(MainClass.syncFreq * 1000*0.8f);
+            //var syncTime = (int)(MainClass.syncFreq * 1000*0.8f);
+            var syncTime = MainClass.syncTime;
 		    double lastTime = 0.0;
 			while (!isStop) {
 				Debug.Log ("UpdateTime: " + syncTime);
@@ -248,7 +249,7 @@ namespace MyLib
 
 			    var num1 = playerCom.GetPlayerNum();
 
-                if (num1 >= 0 && state == RoomState.Ready)
+                if (state == RoomState.Ready)
      		    {
                     state = RoomState.InGame;
                 }
@@ -325,9 +326,8 @@ namespace MyLib
 	        }
 	    }
 
-	    public async Task<EntityActor> AddEntityInfo(EntityInfo info)
+	    public EntityActor AddEntityInfo(EntityInfo info)
 	    {
-	        await this._messageQueue;
 	        //游戏结束不要创建新的Entity了
             if (isStop)
 	        {
@@ -335,21 +335,17 @@ namespace MyLib
 	        }
 
 	        var entity = new EntityActor();
-	        //entity._messageQueue = this._messageQueue;
-            //entity.SetMsgQueue(this._messageQueue);
-
 	        entity.room = this;
 	        ActorManager.Instance.AddActor(entity);
-	        await entity.InitInfo(info);
-	        this.AddEntity(entity, info);
+	        entity.InitInfo(info);
+	        AddEntity(entity, entity.entityInfo);
+            entity.Start();
 	        return entity;
-
-            
         }
 
-	    public async Task AddEntity (EntityActor actor, EntityInfo info)
+
+	    public void AddEntity (EntityActor actor, EntityInfo info)
 		{
-			await _messageQueue;
 			entityCom.Add (actor, info);
 		}
 

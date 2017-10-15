@@ -137,28 +137,33 @@ namespace MyLib
             var span = DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc));
             return (int)span.TotalSeconds;
         }
+        public static string GetBinPath()
+        {
+            var path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+            return path.Substring(6);
+        }
     }
 
     public static class Log
     {
         public static void AI(string s)
         {
-            
+            LogHelper.Log("Info", s);
         }
 
         public static void Important(string s)
         {
-            
+            LogHelper.Log("Info", s);
         }
 
         public static void Sys(string s)
         {
-            
+            LogHelper.Log("Info", s);
         }
 
         public static void Critical(string s)
         {
-            
+            LogHelper.Log("Info", s);
         }
     }
     public class Debug{
@@ -185,6 +190,7 @@ namespace MyLib
         [Conditional("DEBUG_LOG")]
         private static void WriteFile(string msg)
         {
+            LogHelper.Log("Info", msg);
             /*
             lock (Locker)
             {
