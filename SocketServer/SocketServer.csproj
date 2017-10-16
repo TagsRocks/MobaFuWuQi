@@ -35,8 +35,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\atk-sharp.dll</HintPath>
     </Reference>
-    <Reference Include="C5">
-      <HintPath>..\packages\C5.dll</HintPath>
+    <Reference Include="C5, Version=2.4.5947.17248, Culture=neutral, PublicKeyToken=282361b99ded7e8e, processorArchitecture=MSIL">
+      <HintPath>..\packages\C5.2.4.5947.17249\lib\net45\C5.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="configDll">
       <HintPath>..\packages\configDll.dll</HintPath>
@@ -114,9 +115,9 @@
     <Compile Include="Game\GridSystem\AI\CreepAttack.cs" />
     <Compile Include="Game\GridSystem\AI\CreepIdle.cs" />
     <Compile Include="Game\GridSystem\AI\CreepMove.cs" />
+    <Compile Include="Game\GridSystem\GridManager.cs" />
     <Compile Include="Game\GridSystem\GridSystem\AStarFinder.cs" />
     <Compile Include="Game\GridSystem\GridSystem\DiagonalMovement.cs" />
-    <Compile Include="Game\GridSystem\GridSystem\GridManager.cs" />
     <Compile Include="Game\GridSystem\GridSystem\GridPos.cs" />
     <Compile Include="Game\GridSystem\GridSystem\GridRect.cs" />
     <Compile Include="Game\GridSystem\GridSystem\Heuristic.cs" />
