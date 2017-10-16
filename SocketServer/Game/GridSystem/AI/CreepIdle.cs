@@ -14,7 +14,9 @@ namespace MyLib
         public override void EnterState()
         {
             base.EnterState();
-
+        }
+        public override async Task RunLogic()
+        {
             var creepAI = aiCharacter.gameObject.GetComponent<CreepAI>();
             var cp = aiCharacter.blackboard[AIParams.CurrentPoint].intVal;
             var nextPoint = cp + 1;

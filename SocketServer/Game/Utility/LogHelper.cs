@@ -58,9 +58,13 @@ namespace MyLib
         }
 
         //[Conditional("DEBUG_LOG")]
-        public static void Log(string tag,string conent)
+        public static void Log(string tag,string content)
         {
-            logger.Debug(string.Format("{0} {1}",tag,conent));
+            logger.Debug(string.Format("{0} {1}",tag,content));
+        }
+        public static void LogError(string tag, string content)
+        {
+            logger.Error(string.Format("{0} {1}",tag,content));
         }
     }
 }

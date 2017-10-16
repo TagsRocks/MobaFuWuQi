@@ -39,13 +39,7 @@ namespace MyLib
                 path.AddSoldier(soldierId);
                 break;
             }
-
-            /*
-            while (!this.GetRoom().IsStop())
-            {
-                await Task.Delay((int)(intervalTime * 1000));
-            }
-            */
+          
         }
         private float passTime = 0;
     }

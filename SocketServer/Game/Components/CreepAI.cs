@@ -15,9 +15,24 @@ namespace MyLib
     /// </summary>
     public class MoveController : GameObjectComponent
     {
-        public float speed = 5;//
+        public float speed = 5;
+        private bool stopMove = false;
+        private bool inMove = false;
+        public void StopMove()
+        {
+            if (inMove)
+            {
+                stopMove = true;
+            }
+        }
+        /// <summary>
+        /// 移动代码中间不能打断
+        /// </summary>
+        /// <param name="v3Pos"></param>
+        /// <returns></returns>
         public async Task MoveTo(MyVec3 v3Pos)
         {
+            inMove = true;
             var tarPos = v3Pos.ToFloat();
             var curObj = gameObject as EntityActor;
             var x = curObj.entityInfo.X;
@@ -30,51 +45,41 @@ namespace MyLib
             var g1 = grid.mapPosToGrid(curPos);
             var g2 = grid.mapPosToGrid(tarPos);
             var path = grid.FindPath(g1, g2);
+            var nodes = new Vector3[path.Count];
+            var i = 0;
+            foreach(var p in path)
+            {
+                var wp = grid.gridToMapPos(new Vector2(p.x, p.y));
+                nodes[i++] = wp;
+            }
 
             var room = GetRoom();
             var entityInfo = curObj.entityInfo;
 
-            if (path.Count > 0)
+            var curPoint = 1;
+            while(curPoint < nodes.Length && !stopMove)
             {
-                var nextGrid = 0;
-                var nextPos = path[0];
-                var wp = grid.gridToMapPos(new System.Numerics.Vector2(nextPos.x, nextPos.y));
-                wp.Y += 0.1f;
-
-                var moveDir = wp - curPos;
-                moveDir.Y = 0;
-                moveDir = moveDir / moveDir.Length();
-                var syncFreq = MainClass.syncFreq;
-                var moveDelta = moveDir * speed * syncFreq;
+                var nextPos = nodes[curPoint];
+                var wp = nextPos;
 
                 var dist = (wp - curPos).Length();
                 var totalTime = dist / speed;
                 var passTime = 0.0f;
-                while (!room.IsStop() )
+                while(passTime < totalTime && !stopMove)
                 {
-                    /*
-                    var deltaDist = wp - curPos;
-                    deltaDist.Y = 0;
-                    var len = deltaDist.LengthSquared();
-                    if(len < moveDelta*moveDelta)
-                    {
-
-                    }
-                    */
-                    passTime += syncFreq;
-                    //var rate = MathUtil.Clamp(passTime / totalTime, 0, 1);
-                    //var newPos = Vector3.Lerp(curPos, wp, rate);
-
-                    var newPos = curPos + moveDelta;
-                    curPos = newPos;
-                    
+                    passTime += MainClass.syncFreq;
+                    var newPos = Vector3.Lerp( curPos, wp, MathUtil.Clamp(passTime/totalTime, 0, 1));
                     var myPos = MyVec3.FromFloat(newPos.X, newPos.Y, newPos.Z);
                     entityInfo.X = myPos.x;
                     entityInfo.Y = myPos.y;
                     entityInfo.Z = myPos.z;
                     await Task.Delay(MainClass.syncTime);
                 }
+                curPos = wp;
+                curPoint++;
             }
+            stopMove = false;
+            inMove = false;
         }
     }
     /// <summary>

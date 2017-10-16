@@ -51,6 +51,8 @@ public class GridManager : MyLib.Component {
         {
             mapHeight.Add(d.AsFloat);
         }
+
+        jpParam = new JumpPointParam(grids);
     }
 
     public Vector2 mapPosToGrid(Vector3 pos)
@@ -67,7 +69,17 @@ public class GridManager : MyLib.Component {
 
     public List<GridPos> FindPath(Vector2 p1, Vector2 p2)
     {
-        var jpParam = new JumpPointParam(grids, new GridPos(Convert.ToInt32(p1.X), Convert.ToInt32(p1.Y)), new GridPos(Convert.ToInt32(p2.X), Convert.ToInt32(p2.Y)));
+        jpParam.Reset(
+            new GridPos(Convert.ToInt32(p1.X), Convert.ToInt32(p1.Y)),
+            new GridPos(Convert.ToInt32(p2.X), Convert.ToInt32(p2.Y))
+            );
+        /*
+            true,
+            DiagonalMovement.Always,
+            HeuristicMode.MANHATTAN);
+         */
+
+        MyLib.LogHelper.Log("GridManager", "FindPath:"+p1+":"+p2);
         var path = JumpPointFinder.FindPath(jpParam);
         return path;
     }
@@ -85,7 +97,7 @@ public class GridManager : MyLib.Component {
         return pos;
     }
 
-
+    private JumpPointParam jpParam;
     private BaseGrid grids;
     private int width, height;
     private Vector3 center;

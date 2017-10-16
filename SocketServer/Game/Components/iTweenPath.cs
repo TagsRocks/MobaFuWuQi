@@ -16,11 +16,11 @@ namespace MyLib
             spawnId = System.Convert.ToInt32(gameObject.name.Replace("Path", ""));
         }
 
-        public async Task AddSoldier(int soldierId)
+        public void AddSoldier(int soldierId)
         {
             var startPos = nodes[0];
 
-            LogHelper.Log("iTweenPath", "AddSoldier:"+startPos);
+            LogHelper.Log("iTweenPath", "AddSoldier:" + startPos);
             var entityInfo = EntityInfo.CreateBuilder();
             entityInfo.UnitId = soldierId;
             entityInfo.ItemNum = 1;

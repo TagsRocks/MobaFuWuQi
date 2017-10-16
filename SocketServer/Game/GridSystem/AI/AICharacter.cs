@@ -51,8 +51,16 @@ namespace MyLib
                 current.ExitState();
             }
             current = stateMap[s];
+            var cur = current;
+            //这里有可能切换状态
             current.EnterState();
-            gameObject.RunTask(current.RunLogic);
+            if (cur == current)
+            {
+                gameObject.RunTask(current.RunLogic);
+            }else
+            {
+                LogHelper.LogError("AIState", "Switch State Too Early:"+gameObject.name+":"+cur.type);
+            }
         }
   
         public void OnEvent(AIEvent evt)

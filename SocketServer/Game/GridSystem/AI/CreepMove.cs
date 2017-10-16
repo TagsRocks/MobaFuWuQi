@@ -8,20 +8,35 @@ namespace MyLib
 {
     public class CreepMove : MoveState
     {
+        private MoveController moveController;
+        private CreepAI creepAI;
+        public override void EnterState()
+        {
+            base.EnterState();
+            creepAI = aiCharacter.gameObject.GetComponent<CreepAI>();
+            moveController = aiCharacter.gameObject.GetComponent<MoveController>();
+        }
+
         public override async Task RunLogic()
         {
-            var creepAI = aiCharacter.gameObject.GetComponent<CreepAI>();
-            var moveController = aiCharacter.gameObject.GetComponent<MoveController>();
+            Log.AI("MoveRunTask:");
             var cp = aiCharacter.blackboard[AIParams.CurrentPoint].intVal;
             var nextPoint = cp + 1;
             var path = creepAI.path;
-            if (path.nodes.Count > nextPoint)
+            while(path.nodes.Count > nextPoint)
             {
                 var pos = path.nodes[nextPoint];
+                Log.AI("MoveToPos:"+pos+":point:"+nextPoint);
                 await moveController.MoveTo(pos);
+                aiCharacter.blackboard[AIParams.CurrentPoint].intVal = nextPoint;
+                nextPoint++;
             }
+            aiCharacter.ChangeState(AIStateEnum.IDLE);
         }
-
-
+        public override void ExitState()
+        {
+            moveController.StopMove();
+            base.ExitState();
+        }
     }
 }
