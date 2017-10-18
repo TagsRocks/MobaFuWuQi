@@ -82,6 +82,13 @@ namespace MyLib
 
                 lastEntityInfo.HP = entityInfo.HP;
 			}
+            if(entityInfo.Speed != lastEntityInfo.Speed)
+            {
+                na1.Speed = entityInfo.Speed;
+                na1.Changed = true;
+
+                lastEntityInfo.Speed = entityInfo.Speed;
+            }
 
             //复制一遍当前的状态存储下来
             //直接field 拷贝 不用 复制整个了

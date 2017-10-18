@@ -8,6 +8,13 @@ namespace MyLib
 {
     public partial class Util
     {
+        public static int FramePerSecond = 20;
+        public static int GameToNetNumber = 100;
+        public static int GameToNet(float v)
+        {
+            return (int)(v * GameToNetNumber);
+        }
+        
         public static void Log(string msg)
         {
             //Console.WriteLine(msg);

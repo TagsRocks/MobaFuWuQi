@@ -14,7 +14,10 @@ namespace MyLib
         public override void EnterState()
         {
             base.EnterState();
+            var ety = aiCharacter.gameObject as EntityActor;
+            ety.entityInfo.Speed = 0;
         }
+
         public override async Task RunLogic()
         {
             var creepAI = aiCharacter.gameObject.GetComponent<CreepAI>();

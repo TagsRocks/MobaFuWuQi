@@ -15,6 +15,7 @@ namespace MyLib
     /// </summary>
     public class MoveController : GameObjectComponent
     {
+        //NPC移动速度
         public float speed = 5;
         private bool stopMove = false;
         private bool inMove = false;
@@ -38,6 +39,7 @@ namespace MyLib
             var x = curObj.entityInfo.X;
             var y = curObj.entityInfo.Y;
             var z = curObj.entityInfo.Z;
+            curObj.entityInfo.Speed = Util.GameToNet(speed);
 
             var curPos = new MyVec3(x, y, z).ToFloat();
 
