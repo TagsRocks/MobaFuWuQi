@@ -10,9 +10,13 @@ namespace MyLib
     {
         public static int FramePerSecond = 20;
         public static int GameToNetNumber = 100;
-        public static int GameToNet(float v)
+        public static int GameVecToNet(float v)
         {
             return (int)(v * GameToNetNumber);
+        }
+        public static int GameTimeToNet(float t)
+        {
+            return (int)(t * FramePerSecond);
         }
         
         public static void Log(string msg)

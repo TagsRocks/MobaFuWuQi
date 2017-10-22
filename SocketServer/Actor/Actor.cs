@@ -120,10 +120,18 @@ namespace MyLib
 			return c;
 		}
 
-		//初始化的时候添加Component 避免多线程添加
-		//内部调用 外部需要调用 Task版本
+        /// <summary>
+        /// 防止多次添加组件
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
 		public virtual T AddComponent<T> () where T : Component
 		{
+            var oldCom = GetComponent<T>();
+            if(oldCom != null)
+            {
+                return oldCom;
+            }
 			var c = (T)Activator.CreateInstance (typeof(T));
 			components.Add (c);
 			c.actor = this;

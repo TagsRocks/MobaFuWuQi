@@ -286,17 +286,18 @@ namespace MyLib
 			}
 		}
 
+        /// <summary>
+        /// 当所有玩家离开房间
+        /// 或者游戏主动及诶数的时候
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="ainfo"></param>
+        /// <returns></returns>
 		public async Task RemovePlayer (PlayerActor player, AvatarInfo ainfo)
 		{
 			await this._messageQueue;
 			Debug.Log ("RemovePlayer: "+ainfo);
 			playerCom.RemovePlayer (player, ainfo);
-			if (ainfo.IsMaster) {
-				//hasMaster = false;
-				//entityCom.RemoveAll ();
-			}
-		    //physicWorld.RemovePlayer(player);
-
 			Debug.Log ("PlayerNum: "+playerCom.GetPlayerNum());
 			//游戏过程中或者InGame
 			if (state == RoomState.GameOver || state == RoomState.InGame) {
@@ -306,16 +307,11 @@ namespace MyLib
 					var lb = ActorManager.Instance.GetActor <Lobby> ();
 					lb.DeleteRoom (this.Id);
 					ActorManager.Instance.RemoveActor (Id);
-                    ClearRoom();
 				}
 			}
 
 		}
 
-	    private void ClearRoom()
-	    {
-	        entityCom.RemoveAll();
-	    }
 
 	    public override void Stop()
 	    {

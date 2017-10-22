@@ -39,7 +39,7 @@ namespace MyLib
             vertices[vertexCount++].Set(x, y);
         }
 
-        public override void ComputeAABB(ref AABB aabb, XForm xf)
+        public override void ComputeAABB(ref MyAABB aabb, XForm xf)
         {
             var minX = 1000.0f;
             var maxX = -1000.0f;
@@ -69,7 +69,7 @@ namespace MyLib
             _type = ShapeType.CircleShape;
         }
 
-        public override void ComputeAABB(ref AABB aabb, XForm xf)
+        public override void ComputeAABB(ref MyAABB aabb, XForm xf)
         {
             throw new NotImplementedException();
         }

@@ -10,13 +10,14 @@ namespace MyLib
     {
         public List<MyVec3> nodes;
         private int spawnId;
+
         public override void Init()
         {
             base.Init();
             spawnId = System.Convert.ToInt32(gameObject.name.Replace("Path", ""));
         }
 
-        public void AddSoldier(int soldierId)
+        public void AddSoldier(int soldierId, int teamId)
         {
             var startPos = nodes[0];
 
@@ -28,6 +29,7 @@ namespace MyLib
             //高度没有意义应该使用实际GridManager中的地面高度
             entityInfo.Y = startPos.y;
             entityInfo.Z = startPos.z;
+            entityInfo.TeamColor = teamId;
             entityInfo.SpawnId = spawnId;
             entityInfo.EType = EntityType.CHEST;
             var info = entityInfo.Build();

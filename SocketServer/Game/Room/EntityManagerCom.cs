@@ -15,7 +15,7 @@ namespace MyLib
 		{
 		}
 
-		public async Task InitEntityDataToPlayer (PlayerActor player)
+		public void InitEntityDataToPlayer (PlayerActor player)
 		{
 			var earr = entities.ToArray ();
 			foreach (var p in earr ) {
@@ -105,13 +105,17 @@ namespace MyLib
 			removeEntities.Add (info);
 		}
 
-		/// <summary>
-		/// Master 离开游戏删除所有Entity 
-		/// </summary>
-		/// <returns>The all.</returns>
-		public async Task RemoveAll ()
+        public override void Destroy()
+        {
+            RemoveAll();
+        }
+
+        /// <summary>
+        /// Master 离开游戏删除所有Entity 
+        /// </summary>
+        /// <returns>The all.</returns>
+        private void RemoveAll ()
 		{
-			await this.actor._messageQueue;
 			var earr = entities.ToArray ();
 			//for (var i = 0; i < entities.Count;) {
 			foreach(var e in earr){

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using System.Numerics;
 
 namespace MyLib 
 {
@@ -90,6 +91,20 @@ namespace MyLib
                 lastEntityInfo.Speed = entityInfo.Speed;
             }
 
+            if(entityInfo.TeamColor != lastEntityInfo.TeamColor)
+            {
+                na1.TeamColor = entityInfo.TeamColor;
+                na1.Changed = true;
+                lastEntityInfo.TeamColor = entityInfo.TeamColor;
+            }
+
+            if(entityInfo.Dir != lastEntityInfo.Dir)
+            {
+                na1.Dir = entityInfo.Dir;
+                na1.Changed = true;
+                lastEntityInfo.Dir = entityInfo.Dir;
+            }
+
             //复制一遍当前的状态存储下来
             //直接field 拷贝 不用 复制整个了
 			//lastEntityInfo = EntityInfo.CreateBuilder(entityInfo).Build();
@@ -115,6 +130,7 @@ namespace MyLib
 		}
 
 
+        /*
 		public async Task UpdateData(EntityInfo info) {
 			await this._messageQueue;
 			if (info.HasX) {
@@ -126,6 +142,7 @@ namespace MyLib
 				entityInfo.HP = info.HP;
 			}
 		}
+        */
 
 		//初始化实体的Id
 		public void  InitInfo(EntityInfo info) {
@@ -151,6 +168,24 @@ namespace MyLib
 	            }
 	        }
 	    }
+
+        public Vector3 GetFloatPos()
+        {
+            var myVec = new MyVec3(entityInfo.X, entityInfo.Y, entityInfo.Z);
+            return myVec.ToFloat();
+        }
+
+        public Vector2 GetVec2Pos()
+        {
+            var myVec = new MyVec3(entityInfo.X, entityInfo.Y, entityInfo.Z);
+            var v3 =  myVec.ToFloat();
+            return new Vector2(v3.X, v3.Z);
+        }
+        public MyVec3 GetIntPos()
+        {
+            var myVec = new MyVec3(entityInfo.X, entityInfo.Y, entityInfo.Z);
+            return myVec;
+        }
 	}
 }
 

@@ -7,7 +7,7 @@ using Box2DX.Common;
 
 namespace MyLib 
 {
-    public struct AABB
+    public struct MyAABB
     {
         public Vec2 LowerBound;
         public Vec2 UpperBound;

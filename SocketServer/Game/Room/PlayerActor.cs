@@ -678,11 +678,9 @@ namespace MyLib
 					}
 					else if (cmds[0] == "Skill")
 					{
-
 						var gc = GCPlayerCmd.CreateBuilder();
 						gc.SkillAction = cmd.SkillAction;
 						gc.Result = cmd.Cmd;
-						//room.AddCmd(gc);
 						room.AddKCPCmd(gc);
 					}
 					else if (cmds[0] == "Move")
@@ -752,10 +750,12 @@ namespace MyLib
 					}
 					else if (cmds[0] == "UpdateEntityData")
 					{
+                        /*
 						var ety = cmd.EntityInfo;
 						var act = ActorManager.Instance.GetActor(ety.Id);
 						var eact = (EntityActor)act;
 						eact.UpdateData(ety);
+                        */
 					}
 					else if (cmds[0] == "Pick")
 					{

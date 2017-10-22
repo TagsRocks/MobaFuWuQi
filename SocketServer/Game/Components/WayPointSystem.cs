@@ -11,11 +11,13 @@ namespace MyLib
     {
         public float intervalTime = 10;
         public int soldierId = 59;
+        public int teamId = 0;
         private GridManager gridManager;
 
         public override void Init()
         {
             base.Init();
+            GetRoom().AddComponent<PhysicManager>();
             gridManager = GetRoom().AddComponent<GridManager>();
             using (var f = new StreamReader("ConfigData/MapSourceConfig.json"))
             {
@@ -36,7 +38,7 @@ namespace MyLib
                 var path = c.GetComponent<iTweenPath>();
 
                 //小兵的AI需要添加上组件
-                path.AddSoldier(soldierId);
+                path.AddSoldier(soldierId, teamId);
                 break;
             }
           

@@ -67,7 +67,7 @@ namespace MyLib
 
         private void CalCells(Body body)
         {
-            var aabb = new AABB();
+            var aabb = new MyAABB();
             body.shape.ComputeAABB(ref aabb, body.xform);
 
             var minx = aabb.LowerBound.X;
@@ -99,7 +99,7 @@ namespace MyLib
         private void AddCells(Body body)
         {
 
-            var aabb = new AABB();
+            var aabb = new MyAABB();
             body.shape.ComputeAABB(ref aabb, body.xform);
 
             var minx = aabb.LowerBound.X;

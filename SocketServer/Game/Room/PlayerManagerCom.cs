@@ -222,7 +222,7 @@ namespace MyLib
 		private async void CurrentEntityToNew (PlayerActor player)
 		{
 			var etyCom = this.actor.GetComponent<EntityManagerCom> ();
-			await etyCom.InitEntityDataToPlayer (player);
+			etyCom.InitEntityDataToPlayer (player);
 		}
 
 		/// <summary>

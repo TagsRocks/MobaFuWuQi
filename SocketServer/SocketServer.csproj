@@ -90,6 +90,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\SimpleMemoryStream.cs" />
+    <Compile Include="Game\AABBTreePhysic\Complex.cs" />
+    <Compile Include="Game\AABBTreePhysic\DynamicTree.cs" />
+    <Compile Include="Game\AABBTreePhysic\PhysicManager.cs" />
+    <Compile Include="Game\AABBTreePhysic\Settings.cs" />
     <Compile Include="Game\Bullet.cs" />
     <Compile Include="Game\Chat\ChatActor.cs" />
     <Compile Include="Game\Components\CreepAI.cs" />

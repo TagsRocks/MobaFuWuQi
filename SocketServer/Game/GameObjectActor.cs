@@ -19,6 +19,8 @@ namespace MyLib
     public class GameObjectActor : Actor
     {
         public bool IsStart = false;
+        public bool IsOver = false;
+
         public RoomActor room;
         private List<GameObjectActor> child = new List<GameObjectActor>();
         public string name;
@@ -67,6 +69,7 @@ namespace MyLib
         /// </summary>
         public void Destroy()
         {
+            IsOver = true;
             ActorManager.Instance.RemoveActor(this.Id);
             foreach (var component in components)
             {

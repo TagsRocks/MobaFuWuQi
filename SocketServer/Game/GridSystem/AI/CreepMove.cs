@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace MyLib
 {
+    /// <summary>
+    /// 按照路点行走
+    /// </summary>
     public class CreepMove : MoveState
     {
         private MoveController moveController;
@@ -23,7 +26,7 @@ namespace MyLib
             var cp = aiCharacter.blackboard[AIParams.CurrentPoint].intVal;
             var nextPoint = cp + 1;
             var path = creepAI.path;
-            while(path.nodes.Count > nextPoint)
+            while(path.nodes.Count > nextPoint && inState)
             {
                 var pos = path.nodes[nextPoint];
                 Log.AI("MoveToPos:"+pos+":point:"+nextPoint);
@@ -31,7 +34,10 @@ namespace MyLib
                 aiCharacter.blackboard[AIParams.CurrentPoint].intVal = nextPoint;
                 nextPoint++;
             }
-            aiCharacter.ChangeState(AIStateEnum.IDLE);
+            if (inState)
+            {
+                aiCharacter.ChangeState(AIStateEnum.IDLE);
+            }
         }
         public override void ExitState()
         {

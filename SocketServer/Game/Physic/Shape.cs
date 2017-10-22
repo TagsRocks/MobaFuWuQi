@@ -20,7 +20,7 @@ namespace MyLib
         public ShapeType _type;
         public Body _body;
 
-        public abstract void ComputeAABB(ref AABB aabb, XForm xf);
+        public abstract void ComputeAABB(ref MyAABB aabb, XForm xf);
     }
 
 

@@ -11,6 +11,7 @@ namespace MyLib
 
         /// <summary>
         /// 添加组件到Actor上结束
+        /// Component 的组件可以在这里初始化
         /// </summary>
 	    public virtual void AfterAdd()
 	    {
@@ -19,6 +20,7 @@ namespace MyLib
         /// <summary>
         /// GameObjectActor  Start时调用Init 初始化组件
         /// 或者GameObjectActor 已经Start了则在 AddComponent时调用
+        /// GameObject组件在这里初始化
         /// </summary>
 	    public virtual void Init()
 	    {
