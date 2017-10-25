@@ -11,7 +11,7 @@ namespace MyLib
 	public class RoomActor : Actor
 	{
 		PlayerManagerCom playerCom;
-		EntityManagerCom entityCom;
+		public EntityManagerCom entityCom;
 		TeamManageCom teamCom;
 		private bool hasMaster = false;
 	    private bool IsNewUserRoom = false;
@@ -332,6 +332,7 @@ namespace MyLib
 
 	        var entity = new EntityActor();
 	        entity.room = this;
+            //TODO: Entity Actor 不需要添加进入全局的ActorManager中
 	        ActorManager.Instance.AddActor(entity);
 	        entity.InitInfo(info);
 	        AddEntity(entity, entity.entityInfo);

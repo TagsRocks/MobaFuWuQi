@@ -30,6 +30,9 @@
     <Externalconsole>true</Externalconsole>
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="atk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -96,12 +99,14 @@
     <Compile Include="Game\AABBTreePhysic\Settings.cs" />
     <Compile Include="Game\Bullet.cs" />
     <Compile Include="Game\Chat\ChatActor.cs" />
-    <Compile Include="Game\Components\CreepAI.cs" />
+    <Compile Include="Game\Components\AI\CreepDead.cs" />
+    <Compile Include="Game\Components\NPC\CreepAI.cs" />
     <Compile Include="Game\Components\DamageZone.cs" />
     <Compile Include="Game\Components\FoodZone.cs" />
     <Compile Include="Game\Components\iTweenPath.cs" />
     <Compile Include="Game\Components\JobZone.cs" />
     <Compile Include="Game\Components\MissileData.cs" />
+    <Compile Include="Game\Components\NPC\NpcAttribute.cs" />
     <Compile Include="Game\Components\PhysicComponet.cs" />
     <Compile Include="Game\Components\PhysicWorldComponent.cs" />
     <Compile Include="Game\Components\SpawnFood.cs" />
@@ -110,15 +115,19 @@
     <Compile Include="Game\Data\GameConst.cs" />
     <Compile Include="Game\Data\GMDataBase.cs" />
     <Compile Include="Game\Data\ItemData.cs" />
+    <Compile Include="Game\Data\NpcConfig.cs" />
+    <Compile Include="Game\Data\NpcDataManager.cs" />
     <Compile Include="Game\Data\SkillData.cs" />
+    <Compile Include="Game\Data\SkillDataManager.cs" />
+    <Compile Include="Game\Skill\SkillLayoutRunner.cs" />
     <Compile Include="Game\Data\UnitData.cs" />
     <Compile Include="Game\EntityImport.cs" />
     <Compile Include="Game\GameObjectActor.cs" />
-    <Compile Include="Game\GridSystem\AI\AICharacter.cs" />
-    <Compile Include="Game\GridSystem\AI\AIState.cs" />
-    <Compile Include="Game\GridSystem\AI\CreepAttack.cs" />
-    <Compile Include="Game\GridSystem\AI\CreepIdle.cs" />
-    <Compile Include="Game\GridSystem\AI\CreepMove.cs" />
+    <Compile Include="Game\Components\AI\AICharacter.cs" />
+    <Compile Include="Game\Components\AI\AIState.cs" />
+    <Compile Include="Game\Components\AI\CreepAttack.cs" />
+    <Compile Include="Game\Components\AI\CreepIdle.cs" />
+    <Compile Include="Game\Components\AI\CreepMove.cs" />
     <Compile Include="Game\GridSystem\GridManager.cs" />
     <Compile Include="Game\GridSystem\GridSystem\AStarFinder.cs" />
     <Compile Include="Game\GridSystem\GridSystem\DiagonalMovement.cs" />
@@ -157,6 +166,11 @@
     <Compile Include="Game\Physic\WorldRender.cs" />
     <Compile Include="Game\Room\ScoreComponent.cs" />
     <Compile Include="Game\Components\SpawnChest.cs" />
+    <Compile Include="Game\Skill\HurtDirect.cs" />
+    <Compile Include="Game\Skill\SkillComponent.cs" />
+    <Compile Include="Game\Skill\SkillDataConfig.cs" />
+    <Compile Include="Game\Skill\SkillLogicComponent.cs" />
+    <Compile Include="Game\Skill\SkillStateMachine.cs" />
     <Compile Include="Game\Utility\MailSender.cs" />
     <Compile Include="Game\MyVec3.cs" />
     <Compile Include="Game\MonitorActor.cs" />
@@ -210,4 +224,7 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
+  <PropertyGroup>
+    <PostBuildEvent>XCOPY "$(SolutionDir)SocketServer\ConfigData" "$(TargetDir)\ConfigData\" /E /Y</PostBuildEvent>
+  </PropertyGroup>
 </Project>

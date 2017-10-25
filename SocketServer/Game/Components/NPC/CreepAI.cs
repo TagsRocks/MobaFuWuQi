@@ -24,7 +24,7 @@ namespace MyLib
         private State state = State.Idle;
 
         //NPC移动速度
-        public float speed = 5;
+        public float speed = 10;
         private bool stopMove = false;
         private bool inMove = false;
         private int curMoveId = 0;
@@ -137,6 +137,8 @@ namespace MyLib
         private PhysicManager physic;
         public EntityProxy target;
         public EntityActor mySelf;
+        public NpcConfig npcConfig;
+        public UnitData unitData;
         public override void Init()
         {
             base.Init();
@@ -145,11 +147,19 @@ namespace MyLib
             proxy = physic.AddEntity(mySelf);
 
             gameObject.AddComponent<MoveController>();
+            gameObject.AddComponent<SkillComponent>();
+            gameObject.AddComponent<NpcAttribute>();
+
+            npcConfig = NpcDataManager.Instance.GetConfig(mySelf.entityInfo.UnitId);
+            unitData = Util.GetUnitData(false, mySelf.entityInfo.UnitId, 0);
+
 
             aiCharacter = gameObject.AddComponent<AICharacter>();
             aiCharacter.AddState(new CreepIdle());
             aiCharacter.AddState(new CreepMove());
             aiCharacter.AddState(new CreepAttack());
+            aiCharacter.AddState(new CreepDead());
+
             //当前所在点 路径点
             aiCharacter.blackboard[AIParams.CurrentPoint] = new AIEvent{ intVal = 0 };
             gameObject.RunTask(FindEnemy);
@@ -212,5 +222,7 @@ namespace MyLib
         {
             return attackRangeDist * attackRangeDist;
         }
+
+       
     }
 }

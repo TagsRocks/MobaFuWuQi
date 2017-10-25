@@ -27,6 +27,9 @@ namespace MyLib
             if(path.nodes.Count > nextPoint)
             {
                 aiCharacter.ChangeState(AIStateEnum.MOVE);
+            }else
+            {
+                LogHelper.Log("Idle", "MoveToEndPoint");
             }
         }
     }

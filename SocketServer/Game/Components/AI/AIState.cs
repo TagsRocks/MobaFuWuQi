@@ -11,6 +11,7 @@ namespace MyLib
         IDLE,
         MOVE,
         ATTACK,
+        DEAD,
     }
 
     public class AIState
@@ -18,7 +19,7 @@ namespace MyLib
         public AIStateEnum type;
         public AICharacter aiCharacter;
         protected bool inState = false;
-
+        protected int runNum = 0;
         /// <summary>
         /// 添加完状态之后首次初始化
         /// </summary>
@@ -29,6 +30,7 @@ namespace MyLib
         public virtual void EnterState()
         {
             inState = true;
+            runNum++;
         }
         public virtual void ExitState()
         {
@@ -67,6 +69,13 @@ namespace MyLib
         public AttackState()
         {
             type = AIStateEnum.ATTACK;
+        }
+    }
+    public class DeadState : AIState
+    {
+        public DeadState()
+        {
+            type = AIStateEnum.DEAD;
         }
     }
 }

@@ -18,6 +18,10 @@ namespace MyLib
         {
             return (int)(t * FramePerSecond);
         }
+        public static int TimeToMS(float t)
+        {
+            return (int)(t * 1000);
+        }
         
         public static void Log(string msg)
         {
@@ -79,19 +83,25 @@ namespace MyLib
         }
 
 
+        /// <summary>
+        /// 全局的静态数据表加载会存在问题
+        /// 因此多线程要避免全局静态存储
+        /// </summary>
         private static Dictionary<int, UnitData> monsterData = new Dictionary<int, UnitData>();
         public static UnitData GetUnitData(bool isPlayer, int mid, int level)
         {
             //玩家才需要level 怪物的level都是0， 因此mid为玩家的job的时候*10足够了
             int key = Convert.ToInt32(isPlayer)*1000000 + mid*10 + level;
-            if (monsterData.ContainsKey(key))
+            lock (monsterData)
             {
-                return monsterData[key];
+                if (monsterData.ContainsKey(key))
+                {
+                    return monsterData[key];
+                }
+                UnitData ud = new UnitData(isPlayer, mid, level);
+                monsterData[key] = ud;
+                return ud;
             }
-
-            UnitData ud = new UnitData(isPlayer, mid, level);
-            monsterData[key] = ud;
-            return ud;
         }
 
         public static int RangeInt(int a, int b)

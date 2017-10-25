@@ -19,11 +19,7 @@ namespace MyLib
             base.Init();
             GetRoom().AddComponent<PhysicManager>();
             gridManager = GetRoom().AddComponent<GridManager>();
-            using (var f = new StreamReader("ConfigData/MapSourceConfig.json"))
-            {
-                var con = f.ReadToEnd();
-                gridManager.LoadMap(con);
-            }
+            gridManager.InitMap();
 
             var rm = GetRoom();
             rm.RunTask(GenCreep);

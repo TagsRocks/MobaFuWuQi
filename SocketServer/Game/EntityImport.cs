@@ -4,34 +4,55 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SimpleJSON;
+using System.Collections;
 
 namespace MyLib
 {
-    public static class EntityImport
+    public class EntityImport
     {
+        private List<FakeGameObject> fakeGo = new List<FakeGameObject>();
+        private Dictionary<int, GameObjectActor> goDict = new Dictionary<int, GameObjectActor>();
+
         public static GameObjectActor InitGameObject(JSONClass jobj)
+        {
+            var im = new EntityImport();
+            return im.ImportGO(jobj);
+        }
+
+        private GameObjectActor ImportGO(JSONClass jobj)
         {
             var g = new GameObjectActor();
             g.name = jobj["Name"];
             g.pos = MyVec3.Parse(jobj["Pos"].Value);
             g.scale = MyVec3.Parse(jobj["Scale"].Value);
+            g.InstId = jobj["InstId"].AsInt;
+            if (g.InstId != 0)
+            {
+                goDict.Add(g.InstId, g);
+            }
             //Debug.Log("InitGameObject: "+g.name);
-            LogHelper.Log("EntityImport", "InitGameObject:"+g.name);
+            LogHelper.Log("EntityImport", "InitGameObject:" + g.name);
             //避免启动Task 应该使用 Room的Task来执行
             //ActorManager.Instance.AddActor(g);
             foreach (JSONNode com in jobj["Component"].AsArray)
             {
                 InitComponent(g, com.AsObject);
             }
-            foreach (JSONNode c in jobj["Child"].AsArray) 
+            foreach (JSONNode c in jobj["Child"].AsArray)
             {
-                var cobj = InitGameObject(c.AsObject);
+                var cobj = ImportGO(c.AsObject);
                 g.AddChild(cobj);
             }
+
+            foreach(var f in fakeGo)
+            {
+                f.go = goDict[f.InstId];
+            }
+
             return g;
         }
 
-        private static void InitComponent(GameObjectActor g, JSONClass jobj)
+        private void InitComponent(GameObjectActor g, JSONClass jobj)
         {
             var t = jobj["Type"].Value;
             var tp = Type.GetType("MyLib." + t);
@@ -48,27 +69,51 @@ namespace MyLib
             }
         }
 
-        private static void SetArray(object com, string k, JSONArray array)
+        private object ImportStruct(JSONClass jobj)
+        {
+            var t = jobj["Type"].Value;
+            var tp = Type.GetType("MyLib." + t);
+            object ret = null;
+            if (tp != null)
+            {
+                LogHelper.Log("EntityImport", "InitStruct: " + " tp " + tp);
+                var com = Activator.CreateInstance(tp);
+                ReadAttr(com, jobj);
+                ret = com;
+            }
+            return ret;
+        }
+
+        private void SetArray(object com, string k, JSONArray array)
         {
             Log.Sys("SetArray:"+com+":"+k+":"+array.Count);
             var comTp = com.GetType();
             var fi = comTp.GetField(k);
             Type valueType = typeof(string);
-             
+            object aryValue = null;
             if(array.Count > 0)
             {
-                var value = array[0] as JSONData;
-                object retv;
-                var tp = value.GetValueType(out retv);
-                if (tp == typeof(string))
+                var ar0 = array[0];
+                if (ar0.GetType() == typeof(JSONClass))
                 {
-                    var rv = retv as string;
-                    if(rv.StartsWith("<vec>"))
+                    aryValue = ImportStruct(ar0.AsObject);
+                }
+                else
+                {
+                    var value = array[0] as JSONData;
+                    object retv;
+                    var tp = value.GetValueType(out retv);
+                    if (tp == typeof(string))
                     {
-                        valueType = typeof(MyVec3);
+                        var rv = retv as string;
+                        if (rv.StartsWith("<vec>"))
+                        {
+                            valueType = typeof(MyVec3);
+                        }
                     }
                 }
             }
+
             if(valueType == typeof(MyVec3))
             {
                 var setV = new List<MyVec3>();
@@ -81,10 +126,19 @@ namespace MyLib
                 {
                     fi.SetValue(com, setV);
                 }
+            }else if(aryValue != null)
+            {
+                var listType = typeof(List<>).MakeGenericType(aryValue.GetType());
+                var listObj = (IList)Activator.CreateInstance(listType);
+                foreach(JSONNode n in array)
+                {
+                    listObj.Add(ImportStruct(n.AsObject));
+                }
+                fi.SetValue(com, listObj);
             }
         }
 
-        private static void ReadAttr(object com, JSONClass jobj)
+        private void ReadAttr(object com, JSONClass jobj)
         {
             var comTp = com.GetType();
             foreach (KeyValuePair<string, JSONNode> j in jobj)
@@ -106,6 +160,16 @@ namespace MyLib
                         if (rv.StartsWith("<vec>"))
                         {
                             retv = MyVec3.Parse(rv);
+                        }else if (rv.StartsWith("<go>"))
+                        {
+                            var ind = rv.IndexOf('>');
+                            var instId = System.Convert.ToInt32(rv.Substring(ind+1));
+                            var fake = new FakeGameObject()
+                            {
+                                InstId = instId,
+                            };
+                            retv = fake;
+                            fakeGo.Add(fake);
                         }
                     }
                     var fi = comTp.GetField(k);

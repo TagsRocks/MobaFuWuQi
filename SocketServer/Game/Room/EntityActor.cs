@@ -148,6 +148,9 @@ namespace MyLib
 		public void  InitInfo(EntityInfo info) {
 			entityInfo = info;
 			entityInfo.Id = Id;
+            var unitData = Util.GetUnitData(false, entityInfo.UnitId, 0);
+            entityInfo.HP = unitData.HP;
+
 			lastEntityInfo = EntityInfo.CreateBuilder (info).Build();
 		    if (entityInfo.HasLifeLeft)
 		    {

@@ -4,6 +4,8 @@ using EpPathFinding.cs;
 using System;
 using SimpleJSON;
 using System.Numerics;
+using System.IO;
+using MyLib;
 
 /// <summary>
 /// 地图网格管理器
@@ -13,6 +15,20 @@ using System.Numerics;
 public class GridManager : MyLib.Component {
     public GridManager()
     {
+    }
+    private bool loadMapYet = false;
+    public void InitMap()
+    {
+        if (loadMapYet)
+        {
+            return;
+        }
+        loadMapYet = true;
+        using (var f = new StreamReader("ConfigData/MapSourceConfig.json"))
+        {
+            var con = f.ReadToEnd();
+            this.LoadMap(con);
+        }
     }
 
     public void LoadMap(string jsonData)

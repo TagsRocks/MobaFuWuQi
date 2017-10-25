@@ -26,6 +26,9 @@ namespace MyLib
 		{
 			//Console.WriteLine ("StartServer");
             LogHelper.Log("Server", "StartServer");
+            NpcDataManager.Instance.Init();
+            SkillDataManager.Instance.Init();
+
 			Console.CancelKeyPress += new ConsoleCancelEventHandler (myHandler);
 			var sg = new SaveGame ();
             var config = new ServerConfig();

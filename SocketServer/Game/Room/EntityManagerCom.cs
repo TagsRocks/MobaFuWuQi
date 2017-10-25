@@ -11,13 +11,15 @@ namespace MyLib
 		List<EntityInfo> newEntities = new List<EntityInfo> ();
 		List<EntityInfo> removeEntities = new List<EntityInfo> ();
 
+        public Dictionary<int, EntityActor> allEntities = new Dictionary<int, EntityActor>();
+
 		public EntityManagerCom ()
 		{
 		}
 
 		public void InitEntityDataToPlayer (PlayerActor player)
 		{
-			var earr = entities.ToArray ();
+			var earr = entities;
 			foreach (var p in earr ) {
 				var info = p.GetEntityInfo ();
 				var gc = GCPlayerCmd.CreateBuilder ();
@@ -32,6 +34,14 @@ namespace MyLib
 	        InitEntityDataToPlayer(pl);
 	    }
 
+        public EntityActor GetEntity(int id)
+        {
+            if (allEntities.ContainsKey(id))
+            {
+                return allEntities[id];
+            }
+            return null;
+        }
 	    public void Pick(CGPlayerCmd cmd)
 	    {
 	        Actor ety = null;
@@ -72,7 +82,7 @@ namespace MyLib
 			}
 			removeEntities.Clear ();
 
-			var earr = entities.ToArray ();
+			var earr = entities;
 			foreach (var p in earr ) {
 				var diff = await p.GetEntityInfoDiff ();
 				if (diff.Changed) {
@@ -97,12 +107,14 @@ namespace MyLib
 		{
 			entities.Add (actor);
 			newEntities.Add (info);
+            allEntities.Add(actor.Id, actor);
 		}
 
 		public void  Remove (EntityActor actor, EntityInfo info)
 		{
 			entities.Remove (actor);
 			removeEntities.Add (info);
+            allEntities.Remove(actor.Id);
 		}
 
         public override void Destroy()
@@ -116,8 +128,7 @@ namespace MyLib
         /// <returns>The all.</returns>
         private void RemoveAll ()
 		{
-			var earr = entities.ToArray ();
-			//for (var i = 0; i < entities.Count;) {
+			var earr = entities;
 			foreach(var e in earr){
 				//var e = entities [i];
 				var info = e.entityInfo;

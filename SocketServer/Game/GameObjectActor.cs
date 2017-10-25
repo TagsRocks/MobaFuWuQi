@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace MyLib
 {
+    public class FakeGameObject
+    {
+        public GameObjectActor go;
+        public int InstId;
+    }
     /// <summary>
     /// 如何处理GameObject 和 Actor的关系
     /// GameObject 可以作为独立的Actor 来执行逻辑
@@ -21,6 +26,8 @@ namespace MyLib
         public bool IsStart = false;
         public bool IsOver = false;
 
+        public int InstId;
+
         public RoomActor room;
         private List<GameObjectActor> child = new List<GameObjectActor>();
         public string name;
@@ -28,9 +35,9 @@ namespace MyLib
         public MyVec3 pos;
         public MyVec3 scale;
 
-        public GameObjectActor[] GetChildren()
+        public List<GameObjectActor> GetChildren()
         {
-            return child.ToArray();
+            return child;
         } 
 
         /// <summary>
@@ -42,6 +49,15 @@ namespace MyLib
         {
             c.parent = this;
             child.Add(c);
+            if (IsStart)
+            {
+                c.Start();
+            }
+        }
+        public void RemoveChild(GameObjectActor c)
+        {
+            c.parent = null;
+            child.Remove(c);
         }
 
         /// <summary>
@@ -64,12 +80,27 @@ namespace MyLib
             }
         }
 
+        public override void Stop()
+        {
+            isStop = true;
+            Destroy();
+        }
+
         /// <summary>
         /// 退出Room销毁
         /// </summary>
         public void Destroy()
         {
             IsOver = true;
+            if(parent != null)
+            {
+                //父亲没有删除 自己被删除了
+                if (!parent.IsOver)
+                {
+                    parent.RemoveChild(this);
+                }
+            }
+
             ActorManager.Instance.RemoveActor(this.Id);
             foreach (var component in components)
             {

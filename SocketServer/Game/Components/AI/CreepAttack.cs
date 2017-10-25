@@ -24,11 +24,13 @@ namespace MyLib
         public override async Task RunLogic()
         {
             var target = creepAI.target;
-            while (inState)
+            var otherAttr = target.actor.GetComponent<NpcAttribute>();
+            while (inState && !otherAttr.IsDead())
             {
                 var mePos = creepAI.mySelf.GetVec2Pos();
                 var tarPos = target.actor.GetVec2Pos();
                 var dist = (mePos - tarPos).LengthSquared();
+
                 if (dist < creepAI.GetAttackRadiusSquare())
                 {
                     await DoAttack();
@@ -37,6 +39,12 @@ namespace MyLib
                 {
                     await DoMove();
                 }
+            }
+
+            //敌人已经死亡
+            if (inState)
+            {
+                aiCharacter.ChangeState(AIStateEnum.IDLE);
             }
         }
 
@@ -66,15 +74,40 @@ namespace MyLib
             skillAct.Dir = myself.entityInfo.Dir;
 
             skillAct.Target = creepAI.target.actor.entityInfo.Id;
-            skillAct.RunFrame = Util.GameTimeToNet(1);
+
+            var actConfig = creepAI.npcConfig.GetAction(ActionType.Attack);
+            var tt = actConfig.totalTime;
+            skillAct.RunFrame = Util.GameTimeToNet(tt);
 
             var gc = GCPlayerCmd.CreateBuilder();
             gc.Result = "Skill";
             gc.SkillAction = skillAct.Build();
             myself.GetRoom().AddKCPCmd(gc);
 
-            await Task.Delay(1 * MainClass.syncTime);
+            var sk = aiCharacter.gameObject.GetComponent<SkillComponent>();
+            var stateMachine = sk.CreateSkillStateMachine(skillAct.Build(), creepAI.npcConfig.normalAttack);
+
+            //执行对应的动作Attack 
+            //确定对应的事件
+            //SyncTime 驱动的
+            await UpdateAction(stateMachine);
+            //await Task.Delay(1 * MainClass.syncTime);
         }
+
+        private async Task UpdateAction(SkillStateMachine stateMachine)
+        {
+            var actConfig = creepAI.npcConfig.GetAction(ActionType.Attack);
+            var tempRunNum = runNum;
+
+            await Task.Delay(Util.TimeToMS(actConfig.hitTime));
+            //防止状态重入 导致的错误触发问题 一般在等待一段时间后执行
+            if (inState && tempRunNum == runNum)
+            {
+                stateMachine.OnEvent(SkillEvent.EventTrigger);
+                await Task.Delay(Util.TimeToMS(actConfig.totalTime - actConfig.hitTime));
+            }
+        }
+
 
         /// <summary>
         /// 向目标靠近
@@ -84,8 +117,9 @@ namespace MyLib
         {
             var pos = creepAI.target.actor.GetIntPos();
             moveController.MoveTo(pos);
+            var otherAttr = creepAI.target.actor.GetComponent<NpcAttribute>();
             //检测和目标的距离
-            while (inState)
+            while (inState && !otherAttr.IsDead())
             {
                 var tarNewPos = creepAI.target.actor.GetIntPos();
                 moveController.MoveTo(tarNewPos);
@@ -106,7 +140,15 @@ namespace MyLib
                 }
                 await Task.Delay(waitTime);
             }
+            if (inState)
+            {
+                moveController.StopMove();
+            }
         }
+
+        /// <summary>
+        /// 清理内部状态
+        /// </summary>
         public override void ExitState()
         {
             moveController.StopMove();
