@@ -118,7 +118,9 @@ namespace MyLib
 		    {
 		        room.RemoveEntity(this, entityInfo);
 		    }
-		    ActorManager.Instance.RemoveActor(Id);
+            //不属于全局管理
+            //ActorManager.Instance.RemoveActor(Id);
+            this.Stop();
 		    if (removeCallback != null)
 		    {
 		        removeCallback();

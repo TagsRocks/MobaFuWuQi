@@ -131,6 +131,7 @@ namespace MyLib
 
         public override void Init()
         {
+            InitMessageQueue();
             RunTask(CheckSlaveState);
         }
     }

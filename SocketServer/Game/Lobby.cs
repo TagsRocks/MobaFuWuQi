@@ -94,7 +94,7 @@ namespace MyLib
 
 		public override void Init ()
 		{
-			//base.Init ();
+            InitMessageQueue();
 		}
 
 	    public override string ToString()

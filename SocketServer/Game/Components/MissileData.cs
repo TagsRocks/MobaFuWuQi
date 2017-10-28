@@ -6,12 +6,20 @@ using System.Threading.Tasks;
 
 namespace MyLib
 {
-    class MissileData : Component
+    /// <summary>
+    /// 子弹类型 追踪目标
+    /// 瞄准位置
+    /// </summary>
+    public enum MissileType
     {
-        public float Velocity;
-        public float Radius;
-        public float MaxDistance;
-        public float IsAOE;
-        public float AOERadius;
+        Target,
+        Pos,
+    }
+
+    class MissileData : GameObjectComponent 
+    {
+        public MissileType missileType = MissileType.Target;
+        //public float flyTime = 3;
+        public float Velocity = 20;
     }
 }

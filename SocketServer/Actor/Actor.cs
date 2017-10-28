@@ -48,29 +48,16 @@ namespace MyLib
 	{
 		protected List<Component> components = new List<Component> ();
 
-        private ActorSynchronizationContext _mq = new ActorSynchronizationContext();
+        private ActorSynchronizationContext _mq;// = new ActorSynchronizationContext();
 
 	    public virtual ActorSynchronizationContext _messageQueue
 	    {
 	        get { return _mq; }
         }
 
-        /// <summary>
-        /// 需要在RunTask Init 调用之前初始化MessageQueue
-        /// 一般 new Actor()
-        /// 立即设置 MessageQueue
-        /// 
-        /// 要在ActorManager.AddActor 之前
-        /// </summary>
-        /// <param name="context"></param>
-	    public void SetMsgQueue(ActorSynchronizationContext context)
-	    {
-	        //this._mq = context;
-	    }
-
 		public int Id = -1;
 
-		public BufferBlock<ActorMsg> mailbox = new BufferBlock<ActorMsg> ();
+        public BufferBlock<ActorMsg> mailbox;// = new BufferBlock<ActorMsg> ();
 		protected bool isStop = false;
 
 	    public bool IsStop()
@@ -175,12 +162,26 @@ namespace MyLib
 			SynchronizationContext.SetSynchronizationContext (surroundContext);
 		}
 
+        /// <summary>
+        /// 只初始化消息队列
+        /// </summary>
+        protected void InitMessageQueue()
+        {
+            _mq = new ActorSynchronizationContext();
+        }
 		/// <summary>
 		/// 启动Dispatch接受消息队列消息
 		/// 使用Actor自己的任务调度器
+        /// 
+        /// Actor 添加进ActorManager时候 调用
+        /// GameObjectActor 加入Room时候调用
+        /// 
+        /// TODO:彻底废弃 mailbox
 		/// </summary>
 		public virtual void Init ()
 		{
+            InitMessageQueue();
+            mailbox = new BufferBlock<ActorMsg>();
 			RunTask (Dispatch);
 		}
 

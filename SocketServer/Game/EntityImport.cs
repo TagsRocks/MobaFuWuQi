@@ -46,7 +46,10 @@ namespace MyLib
 
             foreach(var f in fakeGo)
             {
-                f.go = goDict[f.InstId];
+                if (goDict.ContainsKey(f.InstId))
+                {
+                    f.go = goDict[f.InstId];
+                }
             }
 
             return g;
@@ -175,7 +178,13 @@ namespace MyLib
                     var fi = comTp.GetField(k);
                     if (fi != null)
                     {
-                        fi.SetValue(com, retv);
+                        try
+                        {
+                            fi.SetValue(com, retv);
+                        }catch(Exception exp)
+                        {
+                            LogHelper.LogError("Import", "ErrorSetType:"+com+":"+retv+":"+fi+":"+exp);
+                        }
                     }
                 }
             }

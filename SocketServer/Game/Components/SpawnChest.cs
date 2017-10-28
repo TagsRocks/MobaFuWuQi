@@ -29,7 +29,10 @@ namespace MyLib
                 {
                     act = act.parent;
                 }
-                roomAct = act.room;
+                if (act != null)
+                {
+                    roomAct = act.room;
+                }
             }
             return roomAct;
         }

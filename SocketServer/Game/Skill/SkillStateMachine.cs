@@ -33,6 +33,8 @@ namespace MyLib
             attacker = GetRoom().entityCom.GetEntity(action.Who);
             target = GetRoom().entityCom.GetEntity(action.Target);
             config = gameObject.GetComponent<SkillDataConfig>();
+            OnEvent(SkillEvent.EventStart);
+
             GetRoom().RunTask(WaitDelete);
         }
 
@@ -48,14 +50,11 @@ namespace MyLib
 
         public void OnEvent(SkillEvent evt)
         {
-            if(evt == SkillEvent.EventTrigger)
+            foreach (var item in config.eventList)
             {
-                foreach(var item in config.eventList)
+                if (item.evt == evt)
                 {
-                    if(item.evt == SkillEvent.EventTrigger)
-                    {
-                        InitLayout(item);
-                    }
+                    InitLayout(item);
                 }
             }
         }
@@ -84,13 +83,13 @@ namespace MyLib
         /// <param name="target"></param>
         public void DoDamage(GameObjectActor target)
         {
-            var dmg = attacker.GetComponent<CreepAI>().unitData.Damage;
+            var dmg = attacker.GetComponent<AINPC>().unitData.Damage;
             target.GetComponent<NpcAttribute>().DoHurt(dmg);
 
             var gcPlayerCmd = GCPlayerCmd.CreateBuilder();
             var dmgInfo = DamageInfo.CreateBuilder();
-            dmgInfo.Attacker = attacker.GetComponent<CreepAI>().mySelf.entityInfo.Id;
-            dmgInfo.Enemy = target.GetComponent<CreepAI>().mySelf.entityInfo.Id;
+            dmgInfo.Attacker = attacker.GetComponent<AINPC>().mySelf.entityInfo.Id;
+            dmgInfo.Enemy = target.GetComponent<AINPC>().mySelf.entityInfo.Id;
             dmgInfo.IsCritical = false;
             dmgInfo.IsStaticShoot = false;
             gcPlayerCmd.DamageInfo = dmgInfo.Build();

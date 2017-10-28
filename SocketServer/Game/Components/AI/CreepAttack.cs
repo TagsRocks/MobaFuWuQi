@@ -15,15 +15,16 @@ namespace MyLib
     {
         private CreepAI creepAI;
         private MoveController moveController;
+        private EntityProxy target;
         public override void EnterState()
         {
             base.EnterState();
             creepAI = aiCharacter.gameObject.GetComponent<CreepAI>();
             moveController = aiCharacter.gameObject.GetComponent<MoveController>();
+            target = aiCharacter.blackboard[AIParams.Target].entityProxy;
         }
         public override async Task RunLogic()
         {
-            var target = creepAI.target;
             var otherAttr = target.actor.GetComponent<NpcAttribute>();
             while (inState && !otherAttr.IsDead())
             {
@@ -64,7 +65,7 @@ namespace MyLib
             skillAct.Y = pos.y;
             skillAct.Z = pos.z;
 
-            var fp = creepAI.target.actor.GetFloatPos();
+            var fp = target.actor.GetFloatPos();
             var myPos = creepAI.mySelf.GetFloatPos();
             var dir = fp - myPos;
             dir.Y = 0;
@@ -73,7 +74,7 @@ namespace MyLib
 
             skillAct.Dir = myself.entityInfo.Dir;
 
-            skillAct.Target = creepAI.target.actor.entityInfo.Id;
+            skillAct.Target = target.actor.entityInfo.Id;
 
             var actConfig = creepAI.npcConfig.GetAction(ActionType.Attack);
             var tt = actConfig.totalTime;
@@ -115,17 +116,17 @@ namespace MyLib
         /// <returns></returns>
         private async Task DoMove()
         {
-            var pos = creepAI.target.actor.GetIntPos();
+            var pos = target.actor.GetIntPos();
             moveController.MoveTo(pos);
-            var otherAttr = creepAI.target.actor.GetComponent<NpcAttribute>();
+            var otherAttr = target.actor.GetComponent<NpcAttribute>();
             //检测和目标的距离
             while (inState && !otherAttr.IsDead())
             {
-                var tarNewPos = creepAI.target.actor.GetIntPos();
+                var tarNewPos = target.actor.GetIntPos();
                 moveController.MoveTo(tarNewPos);
 
                 var mePos = creepAI.mySelf.GetVec2Pos();
-                var tarPos = creepAI.target.actor.GetVec2Pos();
+                var tarPos = target.actor.GetVec2Pos();
                 var dist = (mePos - tarPos).LengthSquared();
                 //寻路追踪目标 需要时刻调整路径
                 if(dist < creepAI.GetAttackRadiusSquare() * 0.9f)

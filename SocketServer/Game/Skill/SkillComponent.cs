@@ -8,11 +8,9 @@ namespace MyLib
 {
     class SkillComponent : GameObjectComponent
     {
-        private CreepAI ai;
         public override void Init()
         {
             base.Init();
-            ai = gameObject.GetComponent<CreepAI>();
         }
 
         public SkillStateMachine CreateSkillStateMachine(SkillAction skillAct, string machineConfig)

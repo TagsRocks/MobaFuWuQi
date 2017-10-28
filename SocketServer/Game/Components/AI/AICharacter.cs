@@ -14,12 +14,14 @@ namespace MyLib
         }
         public AIEventType type;
         public int intVal;
+        public EntityProxy entityProxy;
         
     }
 
     public enum AIParams
     {
         CurrentPoint,
+        Target,
     }
     /// <summary>
     /// AI状态机 Lomotion状态

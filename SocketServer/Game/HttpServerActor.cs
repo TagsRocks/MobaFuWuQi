@@ -18,6 +18,7 @@ namespace SocketServer.Game
         private HttpListener httpListener;
         public override void Init()
         {
+            InitMessageQueue();
             RunTask(RunHttp);
         }
 

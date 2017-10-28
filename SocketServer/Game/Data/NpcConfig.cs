@@ -27,6 +27,10 @@ namespace MyLib
         public int npcTemplateId;
         public List<ActionConfig> actionList;
         public string normalAttack = "monsterSingle";
+        public float eyeSightDistance = 10;
+        public float attackRangeDist = 10;
+        public int attackSkill = 1;
+        public float moveSpeed = 5;
 
         public ActionConfig GetAction(ActionType tp)
         {

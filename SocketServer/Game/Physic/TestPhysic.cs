@@ -14,6 +14,7 @@ namespace MyLib
     {
         public override void Init()
         {
+            InitMessageQueue();
             this.RunTask(DrawWorld);
             this.RunTask(UpdateWorld);
         }

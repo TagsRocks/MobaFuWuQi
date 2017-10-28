@@ -97,13 +97,20 @@
     <Compile Include="Game\AABBTreePhysic\DynamicTree.cs" />
     <Compile Include="Game\AABBTreePhysic\PhysicManager.cs" />
     <Compile Include="Game\AABBTreePhysic\Settings.cs" />
-    <Compile Include="Game\Bullet.cs" />
+    <Compile Include="Game\Components\NPC\AINPC.cs" />
+    <Compile Include="Game\Components\NPC\MoveController.cs" />
+    <Compile Include="Game\Skill\Bullet.cs" />
     <Compile Include="Game\Chat\ChatActor.cs" />
     <Compile Include="Game\Components\AI\CreepDead.cs" />
+    <Compile Include="Game\Components\NPC\TowerAI.cs" />
+    <Compile Include="Game\Components\AI\TowerAttack.cs" />
+    <Compile Include="Game\Components\AI\TowerDead.cs" />
+    <Compile Include="Game\Components\AI\TowerIdle.cs" />
+    <Compile Include="Game\Components\Moba\LevelConfigInit.cs" />
     <Compile Include="Game\Components\NPC\CreepAI.cs" />
     <Compile Include="Game\Components\DamageZone.cs" />
     <Compile Include="Game\Components\FoodZone.cs" />
-    <Compile Include="Game\Components\iTweenPath.cs" />
+    <Compile Include="Game\Components\Moba\iTweenPath.cs" />
     <Compile Include="Game\Components\JobZone.cs" />
     <Compile Include="Game\Components\MissileData.cs" />
     <Compile Include="Game\Components\NPC\NpcAttribute.cs" />
@@ -111,7 +118,8 @@
     <Compile Include="Game\Components\PhysicWorldComponent.cs" />
     <Compile Include="Game\Components\SpawnFood.cs" />
     <Compile Include="Game\Components\SuperShootZone.cs" />
-    <Compile Include="Game\Components\WayPointSystem.cs" />
+    <Compile Include="Game\Components\Moba\TowerPoint.cs" />
+    <Compile Include="Game\Components\Moba\WayPointSystem.cs" />
     <Compile Include="Game\Data\GameConst.cs" />
     <Compile Include="Game\Data\GMDataBase.cs" />
     <Compile Include="Game\Data\ItemData.cs" />
@@ -171,6 +179,7 @@
     <Compile Include="Game\Skill\SkillDataConfig.cs" />
     <Compile Include="Game\Skill\SkillLogicComponent.cs" />
     <Compile Include="Game\Skill\SkillStateMachine.cs" />
+    <Compile Include="Game\Skill\UnitSpawner.cs" />
     <Compile Include="Game\Utility\MailSender.cs" />
     <Compile Include="Game\MyVec3.cs" />
     <Compile Include="Game\MonitorActor.cs" />
@@ -225,6 +234,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <PropertyGroup>
-    <PostBuildEvent>XCOPY "$(SolutionDir)SocketServer\ConfigData" "$(TargetDir)\ConfigData\" /E /Y</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>

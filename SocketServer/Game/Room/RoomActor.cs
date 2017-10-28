@@ -15,6 +15,7 @@ namespace MyLib
 		TeamManageCom teamCom;
 		private bool hasMaster = false;
 	    private bool IsNewUserRoom = false;
+        private int entityId = 0;
 
 
 	    public bool IsNewUser()
@@ -68,6 +69,7 @@ namespace MyLib
 
 		public override void Init ()
 		{
+            InitMessageQueue();
 			RunTask (UpdateWorld);
 		}
 
@@ -333,7 +335,9 @@ namespace MyLib
 	        var entity = new EntityActor();
 	        entity.room = this;
             //TODO: Entity Actor 不需要添加进入全局的ActorManager中
-	        ActorManager.Instance.AddActor(entity);
+            //本地局部管理
+            entity.Id = ++entityId;
+            entity.Init();
 	        entity.InitInfo(info);
 	        AddEntity(entity, entity.entityInfo);
             entity.Start();
@@ -341,7 +345,7 @@ namespace MyLib
         }
 
 
-	    public void AddEntity (EntityActor actor, EntityInfo info)
+	    private void AddEntity (EntityActor actor, EntityInfo info)
 		{
 			entityCom.Add (actor, info);
 		}

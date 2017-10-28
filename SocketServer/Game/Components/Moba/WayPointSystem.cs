@@ -14,12 +14,11 @@ namespace MyLib
         public int teamId = 0;
         private GridManager gridManager;
 
+        //TODO:Grid Physic 都需要放到其它中初始化
         public override void Init()
         {
             base.Init();
-            GetRoom().AddComponent<PhysicManager>();
-            gridManager = GetRoom().AddComponent<GridManager>();
-            gridManager.InitMap();
+            gridManager = GetRoom().GetComponent<GridManager>();
 
             var rm = GetRoom();
             rm.RunTask(GenCreep);
@@ -27,6 +26,10 @@ namespace MyLib
         //通知三条路径各自生成Creep
         private async Task GenCreep()
         {
+            if(teamId == 0)
+            {
+                return;
+            }
             var children = gameObject.GetChildren();
 
             foreach(var c in children)

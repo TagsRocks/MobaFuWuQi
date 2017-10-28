@@ -10,7 +10,7 @@ namespace MyLib
     {
         public override void Init()
         {
-            base.Init();
+            InitMessageQueue();
             RunTask(MonitorServer);
         }
 

@@ -32,13 +32,24 @@ namespace MyLib
         private List<GameObjectActor> child = new List<GameObjectActor>();
         public string name;
         public GameObjectActor parent;
+        /// <summary>
+        /// 世界绝对坐标
+        /// </summary>
         public MyVec3 pos;
         public MyVec3 scale;
+        public int Dir = 0;//子弹的朝向
 
         public List<GameObjectActor> GetChildren()
         {
             return child;
-        } 
+        }
+        /// <summary>
+        /// GameObject不需要Dispatch
+        /// 拒绝调用父类方法
+        /// </summary>
+        public override void Init()
+        {
+        }
 
         /// <summary>
         /// 创建父子关系 
@@ -47,11 +58,18 @@ namespace MyLib
         /// <param name="c"></param>
         public void AddChild(GameObjectActor c)
         {
-            c.parent = this;
-            child.Add(c);
-            if (IsStart)
+            if (c.parent != null)
             {
-                c.Start();
+                LogHelper.LogError("GameObject", "ReAddError:"+c.name+":"+c.parent.name+":"+this.name);
+            }
+            else
+            {
+                c.parent = this;
+                child.Add(c);
+                if (IsStart)
+                {
+                    c.Start();
+                }
             }
         }
         public void RemoveChild(GameObjectActor c)
@@ -100,8 +118,8 @@ namespace MyLib
                     parent.RemoveChild(this);
                 }
             }
-
-            ActorManager.Instance.RemoveActor(this.Id);
+            //局部没有添加进入全局管理
+            //ActorManager.Instance.RemoveActor(this.Id);
             foreach (var component in components)
             {
                 component.Destroy();

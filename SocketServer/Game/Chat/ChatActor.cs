@@ -26,7 +26,7 @@ namespace MyLib
 
         public override void Init()
         {
-
+            InitMessageQueue();
         }
 
         public async Task AddChat(string who, string content)

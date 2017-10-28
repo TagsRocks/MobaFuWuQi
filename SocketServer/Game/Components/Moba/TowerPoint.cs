@@ -6,24 +6,22 @@ using System.Threading.Tasks;
 
 namespace MyLib
 {
-    public class iTweenPath : GameObjectComponent
+    class TowerPoint : GameObjectComponent
     {
-        public List<MyVec3> nodes;
-        private int spawnId;
+        public int spawnId = 0;
+        public int towerId = 61;
+        public int teamId = 0;
 
         public override void Init()
         {
             base.Init();
-            spawnId = System.Convert.ToInt32(gameObject.name.Replace("Path", ""));
+            GenTower();
         }
-
-        public void AddSoldier(int soldierId, int teamId)
+        private void GenTower()
         {
-            var startPos = nodes[0];
-
-            LogHelper.Log("iTweenPath", "AddSoldier:" + startPos);
-            var entityInfo = EntityInfo.CreateBuilder();
-            entityInfo.UnitId = soldierId;
+            var startPos = gameObject.pos;
+             var entityInfo = EntityInfo.CreateBuilder();
+            entityInfo.UnitId = towerId;
             entityInfo.ItemNum = 1;
             entityInfo.X = startPos.x;
             //高度没有意义应该使用实际GridManager中的地面高度
@@ -36,9 +34,8 @@ namespace MyLib
             var ety = GetRoom().AddEntityInfo(info);
             if (ety != null)
             {
-                var creepAI = ety.AddComponent<CreepAI>();
-                creepAI.path = this;
-                creepAI.RunAI();
+                var tai = ety.AddComponent<TowerAI>();
+                tai.RunAI();
             }
         }
     }
