@@ -94,7 +94,7 @@ namespace MyLib
 			    var ret = true;
 			    if (rmActor.GetState() == RoomActor.RoomState.InGame)
 			    {
-			        ret = await p.CheckLive();
+			       // ret = await p.CheckLive();
 			    }
 
 			    if (ret)

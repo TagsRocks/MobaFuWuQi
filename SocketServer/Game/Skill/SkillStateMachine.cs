@@ -83,6 +83,10 @@ namespace MyLib
         /// <param name="target"></param>
         public void DoDamage(GameObjectActor target)
         {
+            if(attacker == null)
+            {
+                return;
+            }
             var dmg = attacker.GetComponent<AINPC>().unitData.Damage;
             target.GetComponent<NpcAttribute>().DoHurt(dmg);
 

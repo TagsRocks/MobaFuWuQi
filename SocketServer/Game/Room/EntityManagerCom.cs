@@ -132,10 +132,16 @@ namespace MyLib
 			foreach(var e in earr){
 				//var e = entities [i];
 				var info = e.entityInfo;
-				e.OnlyRemoveSelf ();
-				Remove (e, info);
+				//Remove (e, info);
+                RemoveWithOutEntities(e, info);
 			}
+            entities.Clear();
 		}
+        private void RemoveWithOutEntities(EntityActor e, EntityInfo info)
+        {
+			removeEntities.Add (info);
+            allEntities.Remove(e.Id);
+        }
 	}
 }
 

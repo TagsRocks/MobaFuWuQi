@@ -236,6 +236,9 @@ namespace MyLib
 		/// public 的Async方法需要 和Actor自身同步 
 		/// delta 数据压缩
 		/// 	repeat的Delta数据压缩
+        /// 	
+        /// c++ 中通过宏定义
+        /// 这里可以通过反射机制实现？
 		/// </summary>
 		public async Task<AvatarInfo.Builder> GetAvatarInfoDiff ()
 		{
@@ -340,6 +343,13 @@ namespace MyLib
 
 		        lastAvatarInfo.ContinueKilled = avatarInfo.ContinueKilled;
 		    }
+
+            if(avatarInfo.PlayerModelInGame != lastAvatarInfo.PlayerModelInGame)
+            {
+                na1.PlayerModelInGame = avatarInfo.PlayerModelInGame;
+                na1.Changed = true;
+                lastAvatarInfo.PlayerModelInGame = avatarInfo.PlayerModelInGame;
+            }
 			return na1;
 		}
 
@@ -556,6 +566,10 @@ namespace MyLib
 	        {
 	            avatarInfo.TowerDir = cmd.AvatarInfo.TowerDir;
 	        }
+            if(cmd.AvatarInfo.HasPlayerModelInGame)
+            {
+                avatarInfo.PlayerModelInGame = cmd.AvatarInfo.PlayerModelInGame;
+            }
 	    }
 
 	    private double GetTimeNow()
@@ -898,10 +912,19 @@ namespace MyLib
 					{
 						LogHelper.Log("KCP", "KCPLost");
 						agent.KCPLost();
-					}
+					}else if(cmds[0] == "ChooseHero")
+                    {
+                        ChooseHero(cmd);
+                    }
 				}
 			}
 		}
+
+        private void ChooseHero(CGPlayerCmd cmd)
+        {
+            UpdateData(cmd);
+            room.ChooseHero();
+        }
 
 	    private async Task MatchRoom(ActorMsg msg, CGPlayerCmd cmd, bool isNew)
 	    {
@@ -930,12 +953,14 @@ namespace MyLib
 	        await tc;
 	        avatarInfo.TeamColor = tc.Result;
 
+            /*
 	        if (room.GetState() == RoomActor.RoomState.InGame)
 	        {
 	            var gc2 = GCPlayerCmd.CreateBuilder();
 	            gc2.Result = "StartGame";
 	            agent.SendPacket(gc2, 0, 0);
 	        }
+            */
 	        Login.StartMatch(deviceInfo, (agent.ep as IPEndPoint).Address.ToString());
 	    }
 	}

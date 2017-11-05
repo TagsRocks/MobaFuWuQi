@@ -27,6 +27,7 @@ namespace MyLib
             Ready,
 			InGame,
 			GameOver,
+            SelectHero,
 		}
 
 		private RoomState state = RoomState.Ready;
@@ -168,6 +169,21 @@ namespace MyLib
                 await Task.Delay(1000);
             }
 
+            //倒计时等待玩家选择英雄
+            //倒计时结束 根据玩家选择英雄的状态， 没有选择则随机一个英雄给玩家
+            if(state == RoomState.SelectHero)
+            {
+                var gc2 = GCPlayerCmd.CreateBuilder();
+                gc2.Result = "SelectHero";
+                playerCom.BroadcastToAll(gc2);
+                playerCom.RefreshLiveTime();
+            }
+            //等待玩家选择英雄
+            while(state == RoomState.SelectHero)
+            {
+                await Task.Delay(1000);
+            }
+
 		    if (state == RoomState.InGame)
 		    {
                 score.Init();
@@ -248,18 +264,29 @@ namespace MyLib
 			if ((state == RoomState.InGame || state == RoomState.Ready) && num < maxPlayerNum) {
 				var ainfo = await pl.GetAvatarInfo ();
 				AddPlayer (pl, ainfo);
-
-			    var num1 = playerCom.GetPlayerNum();
-
+			    //var num1 = playerCom.GetPlayerNum();
+                //多人准备进入选择人物界面
                 if (state == RoomState.Ready)
      		    {
-                    state = RoomState.InGame;
+                    state = RoomState.SelectHero;
                 }
 				return true;
 			}
 			return false;
 		}
 
+        /// <summary>
+        /// 确定选择英雄 就进入游戏
+        /// </summary>
+        /// <returns></returns>
+        public async Task ChooseHero()
+        {
+            await _messageQueue;
+            if(state == RoomState.SelectHero)
+            {
+                state = RoomState.InGame;
+            }
+        }
 		public async Task GameOver ()
 		{
 			await this._messageQueue;

@@ -99,6 +99,8 @@
     <Compile Include="Game\AABBTreePhysic\Settings.cs" />
     <Compile Include="Game\Components\NPC\AINPC.cs" />
     <Compile Include="Game\Components\NPC\MoveController.cs" />
+    <Compile Include="Game\Room\ActorInRoom.cs" />
+    <Compile Include="Game\Room\PlayerInRoom.cs" />
     <Compile Include="Game\Skill\Bullet.cs" />
     <Compile Include="Game\Chat\ChatActor.cs" />
     <Compile Include="Game\Components\AI\CreepDead.cs" />

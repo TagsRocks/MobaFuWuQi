@@ -127,11 +127,6 @@ namespace MyLib
 		    }
 		}
 
-		public void OnlyRemoveSelf() {
-			ActorManager.Instance.RemoveActor (Id);
-		}
-
-
         /*
 		public async Task UpdateData(EntityInfo info) {
 			await this._messageQueue;
