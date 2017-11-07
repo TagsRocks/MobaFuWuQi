@@ -32,7 +32,7 @@ namespace MyLib
                 var con = f.ReadToEnd();
                 var jobj = JSON.Parse(con).AsObject;
                 entityConfig = EntityImport.InitGameObject(jobj);
-                entityConfig.room = this.actor as RoomActor;
+                entityConfig.SetRoom( this.actor as RoomActor);
                 entityConfig.Start();
             }
         }

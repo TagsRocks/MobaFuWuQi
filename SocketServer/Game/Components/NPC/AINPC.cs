@@ -31,6 +31,10 @@ namespace MyLib
 
         }
 
+        public virtual void RunAI()
+        {
+            aiCharacter.ChangeState(AIStateEnum.IDLE);
+        }
 
         public override void Destroy()
         {

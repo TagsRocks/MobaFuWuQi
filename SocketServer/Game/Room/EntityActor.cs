@@ -11,7 +11,7 @@ namespace MyLib
     /// 但是没有调用Start方法
     /// 组件的初始化需要在Add的时候进行
     /// </summary>
-	public class EntityActor : GameObjectActor 
+	public class EntityActor :  ActorInRoom 
 	{
         /// <summary>
         /// 上一帧已经同步 广播出去的数据状态
@@ -34,17 +34,29 @@ namespace MyLib
 			return na1;
 		}
 
-	    public override string GetAttr()
+        public override void InitAfterSetRoom()
+        {
+            throw new NotImplementedException();
+        }
+        public override void HandleCmd(ActorMsg msg)
+        {
+            throw new NotImplementedException();
+        }
+        public override void RunAI()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string GetAttr()
 	    {
-	        if (room != null)
+	        if (GetRoom() != null)
 	        {
-	            return "room: "+room.Id;
+	            return "room: "+GetRoom().Id;
 	        }
 	        return "";
 	    }
 
-	    public async Task<EntityInfo> GetEntityInfoDiff() {
-			await this._messageQueue;
+	    public EntityInfo GetEntityInfoDiff() {
 			if (lastEntityInfo == null) {
 				var na = EntityInfo.CreateBuilder (entityInfo);
 				lastEntityInfo = na.Build();
@@ -114,9 +126,9 @@ namespace MyLib
 	    public Action removeCallback = null;
 		public void RemoveSelf() {
             //LogHelper.Log("Room", "RemoveEntity: "+this.Id);
-		    if (room != null)
+		    if (GetRoom() != null)
 		    {
-		        room.RemoveEntity(this, entityInfo);
+		        GetRoom().RemoveEntity(this, entityInfo);
 		    }
             //不属于全局管理
             //ActorManager.Instance.RemoveActor(Id);

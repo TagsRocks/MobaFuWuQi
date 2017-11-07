@@ -11,9 +11,11 @@ namespace MyLib
         public override void Init()
         {
             base.Init();
+            /*
             GetRoom().AddComponent<PhysicManager>();
             var gridManager = GetRoom().AddComponent<GridManager>();
             gridManager.InitMap();
+            */
         }
     }
 }

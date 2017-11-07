@@ -39,7 +39,7 @@ namespace MyLib
                     var gc2 = GCPlayerCmd.CreateBuilder();
                     gc2.Result = "GameOver";
                     await room.GameOver();
-                    await room.AddCmd(gc2);
+                    room.AddCmd(gc2);
                 }
                 if (room.GetState() == RoomActor.RoomState.GameOver)
                 {

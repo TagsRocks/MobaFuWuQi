@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace MyLib
 {
-    class ActorInRoom : GameObjectActor
+    public abstract class ActorInRoom : GameObjectActor
     {
+        public abstract void InitAfterSetRoom();
+        public abstract void HandleCmd(ActorMsg msg);
+        public abstract void RunAI();
     }
 }

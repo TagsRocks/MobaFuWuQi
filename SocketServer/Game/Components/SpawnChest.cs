@@ -24,15 +24,7 @@ namespace MyLib
         {
             if (roomAct == null)
             {
-                var act = this.actor as GameObjectActor;
-                while (act != null && act.room == null)
-                {
-                    act = act.parent;
-                }
-                if (act != null)
-                {
-                    roomAct = act.room;
-                }
+                roomAct = this.gameObject.GetRoom();
             }
             return roomAct;
         }

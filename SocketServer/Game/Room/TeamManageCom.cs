@@ -9,9 +9,7 @@ namespace MyLib
 		public TeamManageCom ()
 		{
 		}
-		public async Task<int> GetTeamColor() {
-			await this.actor._messageQueue;
-			//var tc = teamColor % 2;
+		public int GetTeamColor() {
 		    var tc = teamColor;
 			teamColor++;
 			return tc;

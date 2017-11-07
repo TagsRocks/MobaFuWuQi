@@ -71,18 +71,25 @@ namespace MyLib
 		public override void Init ()
 		{
             InitMessageQueue();
+            InitPhysic();
 			RunTask (UpdateWorld);
 		}
 
-		public async Task SetReady (PlayerActor pl)
+        private void InitPhysic()
+        {
+            AddComponent<PhysicManager>();
+            var gridManager = AddComponent<GridManager>();
+            gridManager.InitMap();
+        }
+
+		public void SetReady (PlayerInRoom pl)
 		{
-			await this._messageQueue;
 			playerCom.SetReady (pl);
-            await playerCom.SendAllPlayerTo(pl);
+            playerCom.SendAllPlayerTo(pl);
 		    entityCom.SendAllEtyTo(pl);
 		    var gc = GCPlayerCmd.CreateBuilder();
 		    gc.Result = "AllReady";
-            await pl.SendCmd(gc);
+            pl.SendCmd(gc);
 		}
 
 	    private JSONClass jobj;
@@ -107,12 +114,13 @@ namespace MyLib
                 var con = f.ReadToEnd();
                 jobj = JSON.Parse(con).AsObject;
                 entityConfig = EntityImport.InitGameObject(jobj);
-                entityConfig.room = this;
+                entityConfig.SetRoom(this);
                 entityConfig.Start();
             }
 	    }
 
-		public Task<int> GetTeamColor ()
+        //public Task<int> GetTeamColor ()
+        public int GetTeamColor()
 		{
 			return teamCom.GetTeamColor ();
 		}
@@ -131,33 +139,6 @@ namespace MyLib
 	    };
 	    private int MaxCount = 0;
 	    public double avg = 0;
-        /// <summary>
-        /// 房间物理帧率实时刷新
-        /// </summary>
-        /// <returns></returns>
-	    private async Task UpdatePhysic()
-	    {
-	        var syncTime = 5; //ms 物理模拟
-	        var lastTime = Util.GetTimeNow();
-
-	        while (!isStop)
-	        {
-	            await Task.Delay(syncTime);
-	            var endTime = Util.GetTimeNow();
-	            var diffTime = endTime - lastTime;
-	            sampleNum[MaxCount++] = diffTime;
-	            if (MaxCount >= sampleNum.Length)
-	            {
-	                MaxCount = 0;
-	            }
-	            avg = sampleNum.Sum()/sampleNum.Length;
-
-                //50ms 帧率
-	            var num = (int)( diffTime/0.05f);
-	            await playerCom.UpdatePhysic(num);
-	            lastTime += num*0.05f;
-	        }
-	    }
 
 	    public double SyncPeriod = 0;
 
@@ -211,9 +192,9 @@ namespace MyLib
 			    }
                 beforeCmdList.Clear();
 
-				await playerCom.UpdatePlayer ();
+				playerCom.UpdatePlayer ();
 				Debug.Log ("UpdateEntity");
-				await entityCom.UpdateEntity ();
+				entityCom.UpdateEntity ();
 				Debug.Log ("UpdateFinish");
 			    foreach (var cmd in cmdList)
 			    {
@@ -233,12 +214,15 @@ namespace MyLib
 	    {
 	        await this._messageQueue;
 
+            /*
 			var num = playerCom.GetPlayerNum ();
 			if (state == RoomState.InGame && num < maxPlayerNum) {
-				var ainfo = await pl.GetAvatarInfo ();
-				AddPlayer (pl, ainfo);
+				var ainfo = pl.GetAvatarInfo ();
+				await AddPlayer (pl, ainfo);
 				return true;
 			}
+            */
+
 			return false;
 	    }
 
@@ -253,17 +237,13 @@ namespace MyLib
 		public async Task<bool> AddPlayerNew (PlayerActor pl, int mp, bool newUser)
 		{
 			await this._messageQueue;
-		    /*
-			if (IsNewUserRoom != newUser)
-		    {
-		        return false;
-		    }
-			*/
 
 			var num = playerCom.GetPlayerNum ();
 			if ((state == RoomState.InGame || state == RoomState.Ready) && num < maxPlayerNum) {
-				var ainfo = await pl.GetAvatarInfo ();
-				AddPlayer (pl, ainfo);
+                var ainfo = AvatarInfo.CreateBuilder();
+                ainfo.Id = pl.Id;
+				//var ainfo = await pl.GetAvatarInfo ();
+				await AddPlayer (pl, ainfo.Build());
 			    //var num1 = playerCom.GetPlayerNum();
                 //多人准备进入选择人物界面
                 if (state == RoomState.Ready)
@@ -279,9 +259,8 @@ namespace MyLib
         /// 确定选择英雄 就进入游戏
         /// </summary>
         /// <returns></returns>
-        public async Task ChooseHero()
+        public void ChooseHero()
         {
-            await _messageQueue;
             if(state == RoomState.SelectHero)
             {
                 state = RoomState.InGame;
@@ -293,9 +272,8 @@ namespace MyLib
 
 		    if (state != RoomState.GameOver)
 		    {
-		        await playerCom.UpdateAllPlayersLevel();
+		        playerCom.UpdateAllPlayersLevel();
 		    }
-
             state = RoomState.GameOver;
 		}
 
@@ -305,14 +283,21 @@ namespace MyLib
 		}
 
 
-		private void AddPlayer (PlayerActor player, AvatarInfo ainfo)
+        /// <summary>
+        /// 创建玩家在Room内的状态机 proxy代理
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="ainfo"></param>
+		private async Task AddPlayer (PlayerActor player, AvatarInfo ainfo)
 		{
-			playerCom.AddPlayer (player, ainfo);
-		    //physicWorld.AddPlayer(player);
-			if (!hasMaster) {
+			await playerCom.AddPlayer (player, ainfo);
+            //physicWorld.AddPlayer(player);
+            /*
+            if (!hasMaster) {
 				hasMaster = true;
 				player.SetMaster ();
 			}
+            */
 		}
 
         /// <summary>
@@ -322,7 +307,7 @@ namespace MyLib
         /// <param name="player"></param>
         /// <param name="ainfo"></param>
         /// <returns></returns>
-		public async Task RemovePlayer (PlayerActor player, AvatarInfo ainfo)
+		public async Task RemovePlayer (PlayerInRoom player, AvatarInfo ainfo)
 		{
 			await this._messageQueue;
 			Debug.Log ("RemovePlayer: "+ainfo);
@@ -360,7 +345,7 @@ namespace MyLib
 	        }
 
 	        var entity = new EntityActor();
-	        entity.room = this;
+	        entity.SetRoom(this);
             //TODO: Entity Actor 不需要添加进入全局的ActorManager中
             //本地局部管理
             entity.Id = ++entityId;
@@ -402,9 +387,8 @@ namespace MyLib
 			await _messageQueue;
 			kcpList.Add(cmd);
 		}
-		public async Task AddCmd (GCPlayerCmd.Builder cmd)
+		public void AddCmd (GCPlayerCmd.Builder cmd)
 		{
-			await _messageQueue;
             cmdList.Add(cmd);
 			//playerCom.BroadcastToAll (cmd);
 		}
@@ -438,7 +422,7 @@ namespace MyLib
 	            var pl = playerCom.GetPlayers();
 	            foreach (var p in pl)
 	            {
-	                var ainfo = await p.GetAvatarInfo();
+	                var ainfo = p.GetAvatarInfo();
 	                if (!ainfo.IsRobot)
 	                {
 	                    return true;
@@ -476,8 +460,7 @@ namespace MyLib
 	        var ene = playerCom.GetPlayer(cmd.DamageInfo.Enemy);
 	        if (att != null && ene != null)
 	        {
-	            //var ainfo = await att.GetAvatarInfo();
-	            var einfo = await ene.GetAvatarInfo();
+	            var einfo = ene.GetAvatarInfo();
 	            att.AddScore(einfo.ContinueKilled, cmd.DamageInfo.Enemy);
 	            att.AddKillCount();
                 ene.DecScore();

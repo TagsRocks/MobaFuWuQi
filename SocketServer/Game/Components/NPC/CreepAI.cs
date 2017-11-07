@@ -34,9 +34,9 @@ namespace MyLib
             //当前所在点 路径点
             aiCharacter.blackboard[AIParams.CurrentPoint] = new AIEvent{ intVal = 0 };
         }
-        public void RunAI()
+        public override void RunAI()
         {
-            aiCharacter.ChangeState(AIStateEnum.IDLE);
+            base.RunAI();
             gameObject.RunTask(FindEnemy);
         }
 

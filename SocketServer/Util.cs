@@ -186,6 +186,14 @@ namespace MyLib
         {
             LogHelper.Log("Info", s);
         }
+        public static void Info(string s)
+        {
+            LogHelper.Log("Info", s);
+        }
+        public static void Error(string s)
+        {
+            LogHelper.LogError("Info", s);
+        }
     }
     public class Debug{
 		private static StringBuilder sb = new StringBuilder();

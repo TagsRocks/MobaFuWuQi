@@ -29,7 +29,7 @@ namespace MyLib
 			set { _isClose = value; }
 		}
 
-		public Actor actor;
+		public PlayerActor actor;
 		public WatchDog watchDog;
 
 		public SocketServer server;
@@ -89,8 +89,9 @@ namespace MyLib
 		{
 			if (actor != null)
 			{
-				actor.SendMsg(packet);
+				actor.NetMsg(new ActorMsg() { packet = packet });
 			}
+
 			var proto = packet.protoBody as CGPlayerCmd;
 			var cmd = proto.Cmd;
 			var size = 2 + packet.msglen;
@@ -176,7 +177,8 @@ namespace MyLib
 
 			if (actor != null)
 			{
-				actor.SendMsg(string.Format("close"));
+                //actor.SendMsg(string.Format("close"));
+                actor.NetMsg(new ActorMsg() {msg = "close"});
 			}
 
 			watchDog.Close(id);

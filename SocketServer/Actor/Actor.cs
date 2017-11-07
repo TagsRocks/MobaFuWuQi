@@ -14,6 +14,7 @@ namespace MyLib
 
 	public static class ActorUtil
 	{
+        /*
 		public static void SendMsg (this Actor target, string msg)
 		{
 			var m = new ActorMsg ();
@@ -31,6 +32,7 @@ namespace MyLib
 		{
 			target.mailbox.SendAsync (msg);
 		}
+        */
 	}
 
 	public class ActorMsg
@@ -57,7 +59,7 @@ namespace MyLib
 
 		public int Id = -1;
 
-        public BufferBlock<ActorMsg> mailbox;// = new BufferBlock<ActorMsg> ();
+        //public BufferBlock<ActorMsg> mailbox;// = new BufferBlock<ActorMsg> ();
 		protected bool isStop = false;
 
 	    public bool IsStop()
@@ -108,6 +110,7 @@ namespace MyLib
 		}
 
         /// <summary>
+        /// 同一个组件只能添加一次
         /// 防止多次添加组件
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -126,6 +129,7 @@ namespace MyLib
 			return c;
 		}
 
+        /*
 		/// <summary>
 		/// 执行在自己的任务调度器中 
 		/// </summary>
@@ -139,6 +143,7 @@ namespace MyLib
 			}
 
 		}
+        */
 
 		protected virtual async Task ReceiveMsg (ActorMsg msg)
 		{
@@ -181,8 +186,8 @@ namespace MyLib
 		public virtual void Init ()
 		{
             InitMessageQueue();
-            mailbox = new BufferBlock<ActorMsg>();
-			RunTask (Dispatch);
+            //mailbox = new BufferBlock<ActorMsg>();
+			//RunTask (Dispatch);
 		}
 
         /// <summary>

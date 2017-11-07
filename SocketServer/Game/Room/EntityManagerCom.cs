@@ -17,7 +17,7 @@ namespace MyLib
 		{
 		}
 
-		public void InitEntityDataToPlayer (PlayerActor player)
+		public void InitEntityDataToPlayer (PlayerInRoom player)
 		{
 			var earr = entities;
 			foreach (var p in earr ) {
@@ -29,7 +29,7 @@ namespace MyLib
 			}
 		}
 
-	    public void SendAllEtyTo(PlayerActor pl)
+	    public void SendAllEtyTo(PlayerInRoom pl)
 	    {
 	        InitEntityDataToPlayer(pl);
 	    }
@@ -64,7 +64,7 @@ namespace MyLib
 	        }
 	    }
 
-		public async Task UpdateEntity ()
+		public void UpdateEntity ()
 		{
 			foreach (var p in newEntities) {
 				var gc = GCPlayerCmd.CreateBuilder ();
@@ -82,9 +82,8 @@ namespace MyLib
 			}
 			removeEntities.Clear ();
 
-			var earr = entities;
-			foreach (var p in earr ) {
-				var diff = await p.GetEntityInfoDiff ();
+			foreach (var p in entities ) {
+				var diff = p.GetEntityInfoDiff ();
 				if (diff.Changed) {
 					var gc = GCPlayerCmd.CreateBuilder ();
 					gc.Result = "UpdateEntity";

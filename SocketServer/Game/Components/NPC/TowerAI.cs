@@ -17,9 +17,9 @@ namespace MyLib
             aiCharacter.AddState(new TowerAttack());
             aiCharacter.AddState(new TowerDead());
         }
-        public void RunAI()
+        public override void RunAI()
         {
-            aiCharacter.ChangeState(AIStateEnum.IDLE);
+            base.RunAI();
         }
 
     }

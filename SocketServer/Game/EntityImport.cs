@@ -31,7 +31,7 @@ namespace MyLib
                 goDict.Add(g.InstId, g);
             }
             //Debug.Log("InitGameObject: "+g.name);
-            LogHelper.Log("EntityImport", "InitGameObject:" + g.name);
+            //LogHelper.Log("EntityImport", "InitGameObject:" + g.name);
             //避免启动Task 应该使用 Room的Task来执行
             //ActorManager.Instance.AddActor(g);
             foreach (JSONNode com in jobj["Component"].AsArray)
@@ -61,14 +61,14 @@ namespace MyLib
             var tp = Type.GetType("MyLib." + t);
             if (tp != null)
             {
-                LogHelper.Log("EntityImport", "InitComponent: "+g.name+" tp "+tp);
+                //LogHelper.Log("EntityImport", "InitComponent: "+g.name+" tp "+tp);
                 var ac = g.GetType().GetMethod("AddComponent");
                 var ge = ac.MakeGenericMethod(tp);
                 var com = ge.Invoke(g, null);
                 ReadAttr(com, jobj); 
             }else
             {
-                LogHelper.Log("EntityImport", "Not Find Component:"+g.name+":"+t);
+                //LogHelper.Log("EntityImport", "Not Find Component:"+g.name+":"+t);
             }
         }
 
@@ -79,7 +79,7 @@ namespace MyLib
             object ret = null;
             if (tp != null)
             {
-                LogHelper.Log("EntityImport", "InitStruct: " + " tp " + tp);
+                //LogHelper.Log("EntityImport", "InitStruct: " + " tp " + tp);
                 var com = Activator.CreateInstance(tp);
                 ReadAttr(com, jobj);
                 ret = com;
@@ -183,7 +183,7 @@ namespace MyLib
                             fi.SetValue(com, retv);
                         }catch(Exception exp)
                         {
-                            LogHelper.LogError("Import", "ErrorSetType:"+com+":"+retv+":"+fi+":"+exp);
+                            //LogHelper.LogError("Import", "ErrorSetType:"+com+":"+retv+":"+fi+":"+exp);
                         }
                     }
                 }

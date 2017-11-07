@@ -28,7 +28,11 @@ namespace MyLib
 
         public int InstId;
 
-        public RoomActor room;
+        private RoomActor room;
+        public void SetRoom(RoomActor r)
+        {
+            room = r;
+        }
         private List<GameObjectActor> child = new List<GameObjectActor>();
         public string name;
         public GameObjectActor parent;
@@ -87,12 +91,15 @@ namespace MyLib
             if (!IsStart)
             {
                 IsStart = true;
-                foreach (var component in components)
+                //避免在Init过程中添加Component造成的循环遍历问题
+                for(var i = 0; i < components.Count; i++)
                 {
+                    var component = components[i];
                     component.Init();
                 }
-                foreach (var gameObjectActor in child)
+                for(var i = 0; i < child.Count; i++)
                 {
+                    var gameObjectActor = child[i];
                     gameObjectActor.Start();
                 }
             }
@@ -145,7 +152,8 @@ namespace MyLib
         {
             get
             {
-                return GetRoom()._messageQueue;
+                //return GetRoom()._messageQueue;
+                return null;
             }
         }
 
