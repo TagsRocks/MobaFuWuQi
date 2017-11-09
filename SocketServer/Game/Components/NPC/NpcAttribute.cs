@@ -19,20 +19,25 @@ namespace MyLib
             return state == State.Dead;
         }
 
-        public EntityActor mySelf;
-        private UnitData unitData;
+        public ActorInRoom mySelf;
+        private UnitData unitData
+        {
+            get
+            {
+                return gameObject.GetComponent<AINPC>().unitData;
+            }
+        }
         public override void Init()
         {
             base.Init();
-            mySelf = gameObject as EntityActor;
-            unitData = Util.GetUnitData(false, mySelf.entityInfo.UnitId, 0);
+            mySelf = gameObject as ActorInRoom;
         }
 
         public void DoHurt(int damage)
         {
-            mySelf.entityInfo.HP -= damage;
-            mySelf.entityInfo.HP = MathUtil.Clamp(mySelf.entityInfo.HP, 0, unitData.HP);
-            if(mySelf.entityInfo.HP == 0)
+            mySelf.DuckInfo.HP -= damage;
+            mySelf.DuckInfo.HP = MathUtil.Clamp(mySelf.DuckInfo.HP, 0, unitData.HP);
+            if(mySelf.DuckInfo.HP == 0)
             {
                 state = State.Dead;
                 gameObject.GetComponent<AICharacter>().ChangeState(AIStateEnum.DEAD);

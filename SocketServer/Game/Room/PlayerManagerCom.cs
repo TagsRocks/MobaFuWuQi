@@ -11,6 +11,7 @@ namespace MyLib
 		List<AvatarInfo> newPlayer = new List<AvatarInfo> ();
 		List<AvatarInfo> removePlayer = new List<AvatarInfo> ();
 		Dictionary<int, bool> ready = new Dictionary<int, bool> ();
+        Dictionary<int, PlayerInRoom> playerDict = new Dictionary<int, PlayerInRoom>();
 
 		public PlayerManagerCom ()
 		{
@@ -243,6 +244,8 @@ namespace MyLib
                 await pInRoom.InitProxy();
                 pInRoom.Start();
                 pInRoom.RunAI();
+
+                playerDict[pInRoom.IDInRoom] = pInRoom;
                 players.Add(pInRoom);
                 newPlayer.Add(ainfo);
             }catch(Exception exp)
@@ -255,6 +258,7 @@ namespace MyLib
 		{
 			players.Remove (player);
 			removePlayer.Add (ainfo);
+            playerDict.Remove(player.IDInRoom);
 		}
 
 	  

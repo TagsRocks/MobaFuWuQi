@@ -19,8 +19,9 @@ namespace MyLib
         }
         private void GenTower()
         {
+            return;
             var startPos = gameObject.pos;
-             var entityInfo = EntityInfo.CreateBuilder();
+            var entityInfo = EntityInfo.CreateBuilder();
             entityInfo.UnitId = towerId;
             entityInfo.ItemNum = 1;
             entityInfo.X = startPos.x;
@@ -32,11 +33,8 @@ namespace MyLib
             entityInfo.EType = EntityType.CHEST;
             var info = entityInfo.Build();
             var ety = GetRoom().AddEntityInfo(info);
-            if (ety != null)
-            {
-                var tai = ety.AddComponent<TowerAI>();
-                tai.RunAI();
-            }
+            var tai = ety.AddComponent<TowerAI>();
+            tai.RunAI();
         }
     }
 }

@@ -30,8 +30,8 @@ namespace MyLib
         public override void Init()
         {
             base.Init();
-            attacker = GetRoom().entityCom.GetEntity(action.Who);
-            target = GetRoom().entityCom.GetEntity(action.Target);
+            attacker = GetRoom().GetActorInRoom(action.Who);
+            target = GetRoom().GetActorInRoom(action.Target);
             config = gameObject.GetComponent<SkillDataConfig>();
             OnEvent(SkillEvent.EventStart);
 
@@ -50,12 +50,18 @@ namespace MyLib
 
         public void OnEvent(SkillEvent evt)
         {
-            foreach (var item in config.eventList)
+            try
             {
-                if (item.evt == evt)
+                foreach (var item in config.eventList)
                 {
-                    InitLayout(item);
+                    if (item.evt == evt)
+                    {
+                        InitLayout(item);
+                    }
                 }
+            }catch(Exception exp)
+            {
+                Log.Error(exp.ToString());
             }
         }
 
@@ -83,7 +89,7 @@ namespace MyLib
         /// <param name="target"></param>
         public void DoDamage(GameObjectActor target)
         {
-            if(attacker == null)
+            if(attacker == null || target == null)
             {
                 return;
             }
@@ -92,10 +98,11 @@ namespace MyLib
 
             var gcPlayerCmd = GCPlayerCmd.CreateBuilder();
             var dmgInfo = DamageInfo.CreateBuilder();
-            dmgInfo.Attacker = attacker.GetComponent<AINPC>().mySelf.entityInfo.Id;
-            dmgInfo.Enemy = target.GetComponent<AINPC>().mySelf.entityInfo.Id;
+            dmgInfo.Attacker = attacker.GetComponent<AINPC>().mySelf.IDInRoom;
+            dmgInfo.Enemy = target.GetComponent<AINPC>().mySelf.IDInRoom;
             dmgInfo.IsCritical = false;
             dmgInfo.IsStaticShoot = false;
+            dmgInfo.Damage = dmg;
             gcPlayerCmd.DamageInfo = dmgInfo.Build();
             gcPlayerCmd.Result = "Damage";
             GetRoom().AddCmd(gcPlayerCmd);

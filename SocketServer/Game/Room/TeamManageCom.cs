@@ -10,9 +10,10 @@ namespace MyLib
 		{
 		}
 		public int GetTeamColor() {
-		    var tc = teamColor;
-			teamColor++;
-			return tc;
+            //var tc = teamColor;
+            //teamColor++;
+            //return tc;
+            return 0;
 		}
 	}
 }

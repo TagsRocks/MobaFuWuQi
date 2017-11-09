@@ -41,7 +41,7 @@ namespace MyLib
         /// </summary>
         public MyVec3 pos;
         public MyVec3 scale;
-        public int Dir = 0;//子弹的朝向
+        public int GoDir = 0;//子弹的朝向
 
         public List<GameObjectActor> GetChildren()
         {

@@ -24,6 +24,7 @@ namespace MyLib
     }
     public class NpcConfig : GameObjectComponent
     {
+        public bool IsPlayer = false;
         public int npcTemplateId;
         public List<ActionConfig> actionList;
         public string normalAttack = "monsterSingle";

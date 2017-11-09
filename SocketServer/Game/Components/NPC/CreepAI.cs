@@ -17,14 +17,11 @@ namespace MyLib
     /// </summary>
     class CreepAI : AINPC 
     {
-        public float eyeSightDistance = 10;
-        public float attackRangeDist = 2;
-        public int attackSkill = 19;
-
         public iTweenPath path;
         public override void Init()
         {
             base.Init();
+            base.AfterSelectHeroInit();
             aiCharacter = gameObject.AddComponent<AICharacter>();
             aiCharacter.AddState(new CreepIdle());
             aiCharacter.AddState(new CreepMove());
@@ -42,6 +39,7 @@ namespace MyLib
 
         private async Task FindEnemy()
         {
+            var eyeSightDistance = npcConfig.eyeSightDistance;
             while (!gameObject.IsOver && !attribute.IsDead())
             {
                 if(aiCharacter.current != null)
@@ -56,10 +54,9 @@ namespace MyLib
                         var minDist = 100 * 100.0f;
                         EntityProxy findProxy = new EntityProxy();
                         findProxy.ProxyId = -1;
-
                         foreach (var e in enemy)
                         {
-                            if (e.actor.entityInfo.TeamColor != mySelf.entityInfo.TeamColor && !e.actor.GetComponent<NpcAttribute>().IsDead())
+                            if (e.actor.TeamColor != mySelf.TeamColor && !e.actor.GetComponent<NpcAttribute>().IsDead())
                             {
                                 //var p = e.lastPos;
                                 var enePos = e.actor.GetVec2Pos();
@@ -89,10 +86,7 @@ namespace MyLib
             }
         }
      
-        public float GetAttackRadiusSquare()
-        {
-            return attackRangeDist * attackRangeDist;
-        }
+     
        
     }
 }

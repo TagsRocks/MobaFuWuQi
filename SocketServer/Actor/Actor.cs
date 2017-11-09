@@ -224,6 +224,12 @@ namespace MyLib
 			Instance = this;
 		}
 
+        public int GetFreeId()
+        {
+            var id = Interlocked.Increment(ref actId);
+            return id;
+        }
+
 		/// <summary>
 		/// 增加Actor将会引起副作用的代码放在锁外面 
 		/// </summary>

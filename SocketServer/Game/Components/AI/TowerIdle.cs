@@ -28,7 +28,7 @@ namespace MyLib
 
                 foreach (var e in enemy)
                 {
-                    if (e.actor.entityInfo.TeamColor != towerAI.mySelf.entityInfo.TeamColor)
+                    if (e.actor.TeamColor != towerAI.mySelf.TeamColor)
                     {
                         var enePos = e.actor.GetVec2Pos();
                         var newDist = (myPos - enePos).LengthSquared();

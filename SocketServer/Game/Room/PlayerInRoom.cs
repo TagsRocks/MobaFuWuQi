@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -72,9 +73,6 @@ namespace MyLib
                             break;
                         case "Skill":
                             Skill(cmd);
-                            break;
-                        case "Move":
-                            Move(cmd);
                             break;
                         case "Ready":
                             Ready(cmd);
@@ -256,9 +254,12 @@ namespace MyLib
 
             if (cmd.AvatarInfo.HasX)
             {
+                var curPos = GetFloatPos();
                 avatarInfo.X = cmd.AvatarInfo.X;
                 avatarInfo.Y = cmd.AvatarInfo.Y;
                 avatarInfo.Z = cmd.AvatarInfo.Z;
+                var newPos = GetFloatPos();
+                ai.Move(newPos-curPos);
             }
 
             if (cmd.AvatarInfo.HasDir)
@@ -311,25 +312,10 @@ namespace MyLib
 
         private void Skill(CGPlayerCmd cmd)
         {
-            var gc = GCPlayerCmd.CreateBuilder();
-            gc.SkillAction = cmd.SkillAction;
-            gc.Result = cmd.Cmd;
-            GetRoom().AddKCPCmd(gc);
+            ai.aiCharacter.blackboard[AIParams.Command] = new AIEvent() { cmd=cmd };
+            ai.aiCharacter.ChangeState(AIStateEnum.ATTACK);
         }
 
-        private void Move(CGPlayerCmd cmd)
-        {
-            avatarInfo.X = cmd.AvatarInfo.X;
-            avatarInfo.Y = cmd.AvatarInfo.Y;
-            avatarInfo.Z = cmd.AvatarInfo.Z;
-            avatarInfo.Dir = cmd.AvatarInfo.Dir;
-
-            var gc = GCPlayerCmd.CreateBuilder();
-            gc.AvatarInfo = cmd.AvatarInfo;
-            gc.AvatarInfo.Id = Id;
-            gc.Result = "Update";
-            GetRoom().AddCmd(gc);
-        }
 
         private void Buff(CGPlayerCmd cmd)
         {
@@ -410,6 +396,7 @@ namespace MyLib
         private void ChooseHero(CGPlayerCmd cmd)
         {
             UpdateData(cmd);
+            ai.AfterSelectHeroInit();
             GetRoom().ChooseHero();
         }
 
@@ -736,8 +723,6 @@ namespace MyLib
 
         public void SendCmd(GCPlayerCmd.Builder cmd)
         {
-            //LogHelper.Log("PlayerInRoom", "SendCmd:"+cmd.Build());
-            //agent.SendPacket(cmd, 0, 0);
             proxy.SendPacket(cmd, 0, 0);
         }
 
@@ -750,6 +735,66 @@ namespace MyLib
 	    private int medal = 0;
 	    private int dayBattleCount = 0;
 	    private double lastReceiveTime = 0;
+        #endregion
+
+
+        #region ActorINROOM
+        public override int GetUnitId()
+        {
+            return avatarInfo.PlayerModelInGame;
+        }
+        public override MyVec3 GetIntPos()
+        {
+            var myVec = new MyVec3(avatarInfo.X, avatarInfo.Y, avatarInfo.Z);
+            return myVec;
+        }
+        public override int dir
+        {
+            get
+            {
+                return avatarInfo.Dir;
+            }
+
+            set
+            {
+                avatarInfo.Dir = value;
+            }
+        }
+        public override int IDInRoom
+        {
+            get
+            {
+                return Id;
+            }
+        }
+        public override int TeamColor
+        {
+            get
+            {
+                return avatarInfo.TeamColor;
+            }
+        }
+        public override dynamic DuckInfo
+        {
+            get
+            {
+                return avatarInfo;
+            }
+        }
+        public override bool IsPlayer
+        {
+            get
+            {
+                return true;
+            }
+        }
+
+
+        //玩家不是移除而是复活处理 不需要实现该函数
+        public override void RemoveSelf()
+        {
+            throw new NotImplementedException();
+        }
         #endregion
     }
 }

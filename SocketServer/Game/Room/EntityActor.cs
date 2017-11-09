@@ -34,18 +34,6 @@ namespace MyLib
 			return na1;
 		}
 
-        public override void InitAfterSetRoom()
-        {
-            throw new NotImplementedException();
-        }
-        public override void HandleCmd(ActorMsg msg)
-        {
-            throw new NotImplementedException();
-        }
-        public override void RunAI()
-        {
-            throw new NotImplementedException();
-        }
 
         public override string GetAttr()
 	    {
@@ -95,6 +83,7 @@ namespace MyLib
 
                 lastEntityInfo.HP = entityInfo.HP;
 			}
+            /*
             if(entityInfo.Speed != lastEntityInfo.Speed)
             {
                 na1.Speed = entityInfo.Speed;
@@ -102,6 +91,7 @@ namespace MyLib
 
                 lastEntityInfo.Speed = entityInfo.Speed;
             }
+            */
 
             if(entityInfo.TeamColor != lastEntityInfo.TeamColor)
             {
@@ -117,41 +107,10 @@ namespace MyLib
                 lastEntityInfo.Dir = entityInfo.Dir;
             }
 
-            //复制一遍当前的状态存储下来
             //直接field 拷贝 不用 复制整个了
-			//lastEntityInfo = EntityInfo.CreateBuilder(entityInfo).Build();
             return na1.Build();
 		}
 
-	    public Action removeCallback = null;
-		public void RemoveSelf() {
-            //LogHelper.Log("Room", "RemoveEntity: "+this.Id);
-		    if (GetRoom() != null)
-		    {
-		        GetRoom().RemoveEntity(this, entityInfo);
-		    }
-            //不属于全局管理
-            //ActorManager.Instance.RemoveActor(Id);
-            this.Stop();
-		    if (removeCallback != null)
-		    {
-		        removeCallback();
-		    }
-		}
-
-        /*
-		public async Task UpdateData(EntityInfo info) {
-			await this._messageQueue;
-			if (info.HasX) {
-				entityInfo.X = info.X;
-				entityInfo.Y = info.Y;
-				entityInfo.Z = info.Z;
-			}
-			if (info.HasHP) {
-				entityInfo.HP = info.HP;
-			}
-		}
-        */
 
 		//初始化实体的Id
 		public void  InitInfo(EntityInfo info) {
@@ -180,24 +139,88 @@ namespace MyLib
 	            }
 	        }
 	    }
+     
+    
 
-        public Vector3 GetFloatPos()
+        #region ActorInROOM
+        public override void InitAfterSetRoom()
         {
-            var myVec = new MyVec3(entityInfo.X, entityInfo.Y, entityInfo.Z);
-            return myVec.ToFloat();
+            throw new NotImplementedException();
+        }
+        public override void HandleCmd(ActorMsg msg)
+        {
+            throw new NotImplementedException();
+        }
+        public override void RunAI()
+        {
+            throw new NotImplementedException();
+        }
+        public override int GetUnitId()
+        {
+            return entityInfo.UnitId;
         }
 
-        public Vector2 GetVec2Pos()
-        {
-            var myVec = new MyVec3(entityInfo.X, entityInfo.Y, entityInfo.Z);
-            var v3 =  myVec.ToFloat();
-            return new Vector2(v3.X, v3.Z);
-        }
-        public MyVec3 GetIntPos()
+        public override MyVec3 GetIntPos()
         {
             var myVec = new MyVec3(entityInfo.X, entityInfo.Y, entityInfo.Z);
             return myVec;
         }
-	}
+        public override int dir
+        {
+            get
+            {
+                return entityInfo.Dir;
+            }
+
+            set
+            {
+                entityInfo.Dir = value;
+            }
+        }
+        public override int IDInRoom
+        {
+            get
+            {
+                return Id;
+            }
+        }
+        public override int TeamColor
+        {
+            get
+            {
+                return entityInfo.TeamColor;
+            }
+        }
+        public override dynamic DuckInfo
+        {
+            get
+            {
+                return entityInfo;
+            }
+        }
+        public override bool IsPlayer
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+        public Action removeCallback = null;
+        public override void RemoveSelf()
+        {
+            if (GetRoom() != null)
+            {
+                GetRoom().RemoveEntity(this, entityInfo);
+            }
+            //不属于全局管理
+            this.Stop();
+            if (removeCallback != null)
+            {
+                removeCallback();
+            }
+        }
+        #endregion
+    }
 }
 

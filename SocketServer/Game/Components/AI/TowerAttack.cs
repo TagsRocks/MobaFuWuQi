@@ -62,9 +62,9 @@ namespace MyLib
             var dir = fp - myPos;
             dir.Y = 0;
             //Unity 是顺时针为正向 左手坐标系
-            myself.entityInfo.Dir = (int)MathUtil.Math2UnityRot(MathUtil.RotY(dir));
-            skillAct.Dir = myself.entityInfo.Dir;
-            skillAct.Target = target.actor.entityInfo.Id;
+            myself.dir = (int)MathUtil.Math2UnityRot(MathUtil.RotY(dir));
+            skillAct.Dir = myself.dir;
+            skillAct.Target = target.actor.IDInRoom;
 
             var actConfig = towerAI.npcConfig.GetAction(ActionType.Attack);
             var tt = actConfig.totalTime;

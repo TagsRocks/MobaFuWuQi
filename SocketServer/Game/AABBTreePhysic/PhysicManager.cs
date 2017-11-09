@@ -13,11 +13,10 @@ namespace MyLib
     /// </summary>
     public struct EntityProxy
     {
-        //public AABB aabb;
-        public EntityActor actor;
+        public ActorInRoom actor;
         public int ProxyId;
-        //public Vector2 lastPos;
     }
+
     public class PhysicManager : Component
     {
         private DynamicTree<EntityProxy> tree = new DynamicTree<EntityProxy>();
@@ -26,12 +25,11 @@ namespace MyLib
             base.AfterAdd();
         }
 
-        public EntityProxy AddEntity(EntityActor ety)
+        public EntityProxy AddEntity(ActorInRoom ety)
         {
             var ep = new EntityProxy();
             var pos = ety.GetFloatPos();
             var pvec2 = new Vector2(pos.X, pos.Z);
-            //ep.lastPos = pvec2; 
             ep.actor = ety;
             var aabb = new AABB(pvec2, pvec2);
             ep.ProxyId = tree.AddProxy(ref aabb, ep);

@@ -10,13 +10,11 @@ namespace MyLib
 {
 	public class RoomActor : Actor
 	{
-		PlayerManagerCom playerCom;
-		public EntityManagerCom entityCom;
+		private PlayerManagerCom playerCom;
+		private EntityManagerCom entityCom;
 		TeamManageCom teamCom;
 		private bool hasMaster = false;
 	    private bool IsNewUserRoom = false;
-        private int entityId = 0;
-
 
 	    public bool IsNewUser()
 	    {
@@ -282,6 +280,16 @@ namespace MyLib
 			await this._messageQueue;
 		}
 
+        public ActorInRoom GetActorInRoom(int idInRoom)
+        {
+            var ety = entityCom.GetEntity(idInRoom);
+            var player = playerCom.GetPlayer(idInRoom);
+            if(ety != null)
+            {
+                return ety;
+            }
+            return player;
+        }
 
         /// <summary>
         /// 创建玩家在Room内的状态机 proxy代理
@@ -348,7 +356,7 @@ namespace MyLib
 	        entity.SetRoom(this);
             //TODO: Entity Actor 不需要添加进入全局的ActorManager中
             //本地局部管理
-            entity.Id = ++entityId;
+            entity.Id = ActorManager.Instance.GetFreeId();
             entity.Init();
 	        entity.InitInfo(info);
 	        AddEntity(entity, entity.entityInfo);
@@ -377,14 +385,12 @@ namespace MyLib
         /// </summary>
         /// <param name="cmd"></param>
         /// <returns></returns>
-	    public async Task AddBeforeCmd(GCPlayerCmd.Builder cmd)
+	    public void AddBeforeCmd(GCPlayerCmd.Builder cmd)
 	    {
-	        await this._messageQueue;
             beforeCmdList.Add(cmd);
 	    }
-		public async Task AddKCPCmd(GCPlayerCmd.Builder cmd)
+		public void AddKCPCmd(GCPlayerCmd.Builder cmd)
 		{
-			await _messageQueue;
 			kcpList.Add(cmd);
 		}
 		public void AddCmd (GCPlayerCmd.Builder cmd)

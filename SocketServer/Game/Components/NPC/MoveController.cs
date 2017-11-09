@@ -15,16 +15,6 @@ namespace MyLib
     /// </summary>
     public class MoveController : GameObjectComponent
     {
-        private enum State
-        {
-            Idle,
-            Move,
-            TryToStop,
-        }
-        private State state = State.Idle;
-
-        //NPC移动速度
-        //public float speed = 10;
         private bool stopMove = false;
         private bool inMove = false;
         private int curMoveId = 0;
@@ -61,17 +51,13 @@ namespace MyLib
             var runMoveId = ++curMoveId;
             inMove = true;
             var tarPos = v3Pos.ToFloat();
-            var curObj = gameObject as EntityActor;
-            var x = curObj.entityInfo.X;
-            var y = curObj.entityInfo.Y;
-            var z = curObj.entityInfo.Z;
-            curObj.entityInfo.Speed = Util.GameVecToNet(speed);
-
-            var curPos = new MyVec3(x, y, z).ToFloat();
-            var nowPos = curPos;
+            var curObj = gameObject as ActorInRoom;
+            //curObj.entityInfo.Speed = Util.GameVecToNet(speed);
+            var nowPos = curObj.GetFloatPos();
+            var initPos = nowPos;
 
             var grid = GetRoom().GetComponent<GridManager>();
-            var g1 = grid.mapPosToGrid(curPos);
+            var g1 = grid.mapPosToGrid(nowPos);
             var g2 = grid.mapPosToGrid(tarPos);
             var path = grid.FindPath(g1, g2);
             var nodes = new Vector3[path.Count];
@@ -83,7 +69,7 @@ namespace MyLib
             }
 
             var room = GetRoom();
-            var entityInfo = curObj.entityInfo;
+            var entityInfo = curObj.DuckInfo;
 
             var curPoint = 1;
             while (curPoint < nodes.Length && !stopMove && runMoveId == curMoveId)
@@ -91,13 +77,13 @@ namespace MyLib
                 var nextPos = nodes[curPoint];
                 var wp = nextPos;
 
-                var dist = (wp - curPos).Length();
+                var dist = (wp - initPos).Length();
                 var totalTime = dist / speed;
                 var passTime = 0.0f;
                 while (passTime < totalTime && !stopMove && runMoveId == curMoveId)
                 {
                     passTime += MainClass.syncFreq;
-                    var newPos = Vector3.Lerp(curPos, wp, MathUtil.Clamp(passTime / totalTime, 0, 1));
+                    var newPos = Vector3.Lerp(initPos, wp, MathUtil.Clamp(passTime / totalTime, 0, 1));
                     var myPos = MyVec3.FromFloat(newPos.X, newPos.Y, newPos.Z);
                     entityInfo.X = myPos.x;
                     entityInfo.Y = myPos.y;
@@ -107,7 +93,7 @@ namespace MyLib
                     nowPos = newPos;
                     await Task.Delay(MainClass.syncTime);
                 }
-                curPos = wp;
+                initPos = wp;
                 curPoint++;
             }
 

@@ -10,7 +10,7 @@ namespace MyLib
     {
         public override void Init()
         {
-            //base.Init();
+            base.Init();
             aiCharacter = gameObject.AddComponent<AICharacter>();
             aiCharacter.AddState(new PlayerIdle());
             aiCharacter.AddState(new PlayerMove());

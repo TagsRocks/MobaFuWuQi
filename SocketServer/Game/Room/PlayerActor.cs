@@ -171,21 +171,6 @@ namespace MyLib
             pid = deviceInfo.Pid;
             uid = deviceInfo.Uid;
             agent.SendPacket(ret, (byte)msg.packet.flowId, 0);
-
-            /*
-            var data = Login.LoginQueryInfo(pid, uid);
-            try
-            {
-                level = (int)data[0][0];
-                Exp = (int)data[0][1];
-                medal = (int)data[0][2];
-                dayBattleCount = (int)data[0][3];
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
-            */
         }
 
 

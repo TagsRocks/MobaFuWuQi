@@ -15,13 +15,14 @@ namespace MyLib
         public AIEventType type;
         public int intVal;
         public EntityProxy entityProxy;
-        
+        public CGPlayerCmd cmd;
     }
 
     public enum AIParams
     {
         CurrentPoint,
         Target,
+        Command,
     }
     /// <summary>
     /// AI状态机 Lomotion状态

@@ -33,9 +33,9 @@ namespace MyLib
             bullet.runner = runner;
             bullet.attacker = runner.stateMachine.attacker;
             bullet.target = runner.stateMachine.target;
-            var entity = bullet.attacker as EntityActor;
+            var entity = bullet.attacker as ActorInRoom;
             go.pos = entity.GetIntPos();
-            go.Dir = entity.entityInfo.Dir;
+            go.GoDir = entity.dir;
 
             gameObject.AddChild(go);
         }

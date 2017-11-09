@@ -60,6 +60,7 @@
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Mono.Cairo, Version=4.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Mono.Cairo.dll</HintPath>
@@ -188,6 +189,7 @@
     <Compile Include="Game\Skill\SkillLogicComponent.cs" />
     <Compile Include="Game\Skill\SkillStateMachine.cs" />
     <Compile Include="Game\Skill\UnitSpawner.cs" />
+    <Compile Include="Game\Utility\AvatarInfo.cs" />
     <Compile Include="Game\Utility\MailSender.cs" />
     <Compile Include="Game\MyVec3.cs" />
     <Compile Include="Game\MonitorActor.cs" />

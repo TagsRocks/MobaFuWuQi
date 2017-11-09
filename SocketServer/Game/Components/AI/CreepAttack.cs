@@ -13,13 +13,13 @@ namespace MyLib
     /// </summary>
     public class CreepAttack : AttackState
     {
-        private CreepAI creepAI;
+        private AINPC creepAI;
         private MoveController moveController;
         private EntityProxy target;
         public override void EnterState()
         {
             base.EnterState();
-            creepAI = aiCharacter.gameObject.GetComponent<CreepAI>();
+            creepAI = aiCharacter.gameObject.GetComponent<AINPC>();
             moveController = aiCharacter.gameObject.GetComponent<MoveController>();
             target = aiCharacter.blackboard[AIParams.Target].entityProxy;
         }
@@ -59,7 +59,7 @@ namespace MyLib
             var pos = creepAI.mySelf.GetIntPos();
             var skillAct = SkillAction.CreateBuilder();
             skillAct.Who = creepAI.mySelf.Id;
-            skillAct.SkillId = creepAI.attackSkill;
+            skillAct.SkillId = creepAI.npcConfig.attackSkill;
             skillAct.SkillLevel = 0;
             skillAct.X = pos.x;
             skillAct.Y = pos.y;
@@ -70,11 +70,10 @@ namespace MyLib
             var dir = fp - myPos;
             dir.Y = 0;
             //Unity 是顺时针为正向 左手坐标系
-            myself.entityInfo.Dir = (int)MathUtil.Math2UnityRot(MathUtil.RotY(dir));
+            myself.dir = ((int)MathUtil.Math2UnityRot(MathUtil.RotY(dir)));
+            skillAct.Dir = myself.dir;
 
-            skillAct.Dir = myself.entityInfo.Dir;
-
-            skillAct.Target = target.actor.entityInfo.Id;
+            skillAct.Target = target.actor.IDInRoom;
 
             var actConfig = creepAI.npcConfig.GetAction(ActionType.Attack);
             var tt = actConfig.totalTime;

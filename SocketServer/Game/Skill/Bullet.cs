@@ -23,8 +23,8 @@ namespace MyLib
         {
             if(missileData.missileType == MissileType.Target)
             {
-                var tar = target as EntityActor;
-                var me = attacker as EntityActor;
+                var tar = target as ActorInRoom;
+                var me = attacker as ActorInRoom;
                 var dist = tar.GetFloatPos() - me.GetFloatPos();
                 dist.Y = 0;
                 var flyTime = dist.Length() / missileData.Velocity;

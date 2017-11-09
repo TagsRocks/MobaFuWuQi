@@ -12,6 +12,7 @@ namespace MyLib
         public override void Init()
         {
             base.Init();
+            base.AfterSelectHeroInit();
             aiCharacter = gameObject.AddComponent<AICharacter>();
             aiCharacter.AddState(new TowerIdle());
             aiCharacter.AddState(new TowerAttack());
