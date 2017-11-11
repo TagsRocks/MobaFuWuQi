@@ -14,8 +14,8 @@ namespace MyLib
     {
         public SkillAction action;
         private SkillDataConfig config;
-        public GameObjectActor target;
-        public GameObjectActor attacker;
+        public ActorInRoom target;
+        public ActorInRoom attacker;
         /// <summary>
         /// 如果需要定制技能状态机移除时间，可以通过外部设置999时间，接着外部主动发送事件删除
         /// 技能本身存活时间超出玩家的动作状态时间的
@@ -87,7 +87,7 @@ namespace MyLib
         /// 广播伤害命令
         /// </summary>
         /// <param name="target"></param>
-        public void DoDamage(GameObjectActor target)
+        public void DoDamage(ActorInRoom target)
         {
             if(attacker == null || target == null)
             {

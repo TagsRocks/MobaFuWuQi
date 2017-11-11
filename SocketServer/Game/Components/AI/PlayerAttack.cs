@@ -20,6 +20,9 @@ namespace MyLib
             var cmd = aiCharacter.blackboard[AIParams.Command].cmd;
             var gc = GCPlayerCmd.CreateBuilder();
             gc.SkillAction = cmd.SkillAction;
+            var actConfig = aiNpc.npcConfig.GetAction(ActionType.Attack);
+            var tt = actConfig.totalTime;
+            gc.SkillAction.RunFrame = Util.GameTimeToNet(tt);
             gc.Result = cmd.Cmd;
             aiCharacter.gameObject.GetRoom().AddKCPCmd(gc);
         }

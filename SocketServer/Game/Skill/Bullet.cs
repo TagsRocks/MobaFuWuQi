@@ -11,8 +11,8 @@ namespace MyLib
     {
         public SkillLayoutRunner runner;
         public MissileData missileData;
-        public GameObjectActor attacker;
-        public GameObjectActor target;
+        public ActorInRoom attacker;
+        public ActorInRoom target;
 
         public override void Init()
         {

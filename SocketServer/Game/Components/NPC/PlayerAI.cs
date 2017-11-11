@@ -16,6 +16,7 @@ namespace MyLib
             aiCharacter.AddState(new PlayerMove());
             aiCharacter.AddState(new PlayerAttack());
             aiCharacter.AddState(new PlayerDead());
+            aiCharacter.AddState(new PlayerRevive());
         }
     }
 }

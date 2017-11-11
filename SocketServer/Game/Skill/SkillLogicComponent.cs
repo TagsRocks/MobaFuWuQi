@@ -8,6 +8,7 @@ namespace MyLib
 {
     abstract class SkillLogicComponent : GameObjectComponent
     {
+        public SkillLayoutRunner runner;
         /// <summary>
         /// 开始执行技能逻辑
         /// </summary>

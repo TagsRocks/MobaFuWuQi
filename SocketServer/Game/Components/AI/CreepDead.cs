@@ -8,6 +8,12 @@ namespace MyLib
 {
     class CreepDead : DeadState
     {
+        public override void EnterState()
+        {
+            base.EnterState();
+            MobaUtil.SyncDead(aiCharacter); 
+        }
+
         public override async Task RunLogic()
         {
             await Task.Delay(3000);

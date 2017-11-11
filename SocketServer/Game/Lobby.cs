@@ -87,9 +87,16 @@ namespace MyLib
 				return rm;
 			}
 
-			var newRoom = await CreateRoom (maxPlayerNum, isNew, roomInfo);
-			var suc2 = await newRoom.AddPlayerNew (player, maxPlayerNum, isNew);
-			return newRoom;
+            try
+            {
+                var newRoom = await CreateRoom(maxPlayerNum, isNew, roomInfo);
+                var suc2 = await newRoom.AddPlayerNew(player, maxPlayerNum, isNew);
+                return newRoom;
+            }catch(Exception exp)
+            {
+                Log.Error(exp.ToString());
+                return null;
+            }
 		}
 
 		public override void Init ()

@@ -12,6 +12,7 @@ namespace MyLib
         MOVE,
         ATTACK,
         DEAD,
+        REVIVE,
     }
 
     public class AIState
@@ -37,6 +38,10 @@ namespace MyLib
             inState = false;
         }
 
+        public virtual bool CheckNextState(AIStateEnum next)
+        {
+            return true;
+        }
 
         public virtual void OnEvent(AIEvent evt)
         {
@@ -76,6 +81,13 @@ namespace MyLib
         public DeadState()
         {
             type = AIStateEnum.DEAD;
+        }
+    }
+    public class ReviveState : AIState
+    {
+        public ReviveState()
+        {
+            type = AIStateEnum.REVIVE;
         }
     }
 }

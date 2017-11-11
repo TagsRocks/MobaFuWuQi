@@ -7,7 +7,12 @@ using System.Numerics;
 
 namespace MyLib
 {
-    class AINPC : GameObjectComponent
+    /// <summary>
+    /// 初始化AI状态机
+    /// 联系玩家属性和AI
+    /// 组装玩家各种属性
+    /// </summary>
+    public abstract class AINPC : GameObjectComponent
     {
         public AICharacter aiCharacter;
         public PhysicManager physic;
@@ -32,7 +37,8 @@ namespace MyLib
         public virtual void AfterSelectHeroInit()
         {
             npcConfig = NpcDataManager.Instance.GetConfig(mySelf.GetUnitId());
-            unitData = Util.GetUnitData(npcConfig.IsPlayer, mySelf.GetUnitId(), 0);
+            unitData = Util.GetUnitData(npcConfig.IsPlayer, mySelf.GetUnitId(), mySelf.Level);
+            mySelf.DuckInfo.HP = unitData.HP;
         }
 
         public virtual void RunAI()

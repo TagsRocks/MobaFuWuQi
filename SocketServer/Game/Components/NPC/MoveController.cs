@@ -85,10 +85,14 @@ namespace MyLib
                     passTime += MainClass.syncFreq;
                     var newPos = Vector3.Lerp(initPos, wp, MathUtil.Clamp(passTime / totalTime, 0, 1));
                     var myPos = MyVec3.FromFloat(newPos.X, newPos.Y, newPos.Z);
+                    /*
                     entityInfo.X = myPos.x;
                     entityInfo.Y = myPos.y;
                     entityInfo.Z = myPos.z;
                     physicManager.MoveEntity(ref aiNpc.proxy, newPos - nowPos);
+                    */
+
+                    aiNpc.mySelf.SetPos(myPos);
 
                     nowPos = newPos;
                     await Task.Delay(MainClass.syncTime);

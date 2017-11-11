@@ -116,9 +116,8 @@ namespace MyLib
 		public void  InitInfo(EntityInfo info) {
 			entityInfo = info;
 			entityInfo.Id = Id;
-            var unitData = Util.GetUnitData(false, entityInfo.UnitId, 0);
-            entityInfo.HP = unitData.HP;
-
+            //var unitData = Util.GetUnitData(false, entityInfo.UnitId, 0);
+            //entityInfo.HP = unitData.HP;
 			lastEntityInfo = EntityInfo.CreateBuilder (info).Build();
 		    if (entityInfo.HasLifeLeft)
 		    {
@@ -218,6 +217,13 @@ namespace MyLib
             if (removeCallback != null)
             {
                 removeCallback();
+            }
+        }
+        public override int Level
+        {
+            get
+            {
+                return 0;
             }
         }
         #endregion

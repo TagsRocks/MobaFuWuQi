@@ -102,6 +102,9 @@
     <Compile Include="Game\Components\AI\PlayerDead.cs" />
     <Compile Include="Game\Components\AI\PlayerIdle.cs" />
     <Compile Include="Game\Components\AI\PlayerMove.cs" />
+    <Compile Include="Game\Components\AI\PlayerRevive.cs" />
+    <Compile Include="Game\Components\Moba\AllPlayerStart.cs" />
+    <Compile Include="Game\Components\Moba\PlayerStart.cs" />
     <Compile Include="Game\Components\NPC\AINPC.cs" />
     <Compile Include="Game\Components\NPC\MoveController.cs" />
     <Compile Include="Game\Components\NPC\PlayerAI.cs" />
@@ -136,6 +139,7 @@
     <Compile Include="Game\Data\NpcDataManager.cs" />
     <Compile Include="Game\Data\SkillData.cs" />
     <Compile Include="Game\Data\SkillDataManager.cs" />
+    <Compile Include="Game\Skill\HurtNearby.cs" />
     <Compile Include="Game\Skill\SkillLayoutRunner.cs" />
     <Compile Include="Game\Data\UnitData.cs" />
     <Compile Include="Game\EntityImport.cs" />
@@ -194,6 +198,7 @@
     <Compile Include="Game\MyVec3.cs" />
     <Compile Include="Game\MonitorActor.cs" />
     <Compile Include="Game\Utility\LogHelper.cs" />
+    <Compile Include="Game\Utility\MobaUtil.cs" />
     <Compile Include="MasterServerActor.cs" />
     <Compile Include="MathUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -15,13 +15,14 @@ namespace MyLib
             foreach(var c in gameObject.GetChildren())
             {
                 var logic = c.GetComponent<SkillLogicComponent>();
+                logic.runner = this;
                 logic.Run();
             }
         }
         /// <summary>
         /// 对目标NPC造成伤害
         /// </summary>
-        public void DoDamage(GameObjectActor actor)
+        public void DoDamage(ActorInRoom actor)
         {
             stateMachine.DoDamage(actor);
         }

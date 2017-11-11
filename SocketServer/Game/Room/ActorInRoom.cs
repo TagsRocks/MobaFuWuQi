@@ -48,5 +48,19 @@ namespace MyLib
             get;
         }
         public abstract void RemoveSelf();
+        public abstract int Level
+        {
+            get;
+        }
+
+        public void SetPos(MyVec3 p)
+        {
+            var curPos = GetFloatPos();
+            DuckInfo.X = p.x;
+            DuckInfo.Y = p.y;
+            DuckInfo.Z = p.z;
+            var newPos = GetFloatPos();
+            GetComponent<AINPC>().Move(newPos-curPos);
+        }
     }
 }

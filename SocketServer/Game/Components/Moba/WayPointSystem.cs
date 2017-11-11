@@ -26,6 +26,12 @@ namespace MyLib
         //通知三条路径各自生成Creep
         private async Task GenCreep()
         {
+            //等待开始刷新小兵
+            while(GetRoom().GetState() != RoomActor.RoomState.InGame)
+            {
+                await Task.Delay(1000);
+            }
+
             if(teamId == 0)
             {
                 return;

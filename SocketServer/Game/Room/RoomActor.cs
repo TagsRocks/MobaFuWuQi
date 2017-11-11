@@ -22,10 +22,10 @@ namespace MyLib
 	    }
 		public enum RoomState
 		{
-            Ready,
-			InGame,
-			GameOver,
-            SelectHero,
+            Ready, //创建房间
+			InGame, //正式游戏
+			GameOver, //游戏结束
+            SelectHero, //选择英雄
 		}
 
 		private RoomState state = RoomState.Ready;
@@ -36,7 +36,6 @@ namespace MyLib
 	    }
 		public int maxPlayerNum = 10;
 	    private ScoreComponent score;
-	    private PhysicWorldComponent physicWorld;
 	    private RoomInfo roomInfo;
 
 	    public int GetLevelId()
@@ -52,8 +51,6 @@ namespace MyLib
 		    score = AddComponent<ScoreComponent>();
 		    this.roomInfo = RoomInfo.CreateBuilder(roomInfo).Build();
 
-
-		    //physicWorld = AddComponent<PhysicWorldComponent>();
 		}
 
 	    public async Task<int> GetLeftTime()
@@ -70,6 +67,7 @@ namespace MyLib
 		{
             InitMessageQueue();
             InitPhysic();
+            InitEntity();
 			RunTask (UpdateWorld);
 		}
 
@@ -173,7 +171,6 @@ namespace MyLib
 		    }
             //RunTask(UpdatePhysic);
 
-            InitEntity();
             //var syncTime = (int)(MainClass.syncFreq * 1000*0.8f);
             var syncTime = MainClass.syncTime;
 		    double lastTime = 0.0;

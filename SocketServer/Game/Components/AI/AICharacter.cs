@@ -35,11 +35,23 @@ namespace MyLib
     /// </summary>
     public class AICharacter : GameObjectComponent
     {
-
         public AIState state;
         private Dictionary<AIStateEnum, AIState> stateMap = new Dictionary<AIStateEnum, AIState>();
         public AIState current;
         public Dictionary<AIParams, AIEvent> blackboard = new Dictionary<AIParams, AIEvent>();
+        private AINPC _npc;
+        public AINPC aiNpc
+        {
+            get
+            {
+                return _npc;
+            }
+        }
+        public override void AfterAdd()
+        {
+            base.AfterAdd();
+            _npc = gameObject.GetComponent<AINPC>();
+        }
 
         public void AddState(AIState state)
         {
@@ -51,6 +63,10 @@ namespace MyLib
         {
             if(current != null)
             {
+                if(!current.CheckNextState(s))
+                {
+                    return;
+                }
                 current.ExitState();
             }
             current = stateMap[s];

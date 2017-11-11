@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyLib
 {
-    class NpcAttribute : GameObjectComponent
+    public class NpcAttribute : GameObjectComponent
     {
         public enum State
         {
@@ -24,13 +24,15 @@ namespace MyLib
         {
             get
             {
-                return gameObject.GetComponent<AINPC>().unitData;
+                return ai.unitData;
             }
         }
+        private AINPC ai;
         public override void Init()
         {
             base.Init();
             mySelf = gameObject as ActorInRoom;
+            ai = gameObject.GetComponent<AINPC>();
         }
 
         public void DoHurt(int damage)
@@ -42,6 +44,10 @@ namespace MyLib
                 state = State.Dead;
                 gameObject.GetComponent<AICharacter>().ChangeState(AIStateEnum.DEAD);
             }
+        }
+        public void DoRevive()
+        {
+            state = State.Normal;
         }
         public void RemoveSelf()
         {

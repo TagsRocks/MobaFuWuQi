@@ -37,7 +37,7 @@ namespace MyLib
         public string name;
         public GameObjectActor parent;
         /// <summary>
-        /// 世界绝对坐标
+        /// 世界绝对坐标 Unity坐标*100
         /// </summary>
         public MyVec3 pos;
         public MyVec3 scale;

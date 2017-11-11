@@ -12,6 +12,11 @@ namespace MyLib
 		List<AvatarInfo> removePlayer = new List<AvatarInfo> ();
 		Dictionary<int, bool> ready = new Dictionary<int, bool> ();
         Dictionary<int, PlayerInRoom> playerDict = new Dictionary<int, PlayerInRoom>();
+        public AllPlayerStart allPlayerStart;
+        public void SetAllPlayer(AllPlayerStart ap)
+        {
+            allPlayerStart = ap;
+        }
 
 		public PlayerManagerCom ()
 		{
@@ -244,6 +249,7 @@ namespace MyLib
                 await pInRoom.InitProxy();
                 pInRoom.Start();
                 pInRoom.RunAI();
+                allPlayerStart.InitPlayerPos(pInRoom);
 
                 playerDict[pInRoom.IDInRoom] = pInRoom;
                 players.Add(pInRoom);

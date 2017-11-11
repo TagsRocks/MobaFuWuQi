@@ -237,11 +237,6 @@ namespace MyLib
 
 	    private async Task MatchRoom(ActorMsg msg, CGPlayerCmd cmd, bool isNew)
 	    {
-            if(state == State.InRoom)
-            {
-                return;
-            }
-           
 	        var mp = cmd.RoomInfo.MaxPlayerNum;
 	        var lobby = ActorManager.Instance.GetActor<Lobby>();
 	        var r = await lobby.FindRoom(this, mp, cmd.RoomInfo, isNew);

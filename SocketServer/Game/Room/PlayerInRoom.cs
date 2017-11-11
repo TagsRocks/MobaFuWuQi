@@ -16,11 +16,13 @@ namespace MyLib
         private AvatarInfo lastAvatarInfo;
         private AvatarInfo avatarInfo;
         private PlayerActorProxy proxy;
-        private PlayerAI ai;
+        private AINPC ai;
         public PlayerInRoom(PlayerActor pl, AvatarInfo info)
         {
             lastAvatarInfo = AvatarInfo.CreateBuilder(info).Build();
             avatarInfo = AvatarInfo.CreateBuilder(info).Build();
+            avatarInfo.Level = 1;
+
             proxy = new PlayerActorProxy(pl, this);
             //玩家在房间中的对象通过Room访问
             Id = pl.Id;
@@ -254,12 +256,15 @@ namespace MyLib
 
             if (cmd.AvatarInfo.HasX)
             {
+                /*
                 var curPos = GetFloatPos();
                 avatarInfo.X = cmd.AvatarInfo.X;
                 avatarInfo.Y = cmd.AvatarInfo.Y;
                 avatarInfo.Z = cmd.AvatarInfo.Z;
                 var newPos = GetFloatPos();
                 ai.Move(newPos-curPos);
+                */
+                SetPos(new MyVec3( cmd.AvatarInfo.X, cmd.AvatarInfo.Y, cmd.AvatarInfo.Z));
             }
 
             if (cmd.AvatarInfo.HasDir)
@@ -299,6 +304,7 @@ namespace MyLib
                 avatarInfo.PlayerModelInGame = cmd.AvatarInfo.PlayerModelInGame;
             }
         }
+        
 
         private void Damage(CGPlayerCmd cmd)
         {
@@ -331,8 +337,10 @@ namespace MyLib
             GetRoom().SetReady(this);
         }
 
+        //废弃 服务器来初始化玩家的位置
         private void InitData(CGPlayerCmd cmd, ActorMsg msg)
         {
+            /*
             UpdateData(cmd);
             avatarInfo.Id = Id;
             avatarInfo.ResetPos = true;
@@ -341,6 +349,8 @@ namespace MyLib
             {
                 lastAvatarInfo = AvatarInfo.CreateBuilder(avatarInfo).Build();
             }
+            */
+
             //avatarInfo = cmd.AvatarInfo;
             var gc = GCPlayerCmd.CreateBuilder();
             gc.Result = "InitData";
@@ -393,6 +403,7 @@ namespace MyLib
             LogHelper.Log("KCP", "KCPLost");
             //agent.KCPLost();
         }
+
         private void ChooseHero(CGPlayerCmd cmd)
         {
             UpdateData(cmd);
@@ -430,12 +441,21 @@ namespace MyLib
                 lastAvatarInfo.SpeedY = avatarInfo.SpeedY;
             }
 
-
+            /*
             if (InitDataYet)
             {
                 InitDataYet = false;
                 na1.ResetPos = true;
                 na1.Changed = false;
+            }
+            */
+
+
+            if(avatarInfo.ResetPos)
+            {
+                na1.ResetPos = true;
+                na1.Changed = true;
+                avatarInfo.ResetPos = false;
             }
 
             if (avatarInfo.TowerDir != lastAvatarInfo.TowerDir)
@@ -490,20 +510,6 @@ namespace MyLib
             return lastAvatarInfo;
         }
 
-
-        public AvatarInfo.Builder GetPosInfo()
-        {
-            var na1 = AvatarInfo.CreateBuilder();
-            na1.X = avatarInfo.X;
-            na1.Y = avatarInfo.Y;
-            na1.Z = avatarInfo.Z;
-            na1.Dir = avatarInfo.Dir;
-            na1.SpeedX = avatarInfo.SpeedX;
-            na1.SpeedY = avatarInfo.SpeedY;
-            na1.ResetPos = avatarInfo.ResetPos;
-            avatarInfo.ResetPos = false;
-            return na1;
-        }
 
         public void UpdateLevel(int rank)
         {
@@ -663,6 +669,13 @@ namespace MyLib
                 na1.Changed = true;
                 lastAvatarInfo.PlayerModelInGame = avatarInfo.PlayerModelInGame;
             }
+
+            if(avatarInfo.Level != lastAvatarInfo.Level)
+            {
+                na1.Level = avatarInfo.Level;
+                na1.Changed = true;
+                lastAvatarInfo.Level = avatarInfo.Level;
+            }
             return na1;
         }
 
@@ -729,7 +742,7 @@ namespace MyLib
 
         #region Data
 	    private int buffId = 1;
-	    private bool InitDataYet = false;
+	    //private bool InitDataYet = false;
 	    public int level = 1;
 	    public long Exp = 0;
 	    private int medal = 0;
@@ -794,6 +807,13 @@ namespace MyLib
         public override void RemoveSelf()
         {
             throw new NotImplementedException();
+        }
+        public override int Level
+        {
+            get
+            {
+                return avatarInfo.Level;
+            }
         }
         #endregion
     }
