@@ -17,6 +17,7 @@ namespace MyLib
         private AvatarInfo avatarInfo;
         private PlayerActorProxy proxy;
         private AINPC ai;
+        private GridManager gridManager;
 
         public PlayerInRoom(PlayerActor pl, AvatarInfo info)
         {
@@ -30,14 +31,21 @@ namespace MyLib
             ai = AddComponent<PlayerAI>();
             avatarInfo.State = PlayerState.NotInRoom;
         }
+        /// <summary>
+        /// 初始化完地图中坐标
+        /// </summary>
         public void AfterInitPos()
         {
             avatarInfo.State = PlayerState.WaitChoose;
         }
-
+        /// <summary>
+        /// 初始化完设置所在房间
+        /// </summary>
         public override void InitAfterSetRoom()
         {
             avatarInfo.TeamColor = GetRoom().GetTeamColor();
+            //用于后面设置位置使用
+            gridManager = GetRoom().GetComponent<GridManager>();
         }
         //建立PlayerActor和PlayerInRoom之间通信的管道
         //需要同步进行初始化
@@ -900,6 +908,24 @@ namespace MyLib
 
 
         #region ActorINROOM
+        //迭代两次每次50ms 增加物理稳定性
+        public override void SetPosWithPhysic(Vector3 cp, Vector3 np)
+        {
+            var cutNum = 2;
+
+            var deltaPos = np - cp;
+            var halfDelta = deltaPos / cutNum;
+            var initPos = cp;
+            for(var i = 0; i < cutNum; i++)
+            {
+                var p1 = initPos + halfDelta;
+                var newPos1 = gridManager.FindNearestWalkableGridPos(p1);
+                initPos = newPos1; 
+            }
+            var fixPos = MyVec3.FromVec3(initPos);
+            SetPos(fixPos);
+        }
+
         public override int GetUnitId()
         {
             return avatarInfo.PlayerModelInGame;

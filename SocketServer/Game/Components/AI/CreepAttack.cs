@@ -82,7 +82,7 @@ namespace MyLib
             var gc = GCPlayerCmd.CreateBuilder();
             gc.Result = "Skill";
             gc.SkillAction = skillAct.Build();
-            myself.GetRoom().AddNextFrameCmd(gc, 4);
+            myself.GetRoom().AddNextFrameCmd(gc);
 
             var sk = aiCharacter.gameObject.GetComponent<SkillComponent>();
             var stateMachine = sk.CreateSkillStateMachine(skillAct.Build(), creepAI.npcConfig.normalAttack);

@@ -71,9 +71,10 @@ namespace MyLib
             //服务器固定Step 更新玩家位置
             var deltaTime = Util.FrameSecTime;
             var newPos = curPos + deltaTime * speedDir;
-            me.SetPos(MyVec3.FromVec3(newPos));
+            me.SetPosWithPhysic(curPos, newPos);
         }
 
+        /*
         private async Task MoveByNet()
         {
             var speed = aiNpc.npcConfig.moveSpeed;
@@ -83,16 +84,8 @@ namespace MyLib
             var deltaPos = tarPos - curPos;
             deltaPos.Y = 0;
             var dist = deltaPos.Length();
-            //var totalTime = Util.FrameSecTime;
             var totalTime = dist / speed;
-            /*
-            var speed = dist / totalTime;
-            if(speed > oriSpeed * 2)
-            {
-                speed = oriSpeed * 2;
-            }
-            totalTime
-             */
+            
             var passTime = 0.0f;
             var avatarInfo = me.GetAvatarInfo();
             avatarInfo.SpeedX = Util.RealToNetPos((tarPos.X - curPos.X) / totalTime);
@@ -110,5 +103,6 @@ namespace MyLib
             avatarInfo.SpeedX = 0;
             avatarInfo.SpeedY = 0;
         }
+        */
     }
 }

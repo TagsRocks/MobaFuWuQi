@@ -65,6 +65,12 @@ namespace MyLib
             var newPos = GetFloatPos();
             GetComponent<AINPC>().Move(newPos-curPos);
         }
+
+        public virtual void SetPosWithPhysic(Vector3 cp, Vector3 np)
+        {
+            throw new NotImplementedException();
+        }
+
         public UnitData GetUnitData()
         {
             var uid = GetUnitId();

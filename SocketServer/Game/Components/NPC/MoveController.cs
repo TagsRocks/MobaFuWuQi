@@ -32,11 +32,13 @@ namespace MyLib
         }
         private AINPC aiNpc;
         private PhysicManager physicManager;
+        private GridManager grid;
         public override void Init()
         {
             base.Init();
             aiNpc = gameObject.GetComponent<AINPC>();
             physicManager = GetRoom().GetComponent<PhysicManager>();
+            grid = GetRoom().GetComponent<GridManager>();
         }
 
         /// <summary>
@@ -70,8 +72,7 @@ StartMove:
 
             var nowPos = curObj.GetFloatPos();
             var initPos = nowPos;
-
-            var grid = GetRoom().GetComponent<GridManager>();
+           
             var g1 = grid.mapPosToGrid(nowPos);
             var g2 = grid.mapPosToGrid(tarPos);
             var path = grid.FindPath(g1, g2);
