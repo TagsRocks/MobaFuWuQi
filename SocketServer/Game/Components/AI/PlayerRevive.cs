@@ -14,7 +14,6 @@ namespace MyLib
             var pmc = aiCharacter.aiNpc.mySelf.GetRoom().GetComponent<PlayerManagerCom>();
             var mySelf = aiCharacter.aiNpc.mySelf as PlayerInRoom;
             var unitData = aiCharacter.aiNpc.unitData;
-
             pmc.allPlayerStart.InitPlayerPos(mySelf);
             mySelf.DuckInfo.HP = unitData.HP;
             aiCharacter.aiNpc.attribute.DoRevive();

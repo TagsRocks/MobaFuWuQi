@@ -36,10 +36,10 @@ namespace MyLib
                 leftTime = Math.Max(0, leftTime);
                 if (leftTime == 0)
                 {
-                    var gc2 = GCPlayerCmd.CreateBuilder();
-                    gc2.Result = "GameOver";
-                    await room.GameOver();
-                    room.AddCmd(gc2);
+                    //var gc2 = GCPlayerCmd.CreateBuilder();
+                    //gc2.Result = "GameOver";
+                    room.GameOver();
+                    //room.AddCmd(gc2);
                 }
                 if (room.GetState() == RoomActor.RoomState.GameOver)
                 {

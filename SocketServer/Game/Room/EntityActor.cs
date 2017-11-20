@@ -27,9 +27,6 @@ namespace MyLib
 		}
 
 		public EntityInfo GetEntityInfo() {
-			if(lastEntityInfo == null){
-                lastEntityInfo = EntityInfo.CreateBuilder(entityInfo).Build();
-            }
 			var na1 = lastEntityInfo;
 			return na1;
 		}
@@ -45,23 +42,26 @@ namespace MyLib
 	    }
 
 	    public EntityInfo GetEntityInfoDiff() {
-			if (lastEntityInfo == null) {
-				var na = EntityInfo.CreateBuilder (entityInfo);
-				lastEntityInfo = na.Build();
-				return lastEntityInfo;
-			}
-
 			var na1 = EntityInfo.CreateBuilder();
 			na1.Id = entityInfo.Id;
-			if (lastEntityInfo.X != entityInfo.X || lastEntityInfo.Y != entityInfo.Y || lastEntityInfo.Z != entityInfo.Z) {
+			if (lastEntityInfo.X != entityInfo.X 
+                || lastEntityInfo.Y != entityInfo.Y || lastEntityInfo.Z != entityInfo.Z
+                || lastEntityInfo.SpeedX != entityInfo.SpeedX
+                || lastEntityInfo.SpeedY != entityInfo.SpeedY
+                ) {
 				na1.X = entityInfo.X;
 				na1.Y = entityInfo.Y;
 				na1.Z = entityInfo.Z;
+                na1.SpeedX = entityInfo.SpeedX;
+                na1.SpeedY = entityInfo.SpeedY;
+
 				na1.Changed = true;
 
                 lastEntityInfo.X = entityInfo.X;
                 lastEntityInfo.Y = entityInfo.Y;
                 lastEntityInfo.Z = entityInfo.Z;
+                lastEntityInfo.SpeedX = entityInfo.SpeedX;
+                lastEntityInfo.SpeedY = entityInfo.SpeedY;
 			}
 
 			if (entityInfo.UnitId != lastEntityInfo.UnitId) {
@@ -84,12 +84,14 @@ namespace MyLib
                 lastEntityInfo.HP = entityInfo.HP;
 			}
             /*
-            if(entityInfo.Speed != lastEntityInfo.Speed)
+            if(entityInfo.SpeedX != lastEntityInfo.SpeedX || entityInfo.SpeedY != lastEntityInfo.SpeedY)
             {
-                na1.Speed = entityInfo.Speed;
-                na1.Changed = true;
+                na1.SpeedX = entityInfo.SpeedX;
+                na1.SpeedY = entityInfo.SpeedY;
 
-                lastEntityInfo.Speed = entityInfo.Speed;
+                na1.Changed = true;
+                lastEntityInfo.SpeedX = entityInfo.SpeedX;
+                lastEntityInfo.SpeedY = entityInfo.SpeedY;
             }
             */
 
@@ -113,11 +115,10 @@ namespace MyLib
 
 
 		//初始化实体的Id
+        //需要Info的iD 被修改 用于NewEntity中的同步
 		public void  InitInfo(EntityInfo info) {
-			entityInfo = info;
+            entityInfo = info; 
 			entityInfo.Id = Id;
-            //var unitData = Util.GetUnitData(false, entityInfo.UnitId, 0);
-            //entityInfo.HP = unitData.HP;
 			lastEntityInfo = EntityInfo.CreateBuilder (info).Build();
 		    if (entityInfo.HasLifeLeft)
 		    {

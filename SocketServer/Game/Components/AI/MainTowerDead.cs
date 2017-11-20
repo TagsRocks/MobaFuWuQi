@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace MyLib
 {
-    class TowerDead : DeadState
+    class MainTowerDead : DeadState
     {
         public override void EnterState()
         {
             base.EnterState();
             MobaUtil.SyncDead(aiCharacter);
+            aiCharacter.gameObject.GetRoom().MainTowerBroken(aiCharacter.aiNpc.mySelf);
         }
 
         public override async Task RunLogic()

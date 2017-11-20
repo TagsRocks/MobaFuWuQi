@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Diagnostics;
+using System.Numerics;
 
 namespace MyLib 
 {
@@ -10,6 +11,60 @@ namespace MyLib
     {
         public static int FramePerSecond = 20;
         public static int GameToNetNumber = 100;
+        public static int FrameMSTime = 100;
+        public static float FrameSecTime = 0.1f;
+        public static float FixDist = 1f * 1f;
+        public static float PredictTimeStep = 0.2f;
+
+        public static bool IsClientMove(MyVec3 clientSpeed)
+        {
+            return (clientSpeed.x != 0 || clientSpeed.z != 0);
+        }
+        /// <summary>
+        /// 根据客户端输入重新计算玩家的位置
+        /// </summary>
+        /// <param name="clientPos"></param>
+        /// <param name="mePos"></param>
+        /// <returns></returns>
+        public static bool IsNetMove(Vector3 clientPos, AvatarInfo mePos)
+        {
+            var mePos2 = Util.NetPosToFloat(mePos);
+            var deltaPos = clientPos - mePos2;
+            deltaPos.Y = 0;
+            var len = deltaPos.LengthSquared();
+            return (len > FixDist);
+        }
+
+        public static float ClientFrameToServer(ulong frameId)
+        {
+            return frameId *1.0f / GameToNetNumber;
+        }
+        /// <summary>
+        /// Frame 帧时间转化为秒 时间
+        /// </summary>
+        /// <param name="dFrame"></param>
+        /// <returns></returns>
+        public static float FrameToTime(float dFrame)
+        {
+            return dFrame * MainClass.syncFreq;
+        }
+
+        public static Vector3 DeltaPos(AvatarInfo p1, AvatarInfo p0)
+        {
+            var myVec = new MyVec3(p1.X-p0.X, p1.Y-p0.Y, p1.Z-p0.Z);
+            return myVec.ToFloat();
+        }
+        public static Vector3 NetPosToFloat(AvatarInfo p)
+        {
+            var myVec = new MyVec3(p.X, p.Y, p.Z);
+            return myVec.ToFloat();
+        }
+        public static MyVec3 NetPosToIntVec(AvatarInfo p)
+        {
+            var myVec = new MyVec3(p.X, p.Y, p.Z);
+            return myVec;
+        }
+
         public static int GameVecToNet(float v)
         {
             return (int)(v * GameToNetNumber);
@@ -22,12 +77,24 @@ namespace MyLib
         {
             return (int)(t * 1000);
         }
+        public static int TimeToMS(double t)
+        {
+            return (int)(t * 1000);
+        }
         
+        public static double MSToSec(int t)
+        {
+            return t / 1000.0;
+        }
         public static void Log(string msg)
         {
             //Console.WriteLine(msg);
         }
 
+        public static int RealToNetPos(float p)
+        {
+            return (int)(p * 100);
+        }
 
         public class Pair
         {
@@ -139,6 +206,15 @@ namespace MyLib
         public static double GetTimeNow()
         {
 	        return DateTime.UtcNow.Ticks/10000000.0;
+        }
+
+        public static double startTime;
+        /// <summary>
+        /// 距离服务器启动的时间 降低时间大小
+        /// </summary>
+        public static float GetTimeSinceServerStart()
+        {
+            return (float)(Util.GetTimeNow() - startTime);
         }
 
         /// <summary>

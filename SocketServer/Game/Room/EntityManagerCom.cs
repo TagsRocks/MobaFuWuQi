@@ -11,13 +11,21 @@ namespace MyLib
 		List<EntityInfo> newEntities = new List<EntityInfo> ();
 		List<EntityInfo> removeEntities = new List<EntityInfo> ();
 
+        private RoomActor room;
+
         public Dictionary<int, EntityActor> allEntities = new Dictionary<int, EntityActor>();
 
 		public EntityManagerCom ()
 		{
 		}
+        public override void AfterAdd()
+        {
+            base.AfterAdd();
+            room = this.actor as RoomActor;
+        }
 
-		public void InitEntityDataToPlayer (PlayerInRoom player)
+
+        public void InitEntityDataToPlayer (PlayerInRoom player)
 		{
 			var earr = entities;
 			foreach (var p in earr ) {
@@ -105,7 +113,7 @@ namespace MyLib
 		public void Add (EntityActor actor, EntityInfo info)
 		{
 			entities.Add (actor);
-			newEntities.Add (info);
+			newEntities.Add (actor.entityInfo);
             allEntities.Add(actor.Id, actor);
 		}
 

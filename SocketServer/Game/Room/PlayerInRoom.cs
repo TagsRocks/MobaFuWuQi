@@ -17,6 +17,7 @@ namespace MyLib
         private AvatarInfo avatarInfo;
         private PlayerActorProxy proxy;
         private AINPC ai;
+
         public PlayerInRoom(PlayerActor pl, AvatarInfo info)
         {
             lastAvatarInfo = AvatarInfo.CreateBuilder(info).Build();
@@ -27,6 +28,11 @@ namespace MyLib
             //玩家在房间中的对象通过Room访问
             Id = pl.Id;
             ai = AddComponent<PlayerAI>();
+            avatarInfo.State = PlayerState.NotInRoom;
+        }
+        public void AfterInitPos()
+        {
+            avatarInfo.State = PlayerState.WaitChoose;
         }
 
         public override void InitAfterSetRoom()
@@ -47,7 +53,7 @@ namespace MyLib
 
         public override void HandleCmd(ActorMsg msg)
         {
-            LogHelper.Log("PlayerInRoom:HandleCmd", ""+msg?.msg+":"+msg.packet?.protoBody);
+            LogHelper.Log("PlayerInRoom:HandleCmd", ""+msg?.msg+":"+msg.packet?.protoBody+":frame:"+GetRoom().GetFrameId()+":roomTie:"+GetRoom().GetRoomTimeNow());
             if (!string.IsNullOrEmpty(msg.msg))
             {
                 var cmds = msg.msg.Split(' ');
@@ -106,9 +112,7 @@ namespace MyLib
                         case "ChooseHero":
                             ChooseHero(cmd);
                             break;
-                          
                     }
-
                 }
             }
         }
@@ -182,9 +186,6 @@ namespace MyLib
 
 
 
-
-        private bool lowChange = false;
-        private int lastFrameId = -1;
         /// <summary>
         /// 1:FrameID ==0  128 TCP稳定发过来
         /// 2：服务器lowChange 事件同步给客户端
@@ -194,79 +195,27 @@ namespace MyLib
         /// <param name="cmd"></param>
 	    private void UpdateData(CGPlayerCmd cmd)
         {
-            if (avatarInfo == null)
-            {
-                avatarInfo = cmd.AvatarInfo;
-                return;
-            }
-
             if (cmd.AvatarInfo.HasIsRobot)
             {
                 avatarInfo.IsRobot = cmd.AvatarInfo.IsRobot;
             }
 
-            if (cmd.AvatarInfo.HasFrameID)
-            {
-                var newFrameId = cmd.AvatarInfo.FrameID;
-                //newFrame == 0 为客户端发送的可靠报文 确保到达
-                //TCP 发送的重新标定 ID序列的可靠报文
-                if (lastFrameId == -1)
-                {
-                    lowChange = true;
-                    lastFrameId = newFrameId;
-                    avatarInfo.FrameID = newFrameId;
-                }
-                else if (newFrameId == 0)
-                {
-                    lowChange = true;
-                    lastFrameId = newFrameId;
-                    avatarInfo.FrameID = newFrameId;
-                }
-                else if (newFrameId == 128)
-                {
-                    lowChange = true;
-                    lastFrameId = newFrameId;
-                    avatarInfo.FrameID = newFrameId;
-                }
-                else if (newFrameId > 127 && lastFrameId <= 127)//报文不在同一个区间段 上一阶段的报文
-                {
-                    return;
-                }
-                else if (newFrameId <= 127 && lastFrameId > 127) //报文不在同一个区间段 上一阶段的报文
-                {
-                    return;
-                }
-                else if (newFrameId <= lastFrameId) //报文不是新的
-                {
-                    return;
-                }
-                else //通知客户端更新FrameID
-                {
-                    lastFrameId = newFrameId;
-                    avatarInfo.FrameID = newFrameId;
-                }
-            }
-
+            //玩家服务器状态不直接受客户端影响
             //同步速度
+            /*
             if (cmd.AvatarInfo.HasSpeedX)
             {
                 avatarInfo.SpeedX = cmd.AvatarInfo.SpeedX;
                 avatarInfo.SpeedY = cmd.AvatarInfo.SpeedY;
             }
-
-            if (cmd.AvatarInfo.HasX)
+            */
+            //if (cmd.AvatarInfo.HasX)
             {
-                /*
-                var curPos = GetFloatPos();
-                avatarInfo.X = cmd.AvatarInfo.X;
-                avatarInfo.Y = cmd.AvatarInfo.Y;
-                avatarInfo.Z = cmd.AvatarInfo.Z;
-                var newPos = GetFloatPos();
-                ai.Move(newPos-curPos);
-                */
-                SetPos(new MyVec3( cmd.AvatarInfo.X, cmd.AvatarInfo.Y, cmd.AvatarInfo.Z));
+                SetClientSyncPos(cmd);
+                //SetPos(new MyVec3( cmd.AvatarInfo.X, cmd.AvatarInfo.Y, cmd.AvatarInfo.Z));
             }
 
+            /*
             if (cmd.AvatarInfo.HasDir)
             {
                 avatarInfo.Dir = cmd.AvatarInfo.Dir;
@@ -275,6 +224,8 @@ namespace MyLib
             {
                 avatarInfo.HP = cmd.AvatarInfo.HP;
             }
+            */
+
             if (cmd.AvatarInfo.HasNetSpeed)
             {
                 avatarInfo.NetSpeed = cmd.AvatarInfo.NetSpeed;
@@ -299,12 +250,211 @@ namespace MyLib
             {
                 avatarInfo.TowerDir = cmd.AvatarInfo.TowerDir;
             }
+
             if (cmd.AvatarInfo.HasPlayerModelInGame)
             {
                 avatarInfo.PlayerModelInGame = cmd.AvatarInfo.PlayerModelInGame;
             }
         }
+
+        private List<AvatarInfo> positions = new List<AvatarInfo>();
         
+
+        public MyVec3 GetClientVelocity()
+        {
+            if(positions.Count > 0)
+            {
+                var p1 = positions[positions.Count-1];
+                var speed = new MyVec3(p1.SpeedX, 0, p1.SpeedY);
+                Log.Sys("GetClientVelocity:"+speed.ToString());
+                return speed;
+            }
+            return MyVec3.zero;
+        }
+        /// <summary>
+        /// 获得预测的客户端当前移动位置
+        /// 根据玩家实际距离计算修正值速度
+        /// 这一frame 结束时刻玩家的位置
+        /// </summary>
+        /// <returns></returns>
+        public Vector3 GetPredictClientPos()
+        {
+
+            if (positions.Count > 0) {
+                var curPos = Util.NetPosToFloat(avatarInfo);
+                var p1 = positions[positions.Count-1];
+                if(p1.SpeedX == 0 && p1.SpeedY == 0)
+                {
+                    return curPos;
+                }
+                var speed = new MyVec3(p1.SpeedX, 0, p1.SpeedY).ToFloat();
+                return curPos + Util.PredictTimeStep* speed;
+
+                /*
+                var p1 = positions[positions.Count-1];
+                if(p1.SpeedX ==0 && p1.SpeedY == 0)
+                {
+                    //return Util.NetPosToFloat(p1);
+
+                }
+
+                //var p1Pos = Util.NetPosToFloat(p1);
+                var speed = new MyVec3(p1.SpeedX, 0, p1.SpeedY).ToFloat();
+                var ft = GetRoom().GetRoomTimeNow();
+
+                var f1 = Util.ClientFrameToServer(p1.FrameID);
+                var p1Time = Util.FrameToTime(f1);
+                var extraTime = ft - p1Time;
+
+                if (extraTime > 0)
+                {
+                    //预测这帧结束时候的位置 移动速度修正
+                    return p1Pos + speed * (extraTime+Util.FrameSecTime);
+                }else
+                {
+                    return p1Pos + speed * Util.FrameSecTime;
+                }
+
+                var p0 = positions[positions.Count - 2];
+                if (p1.FrameID > p0.FrameID)
+                {
+                    var ft = GetRoom().GetRoomTimeNow();
+
+                    var f1 = Util.ClientFrameToServer(p1.FrameID);
+                    var f0 = Util.ClientFrameToServer(p0.FrameID);
+                    var dt = Util.FrameToTime(f1 - f0);
+                    var dp = Util.DeltaPos(p1, p0);
+                    var speed = dp / dt;
+                    speed.Y = 0;
+
+                    var p1Pos = Util.NetPosToFloat(p1);
+                    //var p1Time = Util.FrameToTime(p1.FrameID);
+                    var p1Time = Util.FrameToTime(f1);
+
+                    //服务器外插值玩家的位置 服务器当前时间-
+                    var extraTime = ft - p1Time;
+                    if (extraTime > 0)
+                    {
+                        return p1Pos + speed * extraTime;
+                    }else
+                    {
+                        return p1Pos;
+                    }
+                }
+                else
+                {
+                    return Util.NetPosToFloat(p1);
+                }
+                */
+            }
+            /*else if(positions.Count > 0)
+            {
+                return Util.NetPosToFloat(positions[positions.Count-1]);
+            }*/
+            else
+            {
+                return Util.NetPosToFloat(avatarInfo);
+            }
+        }
+
+        /// <summary>
+        /// 服务器类似于客户端需要存储多个客户端同步位置
+        /// 服务器玩家的移动需要由客户端或者自己驱动
+        /// SpeedX SpeedY
+        /// Dir 属性
+        /// 
+        /// 客户端报文都带有时间戳
+        /// 服务器报文也都带有时间戳
+        /// </summary>
+        /// <param name="cmd"></param>
+        public void SetClientSyncPos(CGPlayerCmd cmd)
+        {
+            if (avatarInfo.ResetPos)
+            {
+                return;
+            }
+            //玩家位置已经同步下去了才可以开始 接受玩家的移动命令
+            if(avatarInfo.State != PlayerState.AfterReset)
+            {
+                return;
+            }
+
+            var info = cmd.AvatarInfo;
+            /*
+            if (info.HasX)
+            {
+
+            }
+            */
+            /*
+            if (info.HasSpeedX)
+            {
+                info.FrameID = cmd.FrameId;
+                avatarInfo.SpeedX = info.SpeedX;
+                avatarInfo.SpeedY = info.SpeedY;
+                positions.Add(info);
+                if (positions.Count > 5)
+                {
+                    positions.RemoveAt(0);
+                }
+            }
+            else
+            {
+                if (positions.Count > 0)
+                {
+                    var last = positions[positions.Count - 1];
+                    var fakeInfo = AvatarInfo.CreateBuilder();
+                    fakeInfo.SpeedX = last.SpeedX;
+                    fakeInfo.SpeedY = last.SpeedY;
+                    fakeInfo.FrameID = cmd.FrameId;
+
+                }
+            }
+            */
+            //服务器计算客户端位置 客户端只发送操控命令
+            /*
+            if (info.HasX)
+            {
+                SetPos(Util.NetPosToIntVec(info));
+                return;
+            }
+            */
+
+            //将客户端输入统计
+            if (info.HasX)
+            {
+                info.FrameID = cmd.FrameId;
+                positions.Add(info);
+                if (positions.Count > 5)
+                {
+                    positions.RemoveAt(0);
+                }
+            }else
+            {
+                /*
+                //重复上次的命令
+                if (positions.Count > 0)
+                {
+                    var lastInfo = positions[positions.Count - 1];
+                    var fakeInfo = AvatarInfo.CreateBuilder();
+                    fakeInfo.X = lastInfo.X;
+                    fakeInfo.Y = lastInfo.Y;
+                    fakeInfo.Z = lastInfo.Z;
+                    fakeInfo.SpeedX = lastInfo.SpeedX;
+                    fakeInfo.SpeedY = lastInfo.SpeedY;
+                    fakeInfo.FrameID = cmd.FrameId;
+
+                    positions.Add(fakeInfo.Build());
+                    if (positions.Count > 5)
+                    {
+                        positions.RemoveAt(0);
+                    }
+                }
+                */
+            }
+
+        }
+
 
         private void Damage(CGPlayerCmd cmd)
         {
@@ -332,29 +482,23 @@ namespace MyLib
             GetRoom().AddCmd(gc);
             this.lastAvatarInfo.BuffInfoList.Add(cmd.BuffInfo);
         }
+
+        /// <summary>
+        /// 客户端通知服务器已经进入场景成功
+        /// </summary>
+        /// <param name="cmd"></param>
         private void Ready(CGPlayerCmd cmd)
         {
             GetRoom().SetReady(this);
+            avatarInfo.State = PlayerState.AfterReset;
         }
 
-        //废弃 服务器来初始化玩家的位置
+        //服务器来初始化玩家的位置
+        //需要初始化需要将模型从 0 0 0 位置挪到正确的游戏位置
         private void InitData(CGPlayerCmd cmd, ActorMsg msg)
         {
-            /*
-            UpdateData(cmd);
-            avatarInfo.Id = Id;
-            avatarInfo.ResetPos = true;
-            InitDataYet = true;
-            if (lastAvatarInfo == null)
-            {
-                lastAvatarInfo = AvatarInfo.CreateBuilder(avatarInfo).Build();
-            }
-            */
-
-            //avatarInfo = cmd.AvatarInfo;
             var gc = GCPlayerCmd.CreateBuilder();
             gc.Result = "InitData";
-            //agent.SendPacket(gc, msg.packet.flowId, 0);
             proxy.SendPacket(gc, msg.packet.flowId, 0);
         }
 
@@ -408,7 +552,8 @@ namespace MyLib
         {
             UpdateData(cmd);
             ai.AfterSelectHeroInit();
-            GetRoom().ChooseHero();
+            GetRoom().ChooseHero(this);
+            avatarInfo.State = PlayerState.AfterChoose;
         }
 
 
@@ -441,22 +586,13 @@ namespace MyLib
                 lastAvatarInfo.SpeedY = avatarInfo.SpeedY;
             }
 
-            /*
-            if (InitDataYet)
-            {
-                InitDataYet = false;
-                na1.ResetPos = true;
-                na1.Changed = false;
-            }
-            */
-
-
             if(avatarInfo.ResetPos)
             {
                 na1.ResetPos = true;
                 na1.Changed = true;
                 avatarInfo.ResetPos = false;
             }
+
 
             if (avatarInfo.TowerDir != lastAvatarInfo.TowerDir)
             {
@@ -472,12 +608,7 @@ namespace MyLib
                 na1.Changed = true;
                 lastAvatarInfo.FrameID = avatarInfo.FrameID;
             }
-            if (lowChange)
-            {
-                na1.LowChange = true;
-                na1.Changed = true;
-                lowChange = false;
-            }
+         
 
             /*
             //服务器端关闭UDP
@@ -507,9 +638,9 @@ namespace MyLib
 
         public AvatarInfo GetAvatarInfo()
         {
-            return lastAvatarInfo;
+            //return lastAvatarInfo;
+            return avatarInfo;
         }
-
 
         public void UpdateLevel(int rank)
         {
@@ -676,6 +807,12 @@ namespace MyLib
                 na1.Changed = true;
                 lastAvatarInfo.Level = avatarInfo.Level;
             }
+            if(avatarInfo.State != lastAvatarInfo.State)
+            {
+                na1.State = avatarInfo.State;
+                na1.Changed = true;
+                lastAvatarInfo.State = avatarInfo.State;
+            }
             return na1;
         }
 
@@ -739,6 +876,17 @@ namespace MyLib
             proxy.SendPacket(cmd, 0, 0);
         }
 
+
+        /// <summary>
+        /// 重置服务器位置 清空客户端移动命令
+        /// </summary>
+        public void ResetPos()
+        {
+            avatarInfo.ResetPos = true;
+            positions.Clear();
+        }
+
+      
 
         #region Data
 	    private int buffId = 1;

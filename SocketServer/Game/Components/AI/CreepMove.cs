@@ -22,14 +22,14 @@ namespace MyLib
 
         public override async Task RunLogic()
         {
-            Log.AI("MoveRunTask:");
+            //Log.AI("MoveRunTask:");
             var cp = aiCharacter.blackboard[AIParams.CurrentPoint].intVal;
             var nextPoint = cp + 1;
             var path = creepAI.path;
             while(path.nodes.Count > nextPoint && inState)
             {
                 var pos = path.nodes[nextPoint];
-                Log.AI("MoveToPos:"+pos+":point:"+nextPoint);
+                //Log.AI("MoveToPos:"+pos+":point:"+nextPoint);
                 await moveController.MoveTo(pos);
                 aiCharacter.blackboard[AIParams.CurrentPoint].intVal = nextPoint;
                 nextPoint++;

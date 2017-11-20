@@ -13,8 +13,49 @@ namespace MyLib
 		private PlayerManagerCom playerCom;
 		private EntityManagerCom entityCom;
 		TeamManageCom teamCom;
-		private bool hasMaster = false;
 	    private bool IsNewUserRoom = false;
+
+        private ulong frameId = 0;
+        private double roomStartTime = 0;
+        private double newTimeNow = 0;
+
+        /// <summary>
+        /// 获取当前服务器上的时间
+        /// </summary>
+        /// <returns></returns>
+        public ulong GetFrameId()
+        {
+            return frameId;
+        }
+
+        /// <summary>
+        /// 带小数点的服务器上FrameTime
+        /// </summary>
+        /// <returns></returns>
+        public float GetRealFrameTime()
+        {
+            var passTime = Util.GetTimeSinceServerStart();
+            var deltaTime = passTime - roomStartTime;
+            var realFrameId =  deltaTime / MainClass.syncFreq;
+            return (float)realFrameId;
+        }
+
+        /// <summary>
+        /// 获得房间已经开始的时间长度 秒
+        /// </summary>
+        /// <returns></returns>
+        public float GetRoomTimeNow()
+        {
+            if (roomStartTime > 0)
+            {
+                var passTime = Util.GetTimeSinceServerStart();
+                var deltaTime = passTime - roomStartTime;
+                return (float)deltaTime;
+            }else
+            {
+                return 0;
+            }
+        }
 
 	    public bool IsNewUser()
 	    {
@@ -26,6 +67,7 @@ namespace MyLib
 			InGame, //正式游戏
 			GameOver, //游戏结束
             SelectHero, //选择英雄
+            WaitClientInit, //等待所有客户端初始化地图结束
 		}
 
 		private RoomState state = RoomState.Ready;
@@ -44,6 +86,7 @@ namespace MyLib
 	    } 
 		public RoomActor (int mp, bool newUser, RoomInfo roomInfo)
 		{
+            curFrameAwaiter = nextFrameAwaiter1;
 		    IsNewUserRoom = newUser;
 			playerCom = this.AddComponent<PlayerManagerCom> ();
 			entityCom = this.AddComponent<EntityManagerCom> ();
@@ -78,9 +121,12 @@ namespace MyLib
             gridManager.InitMap();
         }
 
+        /// <summary>
+        /// 玩家客户端进入游戏准备完成
+        /// </summary>
+        /// <param name="pl"></param>
 		public void SetReady (PlayerInRoom pl)
 		{
-			playerCom.SetReady (pl);
             playerCom.SendAllPlayerTo(pl);
 		    entityCom.SendAllEtyTo(pl);
 		    var gc = GCPlayerCmd.CreateBuilder();
@@ -138,14 +184,21 @@ namespace MyLib
 
 	    public double SyncPeriod = 0;
 
+        private int roomPlayer = 1;
         //将HP状态同步和命令同步放到同一帧来广播
 		private async Task UpdateWorld ()
 		{
 		    while (state == RoomState.Ready)
 		    {
+                var pNum = playerCom.GetPlayerNum();
+                if(pNum >= roomPlayer)
+                {
+                    break;
+                }
                 await Task.Delay(1000);
             }
 
+            state = RoomState.SelectHero;
             //倒计时等待玩家选择英雄
             //倒计时结束 根据玩家选择英雄的状态， 没有选择则随机一个英雄给玩家
             if(state == RoomState.SelectHero)
@@ -158,29 +211,67 @@ namespace MyLib
             //等待玩家选择英雄
             while(state == RoomState.SelectHero)
             {
+                if (playerCom.IsAllChoose())
+                {
+                    break;
+                }
                 await Task.Delay(1000);
             }
-
-		    if (state == RoomState.InGame)
-		    {
+            //通知客户端开始初始化
+            {
                 score.Init();
                 var gc2 = GCPlayerCmd.CreateBuilder();
                 gc2.Result = "StartGame";
                 playerCom.BroadcastToAll(gc2);
-		        playerCom.RefreshLiveTime();
-		    }
-            //RunTask(UpdatePhysic);
+                playerCom.RefreshLiveTime();
+            }
+            state = RoomState.WaitClientInit;
+            while (state == RoomState.WaitClientInit)
+            {
+                if(playerCom.IsAllClientInit())
+                {
+                    break;
+                }
+                await Task.Delay(1000);
+            }
+            state = RoomState.InGame;
 
-            //var syncTime = (int)(MainClass.syncFreq * 1000*0.8f);
+		 
+
+            roomStartTime = Util.GetTimeSinceServerStart();
+            frameId = 0;
+            var nextFrameTime = roomStartTime;
             var syncTime = MainClass.syncTime;
+            var secSyncTime = Util.MSToSec(syncTime);
+
 		    double lastTime = 0.0;
 			while (!isStop) {
-				Debug.Log ("UpdateTime: " + syncTime);
-				await Task.Delay (syncTime);
-			    var nextTime = Util.GetTimeNow();
+			    var nextTime = Util.GetTimeSinceServerStart();
 			    SyncPeriod = nextTime - lastTime;
 			    lastTime = nextTime;
-                Debug.Log ("UpdatePlayer");
+
+                //先更新状态再广播
+                //交换队列 防止执行过程中 添加Awaiter
+                var lastAwaiter = curFrameAwaiter;
+                if(curFrameAwaiter == nextFrameAwaiter1)
+                {
+                    curFrameAwaiter = nextFrameAwaiter2;
+                }else
+                {
+                    curFrameAwaiter = nextFrameAwaiter1;
+                }
+                foreach(var a in lastAwaiter)
+                {
+                    a.Run();
+                }
+                lastAwaiter.Clear();
+
+
+                var gc = GCPlayerCmd.CreateBuilder();
+                gc.Result = "SyncFrame";
+                gc.FrameId = GetFrameId();
+                AddBeforeCmd(gc);
+
 			    foreach (var cmd in beforeCmdList)
 			    {
 			        playerCom.BroadcastToAll(cmd);
@@ -188,9 +279,7 @@ namespace MyLib
                 beforeCmdList.Clear();
 
 				playerCom.UpdatePlayer ();
-				Debug.Log ("UpdateEntity");
 				entityCom.UpdateEntity ();
-				Debug.Log ("UpdateFinish");
 			    foreach (var cmd in cmdList)
 			    {
 			        playerCom.BroadcastToAll(cmd);
@@ -202,6 +291,25 @@ namespace MyLib
 					playerCom.BroadcastKCPToAll(cmd);
 				}
 				kcpList.Clear();
+
+                foreach(var cmd in nextFrameCmd)
+                {
+                    playerCom.BroadcastToAll(cmd);
+                }
+                nextFrameCmd.Clear();
+
+                newTimeNow = Util.GetTimeSinceServerStart();
+                nextFrameTime += secSyncTime;
+                frameId++;
+
+                //继续执行
+                if(newTimeNow >= (nextFrameTime-0.005) )
+                {
+                }else//睡眠一段时间
+                {
+                    var sleepTime = nextFrameTime - newTimeNow;
+                    await Task.Delay (Util.TimeToMS(sleepTime));
+                }
 			}
 		}
 
@@ -240,10 +348,13 @@ namespace MyLib
 				//var ainfo = await pl.GetAvatarInfo ();
 				await AddPlayer (pl, ainfo.Build());
 			    //var num1 = playerCom.GetPlayerNum();
+
                 //多人准备进入选择人物界面
+                //等待多个人进入游戏
                 if (state == RoomState.Ready)
      		    {
-                    state = RoomState.SelectHero;
+                    //state = RoomState.SelectHero;
+
                 }
 				return true;
 			}
@@ -254,23 +365,34 @@ namespace MyLib
         /// 确定选择英雄 就进入游戏
         /// </summary>
         /// <returns></returns>
-        public void ChooseHero()
+        public void ChooseHero(PlayerInRoom inRoom)
         {
-            if(state == RoomState.SelectHero)
-            {
-                state = RoomState.InGame;
-            }
+            playerCom.SetChoose(inRoom);
         }
-		public async Task GameOver ()
-		{
-			await this._messageQueue;
 
+        public void MainTowerBroken(ActorInRoom tower)
+        {
+            GameOver();
+        }
+
+        public async Task GameOverAsync()
+        {
+            await _messageQueue;
+            GameOver();
+        }
+
+		public void GameOver ()
+		{
 		    if (state != RoomState.GameOver)
 		    {
 		        playerCom.UpdateAllPlayersLevel();
 		    }
             state = RoomState.GameOver;
-		}
+
+            var gc2 = GCPlayerCmd.CreateBuilder();
+            gc2.Result = "GameOver";
+            AddCmd(gc2);
+        }
 
 		public async Task StartGame ()
 		{
@@ -376,6 +498,16 @@ namespace MyLib
         private List<GCPlayerCmd.Builder> cmdList = new List<GCPlayerCmd.Builder>(); 
         private List<GCPlayerCmd.Builder> beforeCmdList = new List<GCPlayerCmd.Builder>();
 		private List<GCPlayerCmd.Builder> kcpList = new List<GCPlayerCmd.Builder>();
+        private List<GCPlayerCmd.Builder> nextFrameCmd = new List<GCPlayerCmd.Builder>();
+        private List<WaitForNextFrameAwaiter> nextFrameAwaiter1 = new List<WaitForNextFrameAwaiter>();
+        private List<WaitForNextFrameAwaiter> nextFrameAwaiter2 = new List<WaitForNextFrameAwaiter>();
+        private List<WaitForNextFrameAwaiter> curFrameAwaiter; 
+        
+
+        public void AddAwaiter(WaitForNextFrameAwaiter a)
+        {
+            curFrameAwaiter.Add(a);
+        }
 
         /// <summary>
         /// 在UpdatePlayer和 UpdateEntity之前发送命令
@@ -390,6 +522,17 @@ namespace MyLib
 		{
 			kcpList.Add(cmd);
 		}
+
+        /// <summary>
+        /// 下一帧率开始执行该命令而不是当前帧
+        /// </summary>
+        /// <param name="cmd"></param>
+        public void AddNextFrameCmd(GCPlayerCmd.Builder cmd, int nextF=1)
+        {
+            cmd.RunInFrame = (int)GetFrameId() + nextF;
+            nextFrameCmd.Add(cmd);
+        }
+
 		public void AddCmd (GCPlayerCmd.Builder cmd)
 		{
             cmdList.Add(cmd);

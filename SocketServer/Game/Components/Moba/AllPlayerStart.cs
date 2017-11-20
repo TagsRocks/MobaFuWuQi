@@ -20,15 +20,16 @@ namespace MyLib
         /// <param name="pIn"></param>
         public void InitPlayerPos(PlayerInRoom pIn)
         {
-            var info = pIn.GetAvatarInfo();
-            info.ResetPos = true;
+            //var info = pIn.GetAvatarInfo();
+            //info.ResetPos = true;
             foreach(var c in gameObject.GetChildren())
             {
                 var ps = c.GetComponent<PlayerStart>();
                 if(ps.teamId == pIn.TeamColor)
                 {
                     pIn.SetPos(ps.gameObject.pos);
-                    pIn.DuckInfo.ResetPos = true; //通知客户端重置初始位置
+                    pIn.ResetPos();
+                    //pIn.GetAvatarInfo().ResetPos = true; //通知客户端重置初始位置
                     break;
                 }
             }

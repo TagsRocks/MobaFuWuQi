@@ -13,7 +13,7 @@ namespace MyLib
             //var tc = teamColor;
             //teamColor++;
             //return tc;
-            return 0;
+            return teamColor++;
 		}
 	}
 }

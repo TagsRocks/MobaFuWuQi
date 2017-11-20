@@ -6,9 +6,6 @@ using System.Threading.Tasks;
 
 namespace MyLib 
 {
-    /// <summary>
-    /// 
-    /// </summary>
     public class CreepIdle : IdleState
     {
         public override void EnterState()

@@ -45,6 +45,12 @@ namespace MyLib
                 gameObject.GetComponent<AICharacter>().ChangeState(AIStateEnum.DEAD);
             }
         }
+        public void DoHeal(int healNum)
+        {
+            mySelf.DuckInfo.HP += healNum;
+            mySelf.DuckInfo.HP = MathUtil.Clamp(mySelf.DuckInfo.HP, 0, unitData.HP);
+        }
+
         public void DoRevive()
         {
             state = State.Normal;

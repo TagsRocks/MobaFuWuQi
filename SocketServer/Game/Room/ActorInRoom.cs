@@ -53,6 +53,9 @@ namespace MyLib
             get;
         }
 
+      
+        //设置位置同时需要同步到物理世界中
+        //需要外插值预测客户端位置 服务器上实际位置和 客户端发送的位置不同
         public void SetPos(MyVec3 p)
         {
             var curPos = GetFloatPos();
@@ -61,6 +64,11 @@ namespace MyLib
             DuckInfo.Z = p.z;
             var newPos = GetFloatPos();
             GetComponent<AINPC>().Move(newPos-curPos);
+        }
+        public UnitData GetUnitData()
+        {
+            var uid = GetUnitId();
+            return Util.GetUnitData(IsPlayer, uid, Level);
         }
     }
 }

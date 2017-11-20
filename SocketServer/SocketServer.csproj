@@ -98,6 +98,7 @@
     <Compile Include="Game\AABBTreePhysic\DynamicTree.cs" />
     <Compile Include="Game\AABBTreePhysic\PhysicManager.cs" />
     <Compile Include="Game\AABBTreePhysic\Settings.cs" />
+    <Compile Include="Game\Components\AI\MainTowerDead.cs" />
     <Compile Include="Game\Components\AI\PlayerAttack.cs" />
     <Compile Include="Game\Components\AI\PlayerDead.cs" />
     <Compile Include="Game\Components\AI\PlayerIdle.cs" />
@@ -106,8 +107,10 @@
     <Compile Include="Game\Components\Moba\AllPlayerStart.cs" />
     <Compile Include="Game\Components\Moba\PlayerStart.cs" />
     <Compile Include="Game\Components\NPC\AINPC.cs" />
+    <Compile Include="Game\Components\NPC\MainTowerAI.cs" />
     <Compile Include="Game\Components\NPC\MoveController.cs" />
     <Compile Include="Game\Components\NPC\PlayerAI.cs" />
+    <Compile Include="Game\Components\NPC\SpringAI.cs" />
     <Compile Include="Game\Room\ActorInRoom.cs" />
     <Compile Include="Game\Room\PlayerActorProxy.cs" />
     <Compile Include="Game\Room\PlayerInRoom.cs" />
@@ -199,6 +202,7 @@
     <Compile Include="Game\MonitorActor.cs" />
     <Compile Include="Game\Utility\LogHelper.cs" />
     <Compile Include="Game\Utility\MobaUtil.cs" />
+    <Compile Include="Game\Utility\WaitForNextFrame.cs" />
     <Compile Include="MasterServerActor.cs" />
     <Compile Include="MathUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

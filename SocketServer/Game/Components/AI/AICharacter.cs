@@ -61,6 +61,13 @@ namespace MyLib
         }
         public void ChangeState(AIStateEnum s)
         {
+            var next = stateMap[s];
+            //避免重复进入状态 除非状态自己允许
+            if (next == current)
+            {
+                return;
+            }
+
             if(current != null)
             {
                 if(!current.CheckNextState(s))

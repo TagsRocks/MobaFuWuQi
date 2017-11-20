@@ -8,12 +8,12 @@ namespace MyLib
 {
     class TowerAttack : AttackState
     {
-        private TowerAI towerAI;
+        private AINPC towerAI;
         private EntityProxy target;
         public override void Init()
         {
             base.Init();
-            towerAI = aiCharacter.gameObject.GetComponent<TowerAI>();
+            towerAI = aiCharacter.gameObject.GetComponent<AINPC>();
         }
 
         public override void EnterState()

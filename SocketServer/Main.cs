@@ -19,11 +19,31 @@ namespace MyLib
 {
 	public class MainClass
 	{
-		public static float syncFreq = 0.1f;
-        public static int syncTime = 100;
+        /// <summary>
+        /// 每个逻辑帧时间
+        /// </summary>
+		public static float syncFreq
+        {
+            get
+            {
+                return Util.FrameSecTime;
+            }
+        }
+        /// <summary>
+        /// ms 毫秒 时间
+        /// </summary>
+        public static int syncTime
+        {
+            get
+            {
+                return Util.FrameMSTime;
+            }
+        }
 
 		public static void Main (string[] args)
 		{
+            Util.startTime = Util.GetTimeNow();
+
             Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
             Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
 
@@ -43,13 +63,15 @@ namespace MyLib
 			am.AddActor (lobby, true);
 
             Debug.Log("Args: "+args.Length);
-			if (args.Length > 0) {
+            /*
+            if (args.Length > 0) {
 				var sync = System.Convert.ToSingle (args [0]);
 				syncFreq = sync;
                 Debug.Log("SyncTime: "+syncFreq);
 			}
+            */
             
-			syncTime = (int)(MainClass.syncFreq * 1000);
+			//syncTime = (int)(MainClass.syncFreq * 1000);
 			var ss = new SocketServer ();
 			am.AddActor (ss, true);
 

@@ -41,6 +41,10 @@ namespace MyLib
         {
             return new MyVec3((int)(x * 100), (int)(y * 100), (int)(z * 100));
         }
+        public static MyVec3 FromVec3(Vector3 v)
+        {
+            return new MyVec3((int)(v.X * 100), (int)(v.Y * 100), (int)(v.Z * 100));
+        }
 
         public static MyVec3 zero = new MyVec3(0, 0, 0);
         public MyVec3(int x1, int x2, int x3)
@@ -54,6 +58,17 @@ namespace MyLib
         public override string ToString()
         {
             return printer.PrintObject(this);
+        }
+
+        public static bool operator ==(MyVec3 left, MyVec3 right)
+        {
+            return left.x == right.x && left.y == right.y && left.z == right.z;
+        }
+
+        public static bool operator !=(MyVec3 left, MyVec3 right)
+        {
+            //return left.x == right.x && left.y == right.y && left.z == right.z;
+            return !(left == right);
         }
     }
 }

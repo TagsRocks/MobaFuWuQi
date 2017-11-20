@@ -37,7 +37,7 @@ namespace MyLib
         public virtual void AfterSelectHeroInit()
         {
             npcConfig = NpcDataManager.Instance.GetConfig(mySelf.GetUnitId());
-            unitData = Util.GetUnitData(npcConfig.IsPlayer, mySelf.GetUnitId(), mySelf.Level);
+            unitData = Util.GetUnitData(mySelf.IsPlayer, mySelf.GetUnitId(), mySelf.Level);
             mySelf.DuckInfo.HP = unitData.HP;
         }
 

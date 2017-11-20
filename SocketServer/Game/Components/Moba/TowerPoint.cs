@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection;
 
 namespace MyLib
 {
@@ -15,11 +16,17 @@ namespace MyLib
         public override void Init()
         {
             base.Init();
-            GenTower();
+            gameObject.RunTask(GenTower);
         }
-        private void GenTower()
+        private async Task GenTower()
         {
             return;
+            while (GetRoom().GetState() != RoomActor.RoomState.InGame)
+            {
+                await Task.Delay(1000);
+            }
+
+            //return;
             var startPos = gameObject.pos;
             var entityInfo = EntityInfo.CreateBuilder();
             entityInfo.UnitId = towerId;
@@ -33,7 +40,12 @@ namespace MyLib
             entityInfo.EType = EntityType.CHEST;
             var info = entityInfo.Build();
             var ety = GetRoom().AddEntityInfo(info);
-            var tai = ety.AddComponent<TowerAI>();
+            var unitData = ety.GetUnitData();
+
+            var type = Type.GetType("MyLib." + unitData.AITemplate);
+            var m = ety.GetType().GetMethod("AddComponent");
+            var geMethod = m.MakeGenericMethod(type);
+            var tai = geMethod.Invoke(ety, new object[] { }) as AINPC;// as AIBase;
             tai.RunAI();
         }
     }

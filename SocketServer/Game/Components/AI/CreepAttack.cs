@@ -82,7 +82,7 @@ namespace MyLib
             var gc = GCPlayerCmd.CreateBuilder();
             gc.Result = "Skill";
             gc.SkillAction = skillAct.Build();
-            myself.GetRoom().AddKCPCmd(gc);
+            myself.GetRoom().AddNextFrameCmd(gc, 4);
 
             var sk = aiCharacter.gameObject.GetComponent<SkillComponent>();
             var stateMachine = sk.CreateSkillStateMachine(skillAct.Build(), creepAI.npcConfig.normalAttack);
@@ -116,12 +116,13 @@ namespace MyLib
         private async Task DoMove()
         {
             var pos = target.actor.GetIntPos();
-            moveController.MoveTo(pos);
+            //moveController.MoveTo(pos);
             var otherAttr = target.actor.GetComponent<NpcAttribute>();
             //检测和目标的距离
             while (inState && !otherAttr.IsDead())
             {
                 var tarNewPos = target.actor.GetIntPos();
+                //寻路加移动 或者直线移动？
                 moveController.MoveTo(tarNewPos);
 
                 var mePos = creepAI.mySelf.GetVec2Pos();
@@ -133,12 +134,10 @@ namespace MyLib
                     moveController.StopMove();
                     break;
                 }
-                var waitTime = 100;
-                if(dist < 2)
-                {
-                    waitTime = 100;
-                }
-                await Task.Delay(waitTime);
+
+                //var waitTime = Util.FrameMSTime;
+                //await Task.Delay(waitTime);
+                await new WaitForNextFrame(creepAI.mySelf.GetRoom());
             }
             if (inState)
             {

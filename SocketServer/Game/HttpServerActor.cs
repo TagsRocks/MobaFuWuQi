@@ -216,7 +216,7 @@ namespace SocketServer.Game
                         var rooms = await lobby.GetRooms();
                         foreach (var roomActor in rooms)
                         {
-                            roomActor.GameOver();
+                            roomActor.GameOverAsync();
                         }
                         return "GameOver";
                     }else if (flags == "room")

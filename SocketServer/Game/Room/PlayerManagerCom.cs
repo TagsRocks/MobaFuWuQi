@@ -10,7 +10,7 @@ namespace MyLib
 		List<PlayerInRoom> players = new List<PlayerInRoom> ();
 		List<AvatarInfo> newPlayer = new List<AvatarInfo> ();
 		List<AvatarInfo> removePlayer = new List<AvatarInfo> ();
-		Dictionary<int, bool> ready = new Dictionary<int, bool> ();
+		Dictionary<int, bool> chooseHero = new Dictionary<int, bool> ();
         Dictionary<int, PlayerInRoom> playerDict = new Dictionary<int, PlayerInRoom>();
         public AllPlayerStart allPlayerStart;
         public void SetAllPlayer(AllPlayerStart ap)
@@ -32,19 +32,39 @@ namespace MyLib
 			return players.Count;
 		}
 
-		public void SetReady(PlayerInRoom  pl) {
-			ready [pl.Id] = true;
+		public void SetChoose(PlayerInRoom  pl) {
+			chooseHero [pl.Id] = true;
 		}
 
 
-		public bool IsAllReady() {
+        /// <summary>
+        /// 所有客户端选择英雄结束
+        /// </summary>
+        /// <returns></returns>
+		public bool IsAllChoose() {
 			foreach(var p in players) {
-				if (!ready.ContainsKey (p.Id)) {
+				if (!chooseHero.ContainsKey (p.Id)) {
 					return false;
 				}
 			}
 			return true;
 		}
+
+        /// <summary>
+        /// 所有客户端发送Ready命令给服务器
+        /// </summary>
+        /// <returns></returns>
+        public bool IsAllClientInit()
+        {
+            foreach(var p in players)
+            {
+                if(p.GetAvatarInfo().State != PlayerState.AfterReset)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
 
 	    public void SendAllPlayerTo(PlayerInRoom pl)
 	    {
@@ -57,14 +77,6 @@ namespace MyLib
 	        }
 	    }
 
-		public void SendAllPlayerToAllClient() {
-			foreach (var p in players) {
-				var gc = GCPlayerCmd.CreateBuilder ();
-				gc.Result = "Add";
-				gc.AvatarInfo = p.GetAvatarInfo(); 
-				BroadcastToAll (gc);
-			}
-		}
 
 		public void UpdatePlayer ()
 		{
@@ -248,8 +260,9 @@ namespace MyLib
                 pInRoom.InitAfterSetRoom();
                 await pInRoom.InitProxy();
                 pInRoom.Start();
-                pInRoom.RunAI();
                 allPlayerStart.InitPlayerPos(pInRoom);
+                pInRoom.AfterInitPos();
+                pInRoom.RunAI();
 
                 playerDict[pInRoom.IDInRoom] = pInRoom;
                 players.Add(pInRoom);

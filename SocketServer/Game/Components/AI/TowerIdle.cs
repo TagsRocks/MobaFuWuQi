@@ -8,11 +8,11 @@ namespace MyLib
 {
     class TowerIdle : IdleState
     {
-        private TowerAI towerAI;
+        private AINPC towerAI;
         public override void Init()
         {
             base.Init();
-            towerAI = aiCharacter.gameObject.GetComponent<TowerAI>();
+            towerAI = aiCharacter.gameObject.GetComponent<AINPC>();
         }
 
         public override async Task RunLogic()
@@ -50,7 +50,7 @@ namespace MyLib
                         aiCharacter.ChangeState(AIStateEnum.ATTACK);
                     }
                 }
-                await Task.Delay(Util.TimeToMS(towerAI.thinkTime));
+                await Task.Delay(Util.TimeToMS(1));
             }
         }
     }
