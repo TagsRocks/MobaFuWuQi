@@ -57,6 +57,7 @@ namespace MyLib
             return npcConfig.attackRangeDist * npcConfig.attackRangeDist;
         }
 
+      
         public void Move(Vector3 disp)
         {
             physic.MoveEntity(ref proxy, disp);

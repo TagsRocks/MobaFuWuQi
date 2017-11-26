@@ -19,7 +19,7 @@ namespace MyLib
     class MissileData : GameObjectComponent 
     {
         public MissileType missileType = MissileType.Target;
-        //public float flyTime = 3;
+        public float lifeTime = 5;
         public float Velocity = 20;
     }
 }

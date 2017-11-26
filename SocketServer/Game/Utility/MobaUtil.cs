@@ -7,6 +7,28 @@ using System.Threading.Tasks;
 namespace MyLib { 
     public static class MobaUtil
     {
+        public static EntityProxy FindNearestEne(List<EntityProxy> proxes, float dist, ActorInRoom mySelf)
+        {
+            var myPos = mySelf.GetVec2Pos();
+            var minDist = dist * dist;
+            var findProxy = new EntityProxy();
+            findProxy.ProxyId = -1;
+            foreach (var e in proxes)
+            {
+                if (e.actor.TeamColor != mySelf.TeamColor && !e.actor.GetComponent<NpcAttribute>().IsDead())
+                {
+                    var enePos = e.actor.GetVec2Pos();
+                    var newDist = (myPos - enePos).LengthSquared();
+                    if (newDist < minDist)
+                    {
+                        minDist = newDist;
+                        findProxy = e;
+                    }
+                }
+            }
+            return findProxy;
+        }
+
         public static void SyncDead(AICharacter aiCharacter)
         {
             if (aiCharacter.aiNpc.mySelf.IsPlayer)

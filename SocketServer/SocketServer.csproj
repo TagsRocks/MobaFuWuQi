@@ -193,6 +193,7 @@
     <Compile Include="Game\Skill\HurtDirect.cs" />
     <Compile Include="Game\Skill\SkillComponent.cs" />
     <Compile Include="Game\Skill\SkillDataConfig.cs" />
+    <Compile Include="Game\Skill\SkillLogic.cs" />
     <Compile Include="Game\Skill\SkillLogicComponent.cs" />
     <Compile Include="Game\Skill\SkillStateMachine.cs" />
     <Compile Include="Game\Skill\UnitSpawner.cs" />

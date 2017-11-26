@@ -78,19 +78,7 @@ namespace MyLib
 		}
 
 
-		public async Task<T> GetComponentAsync<T> () where T : Component
-		{
-			await this._messageQueue;
-
-			foreach (var c in components) {
-				if (c is T) {
-					return (T)c;
-				}
-			}
-			return null;
-		}
-
-		public T GetComponent<T> () where T : Component
+        public T GetComponent<T> () where T : Component
 		{
 			foreach (var c in components) {
 				if (c is T) {

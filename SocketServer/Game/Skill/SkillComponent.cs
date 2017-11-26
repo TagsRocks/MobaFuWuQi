@@ -8,9 +8,11 @@ namespace MyLib
 {
     class SkillComponent : GameObjectComponent
     {
+        private AINPC aiNpc;
         public override void Init()
         {
             base.Init();
+            aiNpc = gameObject.GetComponent<AINPC>();
         }
 
         public SkillStateMachine CreateSkillStateMachine(SkillAction skillAct, string machineConfig)
@@ -22,6 +24,32 @@ namespace MyLib
             sk.action = skillAct;
             gameObject.AddChild(stateMachine);
             return sk;
-        } 
+        }
+
+
+        /// <summary>
+        /// 根据玩家状态检查是否可以使用技能
+        /// </summary>
+        /// <param name="skillAct"></param>
+        /// <param name="npcConfig"></param>
+        /// <returns></returns>
+        public bool CheckCanUseSkill(SkillAction skillAct, NpcConfig npcConfig)
+        {
+            var skId = skillAct.SkillId;
+            var target = skillAct.Target;
+            var actConfig = npcConfig.GetActionBySkillId(skId);
+            if (actConfig.needEnemy && target == 0)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public float GetAttackTargetDist(int skillId)
+        {
+            var actConfig = aiNpc.npcConfig.GetActionBySkillId(skillId);
+            return actConfig.skillAttackTargetDist;
+        }
     }
 }

@@ -28,7 +28,6 @@ namespace MyLib
             proxy = new PlayerActorProxy(pl, this);
             //玩家在房间中的对象通过Room访问
             Id = pl.Id;
-            ai = AddComponent<PlayerAI>();
             avatarInfo.State = PlayerState.NotInRoom;
         }
         /// <summary>
@@ -43,6 +42,7 @@ namespace MyLib
         /// </summary>
         public override void InitAfterSetRoom()
         {
+            ai = AddComponent<PlayerAI>();
             avatarInfo.TeamColor = GetRoom().GetTeamColor();
             //用于后面设置位置使用
             gridManager = GetRoom().GetComponent<GridManager>();
@@ -274,7 +274,6 @@ namespace MyLib
             {
                 var p1 = positions[positions.Count-1];
                 var speed = new MyVec3(p1.SpeedX, 0, p1.SpeedY);
-                Log.Sys("GetClientVelocity:"+speed.ToString());
                 return speed;
             }
             return MyVec3.zero;

@@ -9,7 +9,7 @@ namespace MyLib
 {
     public partial class Util
     {
-        public static int FramePerSecond = 20;
+        public static int FramePerSecond = 100;
         public static int GameToNetNumber = 100;
         public static int FrameMSTime = 100;
         public static float FrameSecTime = 0.1f;
@@ -169,6 +169,20 @@ namespace MyLib
                 monsterData[key] = ud;
                 return ud;
             }
+        }
+
+        static Dictionary<int, SkillData> skillData = new Dictionary<int, SkillData>();
+
+        public static SkillData GetSkillData(int skillId, int level)
+        {
+            int key = skillId * 1000000 + level;
+            if (skillData.ContainsKey(key))
+            {
+                return skillData[key];
+            }
+            var sd = new SkillData(skillId, level);
+            skillData[key] = sd;
+            return sd;
         }
 
         public static int RangeInt(int a, int b)

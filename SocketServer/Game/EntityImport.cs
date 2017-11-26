@@ -89,7 +89,7 @@ namespace MyLib
 
         private void SetArray(object com, string k, JSONArray array)
         {
-            Log.Sys("SetArray:"+com+":"+k+":"+array.Count);
+            //Log.Sys("SetArray:"+com+":"+k+":"+array.Count);
             var comTp = com.GetType();
             var fi = comTp.GetField(k);
             Type valueType = typeof(string);
