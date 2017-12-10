@@ -7,6 +7,14 @@ using System.Threading.Tasks;
 namespace MyLib { 
     public static class MobaUtil
     {
+        public static void SetSkillActionPos(SkillAction skAct, ActorInRoom myself)
+        {
+            var pos = myself.GetIntPos();
+            skAct.X = pos.x;
+            skAct.Y = pos.y;
+            skAct.Z = pos.z;
+        }
+
         public static EntityProxy FindNearestEne(List<EntityProxy> proxes, float dist, ActorInRoom mySelf)
         {
             var myPos = mySelf.GetVec2Pos();

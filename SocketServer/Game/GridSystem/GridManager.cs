@@ -122,6 +122,9 @@ public class GridManager : MyLib.Component {
 
 
     #region physic
+
+    private static float playerRadius = 0.5f;
+    private static float outGridRadius = 0.8f;
     /// <summary>
     /// 得到点Pos 最近的可以走的位置 
     /// 所在网格可以行走
@@ -293,6 +296,109 @@ public class GridManager : MyLib.Component {
         pos.Y = h;
         return pos;
 
+    }
+
+
+    /// <summary>
+    /// 射线计算瞬间移动可以停止的点位置
+    /// 寻找目标位置附近最近的可行走网格
+    /// 
+    /// 迭代限制：
+    /// 方向控制 Pos->endPos 
+    /// 长度控制
+    /// 碰撞控制
+    /// </summary>
+    /// <param name="pos"></param>
+    /// <param name="endPos"></param>
+    /// <returns></returns>
+    public Vector3 RaycastNearestPoint(Vector3 pos, Vector3 endPos)
+    {
+        var dir = endPos - pos;
+        dir.Y = 0;
+
+        //因为是正方形网格 所以Dir不会畸变
+        var stepDir = Vector3.Normalize(dir);
+        //因为grid边长刚好1所以 length不用nodeSize修正
+        var length = dir.Length();
+
+        var findPos = endPos;
+        var gPos = mapPosToGridFloat(endPos);
+        var endGridPos = gPos;
+        var startPos = mapPosToGridFloat(pos);
+        var gridDir = new Vector2(stepDir.X, stepDir.Z);
+
+        //最多迭代次数 nStep == maxStep 时则回到初始位置
+      
+        var maxStep = (int)(Math.Ceiling(length / BackStep));
+        var nStep = 0;
+        while (nStep < maxStep)
+        {
+            var allGrids = BroadColGrids(gPos);
+            Vector2 firstCol;
+            var col = FindRaycastColGrid(gPos, allGrids, out firstCol);
+            if (col)
+            {
+                Vector2 fixPos;
+                //线段和球体的交点较近的一个点
+                FixRaycastPos2(endGridPos, firstCol, gridDir, startPos, nStep, maxStep, out fixPos);
+                gPos = fixPos;
+            }
+            else
+            {
+                break;
+            }
+            nStep++;
+        }
+        var mp2 = gridToMapPosFloat(gPos);
+        return mp2;
+    }
+
+    private bool FindRaycastColGrid(Vector2 gPos, List<Vector2> allGrids, out Vector2 firstPos)
+    {
+        var dist = (playerRadius + outGridRadius);
+        dist *= dist;
+        var minColDist = 1000.0f;
+        var find = false;
+        Vector2 minColPos = Vector2.Zero;
+        foreach (var n in allGrids)
+        {
+            var dx = gPos.X - n.X;
+            var dy = gPos.Y - n.Y;
+            var newV2 = new Vector2(dx, dy);
+            var newVDist = newV2.LengthSquared();
+            if (newVDist < dist && newVDist < minColDist)
+            {
+                minColPos = n;
+                minColDist = newVDist;
+                find = true;
+            }
+        }
+
+        firstPos = minColPos;
+        return find;
+    }
+
+    private const float BackStep = 1.5f;
+    /// <summary>
+    /// 直接沿着 Start ---> ENd 方向 回退一定单位即可
+    /// </summary>
+    /// <param name="gPos"></param>
+    /// <param name="firstCol"></param>
+    /// <param name="gridDir"></param>
+    /// <param name="startPos"></param>
+    /// <param name="fixPos"></param>
+    /// <returns></returns>
+    private void FixRaycastPos2(Vector2 endGridPos, Vector2 firstCol, Vector2 gridDir, Vector2 startPos, int nStep, int maxStep, out Vector2 fixPos)
+    {
+        if ((nStep + 1) < maxStep)
+        {
+            var newPos = endGridPos - gridDir * BackStep * (nStep + 1);
+            fixPos = newPos;
+        }
+        else
+        {
+            fixPos = startPos;
+        }
     }
     #endregion
 }

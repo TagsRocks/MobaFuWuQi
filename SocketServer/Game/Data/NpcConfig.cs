@@ -22,8 +22,8 @@ namespace MyLib
         public float totalTime;
         public float hitTime;
         public string aniName = "AbilityR";
-        public float skillAttackRange = 8;
-        public float skillAttackTargetDist = 8;
+        public float skillAttackRange = 8; //伤害的范围大小
+        public float skillAttackTargetDist = 8; //锁定目标的距离
         public int skillId;//技能伤害计算的ID
         public bool needEnemy = false; //锁定目标技能必须有目标才可以释放 
     }
@@ -34,8 +34,8 @@ namespace MyLib
         public int npcTemplateId;
         public List<ActionConfig> actionList;
         public string normalAttack = "monsterSingle";
-        public float eyeSightDistance = 10;
-        public float attackRangeDist = 10;
+        public float eyeSightDistance = 10;  //搜索敌人的范围
+        public float attackRangeDist = 10; //攻击范围
         public int attackSkill = 1;
         public float moveSpeed = 5;
         public float attackTargetDist = 6; //近战攻击的感应敌人范围

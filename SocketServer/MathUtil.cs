@@ -49,9 +49,25 @@ public class MathUtil
     {
         return -deg;
     }
+    /// <summary>
+    /// Unity 坐标系的Y轴角度转化为 System.Numberics 坐标系的弧度
+    /// 
+    /// Unity 左手坐标系
+    /// Numerics 左手坐标系
+    /// </summary>
+    /// <returns></returns>
+    public static float UnityYDegToMathRadian(float deg)
+    {
+        return DegToRad(deg);
+    }
+
     public static Vector3 forward = new Vector3(0, 0, 1);
     public static float RadToDeg(float rad)
     {
         return (float)(rad / Math.PI * 180);
+    }
+    public static float DegToRad(float deg)
+    {
+        return (float)(deg / 180 * Math.PI);
     }
 }

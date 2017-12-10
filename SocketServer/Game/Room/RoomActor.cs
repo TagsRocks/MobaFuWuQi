@@ -14,6 +14,7 @@ namespace MyLib
 		private EntityManagerCom entityCom;
 		TeamManageCom teamCom;
 	    private bool IsNewUserRoom = false;
+        public GridManager gridManager;
 
         private ulong frameId = 0;
         private double roomStartTime = 0;
@@ -117,7 +118,7 @@ namespace MyLib
         private void InitPhysic()
         {
             AddComponent<PhysicManager>();
-            var gridManager = AddComponent<GridManager>();
+            gridManager = AddComponent<GridManager>();
             gridManager.InitMap();
         }
 

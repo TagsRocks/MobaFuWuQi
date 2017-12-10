@@ -37,6 +37,8 @@ namespace MyLib
             gc.SkillAction.RunFrame = Util.GameTimeToNet(tt);
             gc.SkillAction.Target = 0;
 
+            MobaUtil.SetSkillActionPos(gc.SkillAction, aiNpc.mySelf);
+
             var enes = physics.GetNearyBy(aiNpc.proxy, sk.GetAttackTargetDist(gc.SkillAction.SkillId));
             var findNear = MobaUtil.FindNearestEne(enes, sk.GetAttackTargetDist(gc.SkillAction.SkillId), aiNpc.mySelf);
             //如果服务器没有设置朝向 则使用客户端玩家自己的朝向

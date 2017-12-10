@@ -114,6 +114,7 @@
     <Compile Include="Game\Room\ActorInRoom.cs" />
     <Compile Include="Game\Room\PlayerActorProxy.cs" />
     <Compile Include="Game\Room\PlayerInRoom.cs" />
+    <Compile Include="Game\Skill\BackMove.cs" />
     <Compile Include="Game\Skill\Bullet.cs" />
     <Compile Include="Game\Chat\ChatActor.cs" />
     <Compile Include="Game\Components\AI\CreepDead.cs" />
