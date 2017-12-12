@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using StatePrinting;
 
 namespace MyLib { 
     public static class MobaUtil
@@ -80,5 +81,10 @@ namespace MyLib {
             DuckInfo.Z = DuckPos.Z;
         }
 
+        public static readonly Stateprinter printer = new Stateprinter();
+        public static string Print(object obj)
+        {
+            return printer.PrintObject(obj);
+        }
     }
 }

@@ -14,7 +14,7 @@ using log4net;
 using SimpleJSON;
 using SocketServer.Game;
 
-[assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config",Watch = true)]
+[assembly: log4net.Config.XmlConfigurator(ConfigFile = "ConfigData/log4net.config",Watch = true)]
 namespace MyLib
 {
 	public class MainClass

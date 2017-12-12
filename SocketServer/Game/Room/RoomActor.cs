@@ -151,7 +151,7 @@ namespace MyLib
 	    {
             Debug.Log("InitEntityNow");
 	        maxSpawnId = 0;
-            using (var f = new StreamReader(string.Format("level_1_4_{0}.json", roomInfo.LevelId)))
+            using (var f = new StreamReader(string.Format("ConfigData/level_1_4_{0}.json", roomInfo.LevelId)))
             {
                 Debug.Log("InitEntityInfo");
                 var con = f.ReadToEnd();
@@ -180,12 +180,11 @@ namespace MyLib
 	    {
             0, 0, 0, 0, 0
 	    };
-	    private int MaxCount = 0;
 	    public double avg = 0;
-
 	    public double SyncPeriod = 0;
 
-        private int roomPlayer = 1;
+        //开始游戏一个房间需要的晚间人数
+        private int roomPlayer = 2;
         //将HP状态同步和命令同步放到同一帧来广播
 		private async Task UpdateWorld ()
 		{

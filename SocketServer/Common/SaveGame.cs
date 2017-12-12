@@ -16,7 +16,7 @@ namespace MyLib
         public SaveGame()
         {
             saveGame = this;
-            var file = System.IO.File.ReadAllText("nameMap.json");
+            var file = System.IO.File.ReadAllText("ConfigData/nameMap.json");
             msgNameIdMap = JSON.Parse(file).AsObject;
             InitMsgName();
         }

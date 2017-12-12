@@ -54,10 +54,9 @@ namespace MyLib
             z = x3;
         }
 
-        static readonly Stateprinter printer = new Stateprinter();
         public override string ToString()
         {
-            return printer.PrintObject(this);
+            return MobaUtil.printer.PrintObject(this);
         }
 
         public static bool operator ==(MyVec3 left, MyVec3 right)

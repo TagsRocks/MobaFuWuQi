@@ -17,7 +17,7 @@ namespace MyLib
         public ServerConfig()
         {
             instance = this;
-            var file = System.IO.File.ReadAllText("ServerConfig.json");
+            var file = System.IO.File.ReadAllText("ConfigData/ServerConfig.json");
             configMap = JSON.Parse(file).AsObject;
         }
 

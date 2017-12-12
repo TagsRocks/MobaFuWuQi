@@ -33,6 +33,11 @@ namespace MyLib
             var gc = GCPlayerCmd.CreateBuilder();
             gc.SkillAction = cmd.SkillAction;
             actConfig = aiNpc.npcConfig.GetActionBySkillId(cmd.SkillAction.SkillId);
+            if(actConfig == null)
+            {
+                LogHelper.LogError("PlayerAttack", "actConfigIsNull:"+cmd.ToString()+":"+ MobaUtil.printer.PrintObject(aiNpc.npcConfig));
+                return;
+            }
             var tt = actConfig.totalTime;
             gc.SkillAction.RunFrame = Util.GameTimeToNet(tt);
             gc.SkillAction.Target = 0;
