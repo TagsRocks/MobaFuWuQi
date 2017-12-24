@@ -61,7 +61,7 @@ namespace MyLib
 
         public override void HandleCmd(ActorMsg msg)
         {
-            LogHelper.Log("PlayerInRoom:HandleCmd", ""+msg?.msg+":"+msg.packet?.protoBody+":frame:"+GetRoom().GetFrameId()+":roomTie:"+GetRoom().GetRoomTimeNow());
+            //LogHelper.Log("PlayerInRoom:HandleCmd", ""+msg?.msg+":"+msg.packet?.protoBody+":frame:"+GetRoom().GetFrameId()+":roomTie:"+GetRoom().GetRoomTimeNow());
             if (!string.IsNullOrEmpty(msg.msg))
             {
                 var cmds = msg.msg.Split(' ');
