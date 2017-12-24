@@ -25,10 +25,17 @@ namespace MyLib
             {
                 var tar = target as ActorInRoom;
                 var me = attacker as ActorInRoom;
-                var dist = tar.GetFloatPos() - me.GetFloatPos();
-                dist.Y = 0;
-                var flyTime = dist.Length() / missileData.Velocity;
-                await Task.Delay(Util.TimeToMS(flyTime));
+                if (tar != null)
+                {
+                    var dist = tar.GetFloatPos() - me.GetFloatPos();
+                    dist.Y = 0;
+                    var flyTime = dist.Length() / missileData.Velocity;
+                    await Task.Delay(Util.TimeToMS(flyTime));
+                }else
+                {
+                    var flyTime = missileData.lifeTime;
+                    await Task.Delay(Util.TimeToMS(flyTime));
+                }
                 runner.DoDamage(target);
             }
         }

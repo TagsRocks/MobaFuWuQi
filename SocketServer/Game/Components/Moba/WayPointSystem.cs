@@ -32,23 +32,28 @@ namespace MyLib
                 await Task.Delay(1000);
             }
 
-            if(teamId == 0)
-            {
-                return;
-            }
+            //5s 后开始刷新
+            await Task.Delay(5000);
+
             var children = gameObject.GetChildren();
-
-            foreach(var c in children)
+            //passTime = 0;
+            while (true && GetRoom().GetState() == RoomActor.RoomState.InGame)
             {
-                var path = c.GetComponent<iTweenPath>();
+                foreach (var c in children)
+                {
+                    var path = c.GetComponent<iTweenPath>();
 
-                //小兵的AI需要添加上组件
-                path.AddSoldier(soldierId, teamId);
-                break;
+                    //小兵的AI需要添加上组件
+                    path.AddSoldier(soldierId, teamId);
+                }
+                //await new WaitForNextFrame(GetRoom());
+                //passTime += Util.FrameSecTime;
+
+                await Task.Delay(Util.TimeToMS(intervalTime));
             }
-          
         }
-        private float passTime = 0;
+
+        //private float passTime = 0;
     }
 
 }

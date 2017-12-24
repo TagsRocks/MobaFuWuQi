@@ -94,6 +94,7 @@ namespace MyLib
                 return;
             }
             var dmg = attacker.GetComponent<AINPC>().unitData.Damage;
+            Log.AI("SkillDamage:"+dmg);
             target.GetComponent<NpcAttribute>().DoHurt(dmg);
 
             var gcPlayerCmd = GCPlayerCmd.CreateBuilder();

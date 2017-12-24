@@ -171,18 +171,24 @@ namespace MyLib
             }
         }
 
-        static Dictionary<int, SkillData> skillData = new Dictionary<int, SkillData>();
 
+        /// <summary>
+        /// 避免使用全局静态对象 否则需要考虑线程安全性
+        /// </summary>
+        static Dictionary<int, SkillData> skillData = new Dictionary<int, SkillData>();
         public static SkillData GetSkillData(int skillId, int level)
         {
-            int key = skillId * 1000000 + level;
-            if (skillData.ContainsKey(key))
+            lock (skillData)
             {
-                return skillData[key];
+                int key = skillId * 1000000 + level;
+                if (skillData.ContainsKey(key))
+                {
+                    return skillData[key];
+                }
+                var sd = new SkillData(skillId, level);
+                skillData[key] = sd;
+                return sd;
             }
-            var sd = new SkillData(skillId, level);
-            skillData[key] = sd;
-            return sd;
         }
 
         public static int RangeInt(int a, int b)

@@ -20,7 +20,6 @@ namespace MyLib
         }
         private async Task GenTower()
         {
-            return;
             while (GetRoom().GetState() != RoomActor.RoomState.InGame)
             {
                 await Task.Delay(1000);

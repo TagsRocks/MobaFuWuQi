@@ -77,11 +77,9 @@ namespace MyLib
 
             var sk = aiCharacter.gameObject.GetComponent<SkillComponent>();
             var stateMachine = sk.CreateSkillStateMachine(skillAct.Build(), towerAI.npcConfig.normalAttack);
-
-            //执行对应的动作Attack 
-            //确定对应的事件
-            //SyncTime 驱动的
             await UpdateAction(stateMachine);
+
+            //await Task.Delay(1);
         }
 
         private async Task UpdateAction(SkillStateMachine stateMachine)

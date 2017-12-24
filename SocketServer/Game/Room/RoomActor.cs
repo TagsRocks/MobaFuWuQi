@@ -184,7 +184,7 @@ namespace MyLib
 	    public double SyncPeriod = 0;
 
         //开始游戏一个房间需要的晚间人数
-        private int roomPlayer = 2;
+        private int roomPlayer = 1;
         //将HP状态同步和命令同步放到同一帧来广播
 		private async Task UpdateWorld ()
 		{
