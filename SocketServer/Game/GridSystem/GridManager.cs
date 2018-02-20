@@ -160,6 +160,7 @@ public class GridManager : MyLib.Component {
                 //TODO:可能需要插值
                 break;
             }
+            count++;
         }
 
         var mp2 = gridToMapPosFloat(gPos);
