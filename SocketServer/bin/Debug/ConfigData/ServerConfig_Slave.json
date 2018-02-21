@@ -1,7 +1,0 @@
-{
-    "DatabaseConnection": "server=127.0.0.1;uid=root;pwd=fed1d9d54ec025ad;database=tank",
-    "HttpServerListenPort": "12006",
-    "Port": "12005",
-	"UDPPort" : "12007",
-	"UDPClientPort" : 12008,
-}

@@ -33,13 +33,15 @@ namespace MyLib
         public bool IsPlayer = false;
         public int npcTemplateId;
         public List<ActionConfig> actionList;
+        /// <summary>
+        /// 塔和NPC的技能模板
+        /// 只有一个技能
+        /// </summary>
         public string normalAttack = "monsterSingle";
         public float eyeSightDistance = 10;  //搜索敌人的范围
         public float attackRangeDist = 10; //攻击范围
         public int attackSkill = 1;
         public float moveSpeed = 5;
-        public float attackTargetDist = 6; //近战攻击的感应敌人范围
-
 
         public ActionConfig GetAction(ActionType tp)
         {
