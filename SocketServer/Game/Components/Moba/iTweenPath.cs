@@ -17,9 +17,10 @@ namespace MyLib
             spawnId = System.Convert.ToInt32(gameObject.name.Replace("Path", ""));
         }
 
-        public void AddSoldier(int soldierId, int teamId)
+        public void AddSoldier(int soldierId, int teamId, float offset=0)
         {
             var startPos = nodes[0];
+            startPos.x += (int)(offset*100);
 
             LogHelper.Log("iTweenPath", "AddSoldier:" + startPos);
             var entityInfo = EntityInfo.CreateBuilder();

@@ -12,6 +12,9 @@ namespace MyLib
         public float intervalTime = 10;
         public int soldierId = 59;
         public int teamId = 0;
+        public int archerId = 64;
+        public float offSetZ = 4;
+
         private GridManager gridManager;
 
         //TODO:Grid Physic 都需要放到其它中初始化
@@ -45,6 +48,7 @@ namespace MyLib
 
                     //小兵的AI需要添加上组件
                     path.AddSoldier(soldierId, teamId);
+                    path.AddSoldier(archerId, teamId, offSetZ);
                 }
                 //await new WaitForNextFrame(GetRoom());
                 //passTime += Util.FrameSecTime;
