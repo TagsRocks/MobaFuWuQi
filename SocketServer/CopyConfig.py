@@ -1,3 +1,4 @@
 import os
-cmd = "mklink /H /D E:\UnityProj\\tankServer\\SocketServer\\bin\\Debug\\ConfigData E:\\UnityProj\\tankServer\\SocketServer\\ConfigData"
+cmd = "mklink /D E:\\UnityProj\\tankServer\\SocketServer\\bin\\Debug\\ConfigData E:\\UnityProj\\tankServer\\SocketServer\\ConfigData"
+print(cmd)
 os.system(cmd)
