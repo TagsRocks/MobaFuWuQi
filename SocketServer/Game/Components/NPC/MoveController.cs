@@ -88,7 +88,7 @@ StartMove:
             var entityInfo = curObj.DuckInfo;
 
             var curPoint = 1;
-            while (curPoint < nodes.Length && !stopMove && runMoveId == curMoveId)
+            while (curPoint < nodes.Length && !stopMove && runMoveId == curMoveId && !hasNewTarget)
             {
                 var nextPos = nodes[curPoint];
                 var wp = nextPos;
@@ -129,28 +129,23 @@ StartMove:
 
             if (runMoveId == curMoveId)
             {
-                stopMove = false;
-                inMove = false;
-                curObj.DuckInfo.SpeedX = 0;
-                curObj.DuckInfo.SpeedY = 0;
             }else
             {
-                if(hasNewTarget)
+                if(hasNewTarget && !stopMove)
                 {
                     curTarget = moveTarget;
                     hasNewTarget = false;
                     goto StartMove;
                 }else
                 {
-                    stopMove = false;
-                    inMove = false;
-                    hasNewTarget = false;
-
-                    curObj.DuckInfo.SpeedX = 0;
-                    curObj.DuckInfo.SpeedY = 0;
                 }
             }
 
+            curObj.DuckInfo.SpeedX = 0;
+            curObj.DuckInfo.SpeedY = 0;
+            hasNewTarget = false;
+            stopMove = false;
+            inMove = false;
         }
     }
 }

@@ -95,6 +95,12 @@ namespace MyLib
             }
             var dmg = attacker.GetComponent<AINPC>().unitData.Damage;
             Log.AI("SkillDamage:"+dmg);
+            var cfg = attacker.GetComponent<AINPC>().npcConfig;
+            var tai = target.GetComponent<AINPC>() as TowerAI;
+            if(tai != null)
+            {
+                dmg = (int)(dmg * cfg.damageToTower);
+            }
             target.GetComponent<NpcAttribute>().DoHurt(dmg);
 
             var gcPlayerCmd = GCPlayerCmd.CreateBuilder();

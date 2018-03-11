@@ -42,6 +42,7 @@ namespace MyLib
         public float attackRangeDist = 10; //攻击范围
         public int attackSkill = 1;
         public float moveSpeed = 5;
+        public float damageToTower = 1.0f;
 
         public ActionConfig GetAction(ActionType tp)
         {

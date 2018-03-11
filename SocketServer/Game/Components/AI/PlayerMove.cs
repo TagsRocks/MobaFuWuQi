@@ -25,7 +25,8 @@ namespace MyLib
         }
         public override async Task RunLogic()
         {
-            while(inState)
+            var tempNum = runNum;
+            while(CheckInState(tempNum))
             {
                 var clientPos = me.GetClientVelocity();
                 if (Util.IsClientMove(clientPos))
@@ -39,7 +40,7 @@ namespace MyLib
                     break;
                 }
             }
-            if (inState)
+            if (CheckInState(tempNum))
             {
                 aiCharacter.ChangeState(AIStateEnum.IDLE);
             }

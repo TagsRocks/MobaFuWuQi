@@ -14,6 +14,9 @@ namespace MyLib
         public int teamId = 0;
         public int archerId = 64;
         public float offSetZ = 4;
+        public int paoId = 66;
+        public float offSetZ2 = -4;
+
 
         private GridManager gridManager;
 
@@ -45,10 +48,14 @@ namespace MyLib
                 foreach (var c in children)
                 {
                     var path = c.GetComponent<iTweenPath>();
-
-                    //小兵的AI需要添加上组件
-                    path.AddSoldier(soldierId, teamId);
-                    path.AddSoldier(archerId, teamId, offSetZ);
+                    if (path.gameObject.name == "Path1"
+                        || path.gameObject.name == "Path7")
+                    {
+                        //小兵的AI需要添加上组件
+                        path.AddSoldier(soldierId, teamId);
+                        path.AddSoldier(archerId, teamId, offSetZ);
+                        path.AddSoldier(paoId, teamId, offSetZ2);
+                    }
                 }
                 //await new WaitForNextFrame(GetRoom());
                 //passTime += Util.FrameSecTime;

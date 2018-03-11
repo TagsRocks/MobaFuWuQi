@@ -11,10 +11,10 @@ namespace MyLib
     /// <summary>
     /// 值对象不要放置可变的成员变量
     /// </summary>
-    public struct EntityProxy
+    public class EntityProxy
     {
-        public ActorInRoom actor;
-        public int ProxyId;
+        public ActorInRoom actor = null;
+        public int ProxyId = -1;
     }
 
     public class PhysicManager : Component

@@ -61,11 +61,11 @@ namespace MyLib
 
             gc.Result = cmd.Cmd;
             gc.RunInFrame = (int)roomActor.GetFrameId();
-
+            var tempNum = runNum;
             var canUse = sk.CheckCanUseSkill(gc.SkillAction, aiNpc.npcConfig);
             if(!canUse)
             {
-                if (inState)
+                if (CheckInState(tempNum))
                 {
                     aiCharacter.ChangeState(AIStateEnum.IDLE);
                 }
@@ -80,12 +80,12 @@ namespace MyLib
         {
             var cmd = aiCharacter.blackboard[AIParams.Command].cmd;
             var skillAct = cmd.SkillAction;
-           
             var skData = Util.GetSkillData(actConfig.skillId, 1);
+            var tempNum = runNum;
              
             var stateMachine = sk.CreateSkillStateMachine(skillAct, skData.template);
             await UpdateAction(stateMachine);
-            if (inState)
+            if (CheckInState(tempNum))
             {
                 aiCharacter.ChangeState(AIStateEnum.IDLE);
             }
@@ -96,7 +96,7 @@ namespace MyLib
             var tempRunNum = runNum;
             await Task.Delay(Util.TimeToMS(actConfig.hitTime));
             //防止状态重入 导致的错误触发问题 一般在等待一段时间后执行
-            if (inState && tempRunNum == runNum)
+            if (CheckInState(tempRunNum))
             {
                 stateMachine.OnEvent(SkillEvent.EventTrigger);
                 await Task.Delay(Util.TimeToMS(actConfig.totalTime - actConfig.hitTime));

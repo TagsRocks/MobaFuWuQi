@@ -26,15 +26,25 @@ namespace MyLib
             var cp = aiCharacter.blackboard[AIParams.CurrentPoint].intVal;
             var nextPoint = cp + 1;
             var path = creepAI.path;
-            while(path.nodes.Count > nextPoint && inState)
+            var tempNum = runNum;
+            while(path.nodes.Count > nextPoint && CheckInState(tempNum))
             {
                 var pos = path.nodes[nextPoint];
                 //Log.AI("MoveToPos:"+pos+":point:"+nextPoint);
                 await moveController.MoveTo(pos);
-                aiCharacter.blackboard[AIParams.CurrentPoint].intVal = nextPoint;
-                nextPoint++;
+                var tarPos = pos.ToFloat();
+                var nowPos = aiCharacter.aiNpc.mySelf.GetFloatPos();
+                var dist = Util.XZDistSqrt(tarPos, nowPos);
+
+                //需要检查Grid网格距离，而不是实际位置距离
+                if (CheckInState(tempNum) && dist <= 4)
+                {
+                    aiCharacter.blackboard[AIParams.CurrentPoint].intVal = nextPoint;
+                    nextPoint++;
+                }
+                await new WaitForNextFrame(aiCharacter.aiNpc.mySelf.GetRoom());
             }
-            if (inState)
+            if (CheckInState(tempNum))
             {
                 aiCharacter.ChangeState(AIStateEnum.IDLE);
             }

@@ -16,7 +16,7 @@ namespace MyLib
     {
         public AICharacter aiCharacter;
         public PhysicManager physic;
-        public EntityProxy proxy;
+        public EntityProxy proxy = null;
         public NpcConfig npcConfig;
         public UnitData unitData;
         public ActorInRoom mySelf;

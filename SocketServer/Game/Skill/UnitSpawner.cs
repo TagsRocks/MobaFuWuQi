@@ -21,23 +21,25 @@ namespace MyLib
         public override void Run()
         {
             var runner = gameObject.parent.GetComponent<SkillLayoutRunner>();
+            var attacker = runner.stateMachine.attacker;
+            if (attacker != null)
+            {
+                //子弹需要同步Entity信息给客户端么
+                //如果不需要的话 则不同步只把技能同步 子弹表现客户端自己表现
+                //伤害服务器计算
+                var go = new GameObjectActor();
+                go.name = "bullet_" + runner.stateMachine.gameObject.name;
 
-            //子弹需要同步Entity信息给客户端么
-            //如果不需要的话 则不同步只把技能同步 子弹表现客户端自己表现
-            //伤害服务器计算
-            var go = new GameObjectActor();
-            go.name = "bullet_" + runner.stateMachine.gameObject.name;
-
-            var bullet = go.AddComponent<Bullet>();
-            bullet.missileData = Missile.go.GetComponent<MissileData>();
-            bullet.runner = runner;
-            bullet.attacker = runner.stateMachine.attacker;
-            bullet.target = runner.stateMachine.target;
-            var entity = bullet.attacker as ActorInRoom;
-            go.pos = entity.GetIntPos();
-            go.GoDir = entity.dir;
-
-            gameObject.AddChild(go);
+                var bullet = go.AddComponent<Bullet>();
+                bullet.missileData = Missile.go.GetComponent<MissileData>();
+                bullet.runner = runner;
+                bullet.attacker = runner.stateMachine.attacker;
+                bullet.target = runner.stateMachine.target;
+                var entity = bullet.attacker as ActorInRoom;
+                go.pos = entity.GetIntPos();
+                go.GoDir = entity.dir;
+                gameObject.AddChild(go);
+            }
         }
     }
 }

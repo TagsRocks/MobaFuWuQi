@@ -17,7 +17,8 @@ namespace MyLib
 
         public override async Task RunLogic()
         {
-            while (inState)
+            var tempNum = runNum;
+            while (CheckInState(tempNum))
             {
                 var enemy = towerAI.physic.GetNearyBy(towerAI.proxy, towerAI.npcConfig.eyeSightDistance);
                 var myPos = towerAI.proxy.actor.GetVec2Pos();

@@ -259,6 +259,12 @@ namespace MyLib
             var path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
             return path.Substring(6);
         }
+        public static float XZDistSqrt(Vector3 p1, Vector3 p2)
+        {
+            var delta = (p2 - p1);
+            delta.Y = 0;
+            return delta.LengthSquared();
+        }
     }
 
     public static class Log
@@ -328,6 +334,7 @@ namespace MyLib
             }
             */
         }
+      
     }
 }
 

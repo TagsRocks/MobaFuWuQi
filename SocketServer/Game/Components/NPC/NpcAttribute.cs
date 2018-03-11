@@ -39,7 +39,7 @@ namespace MyLib
         {
             mySelf.DuckInfo.HP -= damage;
             mySelf.DuckInfo.HP = MathUtil.Clamp(mySelf.DuckInfo.HP, 0, unitData.HP);
-            if(mySelf.DuckInfo.HP == 0)
+            if(mySelf.DuckInfo.HP <= 0)
             {
                 state = State.Dead;
                 gameObject.GetComponent<AICharacter>().ChangeState(AIStateEnum.DEAD);

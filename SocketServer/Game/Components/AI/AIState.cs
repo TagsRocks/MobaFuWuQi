@@ -38,6 +38,11 @@ namespace MyLib
             inState = false;
         }
 
+        public bool CheckInState(int tempNum)
+        {
+            return inState && tempNum == runNum;
+        }
+
         public virtual bool CheckNextState(AIStateEnum next)
         {
             return true;

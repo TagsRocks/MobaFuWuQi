@@ -26,7 +26,8 @@ namespace MyLib
         public override async Task RunLogic()
         {
             var otherAttr = target.actor.GetComponent<NpcAttribute>();
-            while (inState && !otherAttr.IsDead())
+            var tempNum = runNum;
+            while (CheckInState(tempNum) && !otherAttr.IsDead())
             {
                 var mePos = creepAI.mySelf.GetVec2Pos();
                 var tarPos = target.actor.GetVec2Pos();
@@ -43,7 +44,7 @@ namespace MyLib
             }
 
             //敌人已经死亡
-            if (inState)
+            if (CheckInState(tempNum))
             {
                 aiCharacter.ChangeState(AIStateEnum.IDLE);
             }
@@ -97,7 +98,7 @@ namespace MyLib
 
             await Task.Delay(Util.TimeToMS(actConfig.hitTime));
             //防止状态重入 导致的错误触发问题 一般在等待一段时间后执行
-            if (inState && tempRunNum == runNum)
+            if (CheckInState(tempRunNum))
             {
                 stateMachine.OnEvent(SkillEvent.EventTrigger);
                 await Task.Delay(Util.TimeToMS(actConfig.totalTime - actConfig.hitTime));
@@ -114,8 +115,9 @@ namespace MyLib
             var pos = target.actor.GetIntPos();
             //moveController.MoveTo(pos);
             var otherAttr = target.actor.GetComponent<NpcAttribute>();
+            var tempNum = runNum;
             //检测和目标的距离
-            while (inState && !otherAttr.IsDead())
+            while (CheckInState(tempNum) && !otherAttr.IsDead())
             {
                 var tarNewPos = target.actor.GetIntPos();
                 //寻路加移动 或者直线移动？
@@ -135,7 +137,7 @@ namespace MyLib
                 //await Task.Delay(waitTime);
                 await new WaitForNextFrame(creepAI.mySelf.GetRoom());
             }
-            if (inState)
+            if (CheckInState(tempNum))
             {
                 moveController.StopMove();
             }
