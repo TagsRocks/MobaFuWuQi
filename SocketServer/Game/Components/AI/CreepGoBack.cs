@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyLib
+namespace MyLib 
 {
     /// <summary>
-    /// 按照路点行走
+    /// 禁止掉小兵 自动寻找敌人的功能
     /// </summary>
-    public class CreepMove : MoveState
+    public class CreepGoBack : GoBackState
     {
         private MoveController moveController;
         private CreepAI creepAI;
@@ -23,22 +23,20 @@ namespace MyLib
         public override async Task RunLogic()
         {
             //Log.AI("MoveRunTask:");
-            var cp = aiCharacter.blackboard[AIParams.CurrentPoint].intVal;
-            var nextPoint = cp + 1;
-            var path = creepAI.path;
+            //var cp = aiCharacter.blackboard[AIParams.CurrentPoint].intVal;
+            var tarPos1 = aiCharacter.blackboard[AIParams.CenterPoint].vec2;
+            var vec3Pos = MyVec3.FromFloat(tarPos1.X, 0, tarPos1.Y);
             var tempNum = runNum;
-            while(path.nodes.Count > nextPoint && CheckInState(tempNum))
+            while (CheckInState(tempNum))
             {
-                var pos = path.nodes[nextPoint];
                 //Log.AI("MoveToPos:"+pos+":point:"+nextPoint);
-                await moveController.MoveTo(pos);
-                var tarPos = pos.ToFloat();
+                await moveController.MoveTo(vec3Pos);
+                var tarPos = vec3Pos.ToFloat();
                 var nowPos = aiCharacter.aiNpc.mySelf.GetFloatPos();
                 //需要检查Grid网格距离，而不是实际位置距离
                 if (CheckInState(tempNum) && Util.CloseToTargetPos(nowPos, tarPos))
                 {
-                    aiCharacter.blackboard[AIParams.CurrentPoint].intVal = nextPoint;
-                    nextPoint++;
+                    break;
                 }
                 await new WaitForNextFrame(aiCharacter.aiNpc.mySelf.GetRoom());
             }

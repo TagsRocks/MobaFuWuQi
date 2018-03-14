@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Numerics;
 
 namespace MyLib 
 {
@@ -16,6 +17,7 @@ namespace MyLib
         public int intVal;
         public EntityProxy entityProxy;
         public CGPlayerCmd cmd;
+        public Vector2 vec2;
     }
 
     public enum AIParams
@@ -23,6 +25,7 @@ namespace MyLib
         CurrentPoint,
         Target,
         Command,
+        CenterPoint,
     }
     /// <summary>
     /// AI状态机 Lomotion状态

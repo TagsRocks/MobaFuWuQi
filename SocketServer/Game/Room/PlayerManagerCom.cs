@@ -50,6 +50,13 @@ namespace MyLib
 			return true;
 		}
 
+        public void AfterInGame()
+        {
+            foreach(var p in players)
+            {
+                p.AfterInGame();
+            }
+        }
         /// <summary>
         /// 所有客户端发送Ready命令给服务器
         /// </summary>

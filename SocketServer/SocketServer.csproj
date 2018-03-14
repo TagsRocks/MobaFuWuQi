@@ -98,6 +98,7 @@
     <Compile Include="Game\AABBTreePhysic\DynamicTree.cs" />
     <Compile Include="Game\AABBTreePhysic\PhysicManager.cs" />
     <Compile Include="Game\AABBTreePhysic\Settings.cs" />
+    <Compile Include="Game\Components\AI\CreepGoBack.cs" />
     <Compile Include="Game\Components\AI\MainTowerDead.cs" />
     <Compile Include="Game\Components\AI\PlayerAttack.cs" />
     <Compile Include="Game\Components\AI\PlayerDead.cs" />

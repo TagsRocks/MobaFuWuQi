@@ -16,13 +16,20 @@ namespace MyLib
         private AINPC creepAI;
         private MoveController moveController;
         private EntityProxy target;
+        private Vector2 initCenter;
         public override void EnterState()
         {
             base.EnterState();
             creepAI = aiCharacter.gameObject.GetComponent<AINPC>();
             moveController = aiCharacter.gameObject.GetComponent<MoveController>();
             target = aiCharacter.blackboard[AIParams.Target].entityProxy;
+            initCenter = aiCharacter.aiNpc.mySelf.GetVec2Pos();
+            aiCharacter.blackboard[AIParams.CenterPoint] = new AIEvent()
+            {
+                vec2 = initCenter,
+            };
         }
+
         public override async Task RunLogic()
         {
             var otherAttr = target.actor.GetComponent<NpcAttribute>();
@@ -33,6 +40,12 @@ namespace MyLib
                 var tarPos = target.actor.GetVec2Pos();
                 var dist = (mePos - tarPos).LengthSquared();
 
+                var faraway = (mePos - initCenter).LengthSquared();
+                var cfg = aiCharacter.aiNpc.npcConfig;
+                if (faraway > cfg.maxMoveRange2 * cfg.maxMoveRange2)
+                {
+                    aiCharacter.ChangeState(AIStateEnum.GO_BACK);
+                }
                 if (dist < creepAI.GetAttackRadiusSquare())
                 {
                     await DoAttack();

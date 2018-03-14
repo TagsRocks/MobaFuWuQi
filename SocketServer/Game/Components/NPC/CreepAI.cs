@@ -27,7 +27,7 @@ namespace MyLib
             aiCharacter.AddState(new CreepMove());
             aiCharacter.AddState(new CreepAttack());
             aiCharacter.AddState(new CreepDead());
-
+            aiCharacter.AddState(new CreepGoBack());
             //当前所在点 路径点
             aiCharacter.blackboard[AIParams.CurrentPoint] = new AIEvent{ intVal = 0 };
         }
@@ -40,7 +40,7 @@ namespace MyLib
         private async Task FindEnemy()
         {
             var eyeSightDistance = npcConfig.eyeSightDistance;
-            while (!gameObject.IsOver && !attribute.IsDead())
+            while (!gameObject.IsDestroy && !attribute.IsDead())
             {
                 if(aiCharacter.current != null)
                 {

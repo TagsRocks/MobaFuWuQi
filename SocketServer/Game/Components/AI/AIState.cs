@@ -13,6 +13,7 @@ namespace MyLib
         ATTACK,
         DEAD,
         REVIVE,
+        GO_BACK,
     }
 
     public class AIState
@@ -93,6 +94,13 @@ namespace MyLib
         public ReviveState()
         {
             type = AIStateEnum.REVIVE;
+        }
+    }
+    public class GoBackState : AIState
+    {
+        public GoBackState()
+        {
+            type = AIStateEnum.GO_BACK;
         }
     }
 }

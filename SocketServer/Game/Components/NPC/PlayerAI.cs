@@ -18,5 +18,28 @@ namespace MyLib
             aiCharacter.AddState(new PlayerDead());
             aiCharacter.AddState(new PlayerRevive());
         }
+
+        public override void AfterInGame()
+        {
+            base.AfterInGame();
+            gameObject.RunTask(HPRecover);
+        }
+
+        private async Task HPRecover()
+        {
+            var rec = npcConfig.hpRecover;
+            var addHP = 0.0f;
+            while (!gameObject.IsDestroy)
+            {
+                await Task.Delay(1000);
+                addHP += (unitData.HP * rec);
+                if (addHP > 1)
+                {
+                    var add = (int)addHP;
+                    addHP -= add;
+                    attribute.DoHeal(add);
+                } 
+            }
+        }
     }
 }

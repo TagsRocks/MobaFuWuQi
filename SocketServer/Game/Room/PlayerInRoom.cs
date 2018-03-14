@@ -562,6 +562,10 @@ namespace MyLib
             GetRoom().ChooseHero(this);
             avatarInfo.State = PlayerState.AfterChoose;
         }
+        public void AfterInGame()
+        {
+            ai.AfterInGame();
+        }
 
 
 
@@ -910,8 +914,7 @@ namespace MyLib
         //迭代两次每次50ms 增加物理稳定性
         public override void SetPosWithPhysic(Vector3 cp, Vector3 np)
         {
-            var cutNum = 2;
-
+            var cutNum = 8;
             var deltaPos = np - cp;
             var halfDelta = deltaPos / cutNum;
             var initPos = cp;

@@ -25,7 +25,7 @@ namespace MyLib
         }
         private async Task HealBuff()
         {
-            while(!gameObject.IsOver && !attribute.IsDead())
+            while(!gameObject.IsDestroy && !attribute.IsDead())
             {
                 var nearbys = physic.GetNearyBy(proxy, healRange);
                 var myPos = proxy.actor.GetVec2Pos();

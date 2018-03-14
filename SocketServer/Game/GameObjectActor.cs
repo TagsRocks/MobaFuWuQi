@@ -24,7 +24,7 @@ namespace MyLib
     public class GameObjectActor : Actor
     {
         public bool IsStart = false;
-        public bool IsOver = false;
+        public bool IsDestroy = false;
 
         public int InstId;
 
@@ -116,11 +116,11 @@ namespace MyLib
         /// </summary>
         public void Destroy()
         {
-            IsOver = true;
+            IsDestroy = true;
             if(parent != null)
             {
                 //父亲没有删除 自己被删除了
-                if (!parent.IsOver)
+                if (!parent.IsDestroy)
                 {
                     parent.RemoveChild(this);
                 }

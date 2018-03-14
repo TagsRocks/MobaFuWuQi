@@ -40,6 +40,10 @@ namespace MyLib
             unitData = Util.GetUnitData(mySelf.IsPlayer, mySelf.GetUnitId(), mySelf.Level);
             mySelf.DuckInfo.HP = unitData.HP;
         }
+        public virtual void AfterInGame()
+        {
+
+        }
 
         public virtual void RunAI()
         {

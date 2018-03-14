@@ -236,6 +236,7 @@ namespace MyLib
             }
             state = RoomState.InGame;
 
+            playerCom.AfterInGame();
 		 
 
             roomStartTime = Util.GetTimeSinceServerStart();

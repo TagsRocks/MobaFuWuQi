@@ -265,6 +265,11 @@ namespace MyLib
             delta.Y = 0;
             return delta.LengthSquared();
         }
+        public static bool CloseToTargetPos(Vector3 curPos, Vector3 targetPos)
+        {
+            var dist = XZDistSqrt(curPos, targetPos);
+            return dist < 9.1f;
+        }
     }
 
     public static class Log

@@ -13,10 +13,10 @@ using MyLib;
 /// 寻路
 /// </summary>
 public class GridManager : MyLib.Component {
+    #region LOADMAP
     public GridManager()
     {
     }
-    private bool loadMapYet = false;
     public void InitMap()
     {
         if (loadMapYet)
@@ -70,6 +70,7 @@ public class GridManager : MyLib.Component {
 
         jpParam = new JumpPointParam(grids);
     }
+    #endregion
 
     public Vector2 mapPosToGrid(Vector3 pos)
     {
@@ -89,13 +90,7 @@ public class GridManager : MyLib.Component {
             new GridPos(Convert.ToInt32(p1.X), Convert.ToInt32(p1.Y)),
             new GridPos(Convert.ToInt32(p2.X), Convert.ToInt32(p2.Y))
             );
-        /*
-            true,
-            DiagonalMovement.Always,
-            HeuristicMode.MANHATTAN);
-         */
 
-        MyLib.LogHelper.Log("GridManager", "FindPath:"+p1+":"+p2);
         var path = JumpPointFinder.FindPath(jpParam);
         return path;
     }
@@ -106,25 +101,126 @@ public class GridManager : MyLib.Component {
         var gy = MathUtil.Clamp((int)(grid.Y), 0, height - 1);
         var gid = (int)(gx + gy * width);
         var h = mapHeight[gid];
-        var px = gx*nodeSize -nodeSize * width / 2;
-        var py = gy*nodeSize -nodeSize * height / 2;
+        var px = gx * nodeSize - nodeSize * width / 2;
+        var py = gy * nodeSize - nodeSize * height / 2;
         var pos = new Vector3(px, 0, py) + center;
         pos.Y = h;
         return pos;
     }
 
-    private JumpPointParam jpParam;
-    private BaseGrid grids;
-    private int width, height;
-    private Vector3 center;
-    private float nodeSize;
-    private List<float> mapHeight;
+
+
+
 
 
     #region physic
+    /// <summary>
+    /// 网格坐标带小数部分
+    /// </summary>
+    /// <param name="pos"></param>
+    /// <returns></returns>
+    private Vector2 mapPosToGridFloat(Vector3 pos)
+    {
+        var off = pos - center;
+        var left = off.X + nodeSize * width / 2;
+        var bottom = off.Z + nodeSize * width / 2;
+        var gx = (left / nodeSize);
+        var gy = (bottom / nodeSize);
+        gx = MathUtil.Clamp(gx, 0, width - 1);
+        gy = MathUtil.Clamp(gy, 0, height - 1);
+        return new Vector2(gx, gy);
+    }
 
-    private static float playerRadius = 0.5f;
-    private static float outGridRadius = 0.8f;
+    /// <summary>
+    /// 浮点网格坐标转化为实际Unity坐标
+    /// </summary>
+    /// <param name="grid"></param>
+    /// <returns></returns>
+    private Vector3 gridToMapPosFloat(Vector2 grid)
+    {
+        var gx = MathUtil.Clamp(grid.X, 0, width - 1);
+        var gy = MathUtil.Clamp(grid.Y, 0, height - 1);
+
+        //TODO:高度可能需要插值
+        var igx = (int)gx;
+        var igy = (int)gy;
+        var gid = (int)(igx + igy * width);
+        var h = mapHeight[gid];
+
+
+        var px = gx * nodeSize - nodeSize * width / 2;
+        var py = gy * nodeSize - nodeSize * height / 2;
+        var pos = new Vector3(px, 0, py) + center;
+        pos.Y = h;
+        return pos;
+    }
+
+    public bool GetWalkable(Vector2 p)
+    {
+        return grids.IsWalkableAt((int)p.X, (int)p.Y);
+    }
+    /// <summary>
+    /// 查找附近网格
+    /// </summary>
+    /// <param name="gPos"></param>
+    /// <returns></returns>
+    private List<Vector2> BroadColGrids(Vector2 gPos)
+    {
+        var igx = (int)gPos.X;
+        var igy = (int)gPos.Y;
+        var walk = grids.IsWalkableAt(igx, igy);
+        var neibors = new List<Vector2>();
+        if (!walk)
+        {
+            neibors.Add(new Vector2(igx + 0.5f, igy + 0.5f));
+        }
+
+        for (var i = igx - 1; i <= (igx + 1); i++)
+        {
+            for (var j = igy - 1; j <= (igy + 1); j++)
+            {
+                walk = grids.IsWalkableAt(i, j);
+                if (!walk)
+                {
+                    neibors.Add(new Vector2(i + 0.5f, j + 0.5f));
+                }
+            }
+        }
+        return neibors;
+    }
+
+    /// <summary>
+    /// 寻找第一个碰撞的网格
+    /// </summary>
+    /// <param name="gPos"></param>
+    /// <param name="allGrids"></param>
+    /// <param name="firstPos"></param>
+    /// <returns></returns>
+    private bool FindFirstColGrid(Vector2 gPos, List<Vector2> allGrids, out Vector2 firstPos)
+    {
+        //网格空间坐标
+        var radius = 1 / 2.0f;
+        var gridRadius = 1 / 2.0f;
+        var dist = (radius + gridRadius);
+        dist *= dist;
+
+        //radius *= radius;
+
+        foreach (var n in allGrids)
+        {
+            var dx = gPos.X - n.X;
+            var dy = gPos.Y - n.Y;
+            var newV2 = new Vector2(dx, dy);
+            if (newV2.LengthSquared() < dist)
+            {
+                firstPos = n;
+                return true;
+            }
+        }
+        firstPos = Vector2.Zero;
+        return false;
+    }
+
     /// <summary>
     /// 得到点Pos 最近的可以走的位置 
     /// 所在网格可以行走
@@ -168,42 +264,8 @@ public class GridManager : MyLib.Component {
     }
 
     
-    public bool GetWalkable(Vector2 p)
-    {
-        return grids.IsWalkableAt((int)p.X, (int)p.Y);
-    }
+  
 
-    /// <summary>
-    /// 寻找第一个碰撞的网格
-    /// </summary>
-    /// <param name="gPos"></param>
-    /// <param name="allGrids"></param>
-    /// <param name="firstPos"></param>
-    /// <returns></returns>
-    private bool FindFirstColGrid(Vector2 gPos, List<Vector2> allGrids, out Vector2 firstPos)
-    {
-        //网格空间坐标
-        var radius = 1 / 2.0f;
-        var gridRadius = 1 / 2.0f;
-        var dist = (radius + gridRadius);
-        dist *= dist;
-
-        //radius *= radius;
-
-        foreach (var n in allGrids)
-        {
-            var dx = gPos.X - n.X;
-            var dy = gPos.Y - n.Y;
-            var newV2 = new Vector2(dx, dy);
-            if (newV2.LengthSquared() < dist)
-            {
-                firstPos = n;
-                return true;
-            }
-        }
-        firstPos = Vector2.Zero;
-        return false;
-    }
 
 
     private const float EPSILON = 0.01f;
@@ -227,77 +289,10 @@ public class GridManager : MyLib.Component {
         return firstGrid + offPos;
     }
     
-    /// <summary>
-    /// 查找附近网格
-    /// </summary>
-    /// <param name="gPos"></param>
-    /// <returns></returns>
-    private List<Vector2> BroadColGrids(Vector2 gPos)
-    {
-        var igx = (int)gPos.X;
-        var igy = (int)gPos.Y;
-        var walk = grids.IsWalkableAt(igx, igy);
-        var neibors = new List<Vector2>();
-        if (!walk)
-        {
-            neibors.Add(new Vector2(igx, igy));
-        }
+   
 
-        for (var i = igx - 1; i <= (igx + 1); i++)
-        {
-            for (var j = igy - 1; j <= (igy + 1); j++)
-            {
-                walk = grids.IsWalkableAt(i, j);
-                if (!walk)
-                {
-                    neibors.Add(new Vector2(i, j));
-                }
-            }
-        }
-        return neibors;
-    }
+   
 
-    /// <summary>
-    /// 网格坐标带小数部分
-    /// </summary>
-    /// <param name="pos"></param>
-    /// <returns></returns>
-    private Vector2 mapPosToGridFloat(Vector3 pos)
-    {
-        var off = pos - center;
-        var left = off.X + nodeSize * width / 2;
-        var bottom = off.Z + nodeSize * width / 2;
-        var gx = (left / nodeSize);
-        var gy = (bottom / nodeSize);
-        gx = MathUtil.Clamp(gx, 0, width - 1);
-        gy = MathUtil.Clamp(gy, 0, height - 1);
-        return new Vector2(gx, gy);
-    }
-
-    /// <summary>
-    /// 浮点网格坐标转化为实际Unity坐标
-    /// </summary>
-    /// <param name="grid"></param>
-    /// <returns></returns>
-    private Vector3 gridToMapPosFloat(Vector2 grid)
-    {
-        var gx = MathUtil.Clamp(grid.X, 0, width - 1);
-        var gy = MathUtil.Clamp(grid.Y, 0, height - 1);
-
-        //TODO:高度可能需要插值
-        var igx = (int)gx;
-        var igy = (int)gy;
-        var gid = (int)(igx + igy * width);
-        var h = mapHeight[gid];
-
-
-        var px = gx * nodeSize - nodeSize * width / 2;
-        var py = gy * nodeSize - nodeSize * height / 2;
-        var pos = new Vector3(px, 0, py) + center;
-        pos.Y = h;
-        return pos;
-
-    }
 
 
     /// <summary>
@@ -402,4 +397,14 @@ public class GridManager : MyLib.Component {
         }
     }
     #endregion
+
+    private JumpPointParam jpParam;
+    private BaseGrid grids;
+    private int width, height;
+    private Vector3 center;
+    private float nodeSize;
+    private List<float> mapHeight;
+    private bool loadMapYet = false;
+    private static float playerRadius = 0.5f;
+    private static float outGridRadius = 0.5f;
 }
