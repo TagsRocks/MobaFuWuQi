@@ -35,7 +35,7 @@ namespace MyLib
             ai = gameObject.GetComponent<AINPC>();
         }
 
-        public void DoHurt(int damage)
+        public void DoHurt(ActorInRoom attacker, int damage)
         {
             mySelf.DuckInfo.HP -= damage;
             mySelf.DuckInfo.HP = MathUtil.Clamp(mySelf.DuckInfo.HP, 0, unitData.HP);
@@ -44,7 +44,13 @@ namespace MyLib
                 state = State.Dead;
                 gameObject.GetComponent<AICharacter>().ChangeState(AIStateEnum.DEAD);
             }
+
+            ai.aiCharacter.blackboard[AIParams.Attacker] = new AIEvent()
+            {
+                actor = attacker,
+            };
         }
+
         public void DoHeal(int healNum)
         {
             mySelf.DuckInfo.HP += healNum;

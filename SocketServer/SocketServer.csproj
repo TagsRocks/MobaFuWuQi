@@ -105,13 +105,17 @@
     <Compile Include="Game\Components\AI\PlayerIdle.cs" />
     <Compile Include="Game\Components\AI\PlayerMove.cs" />
     <Compile Include="Game\Components\AI\PlayerRevive.cs" />
+    <Compile Include="Game\Components\AI\XiaoGuaiAttack.cs" />
+    <Compile Include="Game\Components\AI\XiaoGuaiIdle.cs" />
     <Compile Include="Game\Components\Moba\AllPlayerStart.cs" />
     <Compile Include="Game\Components\Moba\PlayerStart.cs" />
+    <Compile Include="Game\Components\Moba\XiaoGuaiMgr.cs" />
     <Compile Include="Game\Components\NPC\AINPC.cs" />
     <Compile Include="Game\Components\NPC\MainTowerAI.cs" />
     <Compile Include="Game\Components\NPC\MoveController.cs" />
     <Compile Include="Game\Components\NPC\PlayerAI.cs" />
     <Compile Include="Game\Components\NPC\SpringAI.cs" />
+    <Compile Include="Game\Components\NPC\XiaoGuaiAI.cs" />
     <Compile Include="Game\Room\ActorInRoom.cs" />
     <Compile Include="Game\Room\PlayerActorProxy.cs" />
     <Compile Include="Game\Room\PlayerInRoom.cs" />

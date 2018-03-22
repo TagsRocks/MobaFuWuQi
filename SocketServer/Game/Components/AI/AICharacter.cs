@@ -18,6 +18,7 @@ namespace MyLib
         public EntityProxy entityProxy;
         public CGPlayerCmd cmd;
         public Vector2 vec2;
+        public ActorInRoom actor;
     }
 
     public enum AIParams
@@ -26,6 +27,8 @@ namespace MyLib
         Target,
         Command,
         CenterPoint,
+        Attacker,
+        InitPoint,
     }
     /// <summary>
     /// AI状态机 Lomotion状态

@@ -101,8 +101,8 @@ public class GridManager : MyLib.Component {
         var gy = MathUtil.Clamp((int)(grid.Y), 0, height - 1);
         var gid = (int)(gx + gy * width);
         var h = mapHeight[gid];
-        var px = gx * nodeSize - nodeSize * width / 2;
-        var py = gy * nodeSize - nodeSize * height / 2;
+        var px = gx * nodeSize - nodeSize * width / 2 + 0.5f;
+        var py = gy * nodeSize - nodeSize * height / 2 + 0.5f;
         var pos = new Vector3(px, 0, py) + center;
         pos.Y = h;
         return pos;

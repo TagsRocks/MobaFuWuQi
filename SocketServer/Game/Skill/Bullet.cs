@@ -17,7 +17,7 @@ namespace MyLib
         public override void Init()
         {
             base.Init();
-            GetRoom().RunTask(Fly);
+            GetRoom()?.RunTask(Fly);
         }
         private async Task Fly()
         {

@@ -170,7 +170,7 @@ namespace MyLib
                 {
                     act = act.parent;
                 }
-                roomAct = act.room;
+                roomAct = act?.room;
             }
             return roomAct;
         }

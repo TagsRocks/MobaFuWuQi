@@ -101,7 +101,7 @@ namespace MyLib
             {
                 dmg = (int)(dmg * cfg.damageToTower);
             }
-            target.GetComponent<NpcAttribute>().DoHurt(dmg);
+            target.GetComponent<NpcAttribute>().DoHurt(attacker, dmg);
 
             var gcPlayerCmd = GCPlayerCmd.CreateBuilder();
             var dmgInfo = DamageInfo.CreateBuilder();

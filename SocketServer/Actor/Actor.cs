@@ -88,14 +88,6 @@ namespace MyLib
 			return null;
 		}
 
-		public async Task<T> AddComponentAsync<T> () where T : Component
-		{
-			await this._messageQueue;
-			var c = (T)Activator.CreateInstance (typeof(T));
-			components.Add (c);
-			c.actor = this;
-			return c;
-		}
 
         /// <summary>
         /// 同一个组件只能添加一次

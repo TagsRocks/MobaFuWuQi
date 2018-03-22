@@ -1,7 +1,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"level_1_4_103",
-"InstId":-60980,
+"InstId":-1293586,
 "Pos":"<vec>0,0,0",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -29,7 +29,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"properties",
-"InstId":-60982,
+"InstId":-1293588,
 "Pos":"<vec>0,0,0",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -43,7 +43,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"exitZone",
-"InstId":-60984,
+"InstId":-1293590,
 "Pos":"<vec>340,170,9140",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -57,7 +57,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"AllPlayerStart",
-"InstId":-60986,
+"InstId":-1293592,
 "Pos":"<vec>0,0,0",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -71,7 +71,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"PlayerStart",
-"InstId":-61194,
+"InstId":-1293786,
 "Pos":"<vec>-145,200,-105",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -86,7 +86,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Cube",
-"InstId":-61268,
+"InstId":-1293922,
 "Pos":"<vec>-145,200,-105",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -110,7 +110,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"PlayerStart2",
-"InstId":-61156,
+"InstId":-1293730,
 "Pos":"<vec>10680,200,640",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -125,7 +125,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Cube",
-"InstId":-61334,
+"InstId":-1293818,
 "Pos":"<vec>10680,200,640",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -152,7 +152,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"WayPointBlue",
-"InstId":-60988,
+"InstId":-1293594,
 "Pos":"<vec>0,0,0",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -173,7 +173,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Path1",
-"InstId":-61150,
+"InstId":-1293746,
 "Pos":"<vec>0,0,0",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -207,7 +207,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Path2",
-"InstId":-61192,
+"InstId":-1293714,
 "Pos":"<vec>0,0,0",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -241,7 +241,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Path3",
-"InstId":-61174,
+"InstId":-1293700,
 "Pos":"<vec>0,0,0",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -278,7 +278,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"WayPointRed",
-"InstId":-60990,
+"InstId":-1293596,
 "Pos":"<vec>0,0,0",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -299,7 +299,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Path7",
-"InstId":-61132,
+"InstId":-1293764,
 "Pos":"<vec>0,0,0",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -333,7 +333,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Path6",
-"InstId":-61122,
+"InstId":-1293738,
 "Pos":"<vec>0,0,0",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -367,7 +367,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Path5",
-"InstId":-61164,
+"InstId":-1293810,
 "Pos":"<vec>0,0,0",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -404,7 +404,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"TowerAndSpring",
-"InstId":-60992,
+"InstId":-1293598,
 "Pos":"<vec>0,0,0",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -414,7 +414,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Spring",
-"InstId":-61134,
+"InstId":-1293798,
 "Pos":"<vec>-450,369,-455",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -430,7 +430,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Spring",
-"InstId":-61274,
+"InstId":-1293872,
 "Pos":"<vec>-450,369,-455",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -440,7 +440,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Spring2",
-"InstId":-61412,
+"InstId":-1294066,
 "Pos":"<vec>-450,369,-455",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -450,7 +450,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule (1)",
-"InstId":-62056,
+"InstId":-1294612,
 "Pos":"<vec>-459,312,-457",
 "Scale":"<vec>529,325,449",
 "Component":[
@@ -472,7 +472,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"MagicCircle_A (6)",
-"InstId":-61608,
+"InstId":-1294292,
 "Pos":"<vec>-450,369,-455",
 "Scale":"<vec>225,225,225",
 "Component":[
@@ -482,7 +482,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_A",
-"InstId":-62362,
+"InstId":-1294892,
 "Pos":"<vec>-450,387,-455",
 "Scale":"<vec>400,400,100",
 "Component":[
@@ -501,7 +501,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_B",
-"InstId":-62092,
+"InstId":-1294922,
 "Pos":"<vec>-450,481,-455",
 "Scale":"<vec>300,300,300",
 "Component":[
@@ -520,7 +520,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Wakka_A",
-"InstId":-62346,
+"InstId":-1294876,
 "Pos":"<vec>-411,590,-450",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -534,7 +534,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"BlackSphere",
-"InstId":-61940,
+"InstId":-1294776,
 "Pos":"<vec>-450,358,-455",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -557,7 +557,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"MainTower",
-"InstId":-61142,
+"InstId":-1293734,
 "Pos":"<vec>1319,290,1342",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -573,7 +573,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"MainTower",
-"InstId":-61360,
+"InstId":-1293828,
 "Pos":"<vec>1319,290,1342",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -583,7 +583,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"MainTower",
-"InstId":-61434,
+"InstId":-1294306,
 "Pos":"<vec>1319,290,1342",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -593,7 +593,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule (1)",
-"InstId":-62416,
+"InstId":-1294464,
 "Pos":"<vec>1310,233,1339",
 "Scale":"<vec>529,325,449",
 "Component":[
@@ -612,7 +612,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Vines_C",
-"InstId":-61992,
+"InstId":-1295032,
 "Pos":"<vec>1253,654,1328",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -626,7 +626,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (84)",
-"InstId":-62182,
+"InstId":-1294894,
 "Pos":"<vec>1458,194,1082",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -640,7 +640,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Vines_F (1)",
-"InstId":-62176,
+"InstId":-1294450,
 "Pos":"<vec>1188,301,1115",
 "Scale":"<vec>58,58,58",
 "Component":[
@@ -654,7 +654,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_C_1 (27)",
-"InstId":-61882,
+"InstId":-1294816,
 "Pos":"<vec>999,240,1435",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -668,7 +668,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (88)",
-"InstId":-62202,
+"InstId":-1294874,
 "Pos":"<vec>1247,193,1629",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -682,7 +682,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"MagicCircle_A (2)",
-"InstId":-61970,
+"InstId":-1294684,
 "Pos":"<vec>1320,200,1315",
 "Scale":"<vec>225,225,225",
 "Component":[
@@ -692,7 +692,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_A",
-"InstId":-63210,
+"InstId":-1295924,
 "Pos":"<vec>1320,219,1315",
 "Scale":"<vec>450,450,90",
 "Component":[
@@ -711,7 +711,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_B",
-"InstId":-63192,
+"InstId":-1295968,
 "Pos":"<vec>1320,313,1315",
 "Scale":"<vec>300,300,300",
 "Component":[
@@ -730,7 +730,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Wakka_A",
-"InstId":-63360,
+"InstId":-1295780,
 "Pos":"<vec>1359,422,1320",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -744,7 +744,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"BlackSphere",
-"InstId":-63298,
+"InstId":-1295256,
 "Pos":"<vec>1320,190,1315",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -761,7 +761,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (87)",
-"InstId":-62186,
+"InstId":-1294426,
 "Pos":"<vec>1643,193,1288",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -775,7 +775,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_D_3 (4)",
-"InstId":-62016,
+"InstId":-1294964,
 "Pos":"<vec>1112,383,1428",
 "Scale":"<vec>122,122,122",
 "Component":[
@@ -789,7 +789,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (85)",
-"InstId":-61914,
+"InstId":-1294932,
 "Pos":"<vec>1015,193,1263",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -803,7 +803,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Crystal_C (1)",
-"InstId":-62284,
+"InstId":-1294842,
 "Pos":"<vec>1331,664,1352",
 "Scale":"<vec>80,80,80",
 "Component":[
@@ -818,7 +818,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Cube (2)",
-"InstId":-63334,
+"InstId":-1295498,
 "Pos":"<vec>1324,679,1353",
 "Scale":"<vec>246,687,275",
 "Component":[
@@ -851,7 +851,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"TowerPoint",
-"InstId":-61188,
+"InstId":-1293740,
 "Pos":"<vec>9066,100,509",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -867,7 +867,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower",
-"InstId":-61288,
+"InstId":-1293924,
 "Pos":"<vec>9066,100,509",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -877,7 +877,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower",
-"InstId":-61722,
+"InstId":-1294088,
 "Pos":"<vec>9066,100,509",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -887,7 +887,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule (2)",
-"InstId":-61986,
+"InstId":-1294924,
 "Pos":"<vec>9068,191,514",
 "Scale":"<vec>394,297,410",
 "Component":[
@@ -906,7 +906,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_1 (83)",
-"InstId":-62112,
+"InstId":-1294694,
 "Pos":"<vec>9121,88,360",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -920,7 +920,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Element",
-"InstId":-62006,
+"InstId":-1294948,
 "Pos":"<vec>9030,641,414",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -934,7 +934,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Crystal_B (4)",
-"InstId":-61908,
+"InstId":-1294400,
 "Pos":"<vec>9046,505,468",
 "Scale":"<vec>60,60,60",
 "Component":[
@@ -949,7 +949,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Cube (3)",
-"InstId":-63382,
+"InstId":-1295776,
 "Pos":"<vec>9046,524,473",
 "Scale":"<vec>222,562,240",
 "Component":[
@@ -973,7 +973,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"MagicCircle_A",
-"InstId":-62256,
+"InstId":-1294620,
 "Pos":"<vec>9076,90,475",
 "Scale":"<vec>225,225,225",
 "Component":[
@@ -983,7 +983,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_A",
-"InstId":-63160,
+"InstId":-1295694,
 "Pos":"<vec>9076,158,475",
 "Scale":"<vec>229,229,100",
 "Component":[
@@ -1002,7 +1002,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_B",
-"InstId":-63162,
+"InstId":-1295836,
 "Pos":"<vec>9076,203,475",
 "Scale":"<vec>150,150,100",
 "Component":[
@@ -1021,7 +1021,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Wakka_A",
-"InstId":-63168,
+"InstId":-1295626,
 "Pos":"<vec>9114,182,479",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -1035,7 +1035,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"BlackSphere",
-"InstId":-63290,
+"InstId":-1295608,
 "Pos":"<vec>9076,136,475",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -1052,7 +1052,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower_C (2)",
-"InstId":-62292,
+"InstId":-1294414,
 "Pos":"<vec>9057,233,494",
 "Scale":"<vec>64,64,64",
 "Component":[
@@ -1062,7 +1062,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule",
-"InstId":-63312,
+"InstId":-1295856,
 "Pos":"<vec>9060,192,493",
 "Scale":"<vec>364,211,364",
 "Component":[
@@ -1084,7 +1084,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (99)",
-"InstId":-62424,
+"InstId":-1294706,
 "Pos":"<vec>8968,95,321",
 "Scale":"<vec>67,67,67",
 "Component":[
@@ -1098,7 +1098,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (98)",
-"InstId":-62198,
+"InstId":-1294890,
 "Pos":"<vec>8852,95,586",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -1121,7 +1121,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"TowerPoint (1)",
-"InstId":-61100,
+"InstId":-1293706,
 "Pos":"<vec>5672,100,330",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -1137,7 +1137,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower",
-"InstId":-61304,
+"InstId":-1293962,
 "Pos":"<vec>5672,100,330",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -1147,7 +1147,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower",
-"InstId":-61572,
+"InstId":-1294358,
 "Pos":"<vec>5672,100,330",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -1157,7 +1157,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule (2)",
-"InstId":-62422,
+"InstId":-1294950,
 "Pos":"<vec>5675,191,336",
 "Scale":"<vec>394,297,410",
 "Component":[
@@ -1176,7 +1176,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_1 (83)",
-"InstId":-62102,
+"InstId":-1294382,
 "Pos":"<vec>5728,88,182",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -1190,7 +1190,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Element",
-"InstId":-62128,
+"InstId":-1294928,
 "Pos":"<vec>5636,641,236",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -1204,7 +1204,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Crystal_B (4)",
-"InstId":-62216,
+"InstId":-1294432,
 "Pos":"<vec>5653,505,290",
 "Scale":"<vec>60,60,60",
 "Component":[
@@ -1219,7 +1219,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Cube (3)",
-"InstId":-63364,
+"InstId":-1295790,
 "Pos":"<vec>5653,524,295",
 "Scale":"<vec>222,562,240",
 "Component":[
@@ -1243,7 +1243,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"MagicCircle_A",
-"InstId":-62034,
+"InstId":-1294998,
 "Pos":"<vec>5682,90,297",
 "Scale":"<vec>225,225,225",
 "Component":[
@@ -1253,7 +1253,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_A",
-"InstId":-63262,
+"InstId":-1295710,
 "Pos":"<vec>5682,158,296",
 "Scale":"<vec>229,229,100",
 "Component":[
@@ -1272,7 +1272,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_B",
-"InstId":-63244,
+"InstId":-1295078,
 "Pos":"<vec>5682,203,296",
 "Scale":"<vec>150,150,100",
 "Component":[
@@ -1291,7 +1291,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Wakka_A",
-"InstId":-63212,
+"InstId":-1295632,
 "Pos":"<vec>5721,182,301",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -1305,7 +1305,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"BlackSphere",
-"InstId":-63214,
+"InstId":-1295396,
 "Pos":"<vec>5682,136,296",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -1322,7 +1322,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower_C (2)",
-"InstId":-62240,
+"InstId":-1294538,
 "Pos":"<vec>5664,233,316",
 "Scale":"<vec>64,64,64",
 "Component":[
@@ -1332,7 +1332,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule",
-"InstId":-63246,
+"InstId":-1295896,
 "Pos":"<vec>5667,192,315",
 "Scale":"<vec>364,211,364",
 "Component":[
@@ -1354,7 +1354,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (99)",
-"InstId":-61886,
+"InstId":-1294566,
 "Pos":"<vec>5575,95,143",
 "Scale":"<vec>67,67,67",
 "Component":[
@@ -1368,7 +1368,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (98)",
-"InstId":-62370,
+"InstId":-1294532,
 "Pos":"<vec>5459,95,408",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -1391,7 +1391,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"TowerPoint (2)",
-"InstId":-61096,
+"InstId":-1293778,
 "Pos":"<vec>3103,100,576",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -1407,7 +1407,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower",
-"InstId":-61344,
+"InstId":-1293942,
 "Pos":"<vec>3103,100,576",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -1417,7 +1417,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower",
-"InstId":-61682,
+"InstId":-1294142,
 "Pos":"<vec>3103,100,576",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -1427,7 +1427,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule (2)",
-"InstId":-62310,
+"InstId":-1294556,
 "Pos":"<vec>3105,191,582",
 "Scale":"<vec>394,297,410",
 "Component":[
@@ -1446,7 +1446,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_1 (83)",
-"InstId":-62324,
+"InstId":-1294468,
 "Pos":"<vec>3158,88,428",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -1460,7 +1460,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Element",
-"InstId":-61932,
+"InstId":-1294956,
 "Pos":"<vec>3067,641,482",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -1474,7 +1474,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Crystal_B (4)",
-"InstId":-62224,
+"InstId":-1294516,
 "Pos":"<vec>3083,505,536",
 "Scale":"<vec>60,60,60",
 "Component":[
@@ -1489,7 +1489,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Cube (3)",
-"InstId":-63368,
+"InstId":-1295558,
 "Pos":"<vec>3083,524,541",
 "Scale":"<vec>222,562,240",
 "Component":[
@@ -1513,7 +1513,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"MagicCircle_A",
-"InstId":-61956,
+"InstId":-1294542,
 "Pos":"<vec>3113,90,542",
 "Scale":"<vec>225,225,225",
 "Component":[
@@ -1523,7 +1523,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_A",
-"InstId":-63248,
+"InstId":-1295560,
 "Pos":"<vec>3113,158,542",
 "Scale":"<vec>229,229,100",
 "Component":[
@@ -1542,7 +1542,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_B",
-"InstId":-63326,
+"InstId":-1295114,
 "Pos":"<vec>3113,203,542",
 "Scale":"<vec>150,150,100",
 "Component":[
@@ -1561,7 +1561,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Wakka_A",
-"InstId":-63358,
+"InstId":-1295988,
 "Pos":"<vec>3151,182,547",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -1575,7 +1575,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"BlackSphere",
-"InstId":-63208,
+"InstId":-1295570,
 "Pos":"<vec>3113,136,542",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -1592,7 +1592,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower_C (2)",
-"InstId":-61874,
+"InstId":-1294994,
 "Pos":"<vec>3094,233,562",
 "Scale":"<vec>64,64,64",
 "Component":[
@@ -1602,7 +1602,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule",
-"InstId":-63222,
+"InstId":-1295548,
 "Pos":"<vec>3097,192,561",
 "Scale":"<vec>364,211,364",
 "Component":[
@@ -1624,7 +1624,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (99)",
-"InstId":-61880,
+"InstId":-1294616,
 "Pos":"<vec>3005,95,389",
 "Scale":"<vec>67,67,67",
 "Component":[
@@ -1638,7 +1638,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (98)",
-"InstId":-61994,
+"InstId":-1294428,
 "Pos":"<vec>2889,95,654",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -1661,7 +1661,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"TowerPoint (3)",
-"InstId":-61198,
+"InstId":-1293766,
 "Pos":"<vec>590,127,2961",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -1677,7 +1677,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower",
-"InstId":-61312,
+"InstId":-1293840,
 "Pos":"<vec>590,127,2961",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -1687,7 +1687,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower",
-"InstId":-61590,
+"InstId":-1294256,
 "Pos":"<vec>590,127,2961",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -1697,7 +1697,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule (2)",
-"InstId":-62372,
+"InstId":-1294460,
 "Pos":"<vec>592,218,2966",
 "Scale":"<vec>394,297,410",
 "Component":[
@@ -1716,7 +1716,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_1 (83)",
-"InstId":-62368,
+"InstId":-1294970,
 "Pos":"<vec>645,115,2812",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -1735,7 +1735,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Element",
-"InstId":-61936,
+"InstId":-1294496,
 "Pos":"<vec>553,668,2867",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -1749,7 +1749,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Crystal_B (4)",
-"InstId":-62350,
+"InstId":-1294562,
 "Pos":"<vec>570,532,2920",
 "Scale":"<vec>60,60,60",
 "Component":[
@@ -1764,7 +1764,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Cube (3)",
-"InstId":-63256,
+"InstId":-1295568,
 "Pos":"<vec>570,551,2925",
 "Scale":"<vec>222,562,240",
 "Component":[
@@ -1788,7 +1788,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"MagicCircle_A",
-"InstId":-62246,
+"InstId":-1294656,
 "Pos":"<vec>600,117,2927",
 "Scale":"<vec>225,225,225",
 "Component":[
@@ -1798,7 +1798,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_A",
-"InstId":-63252,
+"InstId":-1295210,
 "Pos":"<vec>600,185,2927",
 "Scale":"<vec>229,229,100",
 "Component":[
@@ -1811,7 +1811,7 @@
 {
 "Descriptor":"Class",
 "Type":"z_AdditionalVertexStreams",
-"mesh":"Unknown:Quad(-148642) (UnityEngine.Mesh)"
+"mesh":"Unknown:null"
 }
 ]
 ,
@@ -1823,7 +1823,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_B",
-"InstId":-63284,
+"InstId":-1295640,
 "Pos":"<vec>600,230,2927",
 "Scale":"<vec>150,150,100",
 "Component":[
@@ -1836,7 +1836,7 @@
 {
 "Descriptor":"Class",
 "Type":"z_AdditionalVertexStreams",
-"mesh":"Unknown:Quad(-148646) (UnityEngine.Mesh)"
+"mesh":"Unknown:null"
 }
 ]
 ,
@@ -1848,7 +1848,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Wakka_A",
-"InstId":-63302,
+"InstId":-1295240,
 "Pos":"<vec>638,209,2931",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -1862,14 +1862,14 @@
 {
 "Descriptor":"GameObject",
 "Name":"BlackSphere",
-"InstId":-63272,
+"InstId":-1295936,
 "Pos":"<vec>600,163,2927",
 "Scale":"<vec>10,10,10",
 "Component":[
 {
 "Descriptor":"Class",
 "Type":"z_AdditionalVertexStreams",
-"mesh":"Unknown:Sphere(-149070) (UnityEngine.Mesh)"
+"mesh":"Unknown:null"
 }
 ]
 ,
@@ -1884,7 +1884,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower_C (2)",
-"InstId":-62364,
+"InstId":-1294902,
 "Pos":"<vec>581,260,2946",
 "Scale":"<vec>64,64,64",
 "Component":[
@@ -1899,7 +1899,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule",
-"InstId":-63344,
+"InstId":-1295406,
 "Pos":"<vec>584,219,2945",
 "Scale":"<vec>364,211,364",
 "Component":[
@@ -1921,7 +1921,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (99)",
-"InstId":-62010,
+"InstId":-1294900,
 "Pos":"<vec>492,122,2773",
 "Scale":"<vec>67,67,67",
 "Component":[
@@ -1935,7 +1935,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (98)",
-"InstId":-62360,
+"InstId":-1294430,
 "Pos":"<vec>376,123,3038",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -1958,7 +1958,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"TowerPoint (4)",
-"InstId":-61118,
+"InstId":-1293790,
 "Pos":"<vec>486,127,5102",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -1974,7 +1974,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower",
-"InstId":-61348,
+"InstId":-1293890,
 "Pos":"<vec>486,127,5102",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -1984,7 +1984,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower",
-"InstId":-61758,
+"InstId":-1294024,
 "Pos":"<vec>486,127,5102",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -1994,7 +1994,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule (2)",
-"InstId":-62104,
+"InstId":-1294952,
 "Pos":"<vec>488,218,5107",
 "Scale":"<vec>394,297,410",
 "Component":[
@@ -2013,7 +2013,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_1 (83)",
-"InstId":-62322,
+"InstId":-1294966,
 "Pos":"<vec>541,115,4953",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -2027,7 +2027,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Element",
-"InstId":-62030,
+"InstId":-1294674,
 "Pos":"<vec>449,668,5008",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -2041,7 +2041,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Crystal_B (4)",
-"InstId":-62334,
+"InstId":-1294806,
 "Pos":"<vec>466,532,5061",
 "Scale":"<vec>60,60,60",
 "Component":[
@@ -2056,7 +2056,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Cube (3)",
-"InstId":-63268,
+"InstId":-1295166,
 "Pos":"<vec>466,551,5066",
 "Scale":"<vec>222,562,240",
 "Component":[
@@ -2080,7 +2080,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"MagicCircle_A",
-"InstId":-62060,
+"InstId":-1294718,
 "Pos":"<vec>496,117,5068",
 "Scale":"<vec>225,225,225",
 "Component":[
@@ -2090,7 +2090,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_A",
-"InstId":-63156,
+"InstId":-1295254,
 "Pos":"<vec>496,185,5068",
 "Scale":"<vec>229,229,100",
 "Component":[
@@ -2109,7 +2109,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_B",
-"InstId":-63288,
+"InstId":-1295232,
 "Pos":"<vec>496,230,5068",
 "Scale":"<vec>150,150,100",
 "Component":[
@@ -2128,7 +2128,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Wakka_A",
-"InstId":-63346,
+"InstId":-1295324,
 "Pos":"<vec>534,209,5072",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -2142,7 +2142,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"BlackSphere",
-"InstId":-63324,
+"InstId":-1295872,
 "Pos":"<vec>496,163,5068",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -2159,7 +2159,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower_C (2)",
-"InstId":-62406,
+"InstId":-1294570,
 "Pos":"<vec>477,260,5087",
 "Scale":"<vec>64,64,64",
 "Component":[
@@ -2169,7 +2169,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule",
-"InstId":-63286,
+"InstId":-1295578,
 "Pos":"<vec>480,219,5086",
 "Scale":"<vec>364,211,364",
 "Component":[
@@ -2191,7 +2191,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (99)",
-"InstId":-62214,
+"InstId":-1294384,
 "Pos":"<vec>388,122,4914",
 "Scale":"<vec>67,67,67",
 "Component":[
@@ -2205,7 +2205,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (98)",
-"InstId":-62046,
+"InstId":-1294672,
 "Pos":"<vec>272,123,5179",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -2228,7 +2228,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"TowerPoint (5)",
-"InstId":-61114,
+"InstId":-1293724,
 "Pos":"<vec>767,127,9091",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -2244,7 +2244,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower",
-"InstId":-61316,
+"InstId":-1293832,
 "Pos":"<vec>767,127,9091",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -2254,7 +2254,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower",
-"InstId":-61512,
+"InstId":-1294196,
 "Pos":"<vec>767,127,9091",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -2264,7 +2264,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule (2)",
-"InstId":-61912,
+"InstId":-1294424,
 "Pos":"<vec>769,218,9097",
 "Scale":"<vec>394,297,410",
 "Component":[
@@ -2283,7 +2283,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_1 (83)",
-"InstId":-62180,
+"InstId":-1294818,
 "Pos":"<vec>822,115,8943",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -2297,7 +2297,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Element",
-"InstId":-62054,
+"InstId":-1294536,
 "Pos":"<vec>730,668,8997",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -2311,7 +2311,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Crystal_B (4)",
-"InstId":-62338,
+"InstId":-1295058,
 "Pos":"<vec>747,532,9051",
 "Scale":"<vec>60,60,60",
 "Component":[
@@ -2326,7 +2326,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Cube (3)",
-"InstId":-63258,
+"InstId":-1295312,
 "Pos":"<vec>747,551,9056",
 "Scale":"<vec>222,562,240",
 "Component":[
@@ -2350,7 +2350,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"MagicCircle_A",
-"InstId":-62116,
+"InstId":-1294730,
 "Pos":"<vec>776,117,9058",
 "Scale":"<vec>225,225,225",
 "Component":[
@@ -2360,7 +2360,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_A",
-"InstId":-63178,
+"InstId":-1295412,
 "Pos":"<vec>776,185,9058",
 "Scale":"<vec>229,229,100",
 "Component":[
@@ -2379,7 +2379,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_B",
-"InstId":-63236,
+"InstId":-1295408,
 "Pos":"<vec>776,230,9058",
 "Scale":"<vec>150,150,100",
 "Component":[
@@ -2398,7 +2398,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Wakka_A",
-"InstId":-63224,
+"InstId":-1295676,
 "Pos":"<vec>815,209,9062",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -2412,7 +2412,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"BlackSphere",
-"InstId":-63348,
+"InstId":-1295176,
 "Pos":"<vec>776,163,9058",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -2429,7 +2429,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower_C (2)",
-"InstId":-62330,
+"InstId":-1294648,
 "Pos":"<vec>758,260,9077",
 "Scale":"<vec>64,64,64",
 "Component":[
@@ -2439,7 +2439,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule",
-"InstId":-63228,
+"InstId":-1295870,
 "Pos":"<vec>761,219,9076",
 "Scale":"<vec>364,211,364",
 "Component":[
@@ -2461,7 +2461,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (99)",
-"InstId":-61868,
+"InstId":-1294814,
 "Pos":"<vec>669,122,8904",
 "Scale":"<vec>67,67,67",
 "Component":[
@@ -2475,7 +2475,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (98)",
-"InstId":-62298,
+"InstId":-1295028,
 "Pos":"<vec>553,123,9169",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -2498,7 +2498,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"TowerPoint (6)",
-"InstId":-61146,
+"InstId":-1293802,
 "Pos":"<vec>2406,127,2469",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -2514,7 +2514,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower",
-"InstId":-61340,
+"InstId":-1293930,
 "Pos":"<vec>2406,127,2469",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -2524,7 +2524,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower",
-"InstId":-61394,
+"InstId":-1294178,
 "Pos":"<vec>2406,127,2469",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -2534,7 +2534,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule (2)",
-"InstId":-61988,
+"InstId":-1294604,
 "Pos":"<vec>2409,218,2474",
 "Scale":"<vec>394,297,410",
 "Component":[
@@ -2553,7 +2553,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_1 (83)",
-"InstId":-61884,
+"InstId":-1294728,
 "Pos":"<vec>2462,115,2320",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -2567,7 +2567,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Element",
-"InstId":-62058,
+"InstId":-1294554,
 "Pos":"<vec>2370,668,2375",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -2581,7 +2581,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Crystal_B (4)",
-"InstId":-62022,
+"InstId":-1294942,
 "Pos":"<vec>2387,532,2428",
 "Scale":"<vec>60,60,60",
 "Component":[
@@ -2596,7 +2596,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Cube (3)",
-"InstId":-63182,
+"InstId":-1295814,
 "Pos":"<vec>2387,551,2433",
 "Scale":"<vec>222,562,240",
 "Component":[
@@ -2620,7 +2620,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"MagicCircle_A",
-"InstId":-61888,
+"InstId":-1294820,
 "Pos":"<vec>2417,117,2435",
 "Scale":"<vec>225,225,225",
 "Component":[
@@ -2630,7 +2630,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_A",
-"InstId":-63328,
+"InstId":-1295550,
 "Pos":"<vec>2417,185,2435",
 "Scale":"<vec>229,229,100",
 "Component":[
@@ -2649,7 +2649,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_B",
-"InstId":-63190,
+"InstId":-1295802,
 "Pos":"<vec>2417,230,2435",
 "Scale":"<vec>150,150,100",
 "Component":[
@@ -2668,7 +2668,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Wakka_A",
-"InstId":-63366,
+"InstId":-1295452,
 "Pos":"<vec>2455,209,2439",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -2682,7 +2682,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"BlackSphere",
-"InstId":-63172,
+"InstId":-1295778,
 "Pos":"<vec>2417,163,2435",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -2699,7 +2699,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower_C (2)",
-"InstId":-62236,
+"InstId":-1294680,
 "Pos":"<vec>2398,260,2454",
 "Scale":"<vec>64,64,64",
 "Component":[
@@ -2709,7 +2709,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule",
-"InstId":-63310,
+"InstId":-1295770,
 "Pos":"<vec>2401,219,2453",
 "Scale":"<vec>364,211,364",
 "Component":[
@@ -2731,7 +2731,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (99)",
-"InstId":-62374,
+"InstId":-1294422,
 "Pos":"<vec>2309,122,2281",
 "Scale":"<vec>67,67,67",
 "Component":[
@@ -2745,7 +2745,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (98)",
-"InstId":-62204,
+"InstId":-1294906,
 "Pos":"<vec>2193,123,2546",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -2768,7 +2768,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"TowerPoint (7)",
-"InstId":-61202,
+"InstId":-1293760,
 "Pos":"<vec>3800,127,3645",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -2784,7 +2784,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower",
-"InstId":-61284,
+"InstId":-1293906,
 "Pos":"<vec>3800,127,3645",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -2794,7 +2794,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower",
-"InstId":-61458,
+"InstId":-1294274,
 "Pos":"<vec>3800,127,3645",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -2804,7 +2804,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule (2)",
-"InstId":-62358,
+"InstId":-1294578,
 "Pos":"<vec>3803,218,3650",
 "Scale":"<vec>394,297,410",
 "Component":[
@@ -2823,7 +2823,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_1 (83)",
-"InstId":-62454,
+"InstId":-1294750,
 "Pos":"<vec>3856,115,3496",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -2837,7 +2837,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Element",
-"InstId":-61904,
+"InstId":-1294830,
 "Pos":"<vec>3764,668,3551",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -2851,7 +2851,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Crystal_B (4)",
-"InstId":-61898,
+"InstId":-1294744,
 "Pos":"<vec>3781,532,3604",
 "Scale":"<vec>60,60,60",
 "Component":[
@@ -2866,7 +2866,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Cube (3)",
-"InstId":-63376,
+"InstId":-1295366,
 "Pos":"<vec>3781,551,3609",
 "Scale":"<vec>222,562,240",
 "Component":[
@@ -2890,7 +2890,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"MagicCircle_A",
-"InstId":-61996,
+"InstId":-1294696,
 "Pos":"<vec>3810,117,3611",
 "Scale":"<vec>225,225,225",
 "Component":[
@@ -2900,7 +2900,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_A",
-"InstId":-63220,
+"InstId":-1295432,
 "Pos":"<vec>3810,185,3611",
 "Scale":"<vec>229,229,100",
 "Component":[
@@ -2919,7 +2919,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_B",
-"InstId":-63176,
+"InstId":-1295862,
 "Pos":"<vec>3810,230,3611",
 "Scale":"<vec>150,150,100",
 "Component":[
@@ -2938,7 +2938,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Wakka_A",
-"InstId":-63242,
+"InstId":-1295664,
 "Pos":"<vec>3849,209,3615",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -2952,7 +2952,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"BlackSphere",
-"InstId":-63332,
+"InstId":-1295556,
 "Pos":"<vec>3810,163,3611",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -2969,7 +2969,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower_C (2)",
-"InstId":-62288,
+"InstId":-1294492,
 "Pos":"<vec>3792,260,3630",
 "Scale":"<vec>64,64,64",
 "Component":[
@@ -2979,7 +2979,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule",
-"InstId":-63276,
+"InstId":-1295084,
 "Pos":"<vec>3795,219,3629",
 "Scale":"<vec>364,211,364",
 "Component":[
@@ -3001,7 +3001,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (99)",
-"InstId":-62342,
+"InstId":-1294466,
 "Pos":"<vec>3703,122,3457",
 "Scale":"<vec>67,67,67",
 "Component":[
@@ -3015,7 +3015,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (98)",
-"InstId":-62432,
+"InstId":-1294980,
 "Pos":"<vec>3586,123,3722",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -3038,7 +3038,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"TowerPoint (8)",
-"InstId":-61128,
+"InstId":-1293748,
 "Pos":"<vec>5243,127,4943",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -3054,7 +3054,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower",
-"InstId":-61280,
+"InstId":-1293844,
 "Pos":"<vec>5243,127,4943",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -3064,7 +3064,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower",
-"InstId":-61494,
+"InstId":-1294340,
 "Pos":"<vec>5243,127,4943",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -3074,7 +3074,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule (2)",
-"InstId":-62308,
+"InstId":-1294754,
 "Pos":"<vec>5246,218,4948",
 "Scale":"<vec>394,297,410",
 "Component":[
@@ -3093,7 +3093,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_1 (83)",
-"InstId":-62208,
+"InstId":-1294888,
 "Pos":"<vec>5299,115,4794",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -3107,7 +3107,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Element",
-"InstId":-62156,
+"InstId":-1294646,
 "Pos":"<vec>5207,668,4848",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -3121,7 +3121,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Crystal_B (4)",
-"InstId":-61870,
+"InstId":-1294782,
 "Pos":"<vec>5224,532,4902",
 "Scale":"<vec>60,60,60",
 "Component":[
@@ -3136,7 +3136,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Cube (3)",
-"InstId":-63296,
+"InstId":-1295588,
 "Pos":"<vec>5224,551,4907",
 "Scale":"<vec>222,562,240",
 "Component":[
@@ -3160,7 +3160,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"MagicCircle_A",
-"InstId":-62130,
+"InstId":-1294630,
 "Pos":"<vec>5253,117,4909",
 "Scale":"<vec>225,225,225",
 "Component":[
@@ -3170,7 +3170,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_A",
-"InstId":-63378,
+"InstId":-1295260,
 "Pos":"<vec>5253,185,4909",
 "Scale":"<vec>229,229,100",
 "Component":[
@@ -3189,7 +3189,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_B",
-"InstId":-63374,
+"InstId":-1295922,
 "Pos":"<vec>5253,230,4909",
 "Scale":"<vec>150,150,100",
 "Component":[
@@ -3208,7 +3208,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Wakka_A",
-"InstId":-63206,
+"InstId":-1295360,
 "Pos":"<vec>5292,209,4913",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -3222,7 +3222,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"BlackSphere",
-"InstId":-63370,
+"InstId":-1295218,
 "Pos":"<vec>5253,163,4909",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -3239,7 +3239,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower_C (2)",
-"InstId":-62210,
+"InstId":-1295016,
 "Pos":"<vec>5235,260,4929",
 "Scale":"<vec>64,64,64",
 "Component":[
@@ -3249,7 +3249,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule",
-"InstId":-63380,
+"InstId":-1295488,
 "Pos":"<vec>5238,219,4927",
 "Scale":"<vec>364,211,364",
 "Component":[
@@ -3271,7 +3271,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (99)",
-"InstId":-61942,
+"InstId":-1294498,
 "Pos":"<vec>5146,122,4755",
 "Scale":"<vec>67,67,67",
 "Component":[
@@ -3285,7 +3285,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (98)",
-"InstId":-62348,
+"InstId":-1294478,
 "Pos":"<vec>5029,123,5020",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -3311,7 +3311,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"TowerAndSpring1",
-"InstId":-60994,
+"InstId":-1293600,
 "Pos":"<vec>12980,0,12272",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -3321,7 +3321,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Spring",
-"InstId":-61152,
+"InstId":-1293696,
 "Pos":"<vec>13180,369,12529",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -3337,7 +3337,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Spring",
-"InstId":-61320,
+"InstId":-1293916,
 "Pos":"<vec>13180,369,12529",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -3347,7 +3347,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Spring2",
-"InstId":-61718,
+"InstId":-1294302,
 "Pos":"<vec>13180,369,12529",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -3357,7 +3357,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule (1)",
-"InstId":-62074,
+"InstId":-1294410,
 "Pos":"<vec>13189,312,12531",
 "Scale":"<vec>529,325,449",
 "Component":[
@@ -3379,7 +3379,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"MagicCircle_A (6)",
-"InstId":-61618,
+"InstId":-1294330,
 "Pos":"<vec>13180,369,12529",
 "Scale":"<vec>225,225,225",
 "Component":[
@@ -3389,7 +3389,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_A",
-"InstId":-62220,
+"InstId":-1294388,
 "Pos":"<vec>13180,387,12529",
 "Scale":"<vec>400,400,100",
 "Component":[
@@ -3408,7 +3408,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_B",
-"InstId":-62300,
+"InstId":-1294926,
 "Pos":"<vec>13180,481,12529",
 "Scale":"<vec>300,300,300",
 "Component":[
@@ -3427,7 +3427,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Wakka_A",
-"InstId":-62410,
+"InstId":-1295054,
 "Pos":"<vec>13141,590,12524",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -3441,7 +3441,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"BlackSphere",
-"InstId":-61906,
+"InstId":-1294938,
 "Pos":"<vec>13180,358,12529",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -3464,7 +3464,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"MainTower",
-"InstId":-61160,
+"InstId":-1293710,
 "Pos":"<vec>11661,290,10930",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -3480,7 +3480,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"MainTower",
-"InstId":-61300,
+"InstId":-1293852,
 "Pos":"<vec>11661,290,10930",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -3490,7 +3490,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"MainTower",
-"InstId":-61548,
+"InstId":-1294042,
 "Pos":"<vec>11661,290,10930",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -3500,7 +3500,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule (1)",
-"InstId":-62244,
+"InstId":-1294678,
 "Pos":"<vec>11670,233,10932",
 "Scale":"<vec>529,325,449",
 "Component":[
@@ -3519,7 +3519,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Vines_C",
-"InstId":-62072,
+"InstId":-1294962,
 "Pos":"<vec>11726,654,10943",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -3533,7 +3533,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (84)",
-"InstId":-62234,
+"InstId":-1294910,
 "Pos":"<vec>11522,194,11188",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -3547,7 +3547,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Vines_F (1)",
-"InstId":-62378,
+"InstId":-1294930,
 "Pos":"<vec>11791,301,11156",
 "Scale":"<vec>58,58,58",
 "Component":[
@@ -3561,7 +3561,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_C_1 (27)",
-"InstId":-62306,
+"InstId":-1294954,
 "Pos":"<vec>11980,240,10836",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -3575,7 +3575,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (88)",
-"InstId":-62206,
+"InstId":-1294574,
 "Pos":"<vec>11733,193,10643",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -3589,7 +3589,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"MagicCircle_A (2)",
-"InstId":-62442,
+"InstId":-1295044,
 "Pos":"<vec>11659,200,10956",
 "Scale":"<vec>225,225,225",
 "Component":[
@@ -3599,7 +3599,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_A",
-"InstId":-63254,
+"InstId":-1295320,
 "Pos":"<vec>11659,219,10956",
 "Scale":"<vec>450,450,90",
 "Component":[
@@ -3618,7 +3618,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_B",
-"InstId":-63362,
+"InstId":-1295196,
 "Pos":"<vec>11659,313,10956",
 "Scale":"<vec>300,300,300",
 "Component":[
@@ -3637,7 +3637,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Wakka_A",
-"InstId":-63318,
+"InstId":-1295868,
 "Pos":"<vec>11621,422,10951",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -3651,7 +3651,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"BlackSphere",
-"InstId":-63280,
+"InstId":-1295906,
 "Pos":"<vec>11659,190,10956",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -3668,7 +3668,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (87)",
-"InstId":-62164,
+"InstId":-1294940,
 "Pos":"<vec>11337,193,10984",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -3682,7 +3682,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_D_3 (4)",
-"InstId":-62222,
+"InstId":-1294762,
 "Pos":"<vec>11868,383,10843",
 "Scale":"<vec>122,122,122",
 "Component":[
@@ -3696,7 +3696,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (85)",
-"InstId":-62090,
+"InstId":-1294666,
 "Pos":"<vec>11965,193,11009",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -3710,7 +3710,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Crystal_C (1)",
-"InstId":-62018,
+"InstId":-1294810,
 "Pos":"<vec>11648,664,10920",
 "Scale":"<vec>80,80,80",
 "Component":[
@@ -3725,7 +3725,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Cube (2)",
-"InstId":-63250,
+"InstId":-1295712,
 "Pos":"<vec>11656,679,10918",
 "Scale":"<vec>246,687,275",
 "Component":[
@@ -3758,7 +3758,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"TowerPoint",
-"InstId":-61166,
+"InstId":-1293770,
 "Pos":"<vec>3914,100,11763",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -3774,7 +3774,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower",
-"InstId":-61330,
+"InstId":-1293946,
 "Pos":"<vec>3914,100,11763",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -3784,7 +3784,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower",
-"InstId":-61628,
+"InstId":-1294160,
 "Pos":"<vec>3914,100,11763",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -3794,7 +3794,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule (2)",
-"InstId":-62160,
+"InstId":-1294444,
 "Pos":"<vec>3912,191,11757",
 "Scale":"<vec>394,297,410",
 "Component":[
@@ -3813,7 +3813,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_1 (83)",
-"InstId":-62100,
+"InstId":-1294584,
 "Pos":"<vec>3859,88,11911",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -3827,7 +3827,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Element",
-"InstId":-62380,
+"InstId":-1294598,
 "Pos":"<vec>3950,641,11857",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -3841,7 +3841,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Crystal_B (4)",
-"InstId":-62302,
+"InstId":-1294852,
 "Pos":"<vec>3934,505,11803",
 "Scale":"<vec>60,60,60",
 "Component":[
@@ -3856,7 +3856,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Cube (3)",
-"InstId":-63322,
+"InstId":-1295326,
 "Pos":"<vec>3934,524,11798",
 "Scale":"<vec>222,562,240",
 "Component":[
@@ -3880,7 +3880,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"MagicCircle_A",
-"InstId":-62274,
+"InstId":-1294708,
 "Pos":"<vec>3904,90,11797",
 "Scale":"<vec>225,225,225",
 "Component":[
@@ -3890,7 +3890,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_A",
-"InstId":-63350,
+"InstId":-1295340,
 "Pos":"<vec>3904,158,11797",
 "Scale":"<vec>229,229,100",
 "Component":[
@@ -3909,7 +3909,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_B",
-"InstId":-63300,
+"InstId":-1295072,
 "Pos":"<vec>3904,203,11797",
 "Scale":"<vec>150,150,100",
 "Component":[
@@ -3928,7 +3928,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Wakka_A",
-"InstId":-63204,
+"InstId":-1295322,
 "Pos":"<vec>3866,182,11792",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -3942,7 +3942,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"BlackSphere",
-"InstId":-63200,
+"InstId":-1295976,
 "Pos":"<vec>3904,136,11797",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -3959,7 +3959,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower_C (2)",
-"InstId":-62354,
+"InstId":-1294520,
 "Pos":"<vec>3923,233,11777",
 "Scale":"<vec>64,64,64",
 "Component":[
@@ -3969,7 +3969,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule",
-"InstId":-63260,
+"InstId":-1295920,
 "Pos":"<vec>3920,192,11778",
 "Scale":"<vec>364,211,364",
 "Component":[
@@ -3991,7 +3991,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (99)",
-"InstId":-62044,
+"InstId":-1294978,
 "Pos":"<vec>4012,95,11950",
 "Scale":"<vec>67,67,67",
 "Component":[
@@ -4005,7 +4005,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (98)",
-"InstId":-62436,
+"InstId":-1294912,
 "Pos":"<vec>4128,95,11685",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -4028,7 +4028,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"TowerPoint (1)",
-"InstId":-61106,
+"InstId":-1293720,
 "Pos":"<vec>7308,100,11941",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -4044,7 +4044,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower",
-"InstId":-61270,
+"InstId":-1293898,
 "Pos":"<vec>7308,100,11941",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -4054,7 +4054,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower",
-"InstId":-61700,
+"InstId":-1293970,
 "Pos":"<vec>7308,100,11941",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -4064,7 +4064,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule (2)",
-"InstId":-61938,
+"InstId":-1294490,
 "Pos":"<vec>7305,191,11935",
 "Scale":"<vec>394,297,410",
 "Component":[
@@ -4083,7 +4083,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_1 (83)",
-"InstId":-62296,
+"InstId":-1294606,
 "Pos":"<vec>7252,88,12089",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -4097,7 +4097,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Element",
-"InstId":-62384,
+"InstId":-1294614,
 "Pos":"<vec>7344,641,12035",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -4111,7 +4111,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Crystal_B (4)",
-"InstId":-62108,
+"InstId":-1294918,
 "Pos":"<vec>7327,505,11981",
 "Scale":"<vec>60,60,60",
 "Component":[
@@ -4126,7 +4126,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Cube (3)",
-"InstId":-63308,
+"InstId":-1295220,
 "Pos":"<vec>7327,524,11976",
 "Scale":"<vec>222,562,240",
 "Component":[
@@ -4150,7 +4150,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"MagicCircle_A",
-"InstId":-62146,
+"InstId":-1294832,
 "Pos":"<vec>7297,90,11975",
 "Scale":"<vec>225,225,225",
 "Component":[
@@ -4160,7 +4160,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_A",
-"InstId":-63316,
+"InstId":-1295380,
 "Pos":"<vec>7297,158,11975",
 "Scale":"<vec>229,229,100",
 "Component":[
@@ -4179,7 +4179,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_B",
-"InstId":-63278,
+"InstId":-1295646,
 "Pos":"<vec>7297,203,11975",
 "Scale":"<vec>150,150,100",
 "Component":[
@@ -4198,7 +4198,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Wakka_A",
-"InstId":-63340,
+"InstId":-1295960,
 "Pos":"<vec>7259,182,11970",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -4212,7 +4212,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"BlackSphere",
-"InstId":-63164,
+"InstId":-1295648,
 "Pos":"<vec>7297,136,11975",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -4229,7 +4229,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower_C (2)",
-"InstId":-62412,
+"InstId":-1294512,
 "Pos":"<vec>7316,233,11955",
 "Scale":"<vec>64,64,64",
 "Component":[
@@ -4239,7 +4239,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule",
-"InstId":-63154,
+"InstId":-1295258,
 "Pos":"<vec>7313,192,11956",
 "Scale":"<vec>364,211,364",
 "Component":[
@@ -4261,7 +4261,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (99)",
-"InstId":-62076,
+"InstId":-1294526,
 "Pos":"<vec>7405,95,12128",
 "Scale":"<vec>67,67,67",
 "Component":[
@@ -4275,7 +4275,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (98)",
-"InstId":-62434,
+"InstId":-1294752,
 "Pos":"<vec>7522,95,11863",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -4298,7 +4298,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"TowerPoint (2)",
-"InstId":-61180,
+"InstId":-1293794,
 "Pos":"<vec>9877,100,11695",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -4314,7 +4314,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower",
-"InstId":-61356,
+"InstId":-1293868,
 "Pos":"<vec>9877,100,11695",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -4324,7 +4324,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower",
-"InstId":-61416,
+"InstId":-1294006,
 "Pos":"<vec>9877,100,11695",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -4334,7 +4334,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule (2)",
-"InstId":-61990,
+"InstId":-1294408,
 "Pos":"<vec>9875,191,11689",
 "Scale":"<vec>394,297,410",
 "Component":[
@@ -4353,7 +4353,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_1 (83)",
-"InstId":-62328,
+"InstId":-1294436,
 "Pos":"<vec>9822,88,11843",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -4367,7 +4367,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Element",
-"InstId":-62178,
+"InstId":-1294462,
 "Pos":"<vec>9913,641,11789",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -4381,7 +4381,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Crystal_B (4)",
-"InstId":-61966,
+"InstId":-1294764,
 "Pos":"<vec>9897,505,11735",
 "Scale":"<vec>60,60,60",
 "Component":[
@@ -4396,7 +4396,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Cube (3)",
-"InstId":-63306,
+"InstId":-1295318,
 "Pos":"<vec>9897,524,11730",
 "Scale":"<vec>222,562,240",
 "Component":[
@@ -4420,7 +4420,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"MagicCircle_A",
-"InstId":-62396,
+"InstId":-1294586,
 "Pos":"<vec>9867,90,11729",
 "Scale":"<vec>225,225,225",
 "Component":[
@@ -4430,7 +4430,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_A",
-"InstId":-63194,
+"InstId":-1295540,
 "Pos":"<vec>9867,158,11729",
 "Scale":"<vec>229,229,100",
 "Component":[
@@ -4449,7 +4449,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_B",
-"InstId":-63386,
+"InstId":-1295086,
 "Pos":"<vec>9867,203,11729",
 "Scale":"<vec>150,150,100",
 "Component":[
@@ -4468,7 +4468,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Wakka_A",
-"InstId":-63270,
+"InstId":-1295102,
 "Pos":"<vec>9829,182,11724",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -4482,7 +4482,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"BlackSphere",
-"InstId":-63184,
+"InstId":-1295576,
 "Pos":"<vec>9867,136,11729",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -4499,7 +4499,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower_C (2)",
-"InstId":-62094,
+"InstId":-1294914,
 "Pos":"<vec>9886,233,11709",
 "Scale":"<vec>64,64,64",
 "Component":[
@@ -4509,7 +4509,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule",
-"InstId":-63196,
+"InstId":-1295904,
 "Pos":"<vec>9883,192,11710",
 "Scale":"<vec>364,211,364",
 "Component":[
@@ -4531,7 +4531,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (99)",
-"InstId":-61878,
+"InstId":-1294568,
 "Pos":"<vec>9975,95,11882",
 "Scale":"<vec>67,67,67",
 "Component":[
@@ -4545,7 +4545,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (98)",
-"InstId":-62078,
+"InstId":-1294412,
 "Pos":"<vec>10091,95,11617",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -4568,7 +4568,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"TowerPoint (3)",
-"InstId":-61110,
+"InstId":-1293756,
 "Pos":"<vec>12390,127,9311",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -4584,7 +4584,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower",
-"InstId":-61352,
+"InstId":-1293824,
 "Pos":"<vec>12390,127,9311",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -4594,7 +4594,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower",
-"InstId":-61740,
+"InstId":-1294070,
 "Pos":"<vec>12390,127,9311",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -4604,7 +4604,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule (2)",
-"InstId":-61902,
+"InstId":-1295008,
 "Pos":"<vec>12388,218,9305",
 "Scale":"<vec>394,297,410",
 "Component":[
@@ -4623,7 +4623,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_1 (83)",
-"InstId":-62070,
+"InstId":-1294908,
 "Pos":"<vec>12335,115,9459",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -4637,7 +4637,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Element",
-"InstId":-61930,
+"InstId":-1294640,
 "Pos":"<vec>12426,668,9405",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -4651,7 +4651,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Crystal_B (4)",
-"InstId":-62230,
+"InstId":-1295010,
 "Pos":"<vec>12410,532,9351",
 "Scale":"<vec>60,60,60",
 "Component":[
@@ -4666,7 +4666,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Cube (3)",
-"InstId":-63186,
+"InstId":-1295552,
 "Pos":"<vec>12410,551,9346",
 "Scale":"<vec>222,562,240",
 "Component":[
@@ -4690,7 +4690,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"MagicCircle_A",
-"InstId":-62080,
+"InstId":-1294480,
 "Pos":"<vec>12380,117,9344",
 "Scale":"<vec>225,225,225",
 "Component":[
@@ -4700,7 +4700,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_A",
-"InstId":-63226,
+"InstId":-1295898,
 "Pos":"<vec>12380,185,9344",
 "Scale":"<vec>229,229,100",
 "Component":[
@@ -4719,7 +4719,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_B",
-"InstId":-63372,
+"InstId":-1295974,
 "Pos":"<vec>12380,230,9344",
 "Scale":"<vec>150,150,100",
 "Component":[
@@ -4738,7 +4738,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Wakka_A",
-"InstId":-63240,
+"InstId":-1295538,
 "Pos":"<vec>12342,209,9340",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -4752,7 +4752,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"BlackSphere",
-"InstId":-63180,
+"InstId":-1295112,
 "Pos":"<vec>12380,163,9344",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -4769,7 +4769,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower_C (2)",
-"InstId":-61944,
+"InstId":-1294848,
 "Pos":"<vec>12399,260,9325",
 "Scale":"<vec>64,64,64",
 "Component":[
@@ -4779,7 +4779,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule",
-"InstId":-63354,
+"InstId":-1295912,
 "Pos":"<vec>12396,219,9326",
 "Scale":"<vec>364,211,364",
 "Component":[
@@ -4801,7 +4801,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (99)",
-"InstId":-61948,
+"InstId":-1294794,
 "Pos":"<vec>12488,122,9498",
 "Scale":"<vec>67,67,67",
 "Component":[
@@ -4815,7 +4815,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (98)",
-"InstId":-62126,
+"InstId":-1294992,
 "Pos":"<vec>12604,123,9233",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -4838,7 +4838,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"TowerPoint (4)",
-"InstId":-61138,
+"InstId":-1293716,
 "Pos":"<vec>12494,127,7169",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -4854,7 +4854,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower",
-"InstId":-61336,
+"InstId":-1293956,
 "Pos":"<vec>12494,127,7169",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -4864,7 +4864,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower",
-"InstId":-61376,
+"InstId":-1294232,
 "Pos":"<vec>12494,127,7169",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -4874,7 +4874,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule (2)",
-"InstId":-62048,
+"InstId":-1294748,
 "Pos":"<vec>12492,218,7164",
 "Scale":"<vec>394,297,410",
 "Component":[
@@ -4893,7 +4893,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_1 (83)",
-"InstId":-61984,
+"InstId":-1294786,
 "Pos":"<vec>12439,115,7318",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -4907,7 +4907,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Element",
-"InstId":-62344,
+"InstId":-1294470,
 "Pos":"<vec>12530,668,7263",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -4921,7 +4921,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Crystal_B (4)",
-"InstId":-62438,
+"InstId":-1295020,
 "Pos":"<vec>12514,532,7210",
 "Scale":"<vec>60,60,60",
 "Component":[
@@ -4936,7 +4936,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Cube (3)",
-"InstId":-63174,
+"InstId":-1295154,
 "Pos":"<vec>12514,551,7205",
 "Scale":"<vec>222,562,240",
 "Component":[
@@ -4960,7 +4960,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"MagicCircle_A",
-"InstId":-62188,
+"InstId":-1294982,
 "Pos":"<vec>12484,117,7204",
 "Scale":"<vec>225,225,225",
 "Component":[
@@ -4970,7 +4970,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_A",
-"InstId":-63158,
+"InstId":-1295410,
 "Pos":"<vec>12484,185,7204",
 "Scale":"<vec>229,229,100",
 "Component":[
@@ -4989,7 +4989,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_B",
-"InstId":-63232,
+"InstId":-1295120,
 "Pos":"<vec>12484,230,7204",
 "Scale":"<vec>150,150,100",
 "Component":[
@@ -5008,7 +5008,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Wakka_A",
-"InstId":-63238,
+"InstId":-1295716,
 "Pos":"<vec>12446,209,7199",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -5022,7 +5022,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"BlackSphere",
-"InstId":-63336,
+"InstId":-1295230,
 "Pos":"<vec>12484,163,7204",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -5039,7 +5039,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower_C (2)",
-"InstId":-62050,
+"InstId":-1294528,
 "Pos":"<vec>12503,260,7184",
 "Scale":"<vec>64,64,64",
 "Component":[
@@ -5049,7 +5049,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule",
-"InstId":-63202,
+"InstId":-1295516,
 "Pos":"<vec>12500,219,7185",
 "Scale":"<vec>364,211,364",
 "Component":[
@@ -5071,7 +5071,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (99)",
-"InstId":-62106,
+"InstId":-1294618,
 "Pos":"<vec>12592,122,7357",
 "Scale":"<vec>67,67,67",
 "Component":[
@@ -5085,7 +5085,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (98)",
-"InstId":-62032,
+"InstId":-1294676,
 "Pos":"<vec>12708,123,7091",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -5108,7 +5108,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"TowerPoint (5)",
-"InstId":-61184,
+"InstId":-1293752,
 "Pos":"<vec>12320,127,3180",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -5124,7 +5124,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower",
-"InstId":-61308,
+"InstId":-1293812,
 "Pos":"<vec>12320,127,3180",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -5134,7 +5134,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower",
-"InstId":-61476,
+"InstId":-1294124,
 "Pos":"<vec>12320,127,3180",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -5144,7 +5144,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule (2)",
-"InstId":-62326,
+"InstId":-1294576,
 "Pos":"<vec>12318,218,3174",
 "Scale":"<vec>394,297,410",
 "Component":[
@@ -5163,7 +5163,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_1 (83)",
-"InstId":-62420,
+"InstId":-1294534,
 "Pos":"<vec>12265,115,3328",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -5177,7 +5177,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Element",
-"InstId":-62144,
+"InstId":-1294846,
 "Pos":"<vec>12356,668,3274",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -5191,7 +5191,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Crystal_B (4)",
-"InstId":-62270,
+"InstId":-1294500,
 "Pos":"<vec>12340,532,3220",
 "Scale":"<vec>60,60,60",
 "Component":[
@@ -5206,7 +5206,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Cube (3)",
-"InstId":-63356,
+"InstId":-1295268,
 "Pos":"<vec>12340,551,3215",
 "Scale":"<vec>222,562,240",
 "Component":[
@@ -5230,7 +5230,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"MagicCircle_A",
-"InstId":-62166,
+"InstId":-1294878,
 "Pos":"<vec>12310,117,3213",
 "Scale":"<vec>225,225,225",
 "Component":[
@@ -5240,7 +5240,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_A",
-"InstId":-63292,
+"InstId":-1295562,
 "Pos":"<vec>12310,185,3213",
 "Scale":"<vec>229,229,100",
 "Component":[
@@ -5259,7 +5259,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_B",
-"InstId":-63218,
+"InstId":-1295614,
 "Pos":"<vec>12310,230,3213",
 "Scale":"<vec>150,150,100",
 "Component":[
@@ -5278,7 +5278,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Wakka_A",
-"InstId":-63294,
+"InstId":-1295692,
 "Pos":"<vec>12272,209,3209",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -5292,7 +5292,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"BlackSphere",
-"InstId":-63320,
+"InstId":-1295062,
 "Pos":"<vec>12310,163,3213",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -5309,7 +5309,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower_C (2)",
-"InstId":-62266,
+"InstId":-1294770,
 "Pos":"<vec>12329,260,3194",
 "Scale":"<vec>64,64,64",
 "Component":[
@@ -5319,7 +5319,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule",
-"InstId":-63274,
+"InstId":-1295666,
 "Pos":"<vec>12326,219,3195",
 "Scale":"<vec>364,211,364",
 "Component":[
@@ -5341,7 +5341,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (99)",
-"InstId":-62452,
+"InstId":-1294968,
 "Pos":"<vec>12418,122,3367",
 "Scale":"<vec>67,67,67",
 "Component":[
@@ -5355,7 +5355,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (98)",
-"InstId":-62418,
+"InstId":-1294972,
 "Pos":"<vec>12534,123,3102",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -5378,7 +5378,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"TowerPoint (6)",
-"InstId":-61124,
+"InstId":-1293702,
 "Pos":"<vec>10573,127,9802",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -5394,7 +5394,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower",
-"InstId":-61296,
+"InstId":-1293966,
 "Pos":"<vec>10573,127,9802",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -5404,7 +5404,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower",
-"InstId":-61646,
+"InstId":-1294214,
 "Pos":"<vec>10573,127,9802",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -5414,7 +5414,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule (2)",
-"InstId":-62426,
+"InstId":-1294774,
 "Pos":"<vec>10571,218,9797",
 "Scale":"<vec>394,297,410",
 "Component":[
@@ -5433,7 +5433,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_1 (83)",
-"InstId":-62114,
+"InstId":-1294760,
 "Pos":"<vec>10518,115,9951",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -5447,7 +5447,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Element",
-"InstId":-62158,
+"InstId":-1295030,
 "Pos":"<vec>10609,668,9897",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -5461,7 +5461,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Crystal_B (4)",
-"InstId":-62428,
+"InstId":-1294608,
 "Pos":"<vec>10593,532,9843",
 "Scale":"<vec>60,60,60",
 "Component":[
@@ -5476,7 +5476,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Cube (3)",
-"InstId":-63198,
+"InstId":-1295110,
 "Pos":"<vec>10593,551,9838",
 "Scale":"<vec>222,562,240",
 "Component":[
@@ -5500,7 +5500,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"MagicCircle_A",
-"InstId":-62312,
+"InstId":-1294390,
 "Pos":"<vec>10563,117,9837",
 "Scale":"<vec>225,225,225",
 "Component":[
@@ -5510,7 +5510,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_A",
-"InstId":-63342,
+"InstId":-1295212,
 "Pos":"<vec>10563,185,9837",
 "Scale":"<vec>229,229,100",
 "Component":[
@@ -5529,7 +5529,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_B",
-"InstId":-63266,
+"InstId":-1295978,
 "Pos":"<vec>10563,230,9837",
 "Scale":"<vec>150,150,100",
 "Component":[
@@ -5548,7 +5548,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Wakka_A",
-"InstId":-63230,
+"InstId":-1295334,
 "Pos":"<vec>10525,209,9832",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -5562,7 +5562,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"BlackSphere",
-"InstId":-63282,
+"InstId":-1295332,
 "Pos":"<vec>10563,163,9837",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -5579,7 +5579,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower_C (2)",
-"InstId":-62012,
+"InstId":-1294446,
 "Pos":"<vec>10582,260,9817",
 "Scale":"<vec>64,64,64",
 "Component":[
@@ -5589,7 +5589,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule",
-"InstId":-63170,
+"InstId":-1295554,
 "Pos":"<vec>10579,219,9818",
 "Scale":"<vec>364,211,364",
 "Component":[
@@ -5611,7 +5611,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (99)",
-"InstId":-62228,
+"InstId":-1294452,
 "Pos":"<vec>10671,122,9990",
 "Scale":"<vec>67,67,67",
 "Component":[
@@ -5625,7 +5625,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (98)",
-"InstId":-62200,
+"InstId":-1295034,
 "Pos":"<vec>10787,123,9725",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -5648,7 +5648,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"TowerPoint (7)",
-"InstId":-61170,
+"InstId":-1293782,
 "Pos":"<vec>9179,127,8627",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -5664,7 +5664,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower",
-"InstId":-61326,
+"InstId":-1293884,
 "Pos":"<vec>9179,127,8627",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -5674,7 +5674,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower",
-"InstId":-61530,
+"InstId":-1293988,
 "Pos":"<vec>9179,127,8627",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -5689,7 +5689,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule (2)",
-"InstId":-61950,
+"InstId":-1294454,
 "Pos":"<vec>9177,218,8621",
 "Scale":"<vec>394,297,410",
 "Component":[
@@ -5708,7 +5708,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_1 (83)",
-"InstId":-62382,
+"InstId":-1294472,
 "Pos":"<vec>9124,115,8775",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -5722,7 +5722,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Element",
-"InstId":-62162,
+"InstId":-1294524,
 "Pos":"<vec>9215,668,8721",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -5736,7 +5736,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Crystal_B (4)",
-"InstId":-62026,
+"InstId":-1294404,
 "Pos":"<vec>9199,532,8667",
 "Scale":"<vec>60,60,60",
 "Component":[
@@ -5751,7 +5751,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Cube (3)",
-"InstId":-63330,
+"InstId":-1295184,
 "Pos":"<vec>9199,551,8662",
 "Scale":"<vec>222,562,240",
 "Component":[
@@ -5775,7 +5775,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"MagicCircle_A",
-"InstId":-61916,
+"InstId":-1294796,
 "Pos":"<vec>9169,117,8661",
 "Scale":"<vec>225,225,225",
 "Component":[
@@ -5785,7 +5785,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_A",
-"InstId":-63188,
+"InstId":-1295634,
 "Pos":"<vec>9169,185,8661",
 "Scale":"<vec>229,229,100",
 "Component":[
@@ -5804,7 +5804,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_B",
-"InstId":-63234,
+"InstId":-1295274,
 "Pos":"<vec>9169,230,8661",
 "Scale":"<vec>150,150,100",
 "Component":[
@@ -5823,7 +5823,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Wakka_A",
-"InstId":-63152,
+"InstId":-1295714,
 "Pos":"<vec>9131,209,8656",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -5837,7 +5837,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"BlackSphere",
-"InstId":-63264,
+"InstId":-1295800,
 "Pos":"<vec>9169,163,8661",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -5854,7 +5854,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower_C (2)",
-"InstId":-61926,
+"InstId":-1294896,
 "Pos":"<vec>9188,260,8641",
 "Scale":"<vec>64,64,64",
 "Component":[
@@ -5864,7 +5864,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule",
-"InstId":-63166,
+"InstId":-1295198,
 "Pos":"<vec>9185,219,8642",
 "Scale":"<vec>364,211,364",
 "Component":[
@@ -5886,7 +5886,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (99)",
-"InstId":-61952,
+"InstId":-1295014,
 "Pos":"<vec>9277,122,8814",
 "Scale":"<vec>67,67,67",
 "Component":[
@@ -5900,7 +5900,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (98)",
-"InstId":-62008,
+"InstId":-1294946,
 "Pos":"<vec>9393,123,8549",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -5923,7 +5923,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"TowerPoint (8)",
-"InstId":-61176,
+"InstId":-1293774,
 "Pos":"<vec>7736,127,7329",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -5939,7 +5939,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower",
-"InstId":-61292,
+"InstId":-1293952,
 "Pos":"<vec>7736,127,7329",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -5949,7 +5949,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower",
-"InstId":-61664,
+"InstId":-1294106,
 "Pos":"<vec>7736,127,7329",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -5964,7 +5964,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule (2)",
-"InstId":-62184,
+"InstId":-1295056,
 "Pos":"<vec>7734,218,7323",
 "Scale":"<vec>394,297,410",
 "Component":[
@@ -5983,7 +5983,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_1 (83)",
-"InstId":-62376,
+"InstId":-1294596,
 "Pos":"<vec>7681,115,7477",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -5997,7 +5997,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Element",
-"InstId":-61954,
+"InstId":-1294552,
 "Pos":"<vec>7772,668,7423",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -6011,7 +6011,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Crystal_B (4)",
-"InstId":-61980,
+"InstId":-1294958,
 "Pos":"<vec>7756,532,7369",
 "Scale":"<vec>60,60,60",
 "Component":[
@@ -6026,7 +6026,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Cube (3)",
-"InstId":-63314,
+"InstId":-1295708,
 "Pos":"<vec>7756,551,7364",
 "Scale":"<vec>222,562,240",
 "Component":[
@@ -6050,7 +6050,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"MagicCircle_A",
-"InstId":-62386,
+"InstId":-1294864,
 "Pos":"<vec>7726,117,7363",
 "Scale":"<vec>225,225,225",
 "Component":[
@@ -6060,7 +6060,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_A",
-"InstId":-63216,
+"InstId":-1295842,
 "Pos":"<vec>7726,185,7363",
 "Scale":"<vec>229,229,100",
 "Component":[
@@ -6079,7 +6079,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Circle_B",
-"InstId":-63338,
+"InstId":-1295882,
 "Pos":"<vec>7726,230,7363",
 "Scale":"<vec>150,150,100",
 "Component":[
@@ -6098,7 +6098,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Wakka_A",
-"InstId":-63384,
+"InstId":-1295654,
 "Pos":"<vec>7688,209,7358",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -6112,7 +6112,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"BlackSphere",
-"InstId":-63352,
+"InstId":-1295234,
 "Pos":"<vec>7726,163,7363",
 "Scale":"<vec>10,10,10",
 "Component":[
@@ -6129,7 +6129,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Tower_C (2)",
-"InstId":-62140,
+"InstId":-1294418,
 "Pos":"<vec>7745,260,7343",
 "Scale":"<vec>64,64,64",
 "Component":[
@@ -6139,7 +6139,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Capsule",
-"InstId":-63304,
+"InstId":-1295204,
 "Pos":"<vec>7742,219,7344",
 "Scale":"<vec>364,211,364",
 "Component":[
@@ -6161,7 +6161,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (99)",
-"InstId":-61934,
+"InstId":-1294386,
 "Pos":"<vec>7834,122,7516",
 "Scale":"<vec>67,67,67",
 "Component":[
@@ -6175,7 +6175,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"Grass_B_2 (98)",
-"InstId":-62098,
+"InstId":-1294768,
 "Pos":"<vec>7950,123,7251",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -6194,6 +6194,26 @@
 ]
 
 }
+]
+
+}
+,
+{
+"Descriptor":"GameObject",
+"Name":"XiaoGuaiMgr",
+"InstId":-1293582,
+"Pos":"<vec>6580,150,2429",
+"Scale":"<vec>100,100,100",
+"Component":[
+{
+"Descriptor":"Class",
+"Type":"XiaoGuaiMgr",
+"intervalTime":30,
+"npcId":68
+}
+]
+,
+"Child":[
 ]
 
 }

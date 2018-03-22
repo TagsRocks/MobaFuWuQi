@@ -22,7 +22,8 @@ namespace MyLib
             //生命周期如何管理 和技能绑定的一段状态执行逻辑
             var sk = stateMachine.AddComponent<SkillStateMachine>();
             sk.action = skillAct;
-            gameObject.AddChild(stateMachine);
+            //gameObject.AddChild(stateMachine);
+            gameObject.GetRoom().GetRoot().AddChild(stateMachine);
             return sk;
         }
 

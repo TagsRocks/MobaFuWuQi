@@ -19,6 +19,7 @@ namespace MyLib
         private ulong frameId = 0;
         private double roomStartTime = 0;
         private double newTimeNow = 0;
+        private GameObjectActor root;
 
         /// <summary>
         /// 获取当前服务器上的时间
@@ -28,7 +29,10 @@ namespace MyLib
         {
             return frameId;
         }
-
+        public GameObjectActor GetRoot()
+        {
+            return root;
+        }
         /// <summary>
         /// 带小数点的服务器上FrameTime
         /// </summary>
@@ -87,6 +91,11 @@ namespace MyLib
 	    } 
 		public RoomActor (int mp, bool newUser, RoomInfo roomInfo)
 		{
+            //所有子弹挂在该Root下
+            root = new GameObjectActor();
+            root.SetRoom(this);
+            root.Start();
+
             curFrameAwaiter = nextFrameAwaiter1;
 		    IsNewUserRoom = newUser;
 			playerCom = this.AddComponent<PlayerManagerCom> ();

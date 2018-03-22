@@ -21,7 +21,7 @@ namespace MyLib
         public AIStateEnum type;
         public AICharacter aiCharacter;
         protected bool inState = false;
-        protected int runNum = 0;
+        public int runNum = 0;
         /// <summary>
         /// 添加完状态之后首次初始化
         /// </summary>

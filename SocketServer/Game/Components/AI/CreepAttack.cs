@@ -42,7 +42,8 @@ namespace MyLib
 
                 var faraway = (mePos - initCenter).LengthSquared();
                 var cfg = aiCharacter.aiNpc.npcConfig;
-                if (faraway > cfg.maxMoveRange2 * cfg.maxMoveRange2)
+                var backDist = Math.Max(cfg.eyeSightDistance+0.2f, cfg.maxMoveRange2);
+                if (faraway > backDist * backDist)
                 {
                     aiCharacter.ChangeState(AIStateEnum.GO_BACK);
                 }
@@ -101,7 +102,6 @@ namespace MyLib
             var sk = aiCharacter.gameObject.GetComponent<SkillComponent>();
             var stateMachine = sk.CreateSkillStateMachine(skillAct.Build(), creepAI.npcConfig.normalAttack);
             await UpdateAction(stateMachine);
-            //await Task.Delay(1);
         }
 
         private async Task UpdateAction(SkillStateMachine stateMachine)
