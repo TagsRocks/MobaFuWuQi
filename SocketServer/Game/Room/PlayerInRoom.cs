@@ -24,6 +24,7 @@ namespace MyLib
             lastAvatarInfo = AvatarInfo.CreateBuilder(info).Build();
             avatarInfo = AvatarInfo.CreateBuilder(info).Build();
             avatarInfo.Level = 1;
+            avatarInfo.Gold = 300;
 
             proxy = new PlayerActorProxy(pl, this);
             //玩家在房间中的对象通过Room访问
@@ -120,12 +121,31 @@ namespace MyLib
                         case "ChooseHero":
                             ChooseHero(cmd);
                             break;
+                        case "Buy":
+                            Buy(cmd);
+                            break;
                     }
                 }
             }
         }
 
 
+        private void Buy(CGPlayerCmd cmd)
+        {
+            var cmds = cmd.Cmd.Split(' ');
+            var cmd0 = cmds[0];
+            var itemId = Convert.ToInt32(cmds[1]);
+            var cfg = GMDataBaseSystem.database.SearchId<EquipConfigData>(GameData.EquipConfig, itemId);
+            if(cfg != null)
+            {
+                var gold = cfg.goldCost;
+                if(avatarInfo.Gold >= gold)
+                {
+                    avatarInfo.Gold -= gold;
+                    avatarInfo.ItemInfoList.Add(itemId);
+                }
+            }
+        }
 
 
         /// <summary>
@@ -619,37 +639,12 @@ namespace MyLib
                 na1.Changed = true;
                 lastAvatarInfo.FrameID = avatarInfo.FrameID;
             }
-         
-
-            /*
-            //服务器端关闭UDP
-            if (agent.useUDP)
-            {
-                if (agent.udpAgent != null)
-                {
-                    var now = Util.GetTimeNow();
-                    var lr = agent.udpAgent.lastReceiveTime;
-                    if (now - lr > 5)
-                    {
-                        agent.UDPLost();
-                        var gc = GCPlayerCmd.CreateBuilder();
-                        gc.Result = "UDPLost";
-                        agent.SendPacket(gc, 0, 0);
-
-                        LogHelper.Log("UDP", "UDPLost From Server");
-
-                    }
-                }
-            }
-            */
-
             return na1;
         }
 
 
         public AvatarInfo GetAvatarInfo()
         {
-            //return lastAvatarInfo;
             return avatarInfo;
         }
 
@@ -823,6 +818,21 @@ namespace MyLib
                 na1.State = avatarInfo.State;
                 na1.Changed = true;
                 lastAvatarInfo.State = avatarInfo.State;
+            }
+            if(avatarInfo.Gold != lastAvatarInfo.Gold)
+            {
+                na1.Gold = avatarInfo.Gold;
+                na1.Changed = true;
+                lastAvatarInfo.Gold = avatarInfo.Gold;
+            }
+
+            if(avatarInfo.ItemInfoList.dirty)
+            {
+                na1.ItemInfoDirty = true;
+                na1.result.ItemInfoList = avatarInfo.ItemInfoList;
+                na1.Changed = true;
+                lastAvatarInfo.ItemInfoList = avatarInfo.ItemInfoList;
+                avatarInfo.ItemInfoList.ClearDirty();
             }
             return na1;
         }

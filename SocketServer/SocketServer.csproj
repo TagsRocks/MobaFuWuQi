@@ -251,6 +251,7 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Game\Http\" />
+    <Folder Include="Game\ItemMgr\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
