@@ -2,7 +2,7 @@
 "aliAttack":{
 "Descriptor":"GameObject",
 "Name":"aliAttack",
-"InstId":15604,
+"InstId":15338,
 "Pos":"<vec>0,0,0",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -14,7 +14,7 @@
 "Descriptor":"Class",
 "Type":"EventItem",
 "evt":0,
-"layout":"<go>15606",
+"layout":"<go>15340",
 "affix":"Unknown:MyLib.Affix",
 "attachOwner":false,
 "attaches":false,
@@ -37,7 +37,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"nearbyAttack",
-"InstId":15606,
+"InstId":15340,
 "Pos":"<vec>0,0,0",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -47,7 +47,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"HurtNearby",
-"InstId":71930,
+"InstId":64280,
 "Pos":"<vec>0,0,0",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -71,7 +71,7 @@
 "aliSkill1":{
 "Descriptor":"GameObject",
 "Name":"aliSkill1",
-"InstId":13608,
+"InstId":13072,
 "Pos":"<vec>93,-39,159",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -83,7 +83,7 @@
 "Descriptor":"Class",
 "Type":"EventItem",
 "evt":2,
-"layout":"<go>13610",
+"layout":"<go>13074",
 "affix":"Unknown:MyLib.Affix",
 "attachOwner":false,
 "attaches":false,
@@ -100,7 +100,7 @@
 "Descriptor":"Class",
 "Type":"EventItem",
 "evt":0,
-"layout":"<go>13612",
+"layout":"<go>13076",
 "affix":"Unknown:MyLib.Affix",
 "attachOwner":false,
 "attaches":false,
@@ -123,7 +123,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"warmup",
-"InstId":13610,
+"InstId":13074,
 "Pos":"<vec>186,-78,318",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -131,7 +131,7 @@
 "Descriptor":"Class",
 "Type":"SkillLayoutConfig",
 "Position":"Unknown:(0.0, 2.0, 0.0)",
-"particle":"<go>15558",
+"particle":"<go>15284",
 "delayTime":0,
 "boneName":""
 }
@@ -145,7 +145,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"explosive",
-"InstId":13612,
+"InstId":13076,
 "Pos":"<vec>93,-39,159",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -155,7 +155,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"UnitSpawn",
-"InstId":71950,
+"InstId":65272,
 "Pos":"<vec>93,-39,159",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -172,7 +172,7 @@
 "MinRadius":"Unknown:UnityEngine.AnimationCurve",
 "UseMaxOnly":true,
 "particle":"<go>0",
-"Missile":"<go>71956",
+"Missile":"<go>65276",
 "Missile2":"null",
 "MonsterId":-1,
 "delay":0,
@@ -184,7 +184,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"explosiveshot",
-"InstId":71956,
+"InstId":65276,
 "Pos":"<vec>93,-39,159",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -193,9 +193,9 @@
 "Type":"MissileData",
 "missileType":0,
 "lifeTime":5,
-"ActiveParticle":"<go>17296",
-"DieParticle":"<go>17330",
-"HitParticle":"<go>17330",
+"ActiveParticle":"<go>17350",
+"DieParticle":"<go>17384",
+"HitParticle":"<go>17384",
 "ReleaseParticle":"<go>0",
 "Velocity":5,
 "Radius":0.8,
@@ -230,7 +230,7 @@
 "explosive":{
 "Descriptor":"GameObject",
 "Name":"explosive",
-"InstId":16492,
+"InstId":16400,
 "Pos":"<vec>93,-39,159",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -242,7 +242,7 @@
 "Descriptor":"Class",
 "Type":"EventItem",
 "evt":2,
-"layout":"<go>16494",
+"layout":"<go>16402",
 "affix":"Unknown:MyLib.Affix",
 "attachOwner":false,
 "attaches":false,
@@ -259,7 +259,7 @@
 "Descriptor":"Class",
 "Type":"EventItem",
 "evt":0,
-"layout":"<go>16496",
+"layout":"<go>16404",
 "affix":"Unknown:MyLib.Affix",
 "attachOwner":false,
 "attaches":false,
@@ -282,7 +282,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"warmup",
-"InstId":16494,
+"InstId":16402,
 "Pos":"<vec>186,-78,318",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -290,7 +290,7 @@
 "Descriptor":"Class",
 "Type":"SkillLayoutConfig",
 "Position":"Unknown:(0.0, 2.0, 0.0)",
-"particle":"<go>15558",
+"particle":"<go>15284",
 "delayTime":0,
 "boneName":""
 }
@@ -304,7 +304,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"explosive",
-"InstId":16496,
+"InstId":16404,
 "Pos":"<vec>93,-39,159",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -314,7 +314,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"UnitSpawn",
-"InstId":25574,
+"InstId":29326,
 "Pos":"<vec>93,-39,159",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -331,7 +331,7 @@
 "MinRadius":"Unknown:UnityEngine.AnimationCurve",
 "UseMaxOnly":true,
 "particle":"<go>0",
-"Missile":"<go>25584",
+"Missile":"<go>29332",
 "Missile2":"null",
 "MonsterId":-1,
 "delay":0,
@@ -343,7 +343,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"explosiveshot",
-"InstId":25584,
+"InstId":29332,
 "Pos":"<vec>93,-39,159",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -352,9 +352,9 @@
 "Type":"MissileData",
 "missileType":0,
 "lifeTime":5,
-"ActiveParticle":"<go>17296",
-"DieParticle":"<go>17330",
-"HitParticle":"<go>17330",
+"ActiveParticle":"<go>17350",
+"DieParticle":"<go>17384",
+"HitParticle":"<go>17384",
 "ReleaseParticle":"<go>0",
 "Velocity":20,
 "Radius":0.8,
@@ -389,7 +389,7 @@
 "galiAttack":{
 "Descriptor":"GameObject",
 "Name":"galiAttack",
-"InstId":13638,
+"InstId":13106,
 "Pos":"<vec>0,0,0",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -401,7 +401,7 @@
 "Descriptor":"Class",
 "Type":"EventItem",
 "evt":2,
-"layout":"<go>13640",
+"layout":"<go>13108",
 "affix":"Unknown:MyLib.Affix",
 "attachOwner":false,
 "attaches":false,
@@ -418,7 +418,7 @@
 "Descriptor":"Class",
 "Type":"EventItem",
 "evt":0,
-"layout":"<go>13642",
+"layout":"<go>13110",
 "affix":"Unknown:MyLib.Affix",
 "attachOwner":false,
 "attaches":false,
@@ -441,7 +441,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"warmup",
-"InstId":13640,
+"InstId":13108,
 "Pos":"<vec>93,-39,159",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -449,7 +449,7 @@
 "Descriptor":"Class",
 "Type":"SkillLayoutConfig",
 "Position":"Unknown:(0.0, 2.0, 0.0)",
-"particle":"<go>15558",
+"particle":"<go>15284",
 "delayTime":0,
 "boneName":""
 }
@@ -463,7 +463,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"explosive",
-"InstId":13642,
+"InstId":13110,
 "Pos":"<vec>0,0,0",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -473,7 +473,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"UnitSpawn",
-"InstId":71978,
+"InstId":29178,
 "Pos":"<vec>0,0,0",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -490,7 +490,7 @@
 "MinRadius":"Unknown:UnityEngine.AnimationCurve",
 "UseMaxOnly":true,
 "particle":"<go>0",
-"Missile":"<go>71984",
+"Missile":"<go>29184",
 "Missile2":"null",
 "MonsterId":-1,
 "delay":0,
@@ -502,7 +502,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"explosiveshot",
-"InstId":71984,
+"InstId":29184,
 "Pos":"<vec>0,0,0",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -511,9 +511,9 @@
 "Type":"MissileData",
 "missileType":0,
 "lifeTime":5,
-"ActiveParticle":"<go>17296",
-"DieParticle":"<go>17330",
-"HitParticle":"<go>17330",
+"ActiveParticle":"<go>17350",
+"DieParticle":"<go>17384",
+"HitParticle":"<go>17384",
 "ReleaseParticle":"<go>0",
 "Velocity":10,
 "Radius":0.8,
@@ -548,7 +548,7 @@
 "galiSkill1":{
 "Descriptor":"GameObject",
 "Name":"galiSkill1",
-"InstId":17372,
+"InstId":17426,
 "Pos":"<vec>0,0,0",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -560,7 +560,7 @@
 "Descriptor":"Class",
 "Type":"EventItem",
 "evt":2,
-"layout":"<go>17374",
+"layout":"<go>17428",
 "affix":"Unknown:MyLib.Affix",
 "attachOwner":false,
 "attaches":false,
@@ -577,7 +577,7 @@
 "Descriptor":"Class",
 "Type":"EventItem",
 "evt":0,
-"layout":"<go>17376",
+"layout":"<go>17430",
 "affix":"Unknown:MyLib.Affix",
 "attachOwner":false,
 "attaches":false,
@@ -600,7 +600,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"warmup",
-"InstId":17374,
+"InstId":17428,
 "Pos":"<vec>93,-39,159",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -608,7 +608,7 @@
 "Descriptor":"Class",
 "Type":"SkillLayoutConfig",
 "Position":"Unknown:(0.0, 2.0, 0.0)",
-"particle":"<go>15558",
+"particle":"<go>15284",
 "delayTime":0,
 "boneName":""
 }
@@ -622,7 +622,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"explosive",
-"InstId":17376,
+"InstId":17430,
 "Pos":"<vec>0,0,0",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -632,7 +632,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"UnitSpawn",
-"InstId":72006,
+"InstId":45030,
 "Pos":"<vec>0,0,0",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -649,7 +649,7 @@
 "MinRadius":"Unknown:UnityEngine.AnimationCurve",
 "UseMaxOnly":true,
 "particle":"<go>0",
-"Missile":"<go>72016",
+"Missile":"<go>45036",
 "Missile2":"null",
 "MonsterId":-1,
 "delay":0,
@@ -661,7 +661,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"explosiveshot",
-"InstId":72016,
+"InstId":45036,
 "Pos":"<vec>0,0,0",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -670,9 +670,9 @@
 "Type":"MissileData",
 "missileType":0,
 "lifeTime":5,
-"ActiveParticle":"<go>17296",
-"DieParticle":"<go>17330",
-"HitParticle":"<go>17330",
+"ActiveParticle":"<go>17350",
+"DieParticle":"<go>17384",
+"HitParticle":"<go>17384",
 "ReleaseParticle":"<go>0",
 "Velocity":10,
 "Radius":0.8,
@@ -701,7 +701,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"BackMove",
-"InstId":72010,
+"InstId":45034,
 "Pos":"<vec>0,0,0",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -724,10 +724,122 @@
 
 }
 ,
+"jieKeSkill1":{
+"Descriptor":"GameObject",
+"Name":"jieKeSkill1",
+"InstId":65290,
+"Pos":"<vec>0,0,0",
+"Scale":"<vec>100,100,100",
+"Component":[
+{
+"Descriptor":"Class",
+"Type":"SkillDataConfig",
+"eventList":[
+{
+"Descriptor":"Class",
+"Type":"EventItem",
+"evt":2,
+"layout":"<go>65298",
+"affix":"Unknown:MyLib.Affix",
+"attachOwner":false,
+"attaches":false,
+"childSkillId":-1,
+"AttachToTarget":false,
+"SetBeamTarget":false,
+"BeamOffset":"Unknown:(0.0, 1.0, 0.0)",
+"TargetPos":false,
+"UseMarkPos":false,
+"EvtId":0
+}
+,
+{
+"Descriptor":"Class",
+"Type":"EventItem",
+"evt":0,
+"layout":"<go>65300",
+"affix":"Unknown:MyLib.Affix",
+"attachOwner":false,
+"attaches":false,
+"childSkillId":-1,
+"AttachToTarget":false,
+"SetBeamTarget":false,
+"BeamOffset":"Unknown:(0.0, 1.0, 0.0)",
+"TargetPos":false,
+"UseMarkPos":false,
+"EvtId":0
+}
+]
+,
+"animationLoop":false,
+"attackDuration":1
+}
+]
+,
+"Child":[
+{
+"Descriptor":"GameObject",
+"Name":"warmup",
+"InstId":65298,
+"Pos":"<vec>93,-39,159",
+"Scale":"<vec>100,100,100",
+"Component":[
+{
+"Descriptor":"Class",
+"Type":"SkillLayoutConfig",
+"Position":"Unknown:(0.0, 2.0, 0.0)",
+"particle":"<go>15284",
+"delayTime":0,
+"boneName":""
+}
+]
+,
+"Child":[
+]
+
+}
+,
+{
+"Descriptor":"GameObject",
+"Name":"explosive",
+"InstId":65300,
+"Pos":"<vec>0,0,0",
+"Scale":"<vec>100,100,100",
+"Component":[
+]
+,
+"Child":[
+{
+"Descriptor":"GameObject",
+"Name":"AffixSpawn",
+"InstId":-598066,
+"Pos":"<vec>0,0,0",
+"Scale":"<vec>100,100,100",
+"Component":[
+{
+"Descriptor":"Class",
+"Type":"YaSeDunAffix",
+"effect":"<go>-623916",
+"AffixName":"YaSeDunAffix",
+"defenseAdd":100,
+"duration":10
+}
+]
+,
+"Child":[
+]
+
+}
+]
+
+}
+]
+
+}
+,
 "monsterSingle":{
 "Descriptor":"GameObject",
 "Name":"monsterSingle",
-"InstId":15022,
+"InstId":14734,
 "Pos":"<vec>0,0,0",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -739,7 +851,7 @@
 "Descriptor":"Class",
 "Type":"EventItem",
 "evt":0,
-"layout":"<go>15024",
+"layout":"<go>14736",
 "affix":"Unknown:MyLib.Affix",
 "attachOwner":false,
 "attaches":false,
@@ -762,7 +874,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"monsterSingleLayout",
-"InstId":15024,
+"InstId":14736,
 "Pos":"<vec>0,0,0",
 "Scale":"<vec>100,100,100",
 "Component":[
@@ -772,7 +884,7 @@
 {
 "Descriptor":"GameObject",
 "Name":"HurtDirect",
-"InstId":25560,
+"InstId":29308,
 "Pos":"<vec>0,0,0",
 "Scale":"<vec>100,100,100",
 "Component":[
