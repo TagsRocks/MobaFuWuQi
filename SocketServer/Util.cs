@@ -251,7 +251,7 @@ namespace MyLib
             var sec = passTicks/10000000.0f;
             return (int) sec;
             */
-            var span = DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc));
+            var span = DateTime.UtcNow.Subtract(new DateTime(2018, 1, 1, 0, 0, 0, DateTimeKind.Utc));
             return (int)span.TotalSeconds;
         }
         public static string GetBinPath()

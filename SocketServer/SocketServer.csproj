@@ -119,6 +119,7 @@
     <Compile Include="Game\Room\ActorInRoom.cs" />
     <Compile Include="Game\Room\PlayerActorProxy.cs" />
     <Compile Include="Game\Room\PlayerInRoom.cs" />
+    <Compile Include="Game\Skill\AffixSpawn.cs" />
     <Compile Include="Game\Skill\BackMove.cs" />
     <Compile Include="Game\Skill\Bullet.cs" />
     <Compile Include="Game\Chat\ChatActor.cs" />
@@ -149,6 +150,7 @@
     <Compile Include="Game\Data\SkillData.cs" />
     <Compile Include="Game\Data\SkillDataManager.cs" />
     <Compile Include="Game\Skill\HurtNearby.cs" />
+    <Compile Include="Game\Skill\ModifyComponent.cs" />
     <Compile Include="Game\Skill\SkillLayoutRunner.cs" />
     <Compile Include="Game\Data\UnitData.cs" />
     <Compile Include="Game\EntityImport.cs" />
@@ -203,6 +205,7 @@
     <Compile Include="Game\Skill\SkillLogicComponent.cs" />
     <Compile Include="Game\Skill\SkillStateMachine.cs" />
     <Compile Include="Game\Skill\UnitSpawner.cs" />
+    <Compile Include="Game\Skill\YaSeDunAffix.cs" />
     <Compile Include="Game\Utility\AvatarInfo.cs" />
     <Compile Include="Game\Utility\MailSender.cs" />
     <Compile Include="Game\MyVec3.cs" />
