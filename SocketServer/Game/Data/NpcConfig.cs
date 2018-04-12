@@ -45,6 +45,7 @@ namespace MyLib
         public float damageToTower = 1.0f;
         public float maxMoveRange2 = 11;
         public float hpRecover = 0;
+        public int dropGold = 100;
 
         public ActionConfig GetAction(ActionType tp)
         {

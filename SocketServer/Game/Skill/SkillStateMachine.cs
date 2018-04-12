@@ -44,6 +44,20 @@ namespace MyLib
         /// <returns></returns>
         private async Task WaitDelete()
         {
+            try
+            {
+                foreach (var item in config.eventList)
+                {
+                    var runner = item.layout.go.AddComponent<SkillLayoutRunner>();
+                    runner.stateMachine = this;
+                    deadTime = Math.Max(runner.GetDuration(), deadTime);
+                }
+                deadTime += 1;
+            }catch(Exception exp)
+            {
+                Log.Error(exp.ToString());
+            }
+
             await Task.Delay(Util.TimeToMS(deadTime));
             gameObject.Destroy();    
         }
@@ -94,13 +108,28 @@ namespace MyLib
                 return;
             }
             var dmg = attacker.GetComponent<AINPC>().unitData.Damage;
-            Log.AI("SkillDamage:"+dmg);
+            //装备伤害加成
+            var player = attacker as PlayerInRoom;
+            if(player != null)
+            {
+                var avatarInfo = player.GetAvatarInfo();
+                var itemList = avatarInfo.ItemInfoList;
+                foreach(var i in itemList)
+                {
+                    var info = GMDataBaseSystem.database.SearchId<EquipConfigData>(GameData.EquipConfig, i);
+                    dmg += info.attack;
+                }
+            }
+
+
             var cfg = attacker.GetComponent<AINPC>().npcConfig;
             var tai = target.GetComponent<AINPC>() as TowerAI;
-            if(tai != null)
+            //小炮对塔伤害加成
+            if (tai != null)
             {
                 dmg = (int)(dmg * cfg.damageToTower);
             }
+
             target.GetComponent<NpcAttribute>().DoHurt(attacker, dmg);
 
             var gcPlayerCmd = GCPlayerCmd.CreateBuilder();

@@ -37,12 +37,27 @@ namespace MyLib
 
         public void DoHurt(ActorInRoom attacker, int damage)
         {
+            var modifies = gameObject.GetComponent<ModifyComponent>();
+            damage -= modifies.totalDefenseAdd;
+            damage = Math.Max(0, damage);
+
             mySelf.DuckInfo.HP -= damage;
             mySelf.DuckInfo.HP = MathUtil.Clamp(mySelf.DuckInfo.HP, 0, unitData.HP);
             if(mySelf.DuckInfo.HP <= 0)
             {
                 state = State.Dead;
                 gameObject.GetComponent<AICharacter>().ChangeState(AIStateEnum.DEAD);
+
+
+                if (!mySelf.IsPlayer)
+                {
+                    var gold = ai.npcConfig.dropGold;
+                    if(attacker != null && attacker.IsPlayer)
+                    {
+                        var pinRoom = attacker as PlayerInRoom;
+                        pinRoom.GetAvatarInfo().Gold += gold;
+                    }
+                }
             }
 
             ai.aiCharacter.blackboard[AIParams.Attacker] = new AIEvent()

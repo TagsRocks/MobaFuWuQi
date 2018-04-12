@@ -30,6 +30,7 @@ namespace MyLib
 
             gameObject.AddComponent<MoveController>();
             gameObject.AddComponent<SkillComponent>();
+            gameObject.AddComponent<ModifyComponent>();
             attribute = gameObject.AddComponent<NpcAttribute>();
         }
 

@@ -23,7 +23,19 @@ namespace MyLib
         {
             base.AfterInGame();
             gameObject.RunTask(HPRecover);
+            gameObject.RunTask(GoldAdd);
         }
+
+        private async Task GoldAdd()
+        {
+            while (!gameObject.IsDestroy)
+            {
+                await Task.Delay(5000);
+                var pinRoom = mySelf as PlayerInRoom;
+                var avatarInfo = pinRoom.GetAvatarInfo();
+                avatarInfo.Gold += 1;
+            }
+        } 
 
         private async Task HPRecover()
         {

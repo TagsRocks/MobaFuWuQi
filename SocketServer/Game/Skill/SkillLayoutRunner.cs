@@ -26,5 +26,17 @@ namespace MyLib
         {
             stateMachine.DoDamage(actor);
         }
+
+        public float GetDuration()
+        {
+            var maxDur = 5.0f;
+            foreach(var c in gameObject.GetChildren())
+            {
+                var logic = c.GetComponent<SkillLogicComponent>();
+                logic.runner = this;
+                maxDur = Math.Max(maxDur, logic.GetDuration());
+            }
+            return maxDur;
+        }
     }
 }

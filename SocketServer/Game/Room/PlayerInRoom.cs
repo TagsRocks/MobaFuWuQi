@@ -73,7 +73,7 @@ namespace MyLib
             }
             else
             {
-                LogHelper.Log("PlayerActor", "ReceivePacket " + Id + " p " + msg.packet.protoBody.ToString());
+                //LogHelper.Log("PlayerActor", "ReceivePacket " + Id + " p " + msg.packet.protoBody.ToString());
                 if (msg.packet.protoBody.GetType() == typeof(CGPlayerCmd))
                 {
                     var cmd = msg.packet.protoBody as CGPlayerCmd;

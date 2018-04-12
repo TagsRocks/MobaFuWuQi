@@ -13,5 +13,10 @@ namespace MyLib
         /// 开始执行技能逻辑
         /// </summary>
         public abstract void Run();
+
+        public virtual float GetDuration()
+        {
+            return 5;
+        }
     }
 }
