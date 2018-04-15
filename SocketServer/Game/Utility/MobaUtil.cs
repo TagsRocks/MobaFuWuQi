@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using StatePrinting;
 using System.Numerics;
+using tainicom.Aether.Physics2D.Collision;
 
 namespace MyLib {
     public static class MobaUtil
@@ -90,6 +91,21 @@ namespace MyLib {
         }
 
 
+        public static List<EntityProxy> FindNearEnemy(RoomActor room, Vector3 pos, float radius, int TeamColor)
+        {
+            var physic = room.GetComponent<PhysicManager>();
+            var vec2 = new Vector2(pos.X, pos.Z);
+            var allEnemy =  physic.GetNearBy2(vec2, radius);
+            var realEnemy = new List<EntityProxy>();
+            foreach (var e in allEnemy)
+            {
+                if (e.actor.TeamColor != TeamColor && !e.actor.GetComponent<NpcAttribute>().IsDead())
+                {
+                    realEnemy.Add(e);
+                }
+            }
+            return realEnemy;
+        }
 
         public static EntityProxy FindEnemy(ActorInRoom npc)
         {

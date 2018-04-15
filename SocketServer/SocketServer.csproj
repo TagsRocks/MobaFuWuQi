@@ -121,7 +121,7 @@
     <Compile Include="Game\Room\PlayerInRoom.cs" />
     <Compile Include="Game\Skill\AffixSpawn.cs" />
     <Compile Include="Game\Skill\BackMove.cs" />
-    <Compile Include="Game\Skill\Bullet.cs" />
+    <Compile Include="Game\Skill\BulletTargetFly.cs" />
     <Compile Include="Game\Chat\ChatActor.cs" />
     <Compile Include="Game\Components\AI\CreepDead.cs" />
     <Compile Include="Game\Components\NPC\TowerAI.cs" />
@@ -149,6 +149,7 @@
     <Compile Include="Game\Data\NpcDataManager.cs" />
     <Compile Include="Game\Data\SkillData.cs" />
     <Compile Include="Game\Data\SkillDataManager.cs" />
+    <Compile Include="Game\Skill\BulletLinearFly.cs" />
     <Compile Include="Game\Skill\HurtNearby.cs" />
     <Compile Include="Game\Skill\ModifyComponent.cs" />
     <Compile Include="Game\Skill\SkillLayoutRunner.cs" />

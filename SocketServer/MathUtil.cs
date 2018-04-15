@@ -39,12 +39,22 @@ public class MathUtil
 
     }
 
+    /// <summary>
+    /// 根据Vector3 计算 朝向角度 
+    /// </summary>
+    /// <param name="dir"></param>
+    /// <returns></returns>
     //http://www.euclideanspace.com/maths/algebra/vectors/angleBetween/
     public static float RotY(Vector3 dir)
     {
         var deg = Math.Atan2(dir.Z, dir.X) - Math.Atan2(forward.Z, forward.X);
         return RadToDeg((float)deg);
     }
+     /// <summary>
+    /// 数学角度和Unity角度转化
+    /// </summary>
+    /// <param name="deg"></param>
+    /// <returns></returns>
     public static float Math2UnityRot(float deg)
     {
         return -deg;

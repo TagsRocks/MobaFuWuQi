@@ -14,6 +14,7 @@ namespace MyLib
     {
         Target,
         Pos,
+        Linear,
     }
 
     class MissileData : GameObjectComponent 
@@ -21,5 +22,6 @@ namespace MyLib
         public MissileType missileType = MissileType.Target;
         public float lifeTime = 5;
         public float Velocity = 20;
+        public float Radius = 0.8f;
     }
 }

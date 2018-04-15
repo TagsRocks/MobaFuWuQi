@@ -7,7 +7,7 @@ using Box2DX.Common;
 
 namespace MyLib
 {
-    class Bullet : GameObjectComponent 
+    class BulletTargetFly : GameObjectComponent 
     {
         public SkillLayoutRunner runner;
         public MissileData missileData;

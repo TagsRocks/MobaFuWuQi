@@ -65,6 +65,20 @@ namespace MyLib
             tree.Query(QueryCallback, ref aabb);
             return pairs;
         }
+
+        public List<EntityProxy> GetNearBy2(Vector2 pos, float dist)
+        {
+            queryProxyId = -1;
+            pairs = new List<EntityProxy>();
+            var aabb = new AABB();
+            var pvec2 = pos;
+            aabb.LowerBound = pvec2 - new Vector2(dist, dist);
+            aabb.UpperBound = pvec2 + new Vector2(dist, dist);
+            tree.Query(QueryCallback, ref aabb);
+            return pairs;
+        }
+
+        
         private bool QueryCallback(int proxyId)
         {
             if(proxyId == queryProxyId)
@@ -73,6 +87,10 @@ namespace MyLib
             }
             pairs.Add(tree.GetUserData(proxyId));
             return true;
+        }
+        public EntityProxy GetProxy(int proxyId)
+        {
+            return tree.GetUserData(proxyId);
         }
     }
 }
