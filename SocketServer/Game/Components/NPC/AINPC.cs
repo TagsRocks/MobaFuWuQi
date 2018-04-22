@@ -34,13 +34,24 @@ namespace MyLib
             attribute = gameObject.AddComponent<NpcAttribute>();
         }
 
-        //玩家需要等待选择了角色之后才能初始化
+
+        /// <summary>
+        /// 玩家需要等待选择了角色之后才能初始化
+        /// 普通小怪可以立即初始化
+        /// </summary>
         public virtual void AfterSelectHeroInit()
         {
             npcConfig = NpcDataManager.Instance.GetConfig(mySelf.GetUnitId());
             unitData = Util.GetUnitData(mySelf.IsPlayer, mySelf.GetUnitId(), mySelf.Level);
             mySelf.DuckInfo.HP = unitData.HP;
         }
+
+        public void UpdateLevel()
+        {
+            unitData = Util.GetUnitData(mySelf.IsPlayer, mySelf.GetUnitId(), mySelf.Level);
+            mySelf.DuckInfo.HP = unitData.HP;
+        }
+
         public virtual void AfterInGame()
         {
 

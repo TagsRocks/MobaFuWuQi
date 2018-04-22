@@ -15,12 +15,18 @@ namespace MyLib
 		TeamManageCom teamCom;
 	    private bool IsNewUserRoom = false;
         public GridManager gridManager;
+        public DragonManager dragonManager;
 
         private ulong frameId = 0;
         private double roomStartTime = 0;
         private double newTimeNow = 0;
         private GameObjectActor root;
 
+        public List<WayPointSystem> ways = new List<WayPointSystem>();
+        public void AddWayPointSystem(WayPointSystem way)
+        {
+            ways.Add(way);
+        }
         /// <summary>
         /// 获取当前服务器上的时间
         /// </summary>
@@ -129,6 +135,7 @@ namespace MyLib
             AddComponent<PhysicManager>();
             gridManager = AddComponent<GridManager>();
             gridManager.InitMap();
+            dragonManager = AddComponent<DragonManager>();
         }
 
         /// <summary>

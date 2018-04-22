@@ -19,6 +19,13 @@ namespace MyLib
 
 
         private GridManager gridManager;
+        private enum State
+        {
+            Normal,
+            Dragon,
+        }
+        private State state = State.Normal;
+        private int dragonCount = 0;
 
         //TODO:Grid Physic 都需要放到其它中初始化
         public override void Init()
@@ -28,6 +35,7 @@ namespace MyLib
 
             var rm = GetRoom();
             rm.RunTask(GenCreep);
+            rm.AddWayPointSystem(this);
         }
         //通知三条路径各自生成Creep
         private async Task GenCreep()
@@ -51,20 +59,38 @@ namespace MyLib
                     if (path.gameObject.name == "Path1"
                         || path.gameObject.name == "Path7")
                     {
-                        //小兵的AI需要添加上组件
-                        path.AddSoldier(soldierId, teamId);
-                        path.AddSoldier(archerId, teamId, offSetZ);
-                        path.AddSoldier(paoId, teamId, offSetZ2);
+                        if (state == State.Normal)
+                        {
+                            //小兵的AI需要添加上组件
+                            path.AddSoldier(soldierId, teamId);
+                            path.AddSoldier(archerId, teamId, offSetZ);
+                            path.AddSoldier(paoId, teamId, offSetZ2);
+                        }else if(state == State.Dragon)
+                        {
+                            path.AddSoldier(70, teamId);
+                        }
                     }
                 }
-                //await new WaitForNextFrame(GetRoom());
-                //passTime += Util.FrameSecTime;
-
+                if(state == State.Dragon)
+                {
+                    dragonCount++;
+                    if(dragonCount >= 3)
+                    {
+                        state = State.Normal;
+                    }
+                }
                 await Task.Delay(Util.TimeToMS(intervalTime));
             }
         }
 
-        //private float passTime = 0;
+        public void StartDragon(int teamColor)
+        {
+            if(teamColor == teamId)
+            {
+                state = State.Dragon;
+                dragonCount = 0;
+            }
+        }
     }
 
 }

@@ -46,6 +46,7 @@ namespace MyLib
         public float maxMoveRange2 = 11;
         public float hpRecover = 0;
         public int dropGold = 100;
+        public int XPGain = 50;
 
         public ActionConfig GetAction(ActionType tp)
         {

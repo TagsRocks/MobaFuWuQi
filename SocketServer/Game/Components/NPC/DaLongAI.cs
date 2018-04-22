@@ -6,14 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyLib
 {
-    /// <summary>
-    /// 由两部分构成
-    /// AI状态机 底层
-    /// 上层AI决策层
-    /// 
-    /// 只会攻击5m范围内的敌人
-    /// </summary>
-    class XiaoGuaiAI : AINPC
+    class DaLongAI : AINPC
     {
         public override void Init()
         {
@@ -22,7 +15,7 @@ namespace MyLib
             aiCharacter = gameObject.AddComponent<AICharacter>();
             aiCharacter.AddState(new XiaoGuaiIdle());
             aiCharacter.AddState(new XiaoGuaiAttack());
-            aiCharacter.AddState(new CreepDead());
+            aiCharacter.AddState(new DaLongDead());
             aiCharacter.AddState(new CreepGoBack());
 
             aiCharacter.blackboard[AIParams.InitPoint] = new AIEvent()
@@ -36,6 +29,5 @@ namespace MyLib
         {
             base.RunAI();
         }
-
     }
 }

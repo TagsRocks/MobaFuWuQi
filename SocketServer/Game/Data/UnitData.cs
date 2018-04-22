@@ -196,13 +196,13 @@ namespace MyLib
         }
 
         //人物升级需要经验
-        public long MaxExp
+        public int MaxExp
         {
             get
             {
                 if (playerConfig != null)
                 {
-                    return playerConfig.exp; 
+                    return (int)playerConfig.exp; 
                 }
                 return 0;
             }

@@ -25,6 +25,7 @@ namespace MyLib
             avatarInfo = AvatarInfo.CreateBuilder(info).Build();
             avatarInfo.Level = 1;
             avatarInfo.Gold = 300;
+            avatarInfo.Exp = 0;
 
             proxy = new PlayerActorProxy(pl, this);
             //玩家在房间中的对象通过Room访问
@@ -650,6 +651,7 @@ namespace MyLib
 
         public void UpdateLevel(int rank)
         {
+            /*
             if (level >= 40)
             {
                 return;
@@ -681,6 +683,7 @@ namespace MyLib
             {
                 Exp = 0;
             }
+            */
 
             //Login.SaveUserInfo(pid, uid, level, Exp, medal, dayBattleCount);
         }
@@ -813,6 +816,12 @@ namespace MyLib
                 na1.Changed = true;
                 lastAvatarInfo.Level = avatarInfo.Level;
             }
+            if(avatarInfo.Exp != lastAvatarInfo.Exp)
+            {
+                na1.Exp = avatarInfo.Exp;
+                na1.Changed = true;
+                lastAvatarInfo.Exp = avatarInfo.Exp;
+            }
             if(avatarInfo.State != lastAvatarInfo.State)
             {
                 na1.State = avatarInfo.State;
@@ -853,6 +862,18 @@ namespace MyLib
         public void AddKillCount()
         {
             avatarInfo.KillCount++;
+        }
+        public void AddExp(int exp)
+        {
+            avatarInfo.Exp += exp;
+            var attrib = GetComponent<NpcAttribute>();
+            var maxExp = attrib.unitData.MaxExp;
+            if(avatarInfo.Exp >= maxExp)
+            {
+                avatarInfo.Level += 1;
+                avatarInfo.Exp -= maxExp;
+                attrib.UpdateLevel();
+            }
         }
 
         public void AddDeadCount()

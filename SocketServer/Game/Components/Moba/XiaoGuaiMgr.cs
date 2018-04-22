@@ -19,7 +19,7 @@ namespace MyLib
             var rm = GetRoom();
             rm.RunTask(GenMonster);
         }
-        private XiaoGuaiAI creepAI = null;
+        private AINPC creepAI = null;
 
         private async Task GenMonster()
         {
@@ -50,7 +50,14 @@ namespace MyLib
                     var ety = GetRoom().AddEntityInfo(info);
                     if (ety != null)
                     {
-                        creepAI = ety.AddComponent<XiaoGuaiAI>();
+                        var unitData = Util.GetUnitData(false, npcId, 0);
+                        var ai = unitData.AITemplate;
+                        var type = Type.GetType("MyLib." + unitData.AITemplate);
+                        var m = ety.GetType().GetMethod("AddComponent");
+                        var geMethod = m.MakeGenericMethod(type);
+                        var ret = geMethod.Invoke(ety, null) as AINPC;
+                        creepAI = ret;
+                        //creepAI = ety.AddComponent<XiaoGuaiAI>();
                         creepAI.RunAI();
                     }
                 }

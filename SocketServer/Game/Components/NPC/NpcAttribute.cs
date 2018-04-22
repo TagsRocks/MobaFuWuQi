@@ -20,11 +20,18 @@ namespace MyLib
         }
 
         public ActorInRoom mySelf;
-        private UnitData unitData
+        public UnitData unitData
         {
             get
             {
                 return ai.unitData;
+            }
+        }
+        public NpcConfig npcConfig
+        {
+            get
+            {
+                return ai.npcConfig;
             }
         }
         private AINPC ai;
@@ -34,6 +41,8 @@ namespace MyLib
             mySelf = gameObject as ActorInRoom;
             ai = gameObject.GetComponent<AINPC>();
         }
+
+        public int killerTeamColor;
 
         public void DoHurt(ActorInRoom attacker, int damage)
         {
@@ -45,9 +54,9 @@ namespace MyLib
             mySelf.DuckInfo.HP = MathUtil.Clamp(mySelf.DuckInfo.HP, 0, unitData.HP);
             if(mySelf.DuckInfo.HP <= 0)
             {
+                killerTeamColor = attacker.TeamColor;
                 state = State.Dead;
                 gameObject.GetComponent<AICharacter>().ChangeState(AIStateEnum.DEAD);
-
 
                 if (!mySelf.IsPlayer)
                 {
@@ -56,6 +65,7 @@ namespace MyLib
                     {
                         var pinRoom = attacker as PlayerInRoom;
                         pinRoom.GetAvatarInfo().Gold += gold;
+                        pinRoom.AddExp(ai.npcConfig.XPGain);
                     }
                 }
             }
@@ -79,6 +89,10 @@ namespace MyLib
         public void RemoveSelf()
         {
             mySelf.RemoveSelf();
+        }
+        public void UpdateLevel()
+        {
+            ai.UpdateLevel();
         }
     }
 }
