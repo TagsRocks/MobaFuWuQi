@@ -42,7 +42,8 @@ namespace MyLib
             ai = gameObject.GetComponent<AINPC>();
         }
 
-        public int killerTeamColor;
+        public int killerTeamColor = 0;
+        public int killerId = 0;
 
         public void DoHurt(ActorInRoom attacker, int damage)
         {
@@ -55,6 +56,8 @@ namespace MyLib
             if(mySelf.DuckInfo.HP <= 0)
             {
                 killerTeamColor = attacker.TeamColor;
+                killerId = attacker.IDInRoom;
+
                 state = State.Dead;
                 gameObject.GetComponent<AICharacter>().ChangeState(AIStateEnum.DEAD);
 

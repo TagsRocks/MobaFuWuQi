@@ -100,6 +100,7 @@
     <Compile Include="Game\AABBTreePhysic\Settings.cs" />
     <Compile Include="Game\Components\AI\CreepGoBack.cs" />
     <Compile Include="Game\Components\AI\DaLongDead.cs" />
+    <Compile Include="Game\Components\AI\LanBabaDead.cs" />
     <Compile Include="Game\Components\AI\MainTowerDead.cs" />
     <Compile Include="Game\Components\AI\PlayerAttack.cs" />
     <Compile Include="Game\Components\AI\PlayerDead.cs" />
@@ -113,6 +114,7 @@
     <Compile Include="Game\Components\Moba\XiaoGuaiMgr.cs" />
     <Compile Include="Game\Components\NPC\AINPC.cs" />
     <Compile Include="Game\Components\NPC\DaLongAI.cs" />
+    <Compile Include="Game\Components\NPC\LanBabaAI.cs" />
     <Compile Include="Game\Components\NPC\MainTowerAI.cs" />
     <Compile Include="Game\Components\NPC\MoveController.cs" />
     <Compile Include="Game\Components\NPC\PlayerAI.cs" />
@@ -154,6 +156,7 @@
     <Compile Include="Game\Data\SkillDataManager.cs" />
     <Compile Include="Game\Skill\BulletLinearFly.cs" />
     <Compile Include="Game\Skill\HurtNearby.cs" />
+    <Compile Include="Game\Skill\LanBabaAffix.cs" />
     <Compile Include="Game\Skill\ModifyComponent.cs" />
     <Compile Include="Game\Skill\SkillLayoutRunner.cs" />
     <Compile Include="Game\Data\UnitData.cs" />
