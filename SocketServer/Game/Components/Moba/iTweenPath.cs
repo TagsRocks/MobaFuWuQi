@@ -22,7 +22,7 @@ namespace MyLib
             var startPos = nodes[0];
             startPos.x += (int)(offset*100);
 
-            LogHelper.Log("iTweenPath", "AddSoldier:" + startPos);
+            //LogHelper.Log("iTweenPath", "AddSoldier:" + startPos);
             var entityInfo = EntityInfo.CreateBuilder();
             entityInfo.UnitId = soldierId;
             entityInfo.ItemNum = 1;
